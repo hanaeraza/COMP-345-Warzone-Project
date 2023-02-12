@@ -15,16 +15,17 @@ public:
 
     ~Card();
 
-    Card& operator=(const Card& t);
+    Card& operator=(const Card& other);
+    //Card* play(Hand* hand, Deck* deck);
     void play();
-
 };
 
 class Deck {
 private:
+    
+public:
     int size = 50;
     Card** cards;
-public:
     Deck();
     Deck(const Deck& d);
     ~Deck();
@@ -47,3 +48,4 @@ public:
     void printHand();
     // Hand::Hand& operator=(const Hand& h);
 };
+
