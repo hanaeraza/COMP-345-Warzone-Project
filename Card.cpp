@@ -10,18 +10,15 @@ using namespace std;
 //}
 Card::~Card() {
 	
+
 }
 
-//assignment operator 
-//Card::Card& operator=(const Card& c)
-//{
-//	this->type = c.type;
-//	return *this;
-//}
 
 void Card::play() {
-	cout << "Playing card of type: " << type << endl;
+
 }
+
+//OrderList order_list;
 
 Hand::Hand() {
 	cards = new Card * [maxSize];
@@ -52,11 +49,8 @@ void Hand::addCard(Card* c) {
 	}
 }
 //assignment operator
-//Hand::Hand& operator=(const Hand& h)
-//{
-//	this->numCards = h.numCards;
-//	return *this;
-//}
+
+
 
 Deck::Deck() {
 	// write code to randomly generate deck
@@ -91,6 +85,57 @@ Deck::~Deck() {
 	size--;
 	return drawnCard;
 }
+
+  //Stream Insertion Operators
+  ostream& operator <<(ostream& os, const Card& other) {
+	  throw exception("Not Implemented");
+  }
+  ostream& operator <<(ostream& os, const Deck& other) {
+	  throw exception("Not Implemented");
+  }
+  ostream& operator <<(ostream& os, const Hand& other) {
+	  throw exception("Not Implemented");
+  }
+
+  //Assignment Operators:
+ // Card::Card& operator=(const Card& other) {
+//	  if (this != &other) {
+//		  type = other.type;
+//	  }
+//	  return *this;
+ // }
+ // Deck::Deck& operator=(const Deck& other) {
+//	  if (this != &other) {
+//		  for (int i = 0; i < size; i++) {
+///			  delete cards[i];
+///		  }
+///		  delete[] cards;
+//		  size = other.size;
+//		  cards = new Card * [size];
+///		  for (int i = 0; i < size; i++) {
+//			  cards[i] = new Card(*other.cards[i]);
+//		  }
+///	  }
+///	  return *this;
+//  }
+//  Hand::Hand& operator=(const Hand& other) {
+//	  if (this != &other) {
+//		  for (int i = 0; i < size; i++) {
+//			  delete cards[i];
+//		  }
+//		  delete[] cards;
+//		  size = other.size;
+//		  maxSize = other.maxSize;
+//		  cards = new Card * [maxSize];
+//		  for (int i = 0; i < size; i++) {
+//			  cards[i] = new Card(*other.cards[i]);
+//		  }
+//	  }
+//	  return *this;
+//  }
+
+ 
+ 
 int main() {
 	Deck* deck = new Deck();
 	Hand* hand = new Hand();
@@ -99,5 +144,12 @@ int main() {
 		hand->addCard(deck->draw());
 	}
 	hand->printHand();
+	int count = 0;
+	cout << "Remaining cards in deck: ";
+	for (int i = 0; i < deck->size; i++) {
+		cout << deck->cards[i]->type << " ";
+		count++;
+	}
+	cout << count << endl;
 	return 0;
 }
