@@ -60,6 +60,9 @@ private:
 	vector<int>* continentIndices; // Shows continent index of every territory
 
 	vector<vector<bool>> BuildContinentAdjacencyMatrix(int continentIndex);
+	void GetTerritories(string file);
+	void GetContinents(string file);
+	void GetBorders(string file);
 
 	static vector<vector<bool>> RandomConnectedAdjacencyMatrix(int size);
 	static bool AdjacencyMatrixIsConnected(vector<vector<bool>> input, int size);

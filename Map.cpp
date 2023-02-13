@@ -5,6 +5,9 @@
 #include "Player.cpp"
 
 #include <random>
+#include <iostream>
+#include <fstream>
+#include <sstream>
 
 using namespace std;
 
@@ -62,6 +65,128 @@ bool Territory::operator==(const Territory& other) {
 void Territory::Update(Player owner, int armyQuantity) {
     *(this->owner) = owner;
     *(this->armyQuantity) = armyQuantity;
+}
+
+void Map::GetBorders(string file){
+    this->adjacencyMatrix = new vector<vector<bool>>(*(this->territoryQuantity),
+    vector<bool>(*(this->territoryQuantity), false));
+
+    ifstream inputMap(file);
+
+    string lastLine;
+
+    bool record = false;
+
+    while (getline(inputMap, lastLine))
+    {
+        if (lastLine.find("[borders]") == 0)// Last line was [borders]
+        {
+            while (getline(inputMap, lastLine))
+            {
+                if (lastLine.empty() ||
+                lastLine.find("[countries]") == 0 ||
+                lastLine.find("[continents]") == 0 ||
+                lastLine[0] == ';') {
+                    break;
+                }
+
+                stringstream stream(lastLine);
+
+                int num;
+
+                vector<int> values;
+
+                while (stream >> num)
+                {
+                    values.push_back(num - 1);
+                    if (stream.peek() == ' ')
+                        stream.ignore();
+                }
+
+                for (int i = 1; i < values.size(); i++)
+                {
+                    (*(this->adjacencyMatrix))[values[0]][values[i]] = true;
+                    (*(this->adjacencyMatrix))[values[i]][values[0]] = true;
+                }
+            }
+        }
+    }
+}
+
+void Map::GetContinents(string file){
+    this->continents = new vector<string>();
+
+    ifstream inputMap(file);
+
+    string lastLine;
+
+    while (getline(inputMap, lastLine))
+    {
+        if (lastLine.find("[continents]") == 0)// Last line was [continents]
+        {
+            while (getline(inputMap, lastLine))
+            {
+                if (lastLine.empty() ||
+                lastLine.find("[countries]") == 0 ||
+                lastLine.find("[borders]") == 0 ||
+                lastLine[0] == ';') {
+                    this->continentQuantity = new int((*(this->continents)).size());
+                    break;
+                }
+
+                stringstream stream(lastLine);
+
+                string cName;
+                int cSize, color; 
+
+                if ((stream >> cName >> cSize >> color)) {
+                    (*(this->continents)).push_back(string(cName));
+                }
+            }
+        }
+    }
+}
+
+void Map::GetTerritories(string file){
+    this->territories = new vector<Territory>();
+    this->continentIndices = new vector<int>();
+
+    ifstream inputMap(file);
+
+    string lastLine;
+
+    while (getline(inputMap, lastLine)){
+        
+        if (lastLine.find("[countries]") == 0)// Last line was [countries]
+        {
+            while (getline(inputMap, lastLine))
+            {
+                if (lastLine.empty() ||
+                lastLine.find("[continents]") == 0 ||
+                lastLine.find("[borders]") == 0 ||
+                lastLine[0] == ';') {
+                    this->territoryQuantity = new int((*(this->territories)).size());
+                    break;
+                }
+
+                stringstream stream(lastLine);
+
+                string tName, cName;
+                int cIndex, a, b; 
+
+                if ((stream >> tName >> cName >> cIndex >> a >> b)) {
+                    (*(this->territories)).push_back(Territory(tName, cName));
+                    (*(this->continentIndices)).push_back(int(cIndex - 1));
+                }
+            }
+        }
+    }
+}
+
+Map::Map(string file){
+    GetContinents(file);
+    GetTerritories(file);
+    GetBorders(file);
 }
 
 Map::Map(int size, int continentAmount) {
