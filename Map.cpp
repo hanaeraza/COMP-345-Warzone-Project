@@ -1,0 +1,354 @@
+#pragma once
+
+#include "Map.h"
+#include "Player.h"
+#include "Player.cpp"
+
+#include <random>
+
+using namespace std;
+
+ostream& operator <<(ostream &os, const Map &other) {
+	for (int i = 0; i < *(other.territoryQuantity); i++)
+    {
+        os << "[ ";
+
+        for (int j = 0; j < *(other.territoryQuantity); j++)
+        {
+            os << (*(other.adjacencyMatrix))[i][j] << " ";
+        }
+        
+        os << "]" << (*(other.territories))[i] << "\n";
+    }
+    return os;
+}
+
+ostream& operator<<(ostream& os, const Territory& other) {
+    os << "TerritoryName: " << *(other.territoryName)
+        << ", ContinentName: " << *(other.continentName)
+        << ", Owner: " << *(other.owner)
+        << ", Army Amount: " << *(other.armyQuantity);
+    return os;
+}
+
+Territory::Territory(const Territory& other) {
+    this->territoryName = new string(*(other.territoryName));
+    this->continentName = new string(*(other.continentName));
+    this->owner = new Player(*(other.owner));
+    this->armyQuantity = new int(*(other.armyQuantity));
+}
+
+Territory& Territory::operator =(const Territory &other) {
+    if (this != &other)
+    {
+        delete territoryName;
+        delete continentName;
+        delete owner;
+        delete armyQuantity;
+        territoryName = new string(*(other.territoryName));
+        continentName = new string(*(other.continentName));
+        owner = new Player(*(other.owner));
+        armyQuantity = new int(*(other.armyQuantity));
+    }
+    return *this;
+}
+
+bool Territory::operator==(const Territory& other) {
+    return *territoryName == *other.territoryName &&
+        *continentName == *other.continentName;
+}
+
+
+void Territory::Update(Player owner, int armyQuantity) {
+    *(this->owner) = owner;
+    *(this->armyQuantity) = armyQuantity;
+}
+
+Map::Map(int size, int continentAmount) {
+    this->territoryQuantity = new int(size);
+    this->territories = new vector<Territory>(size);
+    this->adjacencyMatrix = new vector<vector<bool>>(size, vector<bool>(size, false));
+    this->continentQuantity = new int(continentAmount);
+    this->continents = new vector<string>(continentAmount);
+    this->continentIndices = new vector<int>(size);
+
+    for (int i = 0; i < continentAmount; i++)
+    {
+        (*(this->continents))[i] = "Continent"+ to_string(i);
+    }
+
+    for (int i = 0; i < size; i++)
+    {
+        (*(this->continentIndices))[i] = ((double)continentAmount / (double)size) * i;
+        (*(this->territories))[i] = Territory("Territory" + to_string(i),
+            (*(this->continents))[(*(this->continentIndices))[i]]);
+    }
+    
+    int countOuter = 0; //First index of current continent
+    while (countOuter < size) //Create subgraphs for each continent
+    {
+        int countInner = 0; //Size of next continent graph
+        int currentContinent = (*(this->continentIndices))[countOuter + countInner];
+        int lastContinent = (*(this->continentIndices))[countOuter];
+
+        while (currentContinent == lastContinent && countOuter + countInner < size)
+        {
+            countInner++;
+            if (countOuter + countInner >= size)
+                break;
+            currentContinent = (*(this->continentIndices))[countOuter + countInner];
+        }
+
+        vector<vector<bool>> continentGraph = Map::RandomConnectedAdjacencyMatrix(countInner);
+
+        for (size_t i = 0; i < countInner; i++)
+        {
+            for (size_t j = 0; j < countInner; j++)
+            {
+                int colContinentMatrix = i;
+                int rowContinentMatrix = j;
+                int colAdjMatrix = i + countOuter;
+                int rowAdjMatrix = j + countOuter;
+
+                (*(this->adjacencyMatrix))[rowAdjMatrix][colAdjMatrix] = 
+                continentGraph[rowContinentMatrix][colContinentMatrix];
+
+                (*(this->adjacencyMatrix))[colAdjMatrix][rowAdjMatrix] = 
+                continentGraph[colContinentMatrix][rowContinentMatrix];
+            }
+        }
+        countOuter += countInner;
+
+        //cout << "\nNew Adj Matrix: ";
+
+        //for (int i = 0; i < (*(this->adjacencyMatrix)).size(); i++)
+        //{
+        //    for (int j = 0; j < (*(this->adjacencyMatrix)).size(); j++)
+        //    {
+        //        cout << (*(this->adjacencyMatrix))[i][j];
+        //    }
+        //    cout << "\n";
+        //}
+    }
+
+    random_device rd;
+    mt19937 generator(rd());
+    uniform_int_distribution<int> distribution(0, size - 1);
+
+    while (!Map::AdjacencyMatrixIsConnected(*(this->adjacencyMatrix), size)) // Loop until connected
+    {
+        int row = distribution(generator);
+        int col = distribution(generator);
+        (*(this->adjacencyMatrix))[row][col] = (*(this->adjacencyMatrix))[col][row] = true;
+
+        for (int i = 0; i < size; i++)
+        {
+            (*(this->adjacencyMatrix))[i][i] = false;
+        }
+    }
+}
+
+vector<vector<bool>> Map::RandomConnectedAdjacencyMatrix(int size){
+    random_device rd;
+    mt19937 generator(rd());
+    uniform_int_distribution<int> distribution(0, size - 1);
+
+    vector<vector<bool>> adjacencyMatrix(size, vector<bool>(size, false));
+
+
+    while (!Map::AdjacencyMatrixIsConnected(adjacencyMatrix, size)) // Loop until connected
+    {
+        int row = distribution(generator);
+        int col = distribution(generator);
+        adjacencyMatrix[row][col] = adjacencyMatrix[col][row] = true;
+
+        for (int i = 0; i < size; i++)
+        {
+            adjacencyMatrix[i][i] = false;
+        }
+    }
+
+    return adjacencyMatrix;
+    
+}
+
+bool Map::AdjacencyMatrixIsConnected(vector<vector<bool>> input, int size){
+    vector<vector<bool>> lastPower = CopyAdjacencyMatrix(input);
+
+    vector<vector<vector<bool>>> history;
+
+    history.push_back(lastPower);
+
+    bool matrixHasChanged = true;
+
+    while (matrixHasChanged)
+    {
+        vector<vector<bool>> nextPower = AdjacencyMatrixMultiply(lastPower, input, size);
+
+        if (MatrixIsTrue(nextPower)) {
+
+            //cout << "\nConnected: ";
+
+            //for (int i = 0; i < lastPower.size(); i++)
+            //{
+            //    for (int j = 0; j < lastPower.size(); j++)
+            //    {
+            //        cout << lastPower[i][j];
+            //    }
+            //}
+
+            return true;
+        }
+
+        for (size_t n = 0; n < history.size(); n++)
+        {
+            //cout << "\nHistory: " << n << " ";
+
+            //for (int i = 0; i < history[n].size(); i++)
+            //{
+            //    for (int j = 0; j < history[n].size(); j++)
+            //    {
+            //        cout << history[n][i][j];
+            //    }
+            //}
+
+            matrixHasChanged = !CompareAdjacencyMatrices(history[n], nextPower, size);
+
+            if (!matrixHasChanged)
+            {
+                break;
+            }
+        }
+
+        lastPower = nextPower;
+
+        history.push_back(lastPower);
+
+        //cout << "\n" << matrixHasChanged;
+
+        //cout << "\nlastPower: ";
+
+        //for (int i = 0; i < lastPower.size(); i++)
+        //{
+        //    for (int j = 0; j < lastPower.size(); j++)
+        //    {
+        //        cout << lastPower[i][j];
+        //    }
+        //}
+    }
+
+    return false;
+}
+
+/*
+    Returns a new square matrix using a simple version of matrix multiplication
+*/
+vector<vector<bool>> Map::AdjacencyMatrixMultiply(vector<vector<bool>> left, vector<vector<bool>> right, int size) {
+
+    vector<vector<bool>> output(size, vector<bool>(size, 0));
+    double sum;
+    for (int i = 0; i < size; i++)
+    {
+        for (int j = 0; j < size; j++)
+        {
+            sum = false;
+            for (int k = 0; k < size; k++)
+            {
+                sum = sum || (left[i][k] && right[k][j]);//sum += this.matrix[i, k] * A.matrix[k, j];
+                if (sum)
+                    break;
+            }
+            output[i][j] = left[i][j] || sum;
+        }
+    }
+    return output;
+}
+
+/*
+    Returns true when bool matrix is fully true and false otherwise
+*/
+bool Map::MatrixIsTrue(vector<vector<bool>> input) {
+
+    int size = input.size();
+
+    for (int i = 0; i < size; i++)
+    {
+        for (int j = 0; j < size; j++)
+        {
+            if (!input[i][j])
+                return false;
+        }
+    }
+    return true;
+}
+
+vector<Territory> Map::GetConnections(Territory &input)
+{
+    for (size_t i = 0; i < *(this->territoryQuantity); i++)
+    {
+        if (input == (*this->territories)[i])
+        {
+            return GetConnections(i);
+        }
+    }
+
+    return vector<Territory>();
+}
+
+vector<Territory> Map::GetConnections(int input)
+{
+    vector <Territory> output;
+
+    for (size_t i = 0; i < *(this->territoryQuantity); i++)
+    {
+        if ((*this->adjacencyMatrix)[input][i])
+        {
+            output.push_back((*(this->territories))[input]);
+        }
+    }
+
+    return output;
+}
+
+/*
+    True if matrix is a connected graph
+    Finds next power of our adjacency matrix until it is entirely true or the next power equals the previous power
+*/
+bool Map::ValidateTerritories() {
+    return AdjacencyMatrixIsConnected(*(this->adjacencyMatrix), *(this->territoryQuantity));
+}
+
+/*
+    Returns matrix with all entries copied
+*/
+vector<vector<bool>> Map::CopyAdjacencyMatrix(vector<vector<bool>> input) {
+
+    int size = input.size();
+
+    vector<vector<bool>> output(size, vector<bool>(size, 0));
+
+    for (int i = 0; i < size; i++)
+    {
+        for (int j = 0; j < size; j++)
+        {
+            output[i][j] = input[i][j];
+        }
+    }
+    return output;
+}
+
+/*
+    Returns true when bool matrices contain the same values and false otherwise
+*/
+bool Map::CompareAdjacencyMatrices(vector<vector<bool>> left, vector<vector<bool>> right, int size) {
+
+    for (int i = 0; i < size; i++)
+    {
+        for (int j = 0; j < size; j++)
+        {
+            if (left[i][j] != right[i][j]) // Not Equal
+                return false;
+        }
+    }
+    return true;
+}
