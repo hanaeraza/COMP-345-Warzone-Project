@@ -22,4 +22,12 @@ int main()
     std::cout << map2.ValidateTerritories();
     std::cout << map2.ValidateSingleContinentProperty();
     std::cout << map2.Validate();
+
+    MapLoader maploader = MapLoader("cow.map");
+
+    std::cout << "Printing CowMap\n";
+
+    std::cout << maploader.GetMap();
+
+    std::cout << "Cow Map Valid: " << maploader.GetMap().Validate();
 }

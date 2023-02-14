@@ -591,22 +591,38 @@ void MapLoader::Load(string file){
     this->loadedMap = new Map(file);
 }
 
+/*
+    Creates a MapLoader and generates random map
+*/
 MapLoader::MapLoader(int size, int continentAmount){
     this->loadedMap = new Map(size,continentAmount);
 }
 
+/*
+    Creates a MapLoader and generates map from file
+*/
 MapLoader::MapLoader(string file){
     this->loadedMap = new Map(file);
 }
 
+/*
+    MapLoader Copy Constructor
+*/
 MapLoader::MapLoader(const MapLoader& other){
     this->loadedMap = new Map(*(other.loadedMap));
 }
 
+/*
+    Returns current map object
+*/
 Map MapLoader::GetMap(){
     return *(this->loadedMap);
 }
 
+/*
+    Assignment Operator:
+    Deletes current data members then copies from other
+*/
 MapLoader& MapLoader::operator =(const MapLoader& other){
     if (this != &other)
     {
