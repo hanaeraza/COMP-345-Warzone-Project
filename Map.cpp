@@ -219,7 +219,7 @@ void Map::GetBorders(string file){
                         stream.ignore();
                 }
 
-                for (int i = 0; i < values.size(); i++)
+                for (int i = 1; i < values.size(); i++)
                 {
                     (*(this->adjacencyMatrix))[values[0]][values[i]] = true;
                     (*(this->adjacencyMatrix))[values[i]][values[0]] = true;
