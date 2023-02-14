@@ -8,6 +8,7 @@
     "xutility": "cpp",
     "xlocale": "cpp",
     "xlocnum": "cpp",
-    "random": "cpp"
+    "random": "cpp",
+    "iostream": "cpp"
   }
 }

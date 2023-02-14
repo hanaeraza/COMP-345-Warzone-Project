@@ -10,9 +10,11 @@ int main()
 
     std::cout << map;
 
-    Map map2 = Map("sudoku.map");
+    Map map2 = Map("europe.map");
 
     std::cout << "Printing Map2\n";
 
     std::cout << map2;
+
+    std::cout << "Printed Map2\n";
 }

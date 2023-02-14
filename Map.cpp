@@ -12,6 +12,14 @@
 using namespace std;
 
 ostream& operator <<(ostream &os, const Map &other) {
+
+    // for (int i = 0; i < (*(other.territories)).size(); i++)
+    // {
+    //     cout << (*(other.territories))[i] << "\n";
+    // }
+    // cout << (*(other.territories)).size() << "\n";
+    // cout << (*(other.adjacencyMatrix)).size();
+
 	for (int i = 0; i < *(other.territoryQuantity); i++)
     {
         os << "[ ";
@@ -130,18 +138,19 @@ void Map::GetContinents(string file){
                 lastLine.find("[countries]") == 0 ||
                 lastLine.find("[borders]") == 0 ||
                 lastLine[0] == ';') {
-                    this->continentQuantity = new int((*(this->continents)).size());
                     break;
                 }
 
                 stringstream stream(lastLine);
 
-                string cName;
-                int cSize, color; 
+                string cName, color;
+                int cSize; 
 
                 if ((stream >> cName >> cSize >> color)) {
                     (*(this->continents)).push_back(string(cName));
                 }
+
+                this->continentQuantity = new int((*(this->continents)).size());
             }
         }
     }
@@ -171,11 +180,12 @@ void Map::GetTerritories(string file){
 
                 stringstream stream(lastLine);
 
-                string tName, cName;
-                int cIndex, a, b; 
+                string tName;
+                int tIndex, cIndex, a, b; 
 
-                if ((stream >> tName >> cName >> cIndex >> a >> b)) {
-                    (*(this->territories)).push_back(Territory(tName, cName));
+                if ((stream >> tIndex >> tName >> cIndex >> a >> b)) {
+
+                    (*(this->territories)).push_back(Territory(tName, (*(this->continents))[cIndex - 1]));
                     (*(this->continentIndices)).push_back(int(cIndex - 1));
                 }
             }
@@ -271,6 +281,24 @@ Map::Map(int size, int continentAmount) {
             (*(this->adjacencyMatrix))[i][i] = false;
         }
     }
+}
+
+vector<Territory> Territory::GetTerritoriesOwnedBy(const Player &input, const vector<Territory> &inputList){
+    vector<Territory> output = vector<Territory>();
+
+    for (int i = 0; i < inputList.size(); i++)
+    {
+        if (*(inputList[i].owner) == input)
+        {
+            output.push_back(Territory(inputList[i]));
+        }
+    }
+
+    return output;
+}
+
+vector<Territory> Map::GetTerritoriesOwnedBy(const Player &input){
+    return Territory::GetTerritoriesOwnedBy(input, *territories);
 }
 
 vector<vector<bool>> Map::RandomConnectedAdjacencyMatrix(int size){

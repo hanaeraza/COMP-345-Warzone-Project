@@ -25,6 +25,7 @@ public:
 	~Territory() = default;
 
 	void Update(Player owner, int armyQuantity);
+	static vector<Territory> GetTerritoriesOwnedBy(const Player& input, const vector<Territory>& inputList);
 
 	friend ostream& operator<<(ostream& os, const Territory& territory);
 	Territory& operator =(const Territory& other);
@@ -45,6 +46,7 @@ public:
 
 	vector<Territory> GetConnections(Territory& input);
 	vector<Territory> GetConnections(int input);
+	vector<Territory> GetTerritoriesOwnedBy(const Player& input);
 	bool ValidateTerritories();
 	bool ValidateContinents();
 
@@ -78,8 +80,8 @@ public:
 	MapLoader();
 	~MapLoader();
 
-	MapLoader& operator =(MapLoader& other);
-	MapLoader& operator ==(MapLoader& other);
+	MapLoader& operator =(const MapLoader& other);
+	bool& operator ==(const MapLoader& other);
 private:
 	Map* loadedMap;
 };

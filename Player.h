@@ -9,4 +9,6 @@ class Player
 {
 public:
 	friend ostream& operator <<(ostream& os, const Player& other);
+
+	bool operator ==(const Player &other);
 };
