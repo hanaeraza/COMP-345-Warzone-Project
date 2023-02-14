@@ -1,5 +1,5 @@
-#include <iostream>
-#include <string>
+#ifndef CARD_H
+#define CARD_H
 #include <iostream>
 #include <string>
 #include <cstdlib>
@@ -57,7 +57,11 @@ public:
 
     void addCard(Card* c);
     void printHand();
+    //ostream& printOrder(ostream& out) const
+
+
 
     // Hand::Hand& operator=(const Hand& h);
 };
 
+#endif
