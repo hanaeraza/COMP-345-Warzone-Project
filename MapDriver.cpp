@@ -17,4 +17,7 @@ int main()
     std::cout << map2;
 
     std::cout << "Printed Map2\n";
+
+    std::cout << map2.ValidateContinents();
+    std::cout << map2.ValidateTerritories();
 }

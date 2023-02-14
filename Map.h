@@ -49,6 +49,7 @@ public:
 	vector<Territory> GetTerritoriesOwnedBy(const Player& input);
 	bool ValidateTerritories();
 	bool ValidateContinents();
+	bool ValidateContinent(int continentIndex);
 
 	friend ostream& operator<<(ostream& os, const Map& territory);
 	Map& operator =(Map &other);

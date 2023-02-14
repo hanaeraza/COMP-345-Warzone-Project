@@ -12,14 +12,6 @@
 using namespace std;
 
 ostream& operator <<(ostream &os, const Map &other) {
-
-    // for (int i = 0; i < (*(other.territories)).size(); i++)
-    // {
-    //     cout << (*(other.territories))[i] << "\n";
-    // }
-    // cout << (*(other.territories)).size() << "\n";
-    // cout << (*(other.adjacencyMatrix)).size();
-
 	for (int i = 0; i < *(other.territoryQuantity); i++)
     {
         os << "[ ";
@@ -34,11 +26,26 @@ ostream& operator <<(ostream &os, const Map &other) {
     return os;
 }
 
+ostream& operator <<(ostream &os, const vector<vector<bool>> &adjMatrix) {
+	for (int i = 0; i < adjMatrix.size(); i++)
+    {
+        os << "[ ";
+
+        for (int j = 0; j < adjMatrix.size(); j++)
+        {
+            os << adjMatrix[i][j] << " ";
+        }
+        
+        os << "]" << "\n";
+    }
+    return os;
+}
+
 ostream& operator<<(ostream& os, const Territory& other) {
-    os << "TerritoryName: " << *(other.territoryName)
-        << ", ContinentName: " << *(other.continentName)
-        << ", Owner: " << *(other.owner)
-        << ", Army Amount: " << *(other.armyQuantity);
+    os << " " << *(other.territoryName)
+        << ", " << *(other.continentName)
+        << ", " << *(other.owner)
+        << ", " << *(other.armyQuantity);
     return os;
 }
 
@@ -339,31 +346,11 @@ bool Map::AdjacencyMatrixIsConnected(vector<vector<bool>> input, int size){
         vector<vector<bool>> nextPower = AdjacencyMatrixMultiply(lastPower, input, size);
 
         if (MatrixIsTrue(nextPower)) {
-
-            //cout << "\nConnected: ";
-
-            //for (int i = 0; i < lastPower.size(); i++)
-            //{
-            //    for (int j = 0; j < lastPower.size(); j++)
-            //    {
-            //        cout << lastPower[i][j];
-            //    }
-            //}
-
             return true;
         }
 
         for (size_t n = 0; n < history.size(); n++)
         {
-            //cout << "\nHistory: " << n << " ";
-
-            //for (int i = 0; i < history[n].size(); i++)
-            //{
-            //    for (int j = 0; j < history[n].size(); j++)
-            //    {
-            //        cout << history[n][i][j];
-            //    }
-            //}
 
             matrixHasChanged = !CompareAdjacencyMatrices(history[n], nextPower, size);
 
@@ -376,18 +363,6 @@ bool Map::AdjacencyMatrixIsConnected(vector<vector<bool>> input, int size){
         lastPower = nextPower;
 
         history.push_back(lastPower);
-
-        //cout << "\n" << matrixHasChanged;
-
-        //cout << "\nlastPower: ";
-
-        //for (int i = 0; i < lastPower.size(); i++)
-        //{
-        //    for (int j = 0; j < lastPower.size(); j++)
-        //    {
-        //        cout << lastPower[i][j];
-        //    }
-        //}
     }
 
     return false;
@@ -469,6 +444,43 @@ vector<Territory> Map::GetConnections(int input)
 */
 bool Map::ValidateTerritories() {
     return AdjacencyMatrixIsConnected(*(this->adjacencyMatrix), *(this->territoryQuantity));
+}
+
+bool Map::ValidateContinents(){
+    for (int i = 0; i < (*(this->continentQuantity)); i++)
+    {
+        if (!Map::ValidateContinent(i))
+            return false;
+    }
+    return true;
+}
+
+bool Map::ValidateContinent(int continentIndex) {
+    int tCount = 0;
+
+    vector<int> territoryIndices = vector<int>();
+
+    for (int i = 0; i < *(this->territoryQuantity); i++)
+    {
+        if (continentIndex == (*(this->continentIndices))[i]){
+            tCount++;
+            territoryIndices.push_back(i);
+        }
+    }
+    
+    vector<vector<bool>> adjacencyMatrix(tCount, vector<bool>(tCount, false));
+
+    for (int i = 0; i < tCount; i++)
+    {
+        for (int j = 0; j < tCount; j++)
+        {
+            // cout << adjacencyMatrix[territoryIndices[i]][territoryIndices[j]] << "\n";
+            adjacencyMatrix[i][j] = (*(this->adjacencyMatrix))[territoryIndices[i]][territoryIndices[j]];
+        }
+    }
+
+
+    return AdjacencyMatrixIsConnected(adjacencyMatrix, tCount);
 }
 
 /*
