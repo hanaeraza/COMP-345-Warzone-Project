@@ -3,13 +3,12 @@ using namespace std;
 
 int main() {
 
-
-    newOrder orderCreate;  //
+    newOrder orderCreate;
     OrdersList order_list; //creates an order list
 
     cout << "\nOrder List:" << endl;
 
-    order_list.addOrder(orderCreate.createOrder("Diplomacy")); //Creates a new order object based on the string inputted. if order doesnt exists displays an invalid order
+    order_list.addOrder(orderCreate.createOrder("Deploy")); //Creates a new order object based on the string inputted. if order doesnt exists displays an invalid order
     order_list.addOrder(orderCreate.createOrder("Advance"));
     order_list.addOrder(orderCreate.createOrder("Bomb"));
     order_list.addOrder(orderCreate.createOrder("Blockade"));

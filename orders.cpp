@@ -73,10 +73,9 @@ OrdersList::OrdersList() {}
 //destructor
 OrdersList::~OrdersList()
 {
-    int listSize = orders.size();
-
-    for (int i = 0; i < listSize; i++)
-        delete orders[i];
+    for (auto order : orders) {
+        delete order;
+    }
 }
 //copy constructor
 OrdersList::OrdersList(const OrdersList& oldList)
