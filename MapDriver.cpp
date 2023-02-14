@@ -30,4 +30,12 @@ int main()
     std::cout << maploader.GetMap();
 
     std::cout << "Cow Map Valid: " << maploader.GetMap().Validate();
+
+    MapLoader invalidSubGraph = MapLoader("invalidSubGraph.map");
+
+    std::cout << "Printing invalidSubGraph\n";
+
+    std::cout << invalidSubGraph.GetMap();
+
+    std::cout << "invalidSubGraph Valid: " << invalidSubGraph.GetMap().Validate();
 }
