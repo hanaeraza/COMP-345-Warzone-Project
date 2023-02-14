@@ -1,10 +1,11 @@
+#pragma once
 #include<iostream>
 #include<vector> 
 #include<iomanip>
 #include<string> 
 using namespace std;
 
-//abstract order class
+//abstract order class, can be overritten by subclasses
 class Order
 {
 public:
@@ -24,15 +25,15 @@ private:
 class Deploy : public Order
 {
 public:
-    ~Deploy();
-    string getType() const override;
-    bool validate() const override;
-    void execute() const override;
+    ~Deploy(); //destructor
+    string getType() const override; //returns order type
+    bool validate() const override; //returns true if valid
+    void execute() const override; //executes if valid
 
 private:
     const static string type;
-    Order* clone() const override;
-    ostream& printOrder(ostream&) const override;
+    Order* clone() const override; //copy constructor
+    ostream& printOrder(ostream&) const override; //prints order
 };
 
 
@@ -106,6 +107,7 @@ private:
     ostream& printOrder(ostream&) const override;
 };
 
+//creates an order object from a string
 class newOrder
 {
 public:
@@ -115,14 +117,13 @@ public:
 class OrdersList
 {
 public:
-    OrdersList();
-    ~OrdersList();
-    OrdersList(const OrdersList&);
-    void addOrder(Order* o);
-    void remove(int);
-    void move(int, int);
-    void executeOrders();
-    OrdersList& operator=(const OrdersList&);
+    OrdersList(); //default constructor
+    ~OrdersList(); //destructor
+    OrdersList(const OrdersList&); //copy constructor
+    void addOrder(Order* o); 
+    void remove(int); //removes Object based on pos
+    void move(int, int); //takes pos1 and pos2 and switches objects
+    void executeOrders(); //validates order and executes them
     vector<Order*> getOrders() const { return orders; }
 
 private:
