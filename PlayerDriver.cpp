@@ -1,8 +1,6 @@
 #include <iostream>
 #include <string>
 #include "Player.cpp"
-#include "Player.h"
-#include "Card.h"
 #include "Card.cpp"
 #include <vector>
 using namespace std;
@@ -11,24 +9,20 @@ int main() {
 
 //Temporary arbitrary values
 Hand cards;
-vector<string> terr{"France", "Spain", "Austria"};
-
-/* Territory austria{"Austria", 2, "Europe", "Player1"};
-Territory france{"France", 6, "Europe", "Player1"};
-Territory spain{"Spain", 5, "Europe", "Player1"};
-//{"Austria", "France", "Spain", "Germany"};
-
-terr.push_back(austria);
-terr.push_back(france);
-terr.push_back(spain); */
-
-
-
-
-vector<string> orders{"Bomb", "Blockade"};
+vector<string> terr;
 
 vector<string> defend{"Austria", "Germany"};
 vector<string> attack{"Italy", "Switzerland"};
+
+//Map map = Map(10, 3);
+
+
+/* Territory territory("France", "Europe");
+Territory territory2("Germany", "Europe");
+Territory territory3("Austria", "Europe");
+terr.push_back(territory); 
+terr.push_back(territory2); 
+terr.push_back(territory3);  */
 
 // Create hand of 5 cards from deck
 Hand* hand = new Hand();
@@ -38,32 +32,26 @@ Deck* deck = new Deck();
 		hand->addCard(deck->draw());
 	}
 
-
-
+// Demonstrate issueOrder
+OrdersList orders = issueOrder();
 
 //Create player
 Player player(hand, terr, orders, defend, attack);
 
-	
-//Display attributes
-/* cout << "Cards: ";
-for (int i = 0; i < player.cardsOwned.size(); i++) {
-  cout << player.cardsOwned[i]->type << " ";  
-} */
+// Print hand of cards
 hand->printHand();
-cout << endl;
 
+// Print territories owned
 cout << "Territories: ";
 for (int i = 0; i < player.territoriesOwned.size(); i++) {
   cout << player.territoriesOwned[i] << " ";  
 }
 cout << endl; 
 
-cout << "Orders: ";
-for (int i = 0; i < player.ordersList.size(); i++) {
-  cout << player.ordersList[i] << " ";  
-}
-cout << endl << endl;
+// Print list of orders
+cout << "Orders: " << endl;
+printOrders(orders.getOrders());
+cout << endl;
 
 //Demonstrate toDefend
 vector<string> defending = toDefend(player);

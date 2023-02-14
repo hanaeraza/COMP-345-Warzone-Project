@@ -6,26 +6,30 @@
 #include <ctime>
 using namespace std;
 
-
+class Card;
+class Deck;
+class Hand;
 
 class Card {
 
 private:
-    
+
 public:
     string type;
+    
     Card(std::string v) : type(v) {}
 
     ~Card();
 
-    Card& operator=(const Card& other);
-    //Card* play(Hand* hand, Deck* deck);
-    void play();
+    
+    void play(Hand* hand, Deck* deck);
+    // bool removeFromHand(Hand* hand, Deck* deck);
+
 };
 
 class Deck {
 private:
-    
+
 public:
     int size = 50;
     Card** cards;
@@ -38,17 +42,24 @@ public:
 
 class Hand {
 private:
-    int size = 0;
-    int maxSize = 5;
-    Card** cards;
+
 
 public:
+
+    int size = 0;
+    const int maxSize = 5;
+    Card** cards;
+
     Hand();
-    Hand(Hand& h);
-    //~Hand();
+    Hand(const Hand& h);
+    ~Hand();
 
     void addCard(Card* c);
     void printHand();
+    //ostream& printOrder(ostream& out) const
+
+
+
     // Hand::Hand& operator=(const Hand& h);
 };
 
