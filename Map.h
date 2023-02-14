@@ -42,6 +42,7 @@ public:
 	vector<Territory> GetConnections(Territory& input);
 	vector<Territory> GetConnections(int input);
 	vector<Territory> GetTerritoriesOwnedBy(const Player& input);
+	vector<Territory> GetTerritories();
 	bool Validate();
 	bool ValidateSingleContinentProperty();
 	bool ValidateTerritories();
@@ -75,11 +76,13 @@ private:
 class MapLoader
 {
 public:
+	MapLoader();
 	MapLoader(string file);
 	MapLoader(const MapLoader& other);
 	~MapLoader() = default;
 
 	Map GetMap();
+	void Load(string file);
 	friend ostream& operator<<(ostream& os, Map& map);
 	MapLoader& operator =(const MapLoader& other);
 	bool& operator ==(const MapLoader& other);

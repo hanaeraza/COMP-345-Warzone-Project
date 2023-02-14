@@ -55,7 +55,7 @@ ostream& operator<<(ostream& os, const Territory& other) {
 }
 
 Territory::Territory(const string& territoryName, const string& continentName) :
-		owner(nullptr), armyQuantity((new int(0)))	{
+		owner(new Player()), armyQuantity((new int(0)))	{
 		this->territoryName = new string(territoryName);
 		this->continentName = new string(continentName);
 	}
@@ -105,6 +105,10 @@ string Territory::GetTerritoryName(){
 
 string Territory::GetContinentName(){
     return *(this->continentName);
+}
+
+vector<Territory> Map::GetTerritories(){
+    return *(this->territories);
 }
 
 void Map::GetBorders(string file){
@@ -561,4 +565,21 @@ bool Map::CompareAdjacencyMatrices(vector<vector<bool>> left, vector<vector<bool
         }
     }
     return true;
+}
+
+void MapLoader::Load(string file){
+    delete loadedMap;
+    this->loadedMap = new Map(file);
+}
+
+MapLoader::MapLoader(){
+    this->loadedMap = new Map(10,3);
+}
+
+MapLoader::MapLoader(string file){
+    this->loadedMap = new Map(file);
+}
+
+MapLoader::MapLoader(const MapLoader& other){
+
 }
