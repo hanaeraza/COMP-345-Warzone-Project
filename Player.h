@@ -4,20 +4,19 @@
 #include <ostream>
 #include <string>
 #include <vector>
-// #include "Map.cpp"
 #include "Card.cpp"
-//#include "Map.cpp"
 using namespace std;
 
+// Forward declaration
 class Territory;
 
 //Player class
 class Player {
 
     public:
-        Hand* cardsOwned; //change string to the cards object later
-        vector<Territory> territoriesOwned; //change string to territories object later
-        OrdersList ordersList; //change to orders list object later
+        Hand* cardsOwned; 
+        vector<Territory> territoriesOwned; 
+        OrdersList ordersList; 
         vector<string> defenseList; 
         vector<string> attackList;
         
@@ -32,12 +31,12 @@ class Player {
         };
 
 
-        static OrdersList issueOrder();
-
         //Function declarations
         static vector<string> toDefend(Player player);
         static vector<string> toAttack(Player player);
+        static OrdersList issueOrder();
 
+        // Stream insertion operators
         friend ostream& operator <<(ostream& os, const Player& other);
 	    bool operator ==(const Player &other);
 };

@@ -5,38 +5,50 @@
 #include "Orders.cpp"
 using namespace std;
 
-
-class Card;
-class Hand;
-
 //Copy Constructor
-//Card::Card(const Card& c) {
-//	this->type = c.type;
-//}
+Card::Card(const Card& c) {
+	this->type = c.type;
+}
 //Destructor
 Card::~Card() {
 
 }
-//Play Method
+//assignment operator
+Card& Card::operator=(const Card& c){
+    if (this != &c) {
+        this->type = c.type;
+    }
+    return *this;
+}
 
 //Constructor
 Hand::Hand() {
 	cards = new Card * [maxSize];
 }
 //Copy Constructor
-//Hand::Hand(const Hand& h) {
-//	this->size = h.size;
-//	this->cards = new Card * [maxSize];
-//	for (int i = 0; i < size; i++) {
-//		this->cards[i] = new Card(*h.cards[i]);
-//	}
-//}
+Hand::Hand(const Hand& h) {
+	this->size = h.size;
+	this->cards = new Card * [maxSize];
+	for (int i = 0; i < size; i++) {
+		this->cards[i] = new Card(*h.cards[i]);
+	}
+}
 //Destructor
 Hand::~Hand() {
 	for (int i = 0; i < size; i++) {
 		delete cards[i];
 	}
 	delete[] cards;
+}
+//assignment operator
+Hand& Hand::operator=(const Hand& h) {
+    if (this != &h) {
+        size = h.size;
+        for (int i = 0; i < size; i++) {
+            cards[i] = h.cards[i];
+        }
+    }
+    return *this;
 }
 // Method to print cards in Hand
 void Hand::printHand() {
@@ -62,7 +74,6 @@ void Hand::addCard(Card* c) {
 }
 
 
-
 //Constructor Generates Deck
 Deck::Deck() {
 	cards = new Card * [size];
@@ -76,13 +87,13 @@ Deck::Deck() {
 	}
 }
 //Copy Constructor
-//Deck::Deck(const Deck& d) {
-//	this->size = d.size;
-//	this->cards = new Card * [size];
-//	for (int i = 0; i < size; i++) {
-//		this->cards[i] = new Card(*d.cards[i]);
-//	}
-//}
+Deck::Deck(const Deck& d) {
+	this->size = d.size;
+	this->cards = new Card * [size];
+	for (int i = 0; i < size; i++) {
+		this->cards[i] = new Card(*d.cards[i]);
+	}
+}
 //Destructor
 Deck::~Deck() {
 	for (int i = 0; i < size; i++) {
@@ -102,11 +113,25 @@ Card* Deck::draw() {
 	size--;
 	return drawnCard;
 }
+//assignment operator
+Deck& Deck::operator=(const Deck& d) {
+    if (this != &d) {
+        size = d.size;
+        for (int i = 0; i < size; i++) {
+            cards[i] = d.cards[i];
+        }
+    }
+    return *this;
+}
 void Card::play(Hand* hand, Deck *deck) {
 	newOrder orderCreate;  //
     OrdersList order_list; //creates an order list
 
 	order_list.addOrder(orderCreate.createOrder(this->type)); 
+	printOrders(order_list.getOrders());
+
+
+
     if (hand && deck) {
         // Remove the card from the hand.
         for (int i = 0; i < hand->size; i++) {
@@ -121,6 +146,25 @@ void Card::play(Hand* hand, Deck *deck) {
         deck->cards[deck->size] = this;
         deck->size++;
     }
+}
+
+//ostream operators
+
+ostream& operator<<(ostream& out, const Card& c) {
+    out << c.type;
+    return out;
+}
+ostream& operator<<(ostream& out, const Deck& d) {
+    for (int i = 0; i < d.size; i++) {
+        out << *d.cards[i] << " ";
+    }
+    return out;
+}
+ostream& operator<<(ostream& out, const Hand& h) {
+    for (int i = 0; i < h.size; i++) {
+        out << *h.cards[i] << " ";
+    }
+    return out;
 }
 
 #endif

@@ -1,9 +1,9 @@
-#ifndef CARD_H
-#define CARD_H
+#pragma once
 #include <iostream>
 #include <string>
 #include <cstdlib>
 #include <ctime>
+
 using namespace std;
 
 class Card;
@@ -17,10 +17,11 @@ private:
 public:
     string type;
     
-    Card(std::string v) : type(v) {}
-
+    Card(std::string v) : type(v) {};
+    Card(const Card& c);
     ~Card();
 
+    Card& operator=(const Card& c);
     
     void play(Hand* hand, Deck* deck);
     // bool removeFromHand(Hand* hand, Deck* deck);
@@ -37,7 +38,7 @@ public:
     Deck(const Deck& d);
     ~Deck();
     Card* draw();
-    //Card* operator[](int index) const { return deck[index]; }
+    Deck& operator=(const Deck& d);
 };
 
 class Hand {
@@ -56,11 +57,5 @@ public:
 
     void addCard(Card* c);
     void printHand();
-    //ostream& printOrder(ostream& out) const
-
-
-
-    // Hand::Hand& operator=(const Hand& h);
+    Hand& operator=(const Hand& h);
 };
-
-#endif

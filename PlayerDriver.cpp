@@ -9,13 +9,14 @@ using namespace std;
 
 int main() {
 
-//Temporary arbitrary values
+// Arbitrary values
 Hand cards;
 vector<Territory> terr;
 
 vector<string> defend{"Austria", "Germany"};
 vector<string> attack{"Italy", "Switzerland"};
 
+// Create a map and get territories
 Map map = Map("europe.map");
 
 for (int i = 0; i < map.GetTerritories().size(); i++)
@@ -26,13 +27,6 @@ for (int i = 0; i < map.GetTerritories().size(); i++)
   }
   
 }
-
-// // Territory territory = Territory("France", "Europe");
-// // Territory territory2 = Territory("Germany", "Europe");
-// // Territory territory3 = Territory("Austria", "Europe");
-// // terr.push_back(territory); 
-// // terr.push_back(territory2); 
-// // terr.push_back(territory3);
 
 // Create hand of 5 cards from deck
 Hand* hand = new Hand();
@@ -47,7 +41,6 @@ OrdersList orders = Player::issueOrder();
 
 //Create player
 Player player = Player(hand, terr, orders, defend, attack);
-//Player player = Player();
 
 // Print hand of cards
 hand->printHand();
