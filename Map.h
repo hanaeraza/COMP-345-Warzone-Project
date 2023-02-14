@@ -50,8 +50,7 @@ public:
 	bool ValidateContinent(int continentIndex);
 
 	friend ostream& operator<<(ostream& os, const Map& territory);
-	Map& operator =(Map &other);
-	bool operator ==(Map &other);
+	Map& operator =(const Map &other);
 private:
 	int* territoryQuantity;
 	vector<Territory>* territories;
@@ -76,7 +75,7 @@ private:
 class MapLoader
 {
 public:
-	MapLoader();
+	MapLoader(int size, int continentAmount);
 	MapLoader(string file);
 	MapLoader(const MapLoader& other);
 	~MapLoader() = default;
@@ -85,7 +84,6 @@ public:
 	void Load(string file);
 	friend ostream& operator<<(ostream& os, Map& map);
 	MapLoader& operator =(const MapLoader& other);
-	bool& operator ==(const MapLoader& other);
 private:
 	Map* loadedMap;
 };

@@ -88,11 +88,30 @@ Territory& Territory::operator =(const Territory &other) {
     return *this;
 }
 
+Map& Map::operator =(const Map &other) {
+    if (this != &other)
+    {
+        delete territoryQuantity;
+        delete territories;
+        delete adjacencyMatrix;
+        delete continentQuantity;
+        delete continents;
+        delete continentIndices;
+
+        this->territoryQuantity = new int(*(other.territoryQuantity));
+        this->territories = new vector<Territory>(*(other.territories));
+        this->adjacencyMatrix = new vector<vector<bool>>(*(other.adjacencyMatrix));
+        this->continentQuantity = new int(*(other.continentQuantity));
+        this->continents = new vector<string>(*(other.continents));
+        this->continentIndices = new vector<int>(*(other.continentIndices));
+    }
+    return *this;
+}
+
 bool Territory::operator==(const Territory& other) {
     return *territoryName == *other.territoryName &&
         *continentName == *other.continentName;
 }
-
 
 void Territory::Update(Player owner, int armyQuantity) {
     *(this->owner) = owner;
@@ -572,8 +591,8 @@ void MapLoader::Load(string file){
     this->loadedMap = new Map(file);
 }
 
-MapLoader::MapLoader(){
-    this->loadedMap = new Map(10,3);
+MapLoader::MapLoader(int size, int continentAmount){
+    this->loadedMap = new Map(size,continentAmount);
 }
 
 MapLoader::MapLoader(string file){
@@ -581,5 +600,19 @@ MapLoader::MapLoader(string file){
 }
 
 MapLoader::MapLoader(const MapLoader& other){
+    this->loadedMap = new Map(*(other.loadedMap));
+}
 
+Map MapLoader::GetMap(){
+    return *(this->loadedMap);
+}
+
+MapLoader& MapLoader::operator =(const MapLoader& other){
+    if (this != &other)
+    {
+        delete loadedMap;
+
+        this->loadedMap = new Map(*(other.loadedMap));
+    }
+    return *this;
 }
