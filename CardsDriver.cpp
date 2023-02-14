@@ -8,6 +8,7 @@ int main() {
 	for (int i = 0; i < 5; i++) {
 		hand->addCard(deck->draw());
 	}
+	cout << "Cards In Hand: \n";
 	hand->printHand();
 	int count = 0;
 	cout << "Remaining cards in deck: ";
