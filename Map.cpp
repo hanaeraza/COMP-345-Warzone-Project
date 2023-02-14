@@ -49,12 +49,24 @@ ostream& operator<<(ostream& os, const Territory& other) {
     return os;
 }
 
+Territory::Territory(const string& territoryName, const string& continentName) :
+		owner(nullptr), armyQuantity((new int(0)))	{
+		this->territoryName = new string(territoryName);
+		this->continentName = new string(continentName);
+	}
+
 Territory::Territory(const Territory& other) {
     this->territoryName = new string(*(other.territoryName));
     this->continentName = new string(*(other.continentName));
     this->owner = new Player(*(other.owner));
     this->armyQuantity = new int(*(other.armyQuantity));
 }
+
+Territory::Territory():
+		territoryName(new string("NoTerritoryName")), continentName(new string("NoContinentName")),
+		owner(nullptr), armyQuantity((new int(0))){
+		
+	}
 
 Territory& Territory::operator =(const Territory &other) {
     if (this != &other)
@@ -81,6 +93,10 @@ void Territory::Update(Player owner, int armyQuantity) {
     *(this->owner) = owner;
     *(this->armyQuantity) = armyQuantity;
 }
+
+// string Territory::GetTerritoryName(){
+//     return
+// }
 
 void Map::GetBorders(string file){
     this->adjacencyMatrix = new vector<vector<bool>>(*(this->territoryQuantity),
@@ -332,6 +348,11 @@ vector<vector<bool>> Map::RandomConnectedAdjacencyMatrix(int size){
     
 }
 
+/*
+    True if matrix is a connected graph
+    Finds next power of our adjacency matrix until it is entirely true or the next power equals the previous power
+*/
+
 bool Map::AdjacencyMatrixIsConnected(vector<vector<bool>> input, int size){
     vector<vector<bool>> lastPower = CopyAdjacencyMatrix(input);
 
@@ -438,10 +459,24 @@ vector<Territory> Map::GetConnections(int input)
     return output;
 }
 
-/*
-    True if matrix is a connected graph
-    Finds next power of our adjacency matrix until it is entirely true or the next power equals the previous power
-*/
+bool Map::ValidateSingleContinentProperty() {
+    for (int i = 0; i < (*(this->continentQuantity)); i++)
+    {
+        int tCount = 0;
+
+        vector<int> territoryIndices = vector<int>();
+
+        for (int j = 0; j < *(this->territoryQuantity); j++)
+        {
+            if (i == (*(this->continentIndices))[j]){
+                tCount++;
+                territoryIndices.push_back(j);
+            }
+        }
+    }
+}
+
+
 bool Map::ValidateTerritories() {
     return AdjacencyMatrixIsConnected(*(this->adjacencyMatrix), *(this->territoryQuantity));
 }

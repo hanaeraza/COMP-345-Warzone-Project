@@ -11,20 +11,14 @@ using namespace std;
 class Territory
 {
 public:
-	Territory(const string& territoryName, const string& continentName) :
-		owner(nullptr), armyQuantity((new int(0)))	{
-		this->territoryName = new string(territoryName);
-		this->continentName = new string(continentName);
-	}
+	Territory(const string& territoryName, const string& continentName);
 	Territory(const Territory& other);
-	Territory():
-		territoryName(new string("NoTerritoryName")), continentName(new string("NoContinentName")),
-		owner(nullptr), armyQuantity((new int(0))){
-		
-	}
+	Territory();
 	~Territory() = default;
 
 	void Update(Player owner, int armyQuantity);
+	string GetTerritoryName();
+	string GetContinentName();
 	static vector<Territory> GetTerritoriesOwnedBy(const Player& input, const vector<Territory>& inputList);
 
 	friend ostream& operator<<(ostream& os, const Territory& territory);
@@ -47,6 +41,7 @@ public:
 	vector<Territory> GetConnections(Territory& input);
 	vector<Territory> GetConnections(int input);
 	vector<Territory> GetTerritoriesOwnedBy(const Player& input);
+	bool ValidateSingleContinentProperty();
 	bool ValidateTerritories();
 	bool ValidateContinents();
 	bool ValidateContinent(int continentIndex);
