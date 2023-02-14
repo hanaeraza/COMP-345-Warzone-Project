@@ -7,20 +7,20 @@
 using namespace std;
 
 
- vector<string> toDefend(Player player) {
+ vector<string> Player::toDefend(Player player) {
 
     return player.defenseList;
 } 
 
 
- vector<string> toAttack(Player player) {
+ vector<string> Player::toAttack(Player player) {
 
     return player.attackList;
 } 
 
 
 // Create an order object and add it to the player's list of orders
-OrdersList issueOrder() {
+OrdersList Player::issueOrder() {
     newOrder orderCreate;
     OrdersList orders;
 
