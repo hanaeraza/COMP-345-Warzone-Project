@@ -1,6 +1,6 @@
 #include "Orders.h"
 
-//creates an order according to String
+//creates an order object according to string inputted
 Order* newOrder::createOrder(string orderType) const
 {
     if (orderType == "Deploy")
@@ -17,24 +17,68 @@ Order* newOrder::createOrder(string orderType) const
         return new Negotiate;
     else
         return nullptr;
-        //return new Order;
 }
+
+//destructors
+Order::~Order() {}
+Deploy::~Deploy() {}
+Advance::~Advance() {}
+Bomb::~Bomb() {}
+Blockade::~Blockade() {}
+Airlift::~Airlift() {}
+Negotiate::~Negotiate() {}
+
+//copy constructors
+Order* Deploy::clone() const
+{
+    return new Deploy(*this);
+}
+
+Order* Advance::clone() const
+{
+    return new Advance(*this);
+}
+
+Order* Bomb::clone() const
+{
+    return new Bomb(*this);
+}
+
+Order* Blockade::clone() const
+{
+    return new Blockade(*this);
+}
+
+Order* Airlift::clone() const
+{
+    return new Airlift(*this);
+}
+
+Order* Negotiate::clone() const
+{
+    return new Negotiate(*this);
+}
+
+
+//returns type of order
+string Deploy::getType() const {return "Deploy"; }
+string Advance::getType() const {return "Advance";}
+string Bomb::getType() const {return "Bomb";}
+string Blockade::getType() const {return "Blockade";}
+string Airlift::getType() const {return "Airlift";}
+string Negotiate::getType() const{return "Negotiate";}
 
 //default constructor
 OrdersList::OrdersList() {}
-//destructor /awdawdwadadawdawdad
+//destructor
 OrdersList::~OrdersList()
 {
     int listSize = orders.size();
 
-    for (int i = 0; i < listSize; i++) // Delete memory for orders, which are always dynamically allocated.
+    for (int i = 0; i < listSize; i++)
         delete orders[i];
 }
-
-/**
- * Copy constructor: makes a deep copy of a list
- * @param oldList
- */
+//copy constructor
 OrdersList::OrdersList(const OrdersList& oldList)
 {
     int listSize = oldList.orders.size();
@@ -42,16 +86,13 @@ OrdersList::OrdersList(const OrdersList& oldList)
 
     for (int i = 0; i < listSize; i++) // Same objects, but in different memory locations.
         orders[i] = oldList.orders[i]->clone();
-
 }
 
-/**
- * Method that adds an order to the orders vector
- * @param o
- */
+
+
 void OrdersList::addOrder(Order* o)
 {
-    if (o == nullptr) // See OrdersFactory.
+    if (o == nullptr)
         cout << "Not a valid Order." << endl;
     else
     {
@@ -67,8 +108,8 @@ void OrdersList::remove(int pos)
         cout << "Invalid Position." << endl;
     else
     {
-        delete orders[pos - 1]; // Order objects are dynamically allocated, so frees memory.
-        orders.erase(orders.begin() + pos - 1); // Once memory freed, delete actual pointer from list.
+        delete orders[pos - 1];
+        orders.erase(orders.begin() + pos - 1);
     }
 }
 
@@ -80,22 +121,13 @@ void OrdersList::move(int pos1, int pos2)
         cout << "Invalid Position." << endl;
     else
     {
-        Order* temp = orders[pos1 - 1]; // Swap pointers. Address of actual object unchanged.
+        Order* temp = orders[pos1 - 1];
         orders[pos1 - 1] = orders[pos2 - 1];
         orders[pos2 - 1] = temp;
     }
 }
 
-//destructors
-Order::~Order() {}
-Deploy::~Deploy() {}
-Advance::~Advance() {}
-Bomb::~Bomb() {}
-Blockade::~Blockade() {}
-Airlift::~Airlift() {}
-Negotiate::~Negotiate() {}
-
-//goes through the 
+//goes through the order list and validates them, if validated then executes them
 void OrdersList::executeOrders()
 {
     if (orders.size() == 0)
@@ -111,35 +143,7 @@ void OrdersList::executeOrders()
     }
 }
 
-
-OrdersList& OrdersList::operator=(const OrdersList& rhsList) // Releases resources by LHS and deep-copy
-{                                                            // to RHS
-    if (&rhsList == this) // Checks for self assignment
-        return *this;
-
-    int lhsListSize = orders.size();
-    int rhsListSize = rhsList.orders.size();
-
-    for (int i = 0; i < lhsListSize; i++)
-        delete orders[i];
-
-    orders = vector<Order*>(rhsListSize); // Reallocate memory for vector of size RHS
-
-    for(int i = 0; i < rhsListSize; i++)
-        orders[i] = rhsList.orders[i]->clone(); // Clone RHS element into LHS
-
-    return *this;
-}
-
-//returns type of order
-string Deploy::getType() const {return "Deploy"; }
-string Advance::getType() const {return "Advance";}
-string Bomb::getType() const {return "Bomb";}
-string Blockade::getType() const {return "Blockade";}
-string Airlift::getType() const {return "Airlift";}
-string Negotiate::getType() const{return "Negotiate";}
-
-//validate() methods (no use yet)
+//validate() methods
 bool Deploy::validate() const
 {
     cout << "Validating Deploy...\n";
@@ -213,6 +217,7 @@ void Negotiate::execute() const
         cout << "Executing Negotiate...\n";
 }
 
+//loops through the order list and calls printOrder which prints the orders
 void printOrders(const std::vector<Order*>& orders) {
   int index = 0;
   for (const auto& order : orders) {
@@ -251,42 +256,4 @@ ostream& Airlift::printOrder(ostream& out) const
 ostream& Negotiate::printOrder(ostream& out) const
 {
     return out << "Negotiate";
-}
-
-/**
- * Since we have a list of pointers to an abstract class,
- * we need a way to polymorphically clone the objects in the
- * list if we ever decide to deep-copy the list. Calls the
- * compiler-generated copy constructor, which is OK since
- * these subclasses don't have object specific data members.
- * @return
- */
-Order* Deploy::clone() const
-{
-    return new Deploy(*this);
-}
-
-Order* Advance::clone() const
-{
-    return new Advance(*this);
-}
-
-Order* Bomb::clone() const
-{
-    return new Bomb(*this);
-}
-
-Order* Blockade::clone() const
-{
-    return new Blockade(*this);
-}
-
-Order* Airlift::clone() const
-{
-    return new Airlift(*this);
-}
-
-Order* Negotiate::clone() const
-{
-    return new Negotiate(*this);
 }

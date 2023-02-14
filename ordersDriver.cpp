@@ -9,7 +9,7 @@ int main() {
 
     cout << "\nOrder List:" << endl;
 
-    order_list.addOrder(orderCreate.createOrder("Diplomacy")); //Creates a new order object based on the string inputted. if order doesnt exists then nothing happens
+    order_list.addOrder(orderCreate.createOrder("Diplomacy")); //Creates a new order object based on the string inputted. if order doesnt exists displays an invalid order
     order_list.addOrder(orderCreate.createOrder("Advance"));
     order_list.addOrder(orderCreate.createOrder("Bomb"));
     order_list.addOrder(orderCreate.createOrder("Blockade"));
@@ -24,8 +24,17 @@ int main() {
     cout << "\nOrder List after removal:" << endl;
     order_list.remove(1);
     printOrders(order_list.getOrders());
-    
-    order_list.executeOrders();
-    
+
+    cout << "\nCopied order list:" << endl;
+    OrdersList copy = OrdersList(order_list);
+    printOrders(copy.getOrders());
+
+    cout << "\nValidating and executing orders from list:" << endl;
+    copy.executeOrders();
+
+    cout << "\nCopied orders list after execution:" << endl;
+    printOrders(copy.getOrders()); //empty list because orders were executed
+
+
     return 0;
 }

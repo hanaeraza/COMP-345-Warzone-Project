@@ -1,7 +1,7 @@
 #include<iostream>
 #include<vector> 
-#include<iomanip> // To format output.
-#include<string> // To store the label of an order within the order object itself.
+#include<iomanip>
+#include<string> 
 using namespace std;
 
 //abstract order class
