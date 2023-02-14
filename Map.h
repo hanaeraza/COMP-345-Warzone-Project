@@ -36,11 +36,13 @@ class Map
 public:
 	Map(string file);
 	Map(int size, int continentAmount);
+	Map(const Map& other);
 	~Map() = default;
 
 	vector<Territory> GetConnections(Territory& input);
 	vector<Territory> GetConnections(int input);
 	vector<Territory> GetTerritoriesOwnedBy(const Player& input);
+	bool Validate();
 	bool ValidateSingleContinentProperty();
 	bool ValidateTerritories();
 	bool ValidateContinents();
@@ -73,9 +75,12 @@ private:
 class MapLoader
 {
 public:
-	MapLoader();
-	~MapLoader();
+	MapLoader(string file);
+	MapLoader(const MapLoader& other);
+	~MapLoader() = default;
 
+	Map GetMap();
+	friend ostream& operator<<(ostream& os, Map& map);
 	MapLoader& operator =(const MapLoader& other);
 	bool& operator ==(const MapLoader& other);
 private:

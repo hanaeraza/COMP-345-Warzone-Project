@@ -20,4 +20,6 @@ int main()
 
     std::cout << map2.ValidateContinents();
     std::cout << map2.ValidateTerritories();
+    std::cout << map2.ValidateSingleContinentProperty();
+    std::cout << map2.Validate();
 }

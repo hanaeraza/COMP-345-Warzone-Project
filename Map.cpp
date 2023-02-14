@@ -26,6 +26,11 @@ ostream& operator <<(ostream &os, const Map &other) {
     return os;
 }
 
+ostream& operator <<(ostream &os, MapLoader &other) {
+    os << other.GetMap();
+    return os;
+}
+
 ostream& operator <<(ostream &os, const vector<vector<bool>> &adjMatrix) {
 	for (int i = 0; i < adjMatrix.size(); i++)
     {
@@ -94,9 +99,13 @@ void Territory::Update(Player owner, int armyQuantity) {
     *(this->armyQuantity) = armyQuantity;
 }
 
-// string Territory::GetTerritoryName(){
-//     return
-// }
+string Territory::GetTerritoryName(){
+    return *(this->territoryName);
+}
+
+string Territory::GetContinentName(){
+    return *(this->continentName);
+}
 
 void Map::GetBorders(string file){
     this->adjacencyMatrix = new vector<vector<bool>>(*(this->territoryQuantity),
@@ -222,6 +231,15 @@ Map::Map(string file){
     GetBorders(file);
 }
 
+Map::Map(const Map& other){
+    this->territoryQuantity = new int(*(other.territoryQuantity));
+    this->territories = new vector<Territory>(*(other.territories));
+    this->adjacencyMatrix = new vector<vector<bool>>(*(other.adjacencyMatrix));
+    this->continentQuantity = new int(*(other.continentQuantity));
+    this->continents = new vector<string>(*(other.continents));
+    this->continentIndices = new vector<int>(*(other.continentIndices));
+}
+
 Map::Map(int size, int continentAmount) {
     this->territoryQuantity = new int(size);
     this->territories = new vector<Territory>(size);
@@ -276,17 +294,6 @@ Map::Map(int size, int continentAmount) {
             }
         }
         countOuter += countInner;
-
-        //cout << "\nNew Adj Matrix: ";
-
-        //for (int i = 0; i < (*(this->adjacencyMatrix)).size(); i++)
-        //{
-        //    for (int j = 0; j < (*(this->adjacencyMatrix)).size(); j++)
-        //    {
-        //        cout << (*(this->adjacencyMatrix))[i][j];
-        //    }
-        //    cout << "\n";
-        //}
     }
 
     random_device rd;
@@ -459,21 +466,25 @@ vector<Territory> Map::GetConnections(int input)
     return output;
 }
 
+bool Map::Validate() {
+    return Map::ValidateSingleContinentProperty() &&
+    Map::ValidateTerritories() &&
+    Map::ValidateContinents();
+}
+
 bool Map::ValidateSingleContinentProperty() {
-    for (int i = 0; i < (*(this->continentQuantity)); i++)
+    for (int i = 0; i < *(this->territoryQuantity); i++)
     {
-        int tCount = 0;
-
-        vector<int> territoryIndices = vector<int>();
-
-        for (int j = 0; j < *(this->territoryQuantity); j++)
+        for (int j = i + 1; j < *(this->territoryQuantity); j++)
         {
-            if (i == (*(this->continentIndices))[j]){
-                tCount++;
-                territoryIndices.push_back(j);
+            if ((*(this->territories))[i].GetTerritoryName() == (*(this->territories))[j].GetTerritoryName() &&
+            (*(this->territories))[i].GetContinentName() == (*(this->territories))[j].GetContinentName())
+            {
+                return false;
             }
         }
     }
+    return true;
 }
 
 
@@ -509,7 +520,6 @@ bool Map::ValidateContinent(int continentIndex) {
     {
         for (int j = 0; j < tCount; j++)
         {
-            // cout << adjacencyMatrix[territoryIndices[i]][territoryIndices[j]] << "\n";
             adjacencyMatrix[i][j] = (*(this->adjacencyMatrix))[territoryIndices[i]][territoryIndices[j]];
         }
     }
