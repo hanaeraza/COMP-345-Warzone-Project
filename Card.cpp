@@ -116,3 +116,4 @@ void Card::play(Hand* hand, Deck *deck) {
         deck->size++;
     }
 }
+
