@@ -81,15 +81,14 @@ OrdersList::~OrdersList()
 //copy constructor
 OrdersList::OrdersList(const OrdersList& oldList)
 {
-    int listSize = oldList.orders.size();
-    orders = vector<Order*>(listSize);
+    orders = vector<Order*>(oldList.orders.size());
 
-    for (int i = 0; i < listSize; i++) // Same objects, but in different memory locations.
+    for (int i = 0; i < oldList.orders.size(); i++)
         orders[i] = oldList.orders[i]->clone();
 }
 
 
-
+//adds order to list
 void OrdersList::addOrder(Order* o)
 {
     if (o == nullptr)
@@ -100,6 +99,7 @@ void OrdersList::addOrder(Order* o)
     }
 }
 
+//removes order from list
 void OrdersList::remove(int pos)
 {
     if (orders.size() == 0)
@@ -113,6 +113,7 @@ void OrdersList::remove(int pos)
     }
 }
 
+//switches 2 orders from list
 void OrdersList::move(int pos1, int pos2)
 {
     if (orders.size() == 0)
