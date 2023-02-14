@@ -2,35 +2,30 @@
 using namespace std;
 
 int main() {
-    OrderList order_list;
 
-    //creates the order objects
-    Deploy Deploy;
-    Advance Advance;
-    Bomb Bomb;
-    Blockade Blockade;
-    Airlift Airlift;
-    Negotiate Negotiate;
 
-    //adds orders to orderlist and prints list
-    order_list.addOrder(&Deploy);
-    order_list.addOrder(&Advance);
-    order_list.addOrder(&Bomb);
-    order_list.addOrder(&Blockade);
-    order_list.addOrder(&Airlift);
-    order_list.addOrder(&Negotiate);
-    order_list.printOrderList();
+    newOrder orderCreate;  //
+    OrdersList order_list; //creates an order list
 
-    //removes order and prints list
-    std::cout << "\nRemoving Deploy order:" << std::endl;
-    order_list.removeOrder(&Deploy);
-    order_list.printOrderList();
+    cout << "\nOrder List:" << endl;
 
-    //moves order and prints list
-    std::cout << "\nMoving Advance Order to Pos 5 and Blockade to Pos 1:" << std::endl;
-    order_list.moveOrder(&Advance, 4);
-    order_list.moveOrder(&Blockade, 0);
-    order_list.printOrderList();
+    order_list.addOrder(orderCreate.createOrder("Diplomacy")); //Creates a new order object based on the string inputted. if order doesnt exists then nothing happens
+    order_list.addOrder(orderCreate.createOrder("Advance"));
+    order_list.addOrder(orderCreate.createOrder("Bomb"));
+    order_list.addOrder(orderCreate.createOrder("Blockade"));
+    order_list.addOrder(orderCreate.createOrder("Airlift"));
+    order_list.addOrder(orderCreate.createOrder("Negotiate"));
+    printOrders(order_list.getOrders());
 
+    cout << "\nOrder List after swap:" << endl;
+    order_list.move(2,1);
+    printOrders(order_list.getOrders());
+
+    cout << "\nOrder List after removal:" << endl;
+    order_list.remove(1);
+    printOrders(order_list.getOrders());
+    
+    order_list.executeOrders();
+    
     return 0;
 }
