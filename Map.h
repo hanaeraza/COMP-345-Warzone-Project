@@ -84,6 +84,7 @@ public:
 	void Load(string file);
 	friend ostream& operator<<(ostream& os, Map& map);
 	MapLoader& operator =(const MapLoader& other);
+
 private:
 	Map* loadedMap;
 };

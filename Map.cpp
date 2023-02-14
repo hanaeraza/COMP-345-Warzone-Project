@@ -69,7 +69,7 @@ Territory::Territory(const Territory& other) {
 
 Territory::Territory():
 		territoryName(new string("NoTerritoryName")), continentName(new string("NoContinentName")),
-		owner(nullptr), armyQuantity((new int(0))){
+		owner(new Player()), armyQuantity((new int(0))){
 		
 	}
 
