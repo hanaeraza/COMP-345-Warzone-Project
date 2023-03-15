@@ -1,11 +1,14 @@
-#ifndef CARD_H
-#define CARD_H
+#pragma once
 #include <iostream>
 #include <string>
 #include <cstdlib>
 #include <ctime>
+//#include "Player.cpp"
 
 using namespace std;
+
+//class Player;
+
 
 class Card;
 class Deck;
@@ -24,7 +27,7 @@ public:
 
     Card& operator=(const Card& c);
     
-    void play(Hand* hand, Deck* deck);
+    void play(Hand* hand, Deck* deck, Player* player);
     // bool removeFromHand(Hand* hand, Deck* deck);
 
 };
@@ -60,5 +63,3 @@ public:
     void printHand();
     Hand& operator=(const Hand& h);
 };
-
-#endif
