@@ -172,6 +172,10 @@ string Territory::GetContinentName(){
     return *(this->continentName);
 }
 
+Player Territory::GetOwner(){
+    return *(this->owner);
+}
+
 /*
     Returns territories
 */
@@ -421,6 +425,27 @@ vector<Territory> Territory::GetTerritoriesOwnedBy(const Player &input, const ve
         }
     }
 
+    return output;
+}
+
+/*
+    Returns Continents owned by player
+*/
+vector<string> Map::GetContinentsOwnedBy(const Player& input){
+    vector<string> output = vector<string>();
+    vector<bool> hasContinent(continents->size(), false);
+    for (int i = 0; i < continentIndices->size(); i++)
+    {
+        if ((*territories)[(*continentIndices)[i]]->GetOwner() == input)
+        {
+            hasContinent[i] = false;
+        }
+    }
+    for (int i = 0; i < hasContinent.size(); i++)
+    {
+        output.push_back((*continents)[i]);
+    }
+    
     return output;
 }
 

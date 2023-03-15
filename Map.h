@@ -19,6 +19,7 @@ public:
 	void Update(Player owner, int armyQuantity);
 	string GetTerritoryName();
 	string GetContinentName();
+	Player GetOwner();
 	static vector<Territory> GetTerritoriesOwnedBy(const Player& input, const vector<Territory>& inputList);
 
 	friend ostream& operator<<(ostream& os, const Territory& territory){
@@ -48,6 +49,7 @@ public:
 	vector<Territory> GetConnections(Territory& input);
 	vector<Territory> GetConnections(int input);
 	vector<Territory> GetTerritoriesOwnedBy(const Player& input);
+	vector<string> GetContinentsOwnedBy(const Player& input);
 	vector<Territory*> GetTerritories();
 	bool Validate();
 	bool ValidateSingleContinentProperty();
