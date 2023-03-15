@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Map.h"
-#include "Player.h"
+// #include "Player.h"
 #include "Player.cpp"
 
 #include <random>
@@ -11,33 +11,33 @@
 
 using namespace std;
 
-/*
-    Overriding <<
-    Inserts readable sequence into output stream
-*/
-ostream& operator <<(ostream &os, const Map &other) {
-	for (int i = 0; i < *(other.territoryQuantity); i++)
-    {
-        os << "[ ";
+// /*
+//     Overriding <<
+//     Inserts readable sequence into output stream
+// */
+// ostream& operator <<(ostream &os, const Map &other) {
+// 	for (int i = 0; i < *(other.territoryQuantity); i++)
+//     {
+//         os << "[ ";
 
-        for (int j = 0; j < *(other.territoryQuantity); j++)
-        {
-            os << (*(other.adjacencyMatrix))[i][j] << " ";
-        }
+//         for (int j = 0; j < *(other.territoryQuantity); j++)
+//         {
+//             os << (*(other.adjacencyMatrix))[i][j] << " ";
+//         }
         
-        os << "]" << (*(other.territories))[i] << "\n";
-    }
-    return os;
-}
+//         os << "]" << (*(other.territories))[i] << "\n";
+//     }
+//     return os;
+// }
 
-/*
-    Overriding <<
-    Inserts readable sequence into output stream
-*/
-ostream& operator <<(ostream &os, MapLoader &other) {
-    os << other.GetMap();
-    return os;
-}
+// /*
+//     Overriding <<
+//     Inserts readable sequence into output stream
+// */
+// ostream& operator <<(ostream &os, MapLoader &other) {
+//     os << other.GetMap();
+//     return os;
+// }
 
 /*
     Overriding <<
@@ -58,17 +58,17 @@ ostream& operator <<(ostream &os, const vector<vector<bool>> &adjMatrix) {
     return os;
 }
 
-/*
-    Overriding <<
-    Inserts readable sequence into output stream
-*/
-ostream& operator<<(ostream& os, const Territory& other) {
-    os << " " << *(other.territoryName)
-        << ", " << *(other.continentName)
-        << ", " << *(other.owner)
-        << ", " << *(other.armyQuantity);
-    return os;
-}
+// /*
+//     Overriding <<
+//     Inserts readable sequence into output stream
+// */
+// ostream& operator<<(ostream& os, const Territory& other) {
+//     os << " " << *(other.territoryName)
+//         << ", " << *(other.continentName)
+//         << ", " << *(other.owner)
+//         << ", " << *(other.armyQuantity);
+//     return os;
+// }
 
 /*
     Parametrized Territory Constructor which assigns territoryName and continentName
@@ -132,7 +132,7 @@ Map& Map::operator =(const Map &other) {
         delete continentIndices;
 
         this->territoryQuantity = new int(*(other.territoryQuantity));
-        this->territories = new vector<Territory>(*(other.territories));
+        this->territories = new vector<Territory*>(*(other.territories));
         this->adjacencyMatrix = new vector<vector<bool>>(*(other.adjacencyMatrix));
         this->continentQuantity = new int(*(other.continentQuantity));
         this->continents = new vector<string>(*(other.continents));
@@ -175,7 +175,7 @@ string Territory::GetContinentName(){
 /*
     Returns territories
 */
-vector<Territory> Map::GetTerritories(){
+vector<Territory*> Map::GetTerritories(){
     return *(this->territories);
 }
 
@@ -183,7 +183,7 @@ vector<Territory> Map::GetTerritories(){
     Creates Adjacency Matrix by reading file.
     Ex file: europe.map
 */
-void Map::GetBorders(string file){
+void Map::CreateBorders(string file){
     this->adjacencyMatrix = new vector<vector<bool>>(*(this->territoryQuantity),
     vector<bool>(*(this->territoryQuantity), false));
 
@@ -233,7 +233,7 @@ void Map::GetBorders(string file){
     Creates Continents by reading file.
     Ex file: europe.map
 */
-void Map::GetContinents(string file){
+void Map::CreateContinents(string file){
     this->continents = new vector<string>();
 
     ifstream inputMap(file);
@@ -272,8 +272,8 @@ void Map::GetContinents(string file){
     Creates Territories by reading file.
     Ex file: europe.map
 */
-void Map::GetTerritories(string file){
-    this->territories = new vector<Territory>();
+void Map::CreateTerritories(string file){
+    this->territories = new vector<Territory*>();
     this->continentIndices = new vector<int>();
 
     ifstream inputMap(file);
@@ -301,7 +301,7 @@ void Map::GetTerritories(string file){
 
                 if ((stream >> tIndex >> tName >> cIndex >> a >> b)) {
 
-                    (*(this->territories)).push_back(Territory(tName, (*(this->continents))[cIndex - 1]));
+                    (*(this->territories)).push_back(new Territory(tName, (*(this->continents))[cIndex - 1]));
                     (*(this->continentIndices)).push_back(int(cIndex - 1));
                 }
             }
@@ -314,9 +314,9 @@ void Map::GetTerritories(string file){
     Ex file: europe.map
 */
 Map::Map(string file){
-    GetContinents(file);
-    GetTerritories(file);
-    GetBorders(file);
+    CreateContinents(file);
+    CreateTerritories(file);
+    CreateBorders(file);
 }
 
 /*
@@ -324,7 +324,7 @@ Map::Map(string file){
 */
 Map::Map(const Map& other){
     this->territoryQuantity = new int(*(other.territoryQuantity));
-    this->territories = new vector<Territory>(*(other.territories));
+    this->territories = new vector<Territory*>((*(other.territories)).begin(), (*(other.territories)).end());
     this->adjacencyMatrix = new vector<vector<bool>>(*(other.adjacencyMatrix));
     this->continentQuantity = new int(*(other.continentQuantity));
     this->continents = new vector<string>(*(other.continents));
@@ -336,7 +336,7 @@ Map::Map(const Map& other){
 */
 Map::Map(int size, int continentAmount) {
     this->territoryQuantity = new int(size);
-    this->territories = new vector<Territory>(size);
+    this->territories = new vector<Territory*>(size);
     this->adjacencyMatrix = new vector<vector<bool>>(size, vector<bool>(size, false));
     this->continentQuantity = new int(continentAmount);
     this->continents = new vector<string>(continentAmount);
@@ -350,7 +350,7 @@ Map::Map(int size, int continentAmount) {
     for (int i = 0; i < size; i++)
     {
         (*(this->continentIndices))[i] = ((double)continentAmount / (double)size) * i;
-        (*(this->territories))[i] = Territory("Territory" + to_string(i),
+        (*(this->territories))[i] = new Territory("Territory" + to_string(i),
             (*(this->continents))[(*(this->continentIndices))[i]]);
     }
     
@@ -428,7 +428,12 @@ vector<Territory> Territory::GetTerritoriesOwnedBy(const Player &input, const ve
     Returns territories owned by player
 */
 vector<Territory> Map::GetTerritoriesOwnedBy(const Player &input){
-    return Territory::GetTerritoriesOwnedBy(input, *territories);
+    vector<Territory> tVector = vector<Territory>();
+    for (const auto& t : *territories) {
+        tVector.push_back(*t);
+    }
+    
+    return Territory::GetTerritoriesOwnedBy(input, tVector);
 }
 
 /*
@@ -548,7 +553,7 @@ vector<Territory> Map::GetConnections(Territory &input)
 {
     for (size_t i = 0; i < *(this->territoryQuantity); i++)
     {
-        if (input == (*this->territories)[i])
+        if (input == *(*this->territories)[i])
         {
             return GetConnections(i);
         }
@@ -568,7 +573,7 @@ vector<Territory> Map::GetConnections(int input)
     {
         if ((*this->adjacencyMatrix)[input][i])
         {
-            output.push_back((*(this->territories))[input]);
+            output.push_back(*(*(this->territories))[input]);
         }
     }
 
@@ -592,8 +597,8 @@ bool Map::ValidateSingleContinentProperty() {
     {
         for (int j = i + 1; j < *(this->territoryQuantity); j++)
         {
-            if ((*(this->territories))[i].GetTerritoryName() == (*(this->territories))[j].GetTerritoryName() &&
-            (*(this->territories))[i].GetContinentName() == (*(this->territories))[j].GetContinentName())
+            if ((*(*(this->territories))[i]).GetTerritoryName() == (*(*(this->territories))[j]).GetTerritoryName() &&
+            (*(*(this->territories))[i]).GetContinentName() == (*(*(this->territories))[j]).GetContinentName())
             {
                 return false;
             }

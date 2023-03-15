@@ -38,7 +38,10 @@ class Player {
         static vector<string> toDefend(Player player);
         static vector<string> toAttack(Player player);
 
-        friend ostream& operator <<(ostream& os, const Player& other);
+        // friend ostream& operator <<(ostream& os, const Player& other);
+        friend ostream& operator<<(ostream& os, const Player& other) {
+            return os;
+        }
 	    bool operator ==(const Player &other);
 };
 

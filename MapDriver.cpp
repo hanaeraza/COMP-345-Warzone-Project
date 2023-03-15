@@ -2,6 +2,11 @@
 #include "Map.h"
 #include "Map.cpp"
 
+// bool Validate();
+// bool ValidateContinents();
+// bool ValidateTerritories();
+// bool ValidateSingleContinentProperty();
+
 int main()
 {
     Map map = Map(10, 3);

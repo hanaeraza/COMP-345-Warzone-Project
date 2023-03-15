@@ -21,7 +21,13 @@ public:
 	string GetContinentName();
 	static vector<Territory> GetTerritoriesOwnedBy(const Player& input, const vector<Territory>& inputList);
 
-	friend ostream& operator<<(ostream& os, const Territory& territory);
+	friend ostream& operator<<(ostream& os, const Territory& territory){
+		os << " " << *(territory.territoryName)
+        << ", " << *(territory.continentName)
+        << ", " << *(territory.owner)
+        << ", " << *(territory.armyQuantity);
+    return os;
+	}
 	Territory& operator =(const Territory& other);
 	bool operator ==(const Territory& other);
 private:
@@ -42,27 +48,40 @@ public:
 	vector<Territory> GetConnections(Territory& input);
 	vector<Territory> GetConnections(int input);
 	vector<Territory> GetTerritoriesOwnedBy(const Player& input);
-	vector<Territory> GetTerritories();
+	vector<Territory*> GetTerritories();
 	bool Validate();
 	bool ValidateSingleContinentProperty();
 	bool ValidateTerritories();
 	bool ValidateContinents();
 	bool ValidateContinent(int continentIndex);
 
-	friend ostream& operator<<(ostream& os, const Map& territory);
+	friend ostream& operator<<(ostream& os, const Map& map){
+	for (int i = 0; i < *(map.territoryQuantity); i++)
+    {
+			os << "[ ";
+
+			for (int j = 0; j < *(map.territoryQuantity); j++)
+			{
+					os << (*(map.adjacencyMatrix))[i][j] << " ";
+			}
+			
+			os << "]" << *((*(map.territories))[i]) << "\n";
+    }
+    return os;
+	}
 	Map& operator =(const Map &other);
 private:
 	int* territoryQuantity;
-	vector<Territory>* territories;
+	vector<Territory*>* territories;
 	vector<vector<bool>>* adjacencyMatrix; // https://en.wikipedia.org/wiki/Adjacency_matrix
 	int* continentQuantity;
 	vector<string>* continents;
 	vector<int>* continentIndices; // Shows continent index of every territory
 
 	vector<vector<bool>> BuildContinentAdjacencyMatrix(int continentIndex);
-	void GetTerritories(string file);
-	void GetContinents(string file);
-	void GetBorders(string file);
+	void CreateTerritories(string file);
+	void CreateContinents(string file);
+	void CreateBorders(string file);
 
 	static vector<vector<bool>> RandomConnectedAdjacencyMatrix(int size);
 	static bool AdjacencyMatrixIsConnected(vector<vector<bool>> input, int size);
@@ -82,7 +101,10 @@ public:
 
 	Map GetMap();
 	void Load(string file);
-	friend ostream& operator<<(ostream& os, Map& map);
+	friend ostream& operator<<(ostream& os, MapLoader& map){
+		os << map.GetMap();
+    return os;
+	}
 	MapLoader& operator =(const MapLoader& other);
 
 private:

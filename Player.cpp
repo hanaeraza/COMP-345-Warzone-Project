@@ -31,9 +31,9 @@ OrdersList Player::issueOrder() {
 }
 
 // Stream operators
-ostream& operator<<(ostream& os, const Player& other) {
-    return os;
-}
+// ostream& operator<<(ostream& os, const Player& other) {
+//     return os;
+// }
 
 bool Player::operator==(const Player& other) {
     return true;
