@@ -1,7 +1,9 @@
-
+#ifndef CARD_C
+#define CARD_C
 #include <iostream>
 #include "Card.h"
-#include "orders.cpp"
+#include "Orders.h"
+#include "Player.h"
 using namespace std;
 
 //Copy Constructor
@@ -122,11 +124,11 @@ Deck& Deck::operator=(const Deck& d) {
     }
     return *this;
 }
-void Card::play(Hand* hand, Deck *deck) {
+void Card::play(Hand* hand, Deck *deck,Player* player) {
 	newOrder orderCreate;  //
     OrdersList order_list; //creates an order list
-
-	order_list.addOrder(orderCreate.createOrder(this->type)); 
+    player->order_list.addOrder(orderCreate.createOrder(this->type)); //creates an order and adds it to the order list
+	
 	printOrders(order_list.getOrders());
 
 
@@ -166,7 +168,5 @@ ostream& operator<<(ostream& out, const Hand& h) {
     return out;
 }
 
-
-
-
+#endif
 
