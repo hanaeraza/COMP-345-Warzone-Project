@@ -239,6 +239,7 @@ void Map::CreateBorders(string file){
 */
 void Map::CreateContinents(string file){
     this->continents = new vector<string>();
+    this->continentBonus = new vector<int>();
 
     ifstream inputMap(file);
 
@@ -260,10 +261,11 @@ void Map::CreateContinents(string file){
                 stringstream stream(lastLine);
 
                 string cName, color;
-                int cSize; 
+                int cBonus; 
 
-                if ((stream >> cName >> cSize >> color)) {
+                if ((stream >> cName >> cBonus >> color)) {
                     (*(this->continents)).push_back(string(cName));
+                    (*(this->continentBonus)).push_back(cBonus);
                 }
 
                 this->continentQuantity = new int((*(this->continents)).size());
@@ -333,6 +335,7 @@ Map::Map(const Map& other){
     this->continentQuantity = new int(*(other.continentQuantity));
     this->continents = new vector<string>(*(other.continents));
     this->continentIndices = new vector<int>(*(other.continentIndices));
+    this->continentBonus = new vector<int>(*(other.continentBonus));
 }
 
 /*
@@ -345,6 +348,7 @@ Map::Map(int size, int continentAmount) {
     this->continentQuantity = new int(continentAmount);
     this->continents = new vector<string>(continentAmount);
     this->continentIndices = new vector<int>(size);
+    this->continentBonus = new vector<int>(continentAmount);
 
     for (int i = 0; i < continentAmount; i++)
     {
@@ -397,6 +401,11 @@ Map::Map(int size, int continentAmount) {
     random_device rd;
     mt19937 generator(rd());
     uniform_int_distribution<int> distribution(0, size - 1);
+
+    for (int i = 0; i < continentBonus->size(); i++)
+    {
+        (*continentBonus)[i] = distribution(generator) + 1;
+    }
 
     while (!Map::AdjacencyMatrixIsConnected(*(this->adjacencyMatrix), size)) // Loop until connected
     {
@@ -459,6 +468,17 @@ vector<Territory> Map::GetTerritoriesOwnedBy(const Player &input){
     }
     
     return Territory::GetTerritoriesOwnedBy(input, tVector);
+}
+
+int Map::GetContinentBonus(string continentInput){
+    for (int i = 0; i < continents->size(); i++)
+    {
+        if ((*continents)[i] == continentInput)
+        {
+            return (*continentBonus)[i];
+        }
+    }
+    return -1;
 }
 
 /*

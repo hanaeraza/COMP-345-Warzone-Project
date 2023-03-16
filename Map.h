@@ -51,6 +51,7 @@ public:
 	vector<Territory> GetTerritoriesOwnedBy(const Player& input);
 	vector<string> GetContinentsOwnedBy(const Player& input);
 	vector<Territory*> GetTerritories();
+	int GetContinentBonus(string continentInput);
 	bool Validate();
 	bool ValidateSingleContinentProperty();
 	bool ValidateTerritories();
@@ -58,18 +59,32 @@ public:
 	bool ValidateContinent(int continentIndex);
 
 	friend ostream& operator<<(ostream& os, const Map& map){
-	for (int i = 0; i < *(map.territoryQuantity); i++)
-    {
-			os << "[ ";
-
-			for (int j = 0; j < *(map.territoryQuantity); j++)
+		for (int i = 0; i < map.continents->size(); i++)
+		{
+			os << (*(map.continents))[i] << " Bonus: " << (*(map.continentBonus))[i] << "\n";
+			for (int j = 0; j < map.continentIndices->size(); j++)
 			{
-					os << (*(map.adjacencyMatrix))[i][j] << " ";
+				if ((*(map.continentIndices))[j] == i)
+				{
+					os << *((*(map.territories))[j]) << "\n";
+				}
+				
 			}
 			
-			os << "]" << *((*(map.territories))[i]) << "\n";
-    }
-    return os;
+		}
+		
+		for (int i = 0; i < *(map.territoryQuantity); i++)
+			{
+				os << "[ ";
+
+				for (int j = 0; j < *(map.territoryQuantity); j++)
+				{
+						os << (*(map.adjacencyMatrix))[i][j] << " ";
+				}
+				
+				os << "]" << *((*(map.territories))[i]) << "\n";
+			}
+			return os;
 	}
 	Map& operator =(const Map &other);
 private:
@@ -78,6 +93,7 @@ private:
 	vector<vector<bool>>* adjacencyMatrix; // https://en.wikipedia.org/wiki/Adjacency_matrix
 	int* continentQuantity;
 	vector<string>* continents;
+	vector<int>* continentBonus;	// Number associated with continent at index
 	vector<int>* continentIndices; // Shows continent index of every territory
 
 	vector<vector<bool>> BuildContinentAdjacencyMatrix(int continentIndex);
