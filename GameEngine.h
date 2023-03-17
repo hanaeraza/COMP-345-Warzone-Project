@@ -1,5 +1,9 @@
 #ifndef GAMEENGINE_H
 #define GAMEENGINE_H
+
+#include "Map.h"
+#include "Player.h"
+
 #include <iostream>
 
 using namespace std;
@@ -18,6 +22,9 @@ public:
 
 private:
     State* currentState;
+    Map* map;
+    MapLoader* mapLoader;
+    vector<Player*>* players;
 };
 
 // Abstract class
