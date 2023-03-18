@@ -1,6 +1,7 @@
 #ifndef GAMEENGINE_H
 #define GAMEENGINE_H
 #include <iostream>
+#include "Map.cpp"
 
 using namespace std;
 
@@ -39,8 +40,11 @@ public:
 class MapLoadedState : public State
 {
 public:
+    MapLoadedState(MapLoader map);
     void update(GameEngine *game);
     string getName();
+private:
+MapLoader map;
 };
 
 class MapValidatedState : public State

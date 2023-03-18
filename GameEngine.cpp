@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
+#include <sstream>
 #include "GameEngine.h"
+#include "Map.cpp"
 using namespace std;
 
 // Start program in the start state
@@ -28,14 +30,21 @@ void StartState::update(GameEngine *game)
     cout << "-----------------------------------" << endl;
     cout << "Start state." << endl;
     
+    string input;
     string command;
+    string filename;
     while (true)
     {
         cout << "Enter next state: ";
-        cin >> command;
-        if (command == "loadmap")
+        getline(cin, input);
+        stringstream ss(input);
+         ss >> command;
+         ss >> filename;
+        
+        if (command == "loadmap" && !filename.empty())
         {
-            game->setState(new MapLoadedState());
+            MapLoader map = MapLoader(filename);
+            game->setState(new MapLoadedState(map));
             break;
         }
         else
@@ -50,25 +59,40 @@ string StartState::getName()
     return "StartState";
 }
 
+MapLoadedState::MapLoadedState(MapLoader map) : map(map) {}
+
+
 // Map loaded state
 void MapLoadedState::update(GameEngine *game)
 {
     cout << "-----------------------------------" << endl;
     cout << "Map loaded state" << endl;
     
+    string input;
     string command;
+    string command2;
     while (true)
     {
         cout << "Enter next state: ";
-        cin >> command;
-        if (command == "validatemap")
+        getline(cin, input);
+        stringstream ss(input);
+         ss >> command;
+         ss >> command2;
+
+        if (command == "validatemap" && command2.empty())
         {
-            game->setState(new MapValidatedState());
+            
+            if (map.GetMap().Validate() == true) {
+            game->setState(new MapValidatedState()); }
+            else {
+                cout << "The map is invalid. Please load a new map." << endl;
+            }
             break;
         }
-        if (command == "loadmap")
+        if (command == "loadmap" && !command2.empty())
         {
-            cout << "Map was reloaded" << endl;
+            map = MapLoader(command2);
+            cout << "New map was loaded" << endl;
             break;
         }
         else
@@ -127,7 +151,7 @@ void PlayersAddedState::update(GameEngine *game)
             cout << "Another player added" << endl;
             break;
         }
-        if (command == "assigncountries")
+        if (command == "gamestart")
         {
             game->setState(new ReinforcementsState());
             break;
@@ -289,3 +313,4 @@ string EndState::getName()
 {
     return "EndState";
 }
+ 
