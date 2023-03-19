@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 
+
 using namespace std;
 
 // Forward declaration
@@ -22,16 +23,17 @@ class Player {
         OrdersList *ordersList; 
         vector<string> defenseList; 
         vector<string> attackList;
+        int reinforcmentPool;
         
 
         Player() {}; //Default constructor
-        Player(Hand* cards, vector<Territory> *territories, OrdersList *orders, vector<string> defend, vector<string> attack);
+        Player(Hand* cards, vector<Territory> *territories, OrdersList *orders, vector<string> defend, vector<string> attack, int reinforcments);
 
 
         //Function declarations
         static vector<string> toDefend(Player player);
         static vector<string> toAttack(Player player);
-        static OrdersList issueOrder();
+        OrdersList issueOrder();
 
         // Stream insertion operators
         friend ostream& operator <<(ostream& os, const Player& other);
