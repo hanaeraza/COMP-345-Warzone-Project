@@ -2,14 +2,22 @@
 #include <string>
 #include "GameEngine.h"
 #include "Player.h"
+#include "Map.h"
 #include    <cmath>
 using namespace std;
 
 static int numPlayers=0;
 Player * players;
+
 // Start program in the start state
 GameEngine::GameEngine() : currentState(new StartState()) {}
-
+//Map getter
+Map GameEngine::getMap(){
+    return *gameMap;
+}
+void GameEngine::setMap(Map *map){
+    gameMap = map;
+}
 // Function to set next state
 void GameEngine::setState(State *state)
 {
@@ -39,6 +47,7 @@ void StartState::update(GameEngine *game)
         cin >> command;
         if (command == "loadmap")
         {
+            game->setMap(new Map(12,3)); 
             game->setState(new MapLoadedState());
             break;
         }
@@ -185,15 +194,20 @@ void ReinforcementsState::reinforcementPhase(){
         cout << "Number of Reinforcements from Territories: " << numReinforcementsFromTerritories << endl;
         //check for continent control here
         int numReinforcementsFromContinents = 0;
-        //for(int j=0; j<players[i].continentsOwned->size(); j++){
-        //    numReinforcementsFromContinents += players[i].continentsOwned->at(j)->getControlValue();
-        //}
+       
+        //add map var fo class then use mapName.getContinentsOwnedBy(players[i])
+        //then loop through that vector and add the control value of each continent
+        //to the numReinforcementsFromContinents
+        
+        numReinforcementsFromContinents += gameMap->getContinentsOwnedBy(players[i])->getControlValue();
+        
+        
         cout << "Number of Reinforcements from Continents: " << numReinforcementsFromContinents << endl;
         int totalReinforcements = numReinforcementsFromTerritories + numReinforcementsFromContinents;
         if(totalReinforcements < 3){
             totalReinforcements = 3;
         }
-        cout << "Total Reinforcements for player " << (i+1) << ":" << totalReinforcements << endl;
+        cout << "Total Reinforcements for player " << (i+1) << ": " << totalReinforcements << " armies " << endl;
     }
 }
 string ReinforcementsState::getName()
@@ -231,6 +245,11 @@ void IssueOrdersState::update(GameEngine *game)
 
 string IssueOrdersState::getName()
 {
+    for(int i=0;i<numPlayers;i++){
+        cout << "Player " << (i+1) << " orders: " << endl;
+            players[i].issueOrder();
+        }
+
     return "IssueOrdersState";
 }
 
@@ -318,4 +337,3 @@ string EndState::getName()
 {
     return "EndState";
 }
-
