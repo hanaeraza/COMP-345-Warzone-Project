@@ -52,6 +52,8 @@
     "xlocmon": "cpp",
     "xloctime": "cpp",
     "queue": "cpp",
-    "deque": "cpp"
+    "deque": "cpp",
+    "ranges": "cpp",
+    "span": "cpp"
   }
 }

@@ -2,7 +2,7 @@
 
 #include "Map.h"
 // #include "Player.h"
-#include "Player.cpp"
+#include "Player.h"
 
 #include <random>
 #include <iostream>

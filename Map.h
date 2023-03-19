@@ -8,6 +8,8 @@
 
 using namespace std;
 
+class Player;
+
 class Territory
 {
 public:
@@ -25,7 +27,6 @@ public:
 	friend ostream& operator<<(ostream& os, const Territory& territory){
 		os << " " << *(territory.territoryName)
         << ", " << *(territory.continentName)
-        << ", " << *(territory.owner)
         << ", " << *(territory.armyQuantity);
     return os;
 	}

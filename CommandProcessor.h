@@ -10,23 +10,6 @@
 
 using namespace std;
 
-class CommandProcessor
-{
-public:
-  Command getCommand();
-  void saveCommand(Command input);
-  void next();
-  bool validate(Command input, State* currentState);
-  void readCommand();
-
-  CommandProcessor();
-  ~CommandProcessor() = default;
-
-  const char* logFile = "CommandLog.txt";
-protected:
-  // GameEngine* engine;
-  queue<Command*>* commandQueue;
-};
 class Command
 {
 public:
@@ -51,6 +34,26 @@ public:
     os << "\n" << *(input.effect);
     return os;
 	}
+};
+class CommandProcessor
+{
+public:
+  Command getCommand();
+  void saveCommand(Command input);
+  void next();
+  static bool validate(Command input, State* currentState);
+  static bool validate(Command input, string currentState);
+  bool validate(State* currentState);
+  bool validate(string currentState);
+  void readCommand();
+
+  CommandProcessor();
+  ~CommandProcessor() = default;
+
+  const char* logFile = "CommandLog.txt";
+protected:
+  // GameEngine* engine;
+  queue<Command*>* commandQueue;
 };
 class FileCommandProcessorAdapter : CommandProcessor
 {

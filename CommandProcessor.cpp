@@ -18,9 +18,11 @@ CommandProcessor::CommandProcessor(){
 
 Command CommandProcessor::getCommand(){
   if (commandQueue->size() <= 0)
-    return nullptr;
+    return Command(string(""));
 
   Command output = *(commandQueue->front());
+
+  return output;
 }
 
 void CommandProcessor::saveCommand(Command input){
@@ -51,6 +53,36 @@ bool CommandProcessor::validate(Command input, State* currentState){
   return false;
 }
 
+bool CommandProcessor::validate(Command input, string currentState){
+  for (int i = 0; i < input.validIn->size(); i++)
+  {
+    if ((*input.validIn)[i].compare(currentState) == 0)
+      return true;
+  }
+  input.saveEffect("Command Invalid In " + currentState);
+  return false;
+}
+
+bool CommandProcessor::validate(State* currentState){
+  for (int i = 0; i < (*(commandQueue->front())).validIn->size(); i++)
+  {
+    if ((*((*(commandQueue->front())).validIn))[i].compare((*currentState).getName()) == 0)
+      return true;
+  }
+  (*(commandQueue->front())).saveEffect("Command Invalid In " + (*currentState).getName());
+  return false;
+}
+
+bool CommandProcessor::validate(string currentState){
+  for (int i = 0; i < (*(commandQueue->front())).validIn->size(); i++)
+  {
+    if ((*((*(commandQueue->front())).validIn))[i].compare(currentState) == 0)
+      return true;
+  }
+  (*(commandQueue->front())).saveEffect("Command Invalid In " + currentState);
+  return false;
+}
+
 void CommandProcessor::readCommand(){
   string input;
 
@@ -61,6 +93,14 @@ void CommandProcessor::readCommand(){
   Command* newCommand = new Command(input);
 
   commandQueue->push(newCommand);
+}
+
+Command::Command(const Command& other){
+  functionName = new string(*(other.functionName));
+  parameters = new vector<string>(*(other.parameters));
+  validIn = new vector<string>(*(other.validIn));
+  nextState = new vector<string>(*(other.nextState));
+  effect = new string(*(other.effect));
 }
 
 Command::Command(const string input){

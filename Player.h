@@ -5,13 +5,16 @@
 #include <string>
 #include <vector>
 // #include "Map.cpp"
-#include "Card.cpp"
+#include "Card.h"
+#include "Map.h"
+#include "Orders.h"
 //#include "Map.cpp"
 using namespace std;
 
 class Territory;
 
 //Player class
+class OrdersList;
 class Player {
 
     public:
