@@ -1,7 +1,7 @@
 #ifndef GAMEENGINE_H
 #define GAMEENGINE_H
 #include <iostream>
-//#include "Player.cpp"
+
 
 using namespace std;
 
@@ -16,15 +16,17 @@ public:
     void setState(State *state);
     void update();
     string getCurrentState();
+    Map getMap();
+    void setMap(Map *map);
     
 private:
     State* currentState;
-    //Player* players[] ;
+    Map *gameMap;
     
 };
 
 // Abstract class
-class State
+class State 
 {
 public:
     virtual void update(GameEngine *game) = 0;
