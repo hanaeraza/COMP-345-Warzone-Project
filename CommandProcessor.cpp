@@ -29,7 +29,7 @@ void CommandProcessor::saveCommand(Command input){
   std::ofstream file(logFile, std::ios::app);
   if (file.is_open()) {
       time_t now = std::time(nullptr);
-      file << now << " " << input << "\n " << *(input.effect);
+      file << now << "\n " << input << "\n" << *(input.effect);
       file.close();
   }
 }
@@ -41,6 +41,10 @@ void CommandProcessor::next(){
   Command last = *(commandQueue->front());
   CommandProcessor::saveCommand(last);
   commandQueue->pop();
+}
+
+bool CommandProcessor::hasCommand(){
+  return commandQueue->size() > 0;
 }
 
 bool CommandProcessor::validate(Command input, State* currentState){

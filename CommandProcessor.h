@@ -45,12 +45,35 @@ public:
   static bool validate(Command input, string currentState);
   bool validate(State* currentState);
   bool validate(string currentState);
+  bool hasCommand();
   void readCommand();
 
   CommandProcessor();
   ~CommandProcessor() = default;
 
   const char* logFile = "CommandLog.txt";
+
+  friend ostream& operator<<(ostream& os, const CommandProcessor& input){
+    queue<Command*>* readingCommandQueue = new queue<Command*>();
+
+    os << "Commands:\n";
+
+    while (!input.commandQueue->empty())
+    {
+      readingCommandQueue->push(input.commandQueue->front());
+      os << "\t" << *(input.commandQueue->front()) << "\n";
+      input.commandQueue->pop();
+    }
+
+    while (!readingCommandQueue->empty())
+    {
+      input.commandQueue->push(readingCommandQueue->front());
+      readingCommandQueue->pop();
+    }
+
+    delete readingCommandQueue;
+    return os;
+	}
 protected:
   // GameEngine* engine;
   queue<Command*>* commandQueue;
@@ -59,4 +82,26 @@ class FileCommandProcessorAdapter : CommandProcessor
 {
 public:
   FileCommandProcessorAdapter(string file);
+
+  friend ostream& operator<<(ostream& os, const FileCommandProcessorAdapter& input){
+    queue<Command*>* readingCommandQueue = new queue<Command*>();
+
+    os << "Commands:\n";
+
+    while (!input.commandQueue->empty())
+    {
+      readingCommandQueue->push(input.commandQueue->front());
+      os << "\t" << *(input.commandQueue->front()) << "\n";
+      input.commandQueue->pop();
+    }
+
+    while (!readingCommandQueue->empty())
+    {
+      input.commandQueue->push(readingCommandQueue->front());
+      readingCommandQueue->pop();
+    }
+
+    delete readingCommandQueue;
+    return os;
+	}
 };

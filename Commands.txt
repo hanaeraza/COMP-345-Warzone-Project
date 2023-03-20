@@ -1,0 +1,15 @@
+loadmap europe.map
+validatemap
+addplayer me
+addplayer you
+addplayer oscar
+gamestart
+replay
+loadmap europe.map
+validatemap
+addplayer me
+addplayer you
+addplayer oscar
+addplayer oscar_the_second
+gamestart
+quit
