@@ -7,27 +7,26 @@
 using namespace std;
 
 
- vector<string> Player::toDefend(Player player) {
 
-    return player.defenseList;
+ vector<string> Player::toDefend() {
+
+    return this->defenseList;
 } 
 
 
- vector<string> Player::toAttack(Player player) {
+ vector<string> Player::toAttack() {
 
-    return player.attackList;
+    return this->attackList;
 } 
 
 
 // Create an order object and add it to the player's list of orders
-OrdersList Player::issueOrder() {
+void Player::issueOrder(string order) {
     newOrder orderCreate;
-    OrdersList orders;
 
     // Arbitrary order
-    orders.addOrder(orderCreate.createOrder("Deploy"));
+    ordersList.addOrder(orderCreate.createOrder(order));
 
-    return orders;
 }
 
 // Stream operators

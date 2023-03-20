@@ -9,6 +9,10 @@ using namespace std;
 
 int main() {
 
+Player player = Player(); 
+Player player2 = Player("Player 2");
+cout << "player 2's username: " << player2.playername << endl;
+
 // Arbitrary values
 Hand cards;
 vector<Territory> terr;
@@ -37,10 +41,14 @@ Deck* deck = new Deck();
 	}
 
 // Demonstrate issueOrder
-OrdersList orders = Player::issueOrder();
+player.issueOrder("Deploy");
+player.issueOrder("Negotiate");
 
-//Create player
-Player player = Player(hand, terr, orders, defend, attack);
+player.cardsOwned = hand;
+player.territoriesOwned = terr;
+player.defenseList = defend;
+player.attackList = attack; 
+
 
 // Print hand of cards
 hand->printHand();
@@ -54,18 +62,18 @@ cout << endl;
 
 // Print list of orders
 cout << "Orders: " << endl;
-printOrders(orders.getOrders());
+printOrders(player.ordersList.getOrders());
 cout << endl;
 
 //Demonstrate toDefend
-vector<string> defending = Player::toDefend(player);
+vector<string> defending = player.toDefend();
 cout << "Player is defending: ";
    for (int i = 0; i < defending.size(); i++) {
         cout << defending[i] << " ";  
     }
 
 //Demonstrate toAttack
-vector<string> attacking = Player::toAttack(player);
+vector<string> attacking = player.toAttack();
 cout << endl;
 cout << "Player is attacking: ";
    for (int i = 0; i < attacking.size(); i++) {

@@ -11,9 +11,10 @@ using namespace std;
 class Territory;
 
 //Player class
-class Player {
+class Player { 
 
     public:
+        string playername;
         Hand* cardsOwned; 
         vector<Territory> territoriesOwned; 
         OrdersList ordersList; 
@@ -22,6 +23,7 @@ class Player {
         
 
         Player() {}; //Default constructor
+        Player(string playername) {};
         Player(Hand* cards, vector<Territory> territories, OrdersList orders, vector<string> defend, vector<string> attack) {
             cardsOwned = cards;
             territoriesOwned = territories;
@@ -31,10 +33,10 @@ class Player {
         };
 
 
-        //Function declarations
-        static vector<string> toDefend(Player player);
-        static vector<string> toAttack(Player player);
-        static OrdersList issueOrder();
+        //Function declarations (make non static)
+        vector<string> toDefend();
+        vector<string> toAttack();
+        void issueOrder(string order);
 
         // Stream insertion operators
         friend ostream& operator <<(ostream& os, const Player& other);
