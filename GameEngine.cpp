@@ -35,7 +35,7 @@ void StartState::update(GameEngine *game)
     string filename;
     while (true)
     {
-        cout << "Enter next state: ";
+        cout << "Enter next command: ";
         getline(cin, input);
         stringstream ss(input);
          ss >> command;
@@ -73,7 +73,7 @@ void MapLoadedState::update(GameEngine *game)
     string command2;
     while (true)
     {
-        cout << "Enter next state: ";
+        cout << "Enter next command: ";
         getline(cin, input);
         stringstream ss(input);
          ss >> command;
@@ -113,13 +113,20 @@ void MapValidatedState::update(GameEngine *game)
     cout << "-----------------------------------" << endl;
     cout << "Map validated state" << endl;
     
+    string input;
     string command;
+    string playername;
     while (true)
     {
-        cout << "Enter next state: ";
-        cin >> command;
-        if (command == "addplayer")
+        cout << "Enter next command: ";
+        getline(cin, input);
+        stringstream ss(input);
+         ss >> command;
+         ss >> playername;
+        
+        if (command == "addplayer" && !playername.empty())
         {
+            
             game->setState(new PlayersAddedState());
             break;
         }
@@ -144,7 +151,7 @@ void PlayersAddedState::update(GameEngine *game)
     string command;
     while (true)
     {
-        cout << "Enter next state: ";
+        cout << "Enter next command: ";
         cin >> command;
         if (command == "addplayer")
         {
@@ -177,7 +184,7 @@ void ReinforcementsState::update(GameEngine *game)
     string command;
     while (true)
     {
-        cout << "Enter next state: ";
+        cout << "Enter next command: ";
         cin >> command;
         if (command == "issueorder")
         {
@@ -205,7 +212,7 @@ void IssueOrdersState::update(GameEngine *game)
     string command;
     while (true)
     {
-        cout << "Enter next state: ";
+        cout << "Enter next command: ";
         cin >> command;
         if (command == "issueorder")
         {
@@ -238,7 +245,7 @@ void ExecuteOrdersState::update(GameEngine *game)
     string command;
     while (true)
     {
-        cout << "Enter next state: ";
+        cout << "Enter next command: ";
         cin >> command;
         if (command == "execorder")
         {
@@ -275,7 +282,7 @@ void WinState::update(GameEngine *game)
     string command;
     while (true)
     {
-        cout << "Enter next state: ";
+        cout << "Enter next command: ";
         cin >> command;
         if (command == "end")
         {

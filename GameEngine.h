@@ -44,7 +44,7 @@ public:
     void update(GameEngine *game);
     string getName();
 private:
-MapLoader map;
+    MapLoader map;
 };
 
 class MapValidatedState : public State
