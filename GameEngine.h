@@ -16,6 +16,7 @@ public:
     void setState(State *state);
     void update();
     string getCurrentState();
+    
 
 private:
     State* currentState;
@@ -50,36 +51,55 @@ private:
 class MapValidatedState : public State
 {
 public:
+    MapValidatedState(MapLoader map);
     void update(GameEngine *game);
     string getName();
+private:
+    MapLoader map;
 };
 
 class PlayersAddedState : public State
 {
 public:
+    PlayersAddedState(); 
+    PlayersAddedState(MapLoader map);
     void update(GameEngine *game);
     string getName();
+private:
+    MapLoader map;
 };
 
 class ReinforcementsState : public State
 {
 public:
+    ReinforcementsState();
+    ReinforcementsState(MapLoader map);
     void update(GameEngine *game);
     string getName();
+private:
+    MapLoader map;
 };
 
 class IssueOrdersState : public State
 {
 public:
+    IssueOrdersState(); 
+    IssueOrdersState(MapLoader map);
     void update(GameEngine *game);
     string getName();
+private:
+    MapLoader map;
 };
 
 class ExecuteOrdersState : public State
 {
 public:
+    ExecuteOrdersState(); 
+    ExecuteOrdersState(MapLoader map);
     void update(GameEngine *game);
     string getName();
+private:
+    MapLoader map;
 };
 
 
@@ -96,6 +116,7 @@ public:
     void update(GameEngine *game);
     string getName();
 };
+
 
 
 

@@ -23,7 +23,9 @@ class Player {
         
 
         Player() {}; //Default constructor
-        Player(string playername) {};
+        Player(string name) {
+            playername = name;
+        };
         Player(Hand* cards, vector<Territory> territories, OrdersList orders, vector<string> defend, vector<string> attack) {
             cardsOwned = cards;
             territoriesOwned = territories;
