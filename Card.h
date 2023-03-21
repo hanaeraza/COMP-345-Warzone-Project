@@ -3,11 +3,11 @@
 #include <string>
 #include <cstdlib>
 #include <ctime>
-//#include "Player.cpp"
+
 
 using namespace std;
 
-//class Player;
+
 
 
 class Card;
@@ -27,7 +27,7 @@ public:
 
     Card& operator=(const Card& c);
     
-    void play(Hand* hand, Deck* deck, Player* player);
+    void play(Hand* hand, Deck* deck);
     // bool removeFromHand(Hand* hand, Deck* deck);
 
 };
