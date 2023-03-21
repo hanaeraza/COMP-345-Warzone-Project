@@ -268,7 +268,7 @@ string PlayersAddedState::getName()
     return "PlayersAddedState";
 }
 
-void mainGameLoop(GameEngine *game)
+void GameEngine::mainGameLoop(GameEngine *game)
 {
     while (true)
     {
