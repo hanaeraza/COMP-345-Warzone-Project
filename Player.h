@@ -4,8 +4,10 @@
 #include <ostream>
 #include <string>
 #include <vector>
-#include "Card.h"
+
 #include "Orders.h"
+#include "Card.h"
+#include "Map.h"
 
 using namespace std;
 
