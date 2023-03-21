@@ -89,3 +89,107 @@ Map Valid
 1679407263
  validatemap
 
+1679407630
+ loadmap cow.map
+Loading cow.map
+
+Loading cow.map
+1679407630
+ loadmap cow.map
+
+1679407801
+ loadmap cow.map
+Loading cow.map
+
+Loading cow.map
+1679407801
+ loadmap cow.map
+
+1679408116
+ loadmap cow.map
+Loading cow.map
+
+Loading cow.map
+1679408116
+ loadmap cow.map
+
+1679408179
+ validatemap
+Map Valid
+
+Map Valid
+1679408179
+ validatemap
+
+1679408196
+ addplayer oscar
+Invalid
+
+Invalid
+1679408196
+ addplayer oscar
+
+1679408229
+ validatemap
+Map Valid
+
+Map Valid
+1679408229
+ validatemap
+
+1679408267
+ validatemap
+Map Valid
+
+Map Valid
+1679408267
+ validatemap
+
+1679408346
+ loadmap cow.map
+Loading cow.map
+
+Loading cow.map
+1679408346
+ loadmap cow.map
+
+1679408350
+ validatemap
+Map Valid
+
+Map Valid
+1679408350
+ validatemap
+
+1679408418
+ loadmap cow.map
+Loading cow.map
+
+Loading cow.map
+1679408418
+ loadmap cow.map
+
+1679408525
+ validatemap
+Map Valid
+
+Map Valid
+1679408526
+ validatemap
+
+1679408676
+ loadmap cow.map
+Loading cow.map
+
+Loading cow.map
+1679408676
+ loadmap cow.map
+
+1679408680
+ validatemap
+Map Valid
+
+Map Valid
+1679408680
+ validatemap
+

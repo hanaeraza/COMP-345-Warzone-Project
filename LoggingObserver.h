@@ -48,5 +48,5 @@ public:
   LogObserver& operator =(const LogObserver& other);
 
 private:
-  char* logFile = "log.txt";
+  string logFile = "log.txt";
 };

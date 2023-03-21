@@ -32,7 +32,7 @@ void Subject::notify(ILoggable* message){
 }
 
 void LogObserver::update(ILoggable* message){
-  std::ofstream file(logFile, std::ios::app);
+  std::ofstream file(string(logFile), std::ios::app);
   if (file.is_open()) {
       time_t now = time(nullptr);
       file << "Message At: " << now << "\n\t" << message->stringToLog();
@@ -59,9 +59,9 @@ LogObserver& LogObserver::operator =(const LogObserver& other){
   return *this;
 }
 
-LogObserver::LogObserver(string file){
-  logFile = const_cast<char*>(file.c_str());
+LogObserver::LogObserver(string file){ // logFile = const_cast<char*>(file.c_str());
+  logFile = file;
 }
 LogObserver::LogObserver(char* file){
-  logFile = file;
+  logFile = string(file);
 }

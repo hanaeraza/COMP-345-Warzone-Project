@@ -231,6 +231,7 @@ void MapLoadedState::transition(GameEngine *game)
                 nextCommand.saveEffect("Map Valid");
                 game->getCommandProcessor().saveCommand(nextCommand);
                 game->getCommandProcessor().next();
+                game->setState(new MapValidatedState());
             }
             else{
                 nextCommand.saveEffect("Map Invalid");
@@ -289,6 +290,7 @@ void MapLoadedState::transition(GameEngine *game)
                 nextCommand.saveEffect("Map Valid");
                 game->getCommandProcessor().saveCommand(nextCommand);
                 game->getCommandProcessor().next();
+                game->setState(new MapValidatedState());
             }
             else{
                 nextCommand.saveEffect("Map Invalid");

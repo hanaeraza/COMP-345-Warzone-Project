@@ -1,0 +1,42 @@
+Message At: 1679408075
+	loadmap cow.map
+Message At: 1679408120
+	Current state: maploaded
+Message At: 1679408179
+	validatemap
+Message At: 1679408179
+	Current state: maploaded
+Message At: 1679408196
+	addplayer oscar
+Message At: 1679408229
+	validatemap
+Message At: 1679408229
+	Current state: maploaded
+Message At: 1679408267
+	validatemap
+Message At: 1679408267
+	Current state: maploaded
+Message At: 1679408346
+	loadmap cow.map
+Message At: 1679408346
+	Current state: maploaded
+Message At: 1679408350
+	validatemap
+Message At: 1679408350
+	Current state: maploaded
+Message At: 1679408418
+	loadmap cow.map
+Message At: 1679408418
+	Current state: maploaded
+Message At: 1679408524
+	validatemap
+Message At: 1679408533
+	Current state: maploaded
+Message At: 1679408676
+	loadmap cow.map
+Message At: 1679408676
+	Current state: maploaded
+Message At: 1679408680
+	validatemap
+Message At: 1679408680
+	Current state: mapvalidated
