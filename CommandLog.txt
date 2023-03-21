@@ -15,3 +15,77 @@
  1679355763
  loadmap aa.map
 
+1679406210
+ loadmap europe.exe
+Invalid
+
+Invalid
+1679406210
+ loadmap europe.exe
+Command Invalid In StartState
+
+Command Invalid In StartState
+1679406248
+ loadmap cow.exe
+Invalid
+
+Invalid
+1679406248
+ loadmap cow.exe
+Command Invalid In StartState
+
+Command Invalid In StartState
+1679406269
+ loadmap europe.exe
+Invalid
+
+Invalid
+1679406269
+ loadmap europe.exe
+Command Invalid In StartState
+
+Command Invalid In StartState
+1679406561
+ loadmap cow.exe
+Invalid
+
+Invalid
+1679406566
+ loadmap cow.exe
+Command Invalid In StartState
+
+Command Invalid In StartState
+1679407146
+ cow.map
+Invalid
+
+Invalid
+1679407146
+ cow.map
+Command Invalid In start
+
+Command Invalid In start
+1679407166
+ loadmap cow.map
+Loading cow.map
+
+Loading cow.map
+1679407166
+ loadmap cow.map
+
+1679407255
+ loadmap cow.map
+Loading cow.map
+
+Loading cow.map
+1679407255
+ loadmap cow.map
+
+1679407263
+ validatemap
+Map Valid
+
+Map Valid
+1679407263
+ validatemap
+

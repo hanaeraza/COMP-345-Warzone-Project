@@ -37,7 +37,7 @@ Order* newOrder::createOrder(string orderType) const
 }
 
 //--------[Order]---------
-Order::Order() //default constructor
+Order::Order() : Subject() //default constructor
 {
     currentPlayer = nullptr;
     attach(orderLogger);
@@ -198,7 +198,7 @@ string Airlift::getType() const {return "Airlift";}
 string Negotiate::getType() const{return "Negotiate";}
 
 //--------[OrderList]---------
-OrdersList::OrdersList() {
+OrdersList::OrdersList() : Subject() {
     attach(Order::orderLogger);
 } //default constructor
 OrdersList::~OrdersList() //destructor

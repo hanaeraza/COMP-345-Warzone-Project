@@ -21,7 +21,7 @@ MapLoader map;
 queue<Player> playerQueue;
 
 // Start program in the start state
-GameEngine::GameEngine() : currentState(new StartState()) {}
+GameEngine::GameEngine()  : Subject(), currentState(new StartState()) {}
 
 // Function to set next state
 void GameEngine::setState(State *state)
@@ -144,6 +144,8 @@ void StartState::transition(GameEngine *game)
             filename = (*(nextCommand.parameters))[0];
         }
 
+        bool valid = game->getCommandProcessor().validate(this);
+
         if (command == "loadmap" && !filename.empty() && game->getCommandProcessor().validate(this))
         {
             nextCommand.saveEffect("Loading " + filename);
@@ -174,7 +176,7 @@ void StartState::transition(GameEngine *game)
 
 string StartState::getName()
 {
-    return "StartState";
+    return "start";
 }
 
 
@@ -308,7 +310,7 @@ void MapLoadedState::transition(GameEngine *game)
 
 string MapLoadedState::getName()
 {
-    return "MapLoadedState";
+    return "maploaded";
 }
 
 
@@ -405,7 +407,7 @@ void MapValidatedState::transition(GameEngine *game)
 
 string MapValidatedState::getName()
 {
-    return "MapValidatedState";
+    return "mapvalidated";
 }
 
 
@@ -628,7 +630,7 @@ void PlayersAddedState::transition(GameEngine *game)
 
 string PlayersAddedState::getName()
 {
-    return "PlayersAddedState";
+    return "playersadded";
 }
 
 void GameEngine::mainGameLoop(GameEngine *game)
@@ -913,7 +915,7 @@ void WinState::transition(GameEngine *game)
 
 string WinState::getName()
 {
-    return "WinState";
+    return "win";
 }
 
 // End state
@@ -924,7 +926,7 @@ void EndState::transition(GameEngine *game)
 
 string EndState::getName()
 {
-    return "EndState";
+    return "exit program";
 }
 
 /* void GameEngine::mainGameLoop(){

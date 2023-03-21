@@ -88,11 +88,11 @@ ostream& operator<<(ostream& os, const FileCommandProcessorAdapter& input){
   return os;
 }
 
-CommandProcessor::CommandProcessor(){
+CommandProcessor::CommandProcessor() : Subject(){
   this->commandQueue = new queue<Command*>();
 }
 
-CommandProcessor::CommandProcessor(const CommandProcessor& other){
+CommandProcessor::CommandProcessor(const CommandProcessor& other) : Subject(){
   this->commandQueue = other.commandQueue;
 }
 
@@ -153,6 +153,7 @@ bool CommandProcessor::validate(Command input, string currentState){
 }
 
 bool CommandProcessor::validate(State* currentState){
+  string name = (*currentState).getName();
   for (int i = 0; i < (*(commandQueue->front())).validIn->size(); i++)
   {
     if ((*((*(commandQueue->front())).validIn))[i].compare((*currentState).getName()) == 0)
@@ -281,14 +282,12 @@ void Command::saveEffect(string input){
   *effect += input + "\n";
 }
 
-FileCommandProcessorAdapter::FileCommandProcessorAdapter(string file){
+FileCommandProcessorAdapter::FileCommandProcessorAdapter(string file) : CommandProcessor() {
   ifstream inputFile(file);
 
   string lastLine;
 
   bool record = false;
-
-  this->commandQueue = new queue<Command*>();
 
   while (getline(inputFile, lastLine))
   {
@@ -296,6 +295,6 @@ FileCommandProcessorAdapter::FileCommandProcessorAdapter(string file){
   }
 }
 
-FileCommandProcessorAdapter::FileCommandProcessorAdapter(const FileCommandProcessorAdapter& other){
-  this->commandQueue = other.commandQueue;
+FileCommandProcessorAdapter::FileCommandProcessorAdapter(const FileCommandProcessorAdapter& other) : CommandProcessor(other) {
+  logFile = other.logFile;
 }

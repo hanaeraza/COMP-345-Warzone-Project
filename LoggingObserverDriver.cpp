@@ -9,5 +9,10 @@
 
 int main(){
     GameEngine* game = new GameEngine();
+    game->generateLogger("log.txt");
+    game->setCommandProcessor(new CommandProcessor());
+    while (true){
+        game->transition();
+    }
     return 0;
 }

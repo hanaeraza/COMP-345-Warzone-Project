@@ -11,6 +11,13 @@
 
 using namespace std;
 
+Subject::Subject(){
+  observers = new list<Observer*>();
+}
+Subject::Subject(const Subject& input){
+  this->observers = input.observers;
+}
+
 void Subject::attach(Observer* observer){
   observers->push_back(observer);
 }

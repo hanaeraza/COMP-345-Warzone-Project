@@ -26,6 +26,9 @@ public:
 
 class Subject {
 public:
+  Subject();
+  Subject(const Subject& input);
+  
   virtual void attach(Observer* observer);
   virtual void detach(Observer* observer);
   virtual void notify(ILoggable* message);
