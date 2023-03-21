@@ -4,7 +4,10 @@
 #include <random>
 #include <algorithm>
 #include <queue>
+
 #include "GameEngine.h"
+#include "CommandProcessor.h"
+#include "LoggingObserver.h"
 #include "Card.h"
 //#include "Map.cpp"
 #include "Map.h"
@@ -29,6 +32,48 @@ void GameEngine::setState(State *state)
 void GameEngine::transition()
 {
     currentState->transition(this);
+    notify(this);
+}
+
+ostream& operator<<(ostream& os, const GameEngine& input){
+    os << "Current state: " << input.currentState->getName() << endl;
+    return os;
+}
+
+string GameEngine::stringToLog() const
+{
+    stringstream stream;
+    string output;
+    stream << *this;
+    output = stream.str();
+    return output;
+}
+
+void GameEngine::setCommandProcessor(CommandProcessor *commandProcessor)
+{
+    this->commandProcessor = commandProcessor;
+    commandProcessor->attach(innerEngineLogger);
+}
+
+CommandProcessor GameEngine::getCommandProcessor()
+{
+    return *commandProcessor;
+}
+
+LogObserver* GameEngine::getInnerEngineLogger(){
+    return innerEngineLogger;
+}
+
+void GameEngine::setMapLoader(MapLoader *input){
+    map = *input;
+}
+MapLoader GameEngine::getMapLoader(){
+    return map;
+}
+
+void GameEngine::generateLogger(string file){
+    innerEngineLogger = new LogObserver(file);
+    attach(innerEngineLogger);
 }
 
 string GameEngine::getCurrentState()
@@ -45,22 +90,83 @@ void StartState::transition(GameEngine *game)
     string input;
     string command;
     string filename;
-    while (true)
+    while (game->getCommandProcessor().size() > 0)
     {
-        cout << "Enter next command: ";
-        getline(cin, input);
-        stringstream ss(input);
-        ss >> command;
-        ss >> filename;
+        Command nextCommand = game->getCommandProcessor().getCommand();
+        nextCommand.attach(game->getInnerEngineLogger());
+
+        command = *(nextCommand.functionName);
+
+        if (nextCommand.parameters->size() > 0)
+        {
+            filename = (*(nextCommand.parameters))[0];
+        }
 
         if (command == "loadmap" && !filename.empty())
         {
-            MapLoader map = MapLoader(filename);
-            game->setState(new MapLoadedState());
-            break;
+            nextCommand.saveEffect("Loading " + filename);
+            game->getCommandProcessor().saveCommand(nextCommand);
+            game->getCommandProcessor().next();
+
+            try
+            {
+                MapLoader map = MapLoader(filename);
+                game->setMapLoader(&map);
+                game->setState(new MapLoadedState());
+                return;
+            }
+            catch (const std::exception& e)
+            {
+                cout << e.what() << endl;
+            }
         }
         else
         {
+            nextCommand.saveEffect("Invalid");
+            game->getCommandProcessor().saveCommand(nextCommand);
+            game->getCommandProcessor().next();
+            cout << "Invalid command" << endl;
+        }
+    }
+    
+    while (true)
+    {
+        cout << "Enter next command: ";
+        game->getCommandProcessor().readCommand();
+
+        Command nextCommand = game->getCommandProcessor().getCommand();
+        nextCommand.attach(game->getInnerEngineLogger());
+
+        command = *(nextCommand.functionName);
+
+        if (nextCommand.parameters->size() > 0)
+        {
+            filename = (*(nextCommand.parameters))[0];
+        }
+
+        if (command == "loadmap" && !filename.empty() && game->getCommandProcessor().validate(this))
+        {
+            nextCommand.saveEffect("Loading " + filename);
+            game->getCommandProcessor().saveCommand(nextCommand);
+            game->getCommandProcessor().next();
+
+            try
+            {
+                MapLoader map = MapLoader(filename);
+                game->setMapLoader(&map);
+                game->setState(new MapLoadedState());
+                break;
+            }
+            catch (const std::exception& e)
+            {
+                cout << e.what() << endl;
+            }
+        }
+        else
+        {
+            nextCommand.saveEffect("Invalid");
+            game->getCommandProcessor().saveCommand(nextCommand);
+            game->getCommandProcessor().next();
             cout << "Invalid command" << endl;
         }
     }
@@ -82,35 +188,119 @@ void MapLoadedState::transition(GameEngine *game)
     string input;
     string command;
     string command2;
+    while (game->getCommandProcessor().size() > 0)
+    {
+        cout << "Enter next command: ";
+        game->getCommandProcessor().readCommand();
+
+        Command nextCommand = game->getCommandProcessor().getCommand();
+        nextCommand.attach(game->getInnerEngineLogger());
+
+        command = *(nextCommand.functionName);
+
+        if (nextCommand.parameters->size() > 0)
+        {
+            command2 = (*(nextCommand.parameters))[0];
+        }
+
+        if (command == "loadmap" && !command2.empty() && game->getCommandProcessor().validate(this))
+        {
+            nextCommand.saveEffect("Loading " + command2);
+            game->getCommandProcessor().saveCommand(nextCommand);
+            game->getCommandProcessor().next();
+
+            try
+            {
+                MapLoader map = MapLoader(command2);
+                game->setMapLoader(&map);
+                game->setState(new MapLoadedState());
+                return;
+            }
+            catch (const std::exception& e)
+            {
+                cout << e.what() << endl;
+            }
+        }
+        else if (command == "validatemap" && game->getCommandProcessor().validate(this))
+        {
+            
+            bool validated = game->getMapLoader().GetMap().Validate();
+            if (validated){
+                nextCommand.saveEffect("Map Valid");
+                game->getCommandProcessor().saveCommand(nextCommand);
+                game->getCommandProcessor().next();
+            }
+            else{
+                nextCommand.saveEffect("Map Invalid");
+                game->getCommandProcessor().saveCommand(nextCommand);
+                game->getCommandProcessor().next();
+            }
+            return;
+        }
+        
+        else
+        {
+            nextCommand.saveEffect("Invalid");
+            game->getCommandProcessor().saveCommand(nextCommand);
+            game->getCommandProcessor().next();
+            cout << "Invalid command" << endl;
+        }
+    }
     while (true)
     {
         cout << "Enter next command: ";
-        getline(cin, input);
-        stringstream ss(input);
-        ss >> command;
-        ss >> command2;
+        game->getCommandProcessor().readCommand();
 
-        if (command == "validatemap" && command2.empty())
+        Command nextCommand = game->getCommandProcessor().getCommand();
+        nextCommand.attach(game->getInnerEngineLogger());
+
+        command = *(nextCommand.functionName);
+
+        if (nextCommand.parameters->size() > 0)
         {
+            command2 = (*(nextCommand.parameters))[0];
+        }
 
-            if (map.GetMap().Validate() == true)
+        if (command == "loadmap" && !command2.empty() && game->getCommandProcessor().validate(this))
+        {
+            nextCommand.saveEffect("Loading " + command2);
+            game->getCommandProcessor().saveCommand(nextCommand);
+            game->getCommandProcessor().next();
+
+            try
             {
-                game->setState(new MapValidatedState());
+                MapLoader map = MapLoader(command2);
+                game->setMapLoader(&map);
+                game->setState(new MapLoadedState());
+                break;
             }
-            else
+            catch (const std::exception& e)
             {
-                cout << "The map is invalid. Please load a new map." << endl;
+                cout << e.what() << endl;
+            }
+        }
+        else if (command == "validatemap" && game->getCommandProcessor().validate(this))
+        {
+            
+            bool validated = game->getMapLoader().GetMap().Validate();
+            if (validated){
+                nextCommand.saveEffect("Map Valid");
+                game->getCommandProcessor().saveCommand(nextCommand);
+                game->getCommandProcessor().next();
+            }
+            else{
+                nextCommand.saveEffect("Map Invalid");
+                game->getCommandProcessor().saveCommand(nextCommand);
+                game->getCommandProcessor().next();
             }
             break;
         }
-        if (command == "loadmap" && !command2.empty())
-        {
-            map = MapLoader(command2);
-            cout << "New map was loaded" << endl;
-            break;
-        }
+        
         else
         {
+            nextCommand.saveEffect("Invalid");
+            game->getCommandProcessor().saveCommand(nextCommand);
+            game->getCommandProcessor().next();
             cout << "Invalid command" << endl;
         }
     }
@@ -131,25 +321,83 @@ void MapValidatedState::transition(GameEngine *game)
 
     string input;
     string command;
-    string playername;
-    while (true)
+    string parameter;
+    while (game->getCommandProcessor().size() > 0)
     {
-        cout << "Enter next command: ";
-        getline(cin, input);
-        stringstream ss(input);
-        ss >> command;
-        ss >> playername;
+        Command nextCommand = game->getCommandProcessor().getCommand();
+        nextCommand.attach(game->getInnerEngineLogger());
 
-        if (command == "addplayer" && !playername.empty())
+        command = *(nextCommand.functionName);
+
+        if (nextCommand.parameters->size() > 0)
         {
-            numPlayers++;
-            players.push_back(Player(playername));
-            cout << numPlayers << endl;
-            game->setState(new PlayersAddedState());
-            break;
+            parameter = (*(nextCommand.parameters))[0];
+        }
+
+        if (command == "addplayer" && !parameter.empty() && game->getCommandProcessor().validate(this))
+        {
+            nextCommand.saveEffect("Adding " + parameter);
+            game->getCommandProcessor().saveCommand(nextCommand);
+            game->getCommandProcessor().next();
+
+            try
+            {
+                numPlayers++;
+                players.push_back(Player(parameter));
+                cout << numPlayers << endl;
+                game->setState(new PlayersAddedState());
+                return;
+            }
+            catch (const std::exception& e)
+            {
+                cout << e.what() << endl;
+            }
         }
         else
         {
+            nextCommand.saveEffect("Invalid");
+            game->getCommandProcessor().saveCommand(nextCommand);
+            game->getCommandProcessor().next();
+            cout << "Invalid command" << endl;
+        }
+    }
+    
+    while (true)
+    {
+        Command nextCommand = game->getCommandProcessor().getCommand();
+        nextCommand.attach(game->getInnerEngineLogger());
+
+        command = *(nextCommand.functionName);
+
+        if (nextCommand.parameters->size() > 0)
+        {
+            parameter = (*(nextCommand.parameters))[0];
+        }
+
+        if (command == "addplayer" && !parameter.empty() && game->getCommandProcessor().validate(this))
+        {
+            nextCommand.saveEffect("Adding " + parameter);
+            game->getCommandProcessor().saveCommand(nextCommand);
+            game->getCommandProcessor().next();
+
+            try
+            {
+                numPlayers++;
+                players.push_back(Player(parameter));
+                cout << numPlayers << endl;
+                game->setState(new PlayersAddedState());
+                break;
+            }
+            catch (const std::exception& e)
+            {
+                cout << e.what() << endl;
+            }
+        }
+        else
+        {
+            nextCommand.saveEffect("Invalid");
+            game->getCommandProcessor().saveCommand(nextCommand);
+            game->getCommandProcessor().next();
             cout << "Invalid command" << endl;
         }
     }
@@ -170,33 +418,51 @@ void PlayersAddedState::transition(GameEngine *game)
 
     string input;
     string command;
-    string playername;
-    while (true)
+    string parameter;
+    while (game->getCommandProcessor().size() > 0)
     {
-        cout << "Enter next command: ";
-        getline(cin, input);
-        stringstream ss(input);
-        ss >> command;
-        ss >> playername;
+        Command nextCommand = game->getCommandProcessor().getCommand();
+        nextCommand.attach(game->getInnerEngineLogger());
 
-        if (command == "addplayer" && !playername.empty())
+        command = *(nextCommand.functionName);
+
+        if (nextCommand.parameters->size() > 0)
         {
-            numPlayers++;
-            players.push_back(Player(playername));
-
-            cout << numPlayers << endl;
-            cout << "New player added!" << endl;
-            break;
+            parameter = (*(nextCommand.parameters))[0];
         }
-        if (command == "gamestart")
+
+        if (command == "addplayer" && !parameter.empty() && game->getCommandProcessor().validate(this))
+        {
+            nextCommand.saveEffect("Adding " + parameter);
+            game->getCommandProcessor().saveCommand(nextCommand);
+            game->getCommandProcessor().next();
+
+            try
+            {
+                numPlayers++;
+                players.push_back(Player(parameter));
+                cout << numPlayers << endl;
+                game->setState(new PlayersAddedState());
+                return;
+            }
+            catch (const std::exception& e)
+            {
+                cout << e.what() << endl;
+            }
+        }
+        else if (command == "gamestart" && !parameter.empty() && game->getCommandProcessor().validate(this))
         {
             if (numPlayers > 6 || numPlayers < 2)
             {
-                cout << "You need between 2 and 6 players to start!" << endl;
+                nextCommand.saveEffect("You need between 2 and 6 players to start!");
+                game->getCommandProcessor().saveCommand(nextCommand);
+                game->getCommandProcessor().next();
             }
             else
             {
-                cout << "Game starting!" << endl;
+                nextCommand.saveEffect("Starting Game");
+                game->getCommandProcessor().saveCommand(nextCommand);
+                game->getCommandProcessor().next();
                 // Fairly distribute all territories to the players. Remainder territories (if total # of territories is odd)
                 // are left as neutral territories.
                 vector<Territory*> territories = map.GetMap().GetTerritories();
@@ -236,15 +502,108 @@ void PlayersAddedState::transition(GameEngine *game)
                     cout << players[i].playername << ": " << players[i].reinforcementPool << endl;
                 }
 
-               /*  for (int i = 0; i < numPlayers; i++)
+                for (int i = 0; i < numPlayers; i++)
                 {
-                    for (int j = 0; j < 1; j++)
-                    {
-                        players[i].cardsOwned.cards[j] = deck->draw();
-                    }
+                    playerQueue.push(players[i]);
+                }
 
-                    players[i].cardsOwned.printHand();
-                } */
+                game->mainGameLoop(game);
+                // game->setState(new ReinforcementsState(map));
+                return;
+            }
+        }
+        
+        else
+        {
+            nextCommand.saveEffect("Invalid");
+            game->getCommandProcessor().saveCommand(nextCommand);
+            game->getCommandProcessor().next();
+            cout << "Invalid command" << endl;
+        }
+    }
+    
+    while (game->getCommandProcessor().size() > 0)
+    {
+        Command nextCommand = game->getCommandProcessor().getCommand();
+        nextCommand.attach(game->getInnerEngineLogger());
+
+        command = *(nextCommand.functionName);
+
+        if (nextCommand.parameters->size() > 0)
+        {
+            parameter = (*(nextCommand.parameters))[0];
+        }
+
+        if (command == "addplayer" && !parameter.empty() && game->getCommandProcessor().validate(this))
+        {
+            nextCommand.saveEffect("Adding " + parameter);
+            game->getCommandProcessor().saveCommand(nextCommand);
+            game->getCommandProcessor().next();
+
+            try
+            {
+                numPlayers++;
+                players.push_back(Player(parameter));
+                cout << numPlayers << endl;
+                game->setState(new PlayersAddedState());
+                break;
+            }
+            catch (const std::exception& e)
+            {
+                cout << e.what() << endl;
+            }
+        }
+        else if (command == "gamestart" && !parameter.empty() && game->getCommandProcessor().validate(this))
+        {
+            if (numPlayers > 6 || numPlayers < 2)
+            {
+                nextCommand.saveEffect("You need between 2 and 6 players to start!");
+                game->getCommandProcessor().saveCommand(nextCommand);
+                game->getCommandProcessor().next();
+            }
+            else
+            {
+                nextCommand.saveEffect("Starting Game");
+                game->getCommandProcessor().saveCommand(nextCommand);
+                game->getCommandProcessor().next();
+                // Fairly distribute all territories to the players. Remainder territories (if total # of territories is odd)
+                // are left as neutral territories.
+                vector<Territory*> territories = map.GetMap().GetTerritories();
+
+                int numTerritories = territories.size();
+                cout << "numTerritories: " << numTerritories << endl;
+                int terrPerPlayer = numTerritories / numPlayers;
+                cout << "Territories per player: " << terrPerPlayer << endl;
+
+                for (int i = 0; i < numPlayers; i++)
+                {
+                    cout << "Player: " << players[i].playername << endl;
+                    for (int j = 0; j < terrPerPlayer; j++)
+                    {
+                        players[i].territoriesOwned.push_back(*(territories[j]));
+                        cout << "Territory: " << territories[j + (i * terrPerPlayer)]->GetTerritoryName() << endl;
+                    }
+                }
+
+                // Shuffle order of play of the players randomly
+                auto rd = random_device{};
+                auto rng = default_random_engine{rd()};
+                shuffle(begin(players), end(players), rng);
+
+                cout << "Shuffled players: ";
+                for (int i = 0; i < numPlayers; i++)
+                {
+                    cout << players[i].playername << ", ";
+                }
+
+                // Give players 50 initial reinforcements
+                cout << endl
+                     << "Reinforcements: ";
+                for (int i = 0; i < numPlayers; i++)
+                {
+                    players[i].reinforcementPool = 50;
+                    cout << players[i].playername << ": " << players[i].reinforcementPool << endl;
+                }
 
                 for (int i = 0; i < numPlayers; i++)
                 {
@@ -256,8 +615,12 @@ void PlayersAddedState::transition(GameEngine *game)
                 break;
             }
         }
+        
         else
         {
+            nextCommand.saveEffect("Invalid");
+            game->getCommandProcessor().saveCommand(nextCommand);
+            game->getCommandProcessor().next();
             cout << "Invalid command" << endl;
         }
     }
@@ -436,27 +799,113 @@ void WinState::transition(GameEngine *game)
 {
     cout << "-----------------------------------" << endl;
     cout << "Win state" << endl;
+
+    string input;
     string command;
+    string parameter;
+    while (game->getCommandProcessor().size() > 0)
+    {
+        Command nextCommand = game->getCommandProcessor().getCommand();
+        nextCommand.attach(game->getInnerEngineLogger());
+
+        command = *(nextCommand.functionName);
+
+        if (nextCommand.parameters->size() > 0)
+        {
+            parameter = (*(nextCommand.parameters))[0];
+        }
+
+        if (command == "replay" && game->getCommandProcessor().validate(this))
+        {
+            nextCommand.saveEffect("Replaying");
+            game->getCommandProcessor().saveCommand(nextCommand);
+            game->getCommandProcessor().next();
+
+            try
+            {
+                game->setState(new StartState());
+                return;
+            }
+            catch (const std::exception& e)
+            {
+                cout << e.what() << endl;
+            }
+        }
+        else if (command == "quit" && game->getCommandProcessor().validate(this))
+        {
+            nextCommand.saveEffect("Quitting");
+            game->getCommandProcessor().saveCommand(nextCommand);
+            game->getCommandProcessor().next();
+
+            try
+            {
+                game->setState(new EndState());
+                return;
+            }
+            catch (const std::exception& e)
+            {
+                cout << e.what() << endl;
+            }
+        }
+        
+        else
+        {
+            nextCommand.saveEffect("Invalid");
+            game->getCommandProcessor().saveCommand(nextCommand);
+            game->getCommandProcessor().next();
+            cout << "Invalid command" << endl;
+        }
+    }
+    
     while (true)
     {
-        cout << "Enter next command: ";
-        cin >> command;
-        if (command == "end")
+        Command nextCommand = game->getCommandProcessor().getCommand();
+        nextCommand.attach(game->getInnerEngineLogger());
+
+        command = *(nextCommand.functionName);
+
+        if (nextCommand.parameters->size() > 0)
         {
-
-            cout << "-----------------------------------" << endl;
-
-            cout << "You won!" << endl;
-            game->setState(new EndState());
-            break;
+            parameter = (*(nextCommand.parameters))[0];
         }
-        if (command == "play")
+
+        if (command == "replay" && game->getCommandProcessor().validate(this))
         {
-            game->setState(new StartState());
-            break;
+            nextCommand.saveEffect("Replaying");
+            game->getCommandProcessor().saveCommand(nextCommand);
+            game->getCommandProcessor().next();
+
+            try
+            {
+                game->setState(new StartState());
+                break;
+            }
+            catch (const std::exception& e)
+            {
+                cout << e.what() << endl;
+            }
+        }
+        else if (command == "quit" && game->getCommandProcessor().validate(this))
+        {
+            nextCommand.saveEffect("Quitting");
+            game->getCommandProcessor().saveCommand(nextCommand);
+            game->getCommandProcessor().next();
+
+            try
+            {
+                game->setState(new EndState());
+                break;
+            }
+            catch (const std::exception& e)
+            {
+                cout << e.what() << endl;
+            }
         }
         else
         {
+            nextCommand.saveEffect("Invalid");
+            game->getCommandProcessor().saveCommand(nextCommand);
+            game->getCommandProcessor().next();
             cout << "Invalid command" << endl;
         }
     }

@@ -51,3 +51,10 @@ LogObserver& LogObserver::operator =(const LogObserver& other){
   this->logFile = other.logFile;
   return *this;
 }
+
+LogObserver::LogObserver(string file){
+  logFile = const_cast<char*>(file.c_str());
+}
+LogObserver::LogObserver(char* file){
+  logFile = file;
+}

@@ -39,6 +39,7 @@ protected:
 class LogObserver : public Observer {
 public:
   LogObserver(string file);
+  LogObserver(char* file);
   void update(ILoggable* message) override;
 
   LogObserver& operator =(const LogObserver& other);

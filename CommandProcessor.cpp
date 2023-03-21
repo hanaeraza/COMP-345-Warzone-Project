@@ -13,6 +13,7 @@
 
 using namespace std;
 
+// class State;
 
 CommandProcessor& CommandProcessor::operator =(const CommandProcessor& other){
   this->commandQueue = other.commandQueue;
@@ -121,6 +122,10 @@ void CommandProcessor::next(){
   Command last = *(commandQueue->front());
   CommandProcessor::saveCommand(last);
   commandQueue->pop();
+}
+
+int CommandProcessor::size(){
+  return commandQueue->size();
 }
 
 bool CommandProcessor::hasCommand(){

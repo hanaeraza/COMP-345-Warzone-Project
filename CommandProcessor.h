@@ -1,6 +1,6 @@
 #pragma once
 
-#include "GameEngine.h"
+// #include "GameEngine.h"
 #include "LoggingObserver.h"
 
 #include <string>
@@ -11,6 +11,8 @@
 #include <list>
 
 using namespace std;
+
+class State;
 
 class Command : public ILoggable, public Subject
 {
@@ -45,6 +47,7 @@ public:
   bool validate(string currentState);
   bool hasCommand();
   void readCommand();
+  int size();
 
   string stringToLog() const override;
 

@@ -2,9 +2,12 @@
 #define GAMEENGINE_H
 #include <iostream>
 #include "Map.h"
+#include "LoggingObserver.h"
+#include "CommandProcessor.h"
 
 using namespace std;
 
+class CommandProcessor;
 class State;
 
 class GameEngine : public Subject, public ILoggable
@@ -16,10 +19,25 @@ public:
     void setState(State *state);
     void transition();
     string getCurrentState();
+
+    string stringToLog() const override;
+
+    void setCommandProcessor(CommandProcessor *commandProcessor);
+    CommandProcessor getCommandProcessor();
+    void setMapLoader(MapLoader *input);
+    MapLoader getMapLoader();
+    LogObserver* getInnerEngineLogger();
+
+    void generateLogger(string file);
+
+    friend ostream& operator<<(ostream& os, const GameEngine& input);
     
     void mainGameLoop(GameEngine *game);
 private:
     State* currentState;
+    CommandProcessor* commandProcessor;
+    LogObserver* innerEngineLogger;
+    MapLoader* mapLoader;
 };
 
 // Abstract class
