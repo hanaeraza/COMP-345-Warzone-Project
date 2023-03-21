@@ -23,6 +23,7 @@ public:
     string stringToLog() const override;
 
     void setCommandProcessor(CommandProcessor *commandProcessor);
+    void setAutoCommandProcessor(string file);
     CommandProcessor getCommandProcessor();
     void setMapLoader(MapLoader *input);
     MapLoader getMapLoader();

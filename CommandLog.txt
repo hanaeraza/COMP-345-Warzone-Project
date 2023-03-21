@@ -193,3 +193,163 @@ Map Valid
 1679408680
  validatemap
 
+1679408893
+ loadmap cow.ma[
+Loading cow.ma[
+
+Loading cow.ma[
+1679408893
+ loadmap cow.ma[
+
+1679408988
+ loadmap cow.map
+Loading cow.map
+
+Loading cow.map
+1679408988
+ loadmap cow.map
+
+1679408995
+ validatemap
+Map Valid
+
+Map Valid
+1679408995
+ validatemap
+
+1679409216
+ loadmap cow.map
+Loading cow.map
+
+Loading cow.map
+1679409216
+ loadmap cow.map
+
+1679409222
+ validatemap
+Map Valid
+
+Map Valid
+1679409222
+ validatemap
+
+1679409231
+ addplayer oscar
+Adding oscar
+
+Adding oscar
+1679409231
+ addplayer oscar
+
+1679409241
+ addplayer oscar_2
+Adding oscar_2
+
+Adding oscar_2
+1679409241
+ addplayer oscar_2
+
+1679409249
+ assplayer 1
+Invalid
+
+Invalid
+1679409249
+ assplayer 1
+
+1679409256
+ addplayer 567
+Adding 567
+
+Adding 567
+1679409256
+ addplayer 567
+
+1679409261
+ addplayer 7686767
+Adding 7686767
+
+Adding 7686767
+1679409261
+ addplayer 7686767
+
+1679409267
+ addplayer 787989
+Adding 787989
+
+Adding 787989
+1679409267
+ addplayer 787989
+
+1679409275
+ addplayer 565]
+Adding 565]
+
+Adding 565]
+1679409275
+ addplayer 565]
+
+1679409283
+ gamestart
+Invalid
+
+Invalid
+1679409283
+ gamestart
+
+1679409766
+ loadmap cow.map
+Loading cow.map
+
+Loading cow.map
+1679409766
+ loadmap cow.map
+
+1679409808
+ validatemap
+Map Valid
+
+Map Valid
+1679409808
+ validatemap
+
+1679409808
+ addplayer oscar
+Adding oscar
+
+Adding oscar
+1679409808
+ addplayer oscar
+
+1679409808
+ addplayer ed
+Adding ed
+
+Adding ed
+1679409808
+ addplayer ed
+
+1679409808
+ addplayer you
+Adding you
+
+Adding you
+1679409808
+ addplayer you
+
+1679409808
+ addplayer me
+Adding me
+
+Adding me
+1679409808
+ addplayer me
+
+1679409808
+ validatemap
+Invalid
+
+Invalid
+1679409808
+ validatemap
+

@@ -64,7 +64,7 @@ protected:
   // GameEngine* engine;
   queue<Command*>* commandQueue;
 };
-class FileCommandProcessorAdapter : CommandProcessor
+class FileCommandProcessorAdapter : public CommandProcessor
 {
 public:
   FileCommandProcessorAdapter(string file);

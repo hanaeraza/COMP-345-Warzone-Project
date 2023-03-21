@@ -55,6 +55,12 @@ void GameEngine::setCommandProcessor(CommandProcessor *commandProcessor)
     commandProcessor->attach(innerEngineLogger);
 }
 
+void GameEngine::setAutoCommandProcessor(string file)
+{
+    commandProcessor = new FileCommandProcessorAdapter(file);
+    commandProcessor->attach(innerEngineLogger);
+}
+
 CommandProcessor GameEngine::getCommandProcessor()
 {
     return *commandProcessor;
@@ -368,6 +374,8 @@ void MapValidatedState::transition(GameEngine *game)
     
     while (true)
     {
+        game->getCommandProcessor().readCommand();
+
         Command nextCommand = game->getCommandProcessor().getCommand();
         nextCommand.attach(game->getInnerEngineLogger());
 
@@ -454,7 +462,7 @@ void PlayersAddedState::transition(GameEngine *game)
                 cout << e.what() << endl;
             }
         }
-        else if (command == "gamestart" && !parameter.empty() && game->getCommandProcessor().validate(this))
+        else if (command == "gamestart" && game->getCommandProcessor().validate(this))
         {
             if (numPlayers > 6 || numPlayers < 2)
             {
@@ -526,8 +534,10 @@ void PlayersAddedState::transition(GameEngine *game)
         }
     }
     
-    while (game->getCommandProcessor().size() > 0)
+    while (true)
     {
+        game->getCommandProcessor().readCommand();
+
         Command nextCommand = game->getCommandProcessor().getCommand();
         nextCommand.attach(game->getInnerEngineLogger());
 
@@ -863,6 +873,8 @@ void WinState::transition(GameEngine *game)
     
     while (true)
     {
+        game->getCommandProcessor().readCommand();
+
         Command nextCommand = game->getCommandProcessor().getCommand();
         nextCommand.attach(game->getInnerEngineLogger());
 
