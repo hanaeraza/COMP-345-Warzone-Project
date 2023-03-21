@@ -1,6 +1,7 @@
 #pragma once
 
 #include "GameEngine.h"
+#include "LoggingObserver.h"
 
 #include <string>
 #include <iostream>
@@ -10,7 +11,7 @@
 
 using namespace std;
 
-class Command
+class Command : public ILoggable, public Subject
 {
 public:
   Command(const string input);
@@ -19,11 +20,7 @@ public:
 
   void saveEffect(string effect);
 
-  string* functionName;
-  vector<string>* parameters;
-  vector<string>* validIn;
-  vector<string>* nextState;
-  string* effect;
+  string stringToLog() const override;
 
   friend ostream& operator<<(ostream& os, const Command& input){
 		os << *(input.functionName);
@@ -34,8 +31,14 @@ public:
     os << "\n" << *(input.effect);
     return os;
 	}
+  
+  string* functionName;
+  vector<string>* parameters;
+  vector<string>* validIn;
+  vector<string>* nextState;
+  string* effect;
 };
-class CommandProcessor
+class CommandProcessor  : public ILoggable
 {
 public:
   Command getCommand();
@@ -47,6 +50,8 @@ public:
   bool validate(string currentState);
   bool hasCommand();
   void readCommand();
+
+  string stringToLog() const override;
 
   CommandProcessor();
   ~CommandProcessor() = default;

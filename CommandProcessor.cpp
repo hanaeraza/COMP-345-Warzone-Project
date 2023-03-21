@@ -26,6 +26,7 @@ Command CommandProcessor::getCommand(){
 }
 
 void CommandProcessor::saveCommand(Command input){
+  notify(this);
   std::ofstream file(logFile, std::ios::app);
   if (file.is_open()) {
       time_t now = std::time(nullptr);
@@ -97,6 +98,22 @@ void CommandProcessor::readCommand(){
   Command* newCommand = new Command(input);
 
   commandQueue->push(newCommand);
+}
+
+string CommandProcessor::stringToLog() const {
+  stringstream stream;
+  string output;
+  stream << *this;
+  output = stream.str();
+  return output;
+}
+
+string Command::stringToLog() const {
+  stringstream stream;
+  string output;
+  stream << *this;
+  output = stream.str();
+  return output;
 }
 
 Command::Command(const Command& other){
@@ -176,6 +193,7 @@ Command::Command(const string input){
 }
 
 void Command::saveEffect(string input){
+  notify(this);
   *effect += input + "\n";
 }
 

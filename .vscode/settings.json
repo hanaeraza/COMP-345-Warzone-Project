@@ -54,6 +54,7 @@
     "queue": "cpp",
     "deque": "cpp",
     "ranges": "cpp",
-    "span": "cpp"
+    "span": "cpp",
+    "list": "cpp"
   }
 }
