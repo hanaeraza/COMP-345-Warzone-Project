@@ -1,23 +1,25 @@
 #include <iostream>
 #include <string>
+#include <sstream>
+#include <random>
+#include <algorithm>
+#include <queue>
 #include "GameEngine.h"
-#include "Player.h"
+#include "Card.h"
+//#include "Map.cpp"
 #include "Map.h"
-#include    <cmath>
 using namespace std;
 
-static int numPlayers=0;
-Player * players;
+static int numPlayers = 0;
+vector<Player> players;
+Deck *deck = new Deck();
+MapLoader map;
+
+queue<Player> playerQueue;
 
 // Start program in the start state
 GameEngine::GameEngine() : currentState(new StartState()) {}
-//Map getter
-Map GameEngine::getMap(){
-    return *gameMap;
-}
-void GameEngine::setMap(Map *map){
-    gameMap = map;
-}
+
 // Function to set next state
 void GameEngine::setState(State *state)
 {
@@ -39,15 +41,21 @@ void StartState::update(GameEngine *game)
 {
     cout << "-----------------------------------" << endl;
     cout << "Start state." << endl;
-    
+
+    string input;
     string command;
+    string filename;
     while (true)
     {
-        cout << "Enter next state: ";
-        cin >> command;
-        if (command == "loadmap")
+        cout << "Enter next command: ";
+        getline(cin, input);
+        stringstream ss(input);
+        ss >> command;
+        ss >> filename;
+
+        if (command == "loadmap" && !filename.empty())
         {
-            game->setMap(new Map(12,3)); 
+            MapLoader map = MapLoader(filename);
             game->setState(new MapLoadedState());
             break;
         }
@@ -63,25 +71,42 @@ string StartState::getName()
     return "StartState";
 }
 
+
+
 // Map loaded state
 void MapLoadedState::update(GameEngine *game)
 {
     cout << "-----------------------------------" << endl;
     cout << "Map loaded state" << endl;
-    
+
+    string input;
     string command;
+    string command2;
     while (true)
     {
-        cout << "Enter next state: ";
-        cin >> command;
-        if (command == "validatemap")
+        cout << "Enter next command: ";
+        getline(cin, input);
+        stringstream ss(input);
+        ss >> command;
+        ss >> command2;
+
+        if (command == "validatemap" && command2.empty())
         {
-            game->setState(new MapValidatedState());
+
+            if (map.GetMap().Validate() == true)
+            {
+                game->setState(new MapValidatedState());
+            }
+            else
+            {
+                cout << "The map is invalid. Please load a new map." << endl;
+            }
             break;
         }
-        if (command == "loadmap")
+        if (command == "loadmap" && !command2.empty())
         {
-            cout << "Map was reloaded" << endl;
+            map = MapLoader(command2);
+            cout << "New map was loaded" << endl;
             break;
         }
         else
@@ -96,21 +121,30 @@ string MapLoadedState::getName()
     return "MapLoadedState";
 }
 
+
+
 // Map validated state
 void MapValidatedState::update(GameEngine *game)
 {
     cout << "-----------------------------------" << endl;
     cout << "Map validated state" << endl;
-    
+
+    string input;
     string command;
+    string playername;
     while (true)
     {
-        cout << "Enter next state: ";
-        cin >> command;
-        if (command == "addplayer")
+        cout << "Enter next command: ";
+        getline(cin, input);
+        stringstream ss(input);
+        ss >> command;
+        ss >> playername;
+
+        if (command == "addplayer" && !playername.empty())
         {
-            numPlayers=1;
-            cout << "Number of players: " << numPlayers << endl;
+            numPlayers++;
+            players.push_back(Player(playername));
+            cout << numPlayers << endl;
             game->setState(new PlayersAddedState());
             break;
         }
@@ -126,29 +160,101 @@ string MapValidatedState::getName()
     return "MapValidatedState";
 }
 
+
+
 // Players added state
 void PlayersAddedState::update(GameEngine *game)
 {
     cout << "-----------------------------------" << endl;
     cout << "Players Added state" << endl;
-    
+
+    string input;
     string command;
+    string playername;
     while (true)
     {
-        cout << "Enter next state: ";
-        cin >> command;
-        if (command == "addplayer")
+        cout << "Enter next command: ";
+        getline(cin, input);
+        stringstream ss(input);
+        ss >> command;
+        ss >> playername;
+
+        if (command == "addplayer" && !playername.empty())
         {
-            cout << "Another player added" << endl;
             numPlayers++;
-            cout << "Number of players: " << numPlayers << endl;
+            players.push_back(Player(playername));
+
+            cout << numPlayers << endl;
+            cout << "New player added!" << endl;
             break;
         }
-        if (command == "assigncountries")
+        if (command == "gamestart")
         {
-            players = new Player[numPlayers];
-            game->setState(new ReinforcementsState());
-            break;
+            if (numPlayers > 6 || numPlayers < 2)
+            {
+                cout << "You need between 2 and 6 players to start!" << endl;
+            }
+            else
+            {
+                cout << "Game starting!" << endl;
+                // Fairly distribute all territories to the players. Remainder territories (if total # of territories is odd)
+                // are left as neutral territories.
+                vector<Territory*> territories = map.GetMap().GetTerritories();
+
+                int numTerritories = territories.size();
+                cout << "numTerritories: " << numTerritories << endl;
+                int terrPerPlayer = numTerritories / numPlayers;
+                cout << "Territories per player: " << terrPerPlayer << endl;
+
+                for (int i = 0; i < numPlayers; i++)
+                {
+                    cout << "Player: " << players[i].playername << endl;
+                    for (int j = 0; j < terrPerPlayer; j++)
+                    {
+                        players[i].territoriesOwned.push_back(*(territories[j]));
+                        cout << "Territory: " << territories[j + (i * terrPerPlayer)]->GetTerritoryName() << endl;
+                    }
+                }
+
+                // Shuffle order of play of the players randomly
+                auto rd = random_device{};
+                auto rng = default_random_engine{rd()};
+                shuffle(begin(players), end(players), rng);
+
+                cout << "Shuffled players: ";
+                for (int i = 0; i < numPlayers; i++)
+                {
+                    cout << players[i].playername << ", ";
+                }
+
+                // Give players 50 initial reinforcements
+                cout << endl
+                     << "Reinforcements: ";
+                for (int i = 0; i < numPlayers; i++)
+                {
+                    players[i].reinforcementPool = 50;
+                    cout << players[i].playername << ": " << players[i].reinforcementPool << endl;
+                }
+
+               /*  for (int i = 0; i < numPlayers; i++)
+                {
+                    for (int j = 0; j < 1; j++)
+                    {
+                        players[i].cardsOwned.cards[j] = deck->draw();
+                    }
+
+                    players[i].cardsOwned.printHand();
+                } */
+
+                for (int i = 0; i < numPlayers; i++)
+                {
+                    playerQueue.push(players[i]);
+                }
+
+                game->mainGameLoop(game);
+                // game->setState(new ReinforcementsState(map));
+                break;
+            }
         }
         else
         {
@@ -162,20 +268,41 @@ string PlayersAddedState::getName()
     return "PlayersAddedState";
 }
 
+void mainGameLoop(GameEngine *game)
+{
+    while (true)
+    {
+        cout << "-----------------------------------" << endl;
+        cout << "Main game loop" << endl;
+        cout << "Current player: " << playerQueue.front().playername << endl;
+        game->setState(new ReinforcementsState());
+        cout << "Reinforcements: " << playerQueue.front().reinforcementPool << endl;
+        game->setState(new IssueOrdersState());
+
+        game->setState(new ExecuteOrdersState());
+
+        Player p = playerQueue.front();
+        playerQueue.pop();
+        playerQueue.push(p);
+    }
+}
+
+
 // Assign reinforcements state
 void ReinforcementsState::update(GameEngine *game)
 {
     cout << "-----------------------------------" << endl;
     cout << "Assign reinforcements state" << endl;
-    reinforcementPhase();
+
+    reinforcementPhase(playerQueue.front());
     string command;
     while (true)
     {
-        cout << "Enter next state: ";
+        cout << "Enter next command: ";
         cin >> command;
         if (command == "issueorder")
         {
-            game->setState(new IssueOrdersState());
+            // game->setState(new IssueOrdersState(map));
             break;
         }
         else
@@ -185,46 +312,53 @@ void ReinforcementsState::update(GameEngine *game)
     }
 }
 
-void ReinforcementsState::reinforcementPhase(){
-    
-    for(int i=0; i<numPlayers; i++){
-        cout << "Player " << (i+1) << " number of reinforcements: " ;
-        int numTerritoriesOwned = players[i].territoriesOwned->size();
-        int numReinforcementsFromTerritories = floor(numTerritoriesOwned/3);
+void ReinforcementsState::reinforcementPhase(Player player)
+{
+    for (int i = 0; i < numPlayers; i++)
+    {
+        cout << "Player " << (i + 1) << " number of reinforcements: ";
+        int numTerritoriesOwned = player.territoriesOwned.size();
+        int numReinforcementsFromTerritories = floor(numTerritoriesOwned / 3);
         cout << "Number of Reinforcements from Territories: " << numReinforcementsFromTerritories << endl;
-        //check for continent control here
+        // check for continent control here
         int numReinforcementsFromContinents = 0;
-       
-        //add map var fo class then use mapName.getContinentsOwnedBy(players[i])
-        //then loop through that vector and add the control value of each continent
-        //to the numReinforcementsFromContinents
-        
-        numReinforcementsFromContinents += gameMap->getContinentsOwnedBy(players[i])->getControlValue();
-        
-        
+        vector<string> continentsOwned = map.GetMap().GetContinentsOwnedBy(player);
+
+        for (int i = 0; i < continentsOwned.size(); i++)
+        {
+            numReinforcementsFromContinents += map.GetMap().GetContinentBonus(continentsOwned[i]);
+        }
+
         cout << "Number of Reinforcements from Continents: " << numReinforcementsFromContinents << endl;
         int totalReinforcements = numReinforcementsFromTerritories + numReinforcementsFromContinents;
-        if(totalReinforcements < 3){
+        if (totalReinforcements < 3)
+        {
             totalReinforcements = 3;
         }
-        cout << "Total Reinforcements for player " << (i+1) << ": " << totalReinforcements << " armies " << endl;
+        cout << "Total Reinforcements for player " << player.playername << ": " << totalReinforcements << " armies " << endl;
+        player.reinforcementPool += totalReinforcements;
     }
 }
+
 string ReinforcementsState::getName()
 {
     return "ReinforcementsState";
 }
+
+
 
 // Issue orders state
 void IssueOrdersState::update(GameEngine *game)
 {
     cout << "-----------------------------------" << endl;
     cout << "Issue orders state" << endl;
-    
+
+    issueOrdersPhase(playerQueue.front());
+
     string command;
     while (true)
     {
-        cout << "Enter next state: ";
+        cout << "Enter next command: ";
         cin >> command;
         if (command == "issueorder")
         {
@@ -233,7 +367,7 @@ void IssueOrdersState::update(GameEngine *game)
         }
         if (command == "endissueorders")
         {
-            game->setState(new ExecuteOrdersState());
+            // game->setState(new ExecuteOrdersState(map));
             break;
         }
         else
@@ -243,26 +377,30 @@ void IssueOrdersState::update(GameEngine *game)
     }
 }
 
+void IssueOrdersState::issueOrdersPhase(Player player)
+{
+    player.issueOrder(map);
+}
+
 string IssueOrdersState::getName()
 {
-    for(int i=0;i<numPlayers;i++){
-        cout << "Player " << (i+1) << " orders: " << endl;
-            players[i].issueOrder();
-        }
-
     return "IssueOrdersState";
 }
+
+
 
 // Execute orders state
 void ExecuteOrdersState::update(GameEngine *game)
 {
     cout << "-----------------------------------" << endl;
     cout << "Execute orders state" << endl;
-    
+
+    executeOrdersPhase(playerQueue.front());
+
     string command;
     while (true)
     {
-        cout << "Enter next state: ";
+        cout << "Enter next command: ";
         cin >> command;
         if (command == "execorder")
         {
@@ -285,7 +423,9 @@ void ExecuteOrdersState::update(GameEngine *game)
         }
     }
 }
-
+void ExecuteOrdersState::executeOrdersPhase(Player player)
+{
+}
 string ExecuteOrdersState::getName()
 {
     return "ExecuteOrdersState";
@@ -299,7 +439,7 @@ void WinState::update(GameEngine *game)
     string command;
     while (true)
     {
-        cout << "Enter next state: ";
+        cout << "Enter next command: ";
         cin >> command;
         if (command == "end")
         {
@@ -337,3 +477,7 @@ string EndState::getName()
 {
     return "EndState";
 }
+
+/* void GameEngine::mainGameLoop(){
+    reinforcementPhase();
+} */
