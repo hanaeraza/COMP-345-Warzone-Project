@@ -338,6 +338,16 @@ Map::Map(const Map& other){
     this->continentBonus = new vector<int>(*(other.continentBonus));
 }
 
+Map::Map(){
+    this->territoryQuantity = new int(0);
+    this->territories = new vector<Territory*>();
+    this->adjacencyMatrix = new vector<vector<bool>>();
+    this->continentQuantity = new int(0);
+    this->continents = new vector<string>();
+    this->continentIndices = new vector<int>();
+    this->continentBonus = new vector<int>();
+}
+
 /*
     Returns new generated map of size size and with continentAmount continents
 */
@@ -757,6 +767,13 @@ MapLoader::MapLoader(int size, int continentAmount){
 */
 MapLoader::MapLoader(string file){
     this->loadedMap = new Map(file);
+}
+
+/*
+    Creates an empty MapLoader
+*/
+MapLoader::MapLoader(){
+    this->loadedMap = new Map();
 }
 
 /*

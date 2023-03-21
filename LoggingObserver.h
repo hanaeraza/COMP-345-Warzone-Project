@@ -11,14 +11,21 @@ public:
   virtual void notify() = 0;
 };
 
+class ConcreteSubject : public Subject{
+public:
+};
+
 class Observer {
 public:
-  virtual void update(Subject* subject) = 0;
+  virtual void update() = 0;
 };
 
 class LogObserver : public Observer {
 public:
-  void update(Subject* subject) override;
+  LogObserver(string file);
+  void update() override;
+
+  string file;
 };
 
 class ILoggable {

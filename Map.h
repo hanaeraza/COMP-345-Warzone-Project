@@ -42,6 +42,7 @@ private:
 class Map
 {
 public:
+	Map();
 	Map(string file);
 	Map(int size, int continentAmount);
 	Map(const Map& other);
@@ -113,6 +114,7 @@ private:
 class MapLoader
 {
 public:
+	MapLoader();
 	MapLoader(int size, int continentAmount);
 	MapLoader(string file);
 	MapLoader(const MapLoader& other);
