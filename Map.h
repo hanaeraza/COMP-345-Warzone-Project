@@ -21,6 +21,8 @@ public:
 	void Update(Player owner, int armyQuantity);
 	string GetTerritoryName();
 	string GetContinentName();
+	int GetArmyQuantity();
+	void SetArmyQuantity(int input);
 	Player GetOwner();
 	static vector<Territory> GetTerritoriesOwnedBy(const Player& input, const vector<Territory>& inputList);
 

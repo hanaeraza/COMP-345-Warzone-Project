@@ -176,6 +176,13 @@ Player Territory::GetOwner(){
     return *(this->owner);
 }
 
+int Territory::GetArmyQuantity(){
+    return *(this->armyQuantity);
+}
+void Territory::SetArmyQuantity(int input){
+    *(this->armyQuantity) = input;
+}
+
 /*
     Returns territories
 */

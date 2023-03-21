@@ -1,14 +1,21 @@
 #pragma once
 
 #include <string>
+#include <list>
 
 using namespace std;
 
 class Subject {
 public:
-  virtual void attach(Observer* observer) = 0;
-  virtual void detach(Observer* observer) = 0;
+  virtual void attach(Observer* observer){
+    observers->push_back(observer);
+  }
+  virtual void detach(Observer* observer){
+    observers->remove(observer);
+  }
   virtual void notify() = 0;
+
+  list<Observer*>* observers;
 };
 
 class ConcreteSubject : public Subject{
