@@ -192,62 +192,60 @@ void PlayersAddedState::update(GameEngine *game)
             else
             {
                 cout << "Game starting!" << endl;
-    // Fairly distribute all territories to the players. Remainder territories (if total # of territories is odd)
-    // are left as neutral territories.
+            // Fairly distribute all territories to the players. Remainder territories (if total # of territories is odd)
+            // are left as neutral territories.
 
-    vector<Territory *> territories = map.GetMap().GetTerritories();
+            vector<Territory *> territories = map.GetMap().GetTerritories();
 
-    int numTerritories = territories.size();
-    cout << "numTerritories: " << numTerritories << endl;
-    int terrPerPlayer = numTerritories / numPlayers;
-    cout << "Territories per player: " << terrPerPlayer << endl;
+            int numTerritories = territories.size();
+            cout << "numTerritories: " << numTerritories << endl;
+            int terrPerPlayer = numTerritories / numPlayers;
+            cout << "Territories per player: " << terrPerPlayer << endl;
 
-    for (int i = 0; i < numPlayers; i++)
-    {
-        cout << "Player: " << players[i].playername << endl;
-        for (int j = 0; j < terrPerPlayer; j++)
-        {
-            players[i].territoriesOwned.push_back(*(territories[j]));
-            cout << "Territory: " << territories[j + (i * terrPerPlayer)]->GetTerritoryName() << endl;
-        }
-    }
+            for (int i = 0; i < numPlayers; i++)
+            {
+                cout << "Player: " << players[i].playername << endl;
+                for (int j = 0; j < terrPerPlayer; j++)
+                {
+                    players[i].territoriesOwned.push_back(*(territories[j]));
+                    cout << "Territory: " << territories[j + (i * terrPerPlayer)]->GetTerritoryName() << endl;
+                }
+            }
 
-    // Shuffle order of play of the players randomly
-    auto rd = random_device{};
-    auto rng = default_random_engine{rd()};
-    shuffle(begin(players), end(players), rng);
+            // Shuffle order of play of the players randomly
+            auto rd = random_device{};
+            auto rng = default_random_engine{rd()};
+            shuffle(begin(players), end(players), rng);
 
-    cout << "Shuffled players: ";
-    for (int i = 0; i < numPlayers; i++)
-    {
-        cout << players[i].playername << ", ";
-    }
+            cout << "Shuffled players: ";
+            for (int i = 0; i < numPlayers; i++)
+            {
+                cout << players[i].playername << ", ";
+            }
 
-    // Give players 50 initial reinforcements
-    cout << endl
-         << "Reinforcements: ";
-    for (int i = 0; i < numPlayers; i++)
-    {
-        players[i].reinforcementPool = 50;
-        cout << players[i].playername << ": " << players[i].reinforcementPool << endl;
-    }
+            // Give players 50 initial reinforcements
+            cout << endl
+                << "Reinforcements: ";
+            for (int i = 0; i < numPlayers; i++)
+            {
+                players[i].reinforcementPool = 50;
+                cout << players[i].playername << ": " << players[i].reinforcementPool << endl;
+            }
 
-    /*  for (int i = 0; i < numPlayers; i++)
-     {
-         for (int j = 0; j < 1; j++)
-         {
-             players[i].cardsOwned.cards[j] = deck->draw();
-         }
+            /*  for (int i = 0; i < numPlayers; i++)
+            {
+                for (int j = 0; j < 1; j++)
+                {
+                    players[i].cardsOwned.cards[j] = deck->draw();
+                }
 
-         players[i].cardsOwned.printHand();
-     } */
+                players[i].cardsOwned.printHand();
+            } */
 
-    for (int i = 0; i < numPlayers; i++)
-    {
-        playerQueue.push(players[i]);
-    }
-                //game->startupPhase(game);
-                //game->mainGameLoop(game);
+            for (int i = 0; i < numPlayers; i++)
+            {
+                playerQueue.push(players[i]);
+            }
                 
                 game->setState(new ReinforcementsState());
                 break;
