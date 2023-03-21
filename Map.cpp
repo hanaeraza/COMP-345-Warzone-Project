@@ -1,4 +1,3 @@
-#pragma once
 
 #include "Map.h"
 #include "Player.h"
@@ -155,6 +154,10 @@ bool Territory::operator==(const Territory& other) {
 void Territory::Update(Player owner, int armyQuantity) {
     *(this->owner) = owner;
     *(this->armyQuantity) = armyQuantity;
+}
+
+void Territory::Update(Player owner) {
+    *(this->owner) = owner;
 }
 
 /*

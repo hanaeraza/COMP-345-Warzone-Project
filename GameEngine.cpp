@@ -14,6 +14,7 @@ Deck *deck = new Deck();
 MapLoader map;  
 
 
+
 // Start program in the start state
 GameEngine::GameEngine() : currentState(new StartState()) {}
 
@@ -226,10 +227,15 @@ void ReinforcementsState::update(GameEngine *game)
         cout << "Player: " << players[i].playername << endl;
         for (int j = 0; j < terrPerPlayer; j++)
         {
-            players[i].territoriesOwned.push_back(*(territories[j]));
+            players[i].territoriesOwned.push_back(*(territories[j + (i * terrPerPlayer)]));
+
+            territories[j + (i * terrPerPlayer)]->Update(players[i]); 
+
             cout << "Territory: " << (territories[j + (i * terrPerPlayer)])->GetTerritoryName() << endl;
         }
     }
+
+    cout << "Owner of territory " << territories[0]->GetTerritoryName() << " is: " << territories[0]->GetOwner().playername << endl; 
 
     // Shuffle order of play of the players randomly
     auto rd = random_device{};

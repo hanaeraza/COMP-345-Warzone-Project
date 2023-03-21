@@ -39,7 +39,7 @@ class Player {
         };
 
 
-        //Function declarations (make non static)
+        //Function declarations 
         vector<string> toDefend();
         vector<string> toAttack();
         void issueOrder(string order);

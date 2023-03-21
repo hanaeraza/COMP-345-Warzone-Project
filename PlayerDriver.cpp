@@ -3,7 +3,6 @@
 #include "Player.h"
 #include "Card.h"
 #include "Map.h"
-#include "Map.cpp"
 #include <vector>
 using namespace std;
 
