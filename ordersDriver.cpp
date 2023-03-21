@@ -1,39 +1,53 @@
 #include "orders.h"
+#include "player.h"
+#include "card.h"
+#include "map.h"
 using namespace std;
+
+class Player;
+class Territory;
 
 int main() {
 
-    newOrder orderCreate;
-    OrdersList order_list; //creates an order list
+    Hand* myHand = new Hand();
+    vector<Territory>* myTerritories = new vector<Territory>();
+    OrdersList* myOrders = new OrdersList();
 
-    cout << "\nOrder List:" << endl;
+    // Create some sample data for the other parameters
+    vector<string> defenseList = {"territory1", "territory2"};
+    vector<string> attackList = {"territory3", "territory4"};
+    
+    int reinforcementPool = 5;
+    Territory t1("Canada", "America");
+    Territory t2("USA", "America");
 
-    order_list.addOrder(orderCreate.createOrder("Deploy")); //Creates a new order object based on the string inputted. if order doesnt exists displays an invalid order
-    order_list.addOrder(orderCreate.createOrder("Advance"));
-    order_list.addOrder(orderCreate.createOrder("Bomb"));
-    order_list.addOrder(orderCreate.createOrder("Blockade"));
-    order_list.addOrder(orderCreate.createOrder("Airlift"));
-    order_list.addOrder(orderCreate.createOrder("Negotiate"));
-    printOrders(order_list.getOrders());
+    vector<Territory> territories = {t1,t2};
 
-    cout << "\nOrder List after swap:" << endl;
-    order_list.move(2,1);
-    printOrders(order_list.getOrders());
+    // Create a Player object using the constructor
+    Player* p1 = new Player(myHand, *myTerritories, *myOrders, defenseList, attackList, reinforcementPool);
 
-    cout << "\nOrder List after removal:" << endl;
-    order_list.remove(1);
-    printOrders(order_list.getOrders());
+    Player* p2 = new Player(myHand, *myTerritories, *myOrders, defenseList, attackList, reinforcementPool);
 
-    cout << "\nCopied order list:" << endl;
-    OrdersList copy = OrdersList(order_list);
-    printOrders(copy.getOrders());
+    //add order in list of p1
+    cout << "\nAdding Deploy order to player order list:" << endl;
+    p1->GetOrdersList().addOrder(new Deploy(t1, p1, 5));
+    
+    p1->GetOrdersList().addOrder(new Advance(t1, t2, p1, 10));
 
+    p1->GetOrdersList().addOrder(new Advance(t1, t2, p1, 10));
+
+    p1->GetOrdersList().addOrder(new Bomb(t1, p1));
+
+    p1->GetOrdersList().addOrder(new Blockade(t1, p1));
+
+    p1->GetOrdersList().addOrder(new Airlift(t1, t2, p1, 2));
+
+    p1->GetOrdersList().addOrder(new Negotiate(p1, p2));
+
+
+    //validate and execute
     cout << "\nValidating and executing orders from list:" << endl;
-    copy.executeOrders();
-
-    cout << "\nCopied orders list after execution:" << endl;
-    printOrders(copy.getOrders()); //empty list because orders were executed
-
+    p1->GetOrdersList().executeOrders();
 
     return 0;
 }
