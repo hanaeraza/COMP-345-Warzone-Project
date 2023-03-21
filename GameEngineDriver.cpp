@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include "GameEngine.h"
-#include "GameEngine.cpp"
 using namespace std;
 
    int main() {
@@ -11,6 +10,6 @@ using namespace std;
     while(GameEngine.getCurrentState() != "EndState") {
     GameEngine.update(); 
     }
-
+ 
     return 0; 
 }

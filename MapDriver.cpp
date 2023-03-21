@@ -1,6 +1,5 @@
 #include <iostream>
 #include "Map.h"
-#include "Map.cpp"
 
 int main()
 {

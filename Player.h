@@ -4,7 +4,9 @@
 #include <ostream>
 #include <string>
 #include <vector>
-#include "Card.cpp"
+#include "Card.h"
+#include "Orders.h"
+#include "Map.h"
 using namespace std;
 
 // Forward declaration
@@ -15,7 +17,7 @@ class Player {
 
     public:
         string playername;
-        Hand cardsOwned; 
+        Hand* cardsOwned = new Hand(); 
         vector<Territory> territoriesOwned; 
         OrdersList ordersList; 
         vector<string> defenseList; 
@@ -27,7 +29,7 @@ class Player {
         Player(string name) {
             playername = name;
         };
-        Player(Hand cards, vector<Territory> territories, OrdersList orders, vector<string> defend, vector<string> attack, int reinforcements) {
+        Player(Hand* cards, vector<Territory> territories, OrdersList orders, vector<string> defend, vector<string> attack, int reinforcements) {
             cardsOwned = cards;
             territoriesOwned = territories;
             ordersList = orders;
