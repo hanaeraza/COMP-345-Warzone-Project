@@ -7,6 +7,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <ctime>
 
 using namespace std;
 
@@ -26,7 +27,7 @@ void Subject::notify(ILoggable* message){
 void LogObserver::update(ILoggable* message){
   std::ofstream file(logFile, std::ios::app);
   if (file.is_open()) {
-      time_t now = std::time(nullptr);
+      time_t now = time(nullptr);
       file << "Message At: " << now << "\n\t" << message->stringToLog();
       file.close();
   }
@@ -37,14 +38,16 @@ ILoggable& ILoggable::operator =(const ILoggable& other){
   return *this;
 }
 
-ILoggable& ILoggable::operator =(const ILoggable& other){
+Observer& Observer::operator =(const Observer& other){
   return *this;
 }
 
-ILoggable& ILoggable::operator =(const ILoggable& other){
+Subject& Subject::operator =(const Subject& other){
+  this->observers = other.observers;
   return *this;
 }
 
-ILoggable& ILoggable::operator =(const ILoggable& other){
+LogObserver& LogObserver::operator =(const LogObserver& other){
+  this->logFile = other.logFile;
   return *this;
 }

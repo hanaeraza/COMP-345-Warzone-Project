@@ -9,6 +9,7 @@
         "-g",
         "${file}",
         "${fileDirname}/CommandProcessor.cpp",
+        "${fileDirname}/LoggingObserver.cpp",
         "${fileDirname}/Map.cpp",
         "${fileDirname}/GameEngine.cpp",
         "${fileDirname}/Player.cpp",

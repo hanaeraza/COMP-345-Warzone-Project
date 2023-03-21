@@ -33,8 +33,66 @@ FileCommandProcessorAdapter& FileCommandProcessorAdapter::operator =(const FileC
   return *this;
 }
 
+ostream& operator<<(ostream& os, const Command& input){
+  os << *(input.functionName);
+  for (int i = 0; i < input.parameters->size(); i++)
+  {
+    os << " " << (*(input.parameters))[i];
+  }
+  os << "\n" << *(input.effect);
+  return os;
+}
+
+ostream& operator<<(ostream& os, const CommandProcessor& input){
+  queue<Command*>* readingCommandQueue = new queue<Command*>();
+
+  os << "Commands:\n";
+
+  while (!input.commandQueue->empty())
+  {
+    readingCommandQueue->push(input.commandQueue->front());
+    os << "\t" << *(input.commandQueue->front()) << "\n";
+    input.commandQueue->pop();
+  }
+
+  while (!readingCommandQueue->empty())
+  {
+    input.commandQueue->push(readingCommandQueue->front());
+    readingCommandQueue->pop();
+  }
+
+  delete readingCommandQueue;
+  return os;
+}
+
+ostream& operator<<(ostream& os, const FileCommandProcessorAdapter& input){
+  queue<Command*>* readingCommandQueue = new queue<Command*>();
+
+  os << "Commands:\n";
+
+  while (!input.commandQueue->empty())
+  {
+    readingCommandQueue->push(input.commandQueue->front());
+    os << "\t" << *(input.commandQueue->front()) << "\n";
+    input.commandQueue->pop();
+  }
+
+  while (!readingCommandQueue->empty())
+  {
+    input.commandQueue->push(readingCommandQueue->front());
+    readingCommandQueue->pop();
+  }
+
+  delete readingCommandQueue;
+  return os;
+}
+
 CommandProcessor::CommandProcessor(){
   this->commandQueue = new queue<Command*>();
+}
+
+CommandProcessor::CommandProcessor(const CommandProcessor& other){
+  this->commandQueue = other.commandQueue;
 }
 
 Command CommandProcessor::getCommand(){
@@ -50,7 +108,7 @@ void CommandProcessor::saveCommand(Command input){
   notify(this);
   std::ofstream file(logFile, std::ios::app);
   if (file.is_open()) {
-      time_t now = std::time(nullptr);
+      time_t now = time(nullptr);
       file << now << "\n " << input << "\n" << *(input.effect);
       file.close();
   }
@@ -231,4 +289,8 @@ FileCommandProcessorAdapter::FileCommandProcessorAdapter(string file){
   {
     (*commandQueue).push(new Command(lastLine));
   }
+}
+
+FileCommandProcessorAdapter::FileCommandProcessorAdapter(const FileCommandProcessorAdapter& other){
+  this->commandQueue = other.commandQueue;
 }

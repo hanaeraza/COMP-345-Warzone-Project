@@ -26,9 +26,9 @@ void GameEngine::setState(State *state)
     currentState = state;
 }
 
-void GameEngine::update()
+void GameEngine::transition()
 {
-    currentState->update(this);
+    currentState->transition(this);
 }
 
 string GameEngine::getCurrentState()
@@ -37,7 +37,7 @@ string GameEngine::getCurrentState()
 }
 
 // Start state
-void StartState::update(GameEngine *game)
+void StartState::transition(GameEngine *game)
 {
     cout << "-----------------------------------" << endl;
     cout << "Start state." << endl;
@@ -74,7 +74,7 @@ string StartState::getName()
 
 
 // Map loaded state
-void MapLoadedState::update(GameEngine *game)
+void MapLoadedState::transition(GameEngine *game)
 {
     cout << "-----------------------------------" << endl;
     cout << "Map loaded state" << endl;
@@ -124,7 +124,7 @@ string MapLoadedState::getName()
 
 
 // Map validated state
-void MapValidatedState::update(GameEngine *game)
+void MapValidatedState::transition(GameEngine *game)
 {
     cout << "-----------------------------------" << endl;
     cout << "Map validated state" << endl;
@@ -163,7 +163,7 @@ string MapValidatedState::getName()
 
 
 // Players added state
-void PlayersAddedState::update(GameEngine *game)
+void PlayersAddedState::transition(GameEngine *game)
 {
     cout << "-----------------------------------" << endl;
     cout << "Players Added state" << endl;
@@ -289,7 +289,7 @@ void GameEngine::mainGameLoop(GameEngine *game)
 
 
 // Assign reinforcements state
-void ReinforcementsState::update(GameEngine *game)
+void ReinforcementsState::transition(GameEngine *game)
 {
     cout << "-----------------------------------" << endl;
     cout << "Assign reinforcements state" << endl;
@@ -348,7 +348,7 @@ string ReinforcementsState::getName()
 
 
 // Issue orders state
-void IssueOrdersState::update(GameEngine *game)
+void IssueOrdersState::transition(GameEngine *game)
 {
     cout << "-----------------------------------" << endl;
     cout << "Issue orders state" << endl;
@@ -390,7 +390,7 @@ string IssueOrdersState::getName()
 
 
 // Execute orders state
-void ExecuteOrdersState::update(GameEngine *game)
+void ExecuteOrdersState::transition(GameEngine *game)
 {
     cout << "-----------------------------------" << endl;
     cout << "Execute orders state" << endl;
@@ -432,7 +432,7 @@ string ExecuteOrdersState::getName()
 }
 
 // Win state
-void WinState::update(GameEngine *game)
+void WinState::transition(GameEngine *game)
 {
     cout << "-----------------------------------" << endl;
     cout << "Win state" << endl;
@@ -468,7 +468,7 @@ string WinState::getName()
 }
 
 // End state
-void EndState::update(GameEngine *game)
+void EndState::transition(GameEngine *game)
 {
     // end
 }
