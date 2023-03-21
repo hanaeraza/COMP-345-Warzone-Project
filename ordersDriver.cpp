@@ -8,28 +8,27 @@ class Player;
 class Territory;
 
 int main() {
-
-    Hand* myHand = new Hand();
-    vector<Territory>* myTerritories = new vector<Territory>();
-    OrdersList* myOrders = new OrdersList();
-
-    // Create some sample data for the other parameters
-    vector<string> defenseList = {"territory1", "territory2"};
-    vector<string> attackList = {"territory3", "territory4"};
     
     int reinforcementPool = 5;
     Territory t1("Canada", "America");
     Territory t2("USA", "America");
-
-    vector<Territory> territories = {t1,t2};
-
+    Territory t3("Mexico", "America");
+    
     // Create a Player object using the constructor
-    Player* p1 = new Player(myHand, *myTerritories, *myOrders, defenseList, attackList, reinforcementPool);
+    Player* p1 = new Player();
+    Player* p2 = new Player();
 
-    Player* p2 = new Player(myHand, *myTerritories, *myOrders, defenseList, attackList, reinforcementPool);
+
+    t1.SetOwner(*p1);
+    t2.SetOwner(*p1);
+    t3.SetOwner(*p2);
+
+    t1.SetArmyQuantity(50);
+    t2.SetArmyQuantity(50);
+    t3.SetArmyQuantity(50);
 
     //add order in list of p1
-    cout << "\nAdding Deploy order to player order list:" << endl;
+    cout << "\nAdding orders to p1 order list:" << endl;
     p1->GetOrdersList().addOrder(new Deploy(t1, p1, 5));
     
     p1->GetOrdersList().addOrder(new Advance(t1, t2, p1, 10));

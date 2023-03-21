@@ -539,9 +539,9 @@ void Negotiate::execute()
     if (validate())
     {
         // cout << "Negotiate is being executed!\n";
-        // currentPlayer->addFriendly(targetPlayer->getPlayerName());
-        // targetPlayer->addFriendly(currentPlayer->getPlayerName());
-        cout << "Negotiate has finished executing!" << endl;
+        // currentPlayer->alliedTo(targetPlayer);
+        // targetPlayer->alliedTo(currentPlayer);
+        //cout << "Negotiate has finished executing!" << endl;
     }
 }
 
