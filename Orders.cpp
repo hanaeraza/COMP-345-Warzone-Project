@@ -8,10 +8,15 @@
 #include "Player.h"
 #include "Map.h"
 
-std::ostream& operator<<(std::ostream& os, Order const&){
+std::ostream& operator<<(std::ostream& os, const Order& order){
+    os << "Order";
     return os;
 }
-std::ostream& operator<<(std::ostream& os, OrdersList const&){
+std::ostream& operator<<(std::ostream& os, const OrdersList& ordersList){
+    for (int i = 0; i < ordersList.getOrders().size(); i++)
+    {
+        os << ordersList.getOrders()[i] << " " << i << "\n";
+    }
     return os;
 }
 
@@ -604,6 +609,11 @@ ostream& Airlift::printOrder(ostream& out) const
 ostream& Negotiate::printOrder(ostream& out) const
 {
     return out << "Negotiate";
+}
+
+ostream& Order::printOrder(ostream& out) const
+{
+    return out << "Order";
 }
 
 string Order::stringToLog() const

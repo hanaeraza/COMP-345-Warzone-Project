@@ -353,3 +353,147 @@ Invalid
 1679409808
  validatemap
 
+1679410465
+ loadmap cow.map
+Loading cow.map
+
+Loading cow.map
+1679410465
+ loadmap cow.map
+
+1679410476
+ validatemap
+Map Valid
+
+Map Valid
+1679410476
+ validatemap
+
+1679410476
+ addplayer oscar
+Adding oscar
+
+Adding oscar
+1679410476
+ addplayer oscar
+
+1679410476
+ addplayer ed
+Adding ed
+
+Adding ed
+1679410476
+ addplayer ed
+
+1679410476
+ addplayer you
+Adding you
+
+Adding you
+1679410476
+ addplayer you
+
+1679410476
+ addplayer me
+Adding me
+
+Adding me
+1679410476
+ addplayer me
+
+1679410476
+ 1
+Invalid
+
+Invalid
+1679410476
+ 1
+
+1679410553
+ loadmap cow.map
+Loading cow.map
+
+Loading cow.map
+1679410553
+ loadmap cow.map
+
+1679410604
+ loadmap cow.map
+Loading cow.map
+
+Loading cow.map
+1679410604
+ loadmap cow.map
+
+1679410999
+ loadmap cow.map
+Loading cow.map
+
+Loading cow.map
+1679411001
+ loadmap cow.map
+
+1679411190
+ loadmap cow.map
+Loading cow.map
+
+Loading cow.map
+1679411190
+ loadmap cow.map
+
+1679411255
+ loadmap cow.map
+Loading cow.map
+
+Loading cow.map
+1679411255
+ loadmap cow.map
+
+1679411390
+ loadmap cow.map
+Loading cow.map
+
+Loading cow.map
+1679411390
+ loadmap cow.map
+
+1679411390
+ validatemap
+Map Valid
+
+Map Valid
+1679411390
+ validatemap
+
+1679411390
+ addplayer oscar
+Adding oscar
+
+Adding oscar
+1679411390
+ addplayer oscar
+
+1679411390
+ addplayer ed
+Adding ed
+
+Adding ed
+1679411390
+ addplayer ed
+
+1679411390
+ addplayer you
+Adding you
+
+Adding you
+1679411390
+ addplayer you
+
+1679411390
+ addplayer me
+Adding me
+
+Adding me
+1679411390
+ addplayer me
+

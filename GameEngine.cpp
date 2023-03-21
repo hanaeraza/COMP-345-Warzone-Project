@@ -199,7 +199,6 @@ void MapLoadedState::transition(GameEngine *game)
     while (game->getCommandProcessor().size() > 0)
     {
         cout << "Enter next command: ";
-        game->getCommandProcessor().readCommand();
 
         Command nextCommand = game->getCommandProcessor().getCommand();
         nextCommand.attach(game->getInnerEngineLogger());

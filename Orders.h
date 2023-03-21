@@ -21,7 +21,7 @@ public:
     virtual bool validate() const = 0;
     virtual void execute() = 0; //pure virtual method
     virtual string getType() const = 0;
-    virtual ostream& printOrder(ostream&) const = 0;
+    virtual ostream& printOrder(ostream&) const;
     Player *currentPlayer;
 
     string stringToLog() const override;
@@ -31,7 +31,7 @@ public:
 
 private:
     virtual Order* clone() const = 0;
-    friend ostream& operator<<(ostream&, const Order&);
+    friend ostream& operator<<(ostream& os, const Order& order);
     friend class OrdersList;
 };
 
@@ -167,7 +167,7 @@ public:
 private:
     vector<Order*> orders;
 
-    friend ostream& operator<<(ostream&, const OrdersList&);
+    friend ostream& operator<<(ostream& os, const OrdersList& order);
 };
 
 void printOrders(const vector<Order*> &order_list);

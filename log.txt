@@ -112,3 +112,73 @@ Message At: 1679409808
 	Current state: playersadded
 Message At: 1679409808
 	validatemap
+Message At: 1679410465
+	loadmap cow.map
+Message At: 1679410465
+	Current state: maploaded
+Message At: 1679410476
+	validatemap
+Message At: 1679410476
+	Current state: mapvalidated
+Message At: 1679410476
+	addplayer oscar
+Message At: 1679410476
+	Current state: playersadded
+Message At: 1679410476
+	addplayer ed
+Message At: 1679410476
+	Current state: playersadded
+Message At: 1679410476
+	addplayer you
+Message At: 1679410476
+	Current state: playersadded
+Message At: 1679410476
+	addplayer me
+Message At: 1679410476
+	Current state: playersadded
+Message At: 1679410476
+	1
+Message At: 1679410553
+	loadmap cow.map
+Message At: 1679410553
+	Current state: maploaded
+Message At: 1679410604
+	loadmap cow.map
+Message At: 1679410604
+	Current state: maploaded
+Message At: 1679410998
+	loadmap cow.map
+Message At: 1679411009
+	Current state: maploaded
+Message At: 1679411190
+	loadmap cow.map
+Message At: 1679411190
+	Current state: maploaded
+Message At: 1679411255
+	loadmap cow.map
+Message At: 1679411256
+	Current state: maploaded
+Message At: 1679411390
+	loadmap cow.map
+Message At: 1679411390
+	Current state: maploaded
+Message At: 1679411390
+	validatemap
+Message At: 1679411390
+	Current state: mapvalidated
+Message At: 1679411390
+	addplayer oscar
+Message At: 1679411390
+	Current state: playersadded
+Message At: 1679411390
+	addplayer ed
+Message At: 1679411390
+	Current state: playersadded
+Message At: 1679411390
+	addplayer you
+Message At: 1679411390
+	Current state: playersadded
+Message At: 1679411390
+	addplayer me
+Message At: 1679411390
+	Current state: playersadded

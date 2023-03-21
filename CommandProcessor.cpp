@@ -217,7 +217,11 @@ Command::Command(const string input){
     splitBySpace.push_back(token);
   }
 
-  functionName = new string(splitBySpace[0]);
+  if (input == ""){
+    functionName = new string("NONE");
+  }
+  else
+    functionName = new string(splitBySpace[0]);
 
   parameters = new vector<string>();
   validIn = new vector<string>();

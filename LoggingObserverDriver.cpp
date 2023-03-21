@@ -3,27 +3,28 @@
 #include "GameEngine.h"
 // #include "LoggingObserver.h"
 #include "CommandProcessor.h"
+#include "Orders.h"
 
 #include <iostream>
 #include <fstream>
 #include <sstream>
 
 int main(){
-    GameEngine* game = new GameEngine();
-    game->generateLogger("log.txt");
-    char input;
-    std::cout << "Enter a to read commands from file: ";
-    std::cin >> input;
-    if (input == 'a')
-    {
-      game->setCommandProcessor(new CommandProcessor());
-    }
-    else
-    {
-      game->setCommandProcessor(new FileCommandProcessorAdapter("commands1.txt"));
-    }
-    while (true){
-        game->transition();
-    }
-    return 0;
+  GameEngine* game = new GameEngine();
+  game->generateLogger("log.txt");
+  std::string input;
+  std::cout << "Enter file or type none: ";
+  std::getline(std::cin, input);
+  if (input == "none")
+  {
+    game->setCommandProcessor(new CommandProcessor());
+  }
+  else
+  {
+    game->setCommandProcessor(new FileCommandProcessorAdapter(input));
+  }
+  while (true){
+      game->transition();
+  }
+  return 0;
 }
