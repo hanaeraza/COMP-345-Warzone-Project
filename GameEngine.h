@@ -1,7 +1,7 @@
 #ifndef GAMEENGINE_H
 #define GAMEENGINE_H
 #include <iostream>
-
+#include "Map.h"
 
 using namespace std;
 
@@ -16,17 +16,14 @@ public:
     void setState(State *state);
     void update();
     string getCurrentState();
-    Map getMap();
-    void setMap(Map *map);
     
+    void mainGameLoop(GameEngine *game);
 private:
     State* currentState;
-    Map *gameMap;
-    
 };
 
 // Abstract class
-class State 
+class State
 {
 public:
     virtual void update(GameEngine *game) = 0;
@@ -44,13 +41,16 @@ public:
 class MapLoadedState : public State
 {
 public:
+   
     void update(GameEngine *game);
     string getName();
+
 };
 
 class MapValidatedState : public State
 {
 public:
+ 
     void update(GameEngine *game);
     string getName();
 };
@@ -58,32 +58,40 @@ public:
 class PlayersAddedState : public State
 {
 public:
+    
     void update(GameEngine *game);
     string getName();
+   
 };
 
 class ReinforcementsState : public State
 {
 public:
+    
     void update(GameEngine *game);
-    void reinforcementPhase();
     string getName();
+    void reinforcementPhase(Player player);
+
 };
 
 class IssueOrdersState : public State
 {
 public:
+    
     void update(GameEngine *game);
-    void issueOrdersPhase();
     string getName();
+    void issueOrdersPhase(Player player);
+
 };
 
 class ExecuteOrdersState : public State
 {
 public:
+    
     void update(GameEngine *game);
-    void executeOrdersPhase();
     string getName();
+    void executeOrdersPhase(Player player);
+
 };
 
 
@@ -100,7 +108,6 @@ public:
     void update(GameEngine *game);
     string getName();
 };
-
 
 
 
