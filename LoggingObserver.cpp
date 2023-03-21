@@ -32,3 +32,19 @@ void LogObserver::update(ILoggable* message){
   }
   cout << message->stringToLog();
 }
+
+ILoggable& ILoggable::operator =(const ILoggable& other){
+  return *this;
+}
+
+ILoggable& ILoggable::operator =(const ILoggable& other){
+  return *this;
+}
+
+ILoggable& ILoggable::operator =(const ILoggable& other){
+  return *this;
+}
+
+ILoggable& ILoggable::operator =(const ILoggable& other){
+  return *this;
+}

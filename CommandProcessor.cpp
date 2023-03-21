@@ -2,15 +2,36 @@
 
 #include "CommandProcessor.h"
 #include "GameEngine.h"
+#include "LoggingObserver.h"
 
 #include <random>
 #include <iostream>
 #include <fstream>
 #include <sstream>
 #include <ctime>
+#include <list>
 
 using namespace std;
 
+
+CommandProcessor& CommandProcessor::operator =(const CommandProcessor& other){
+  this->commandQueue = other.commandQueue;
+  return *this;
+}
+
+Command& Command::operator =(const Command& other){
+  this->functionName = other.functionName;
+  this->parameters = other.parameters;
+  this->validIn = other.validIn;
+  this->nextState = other.nextState;
+  this->effect = other.effect;
+  return *this;
+}
+
+FileCommandProcessorAdapter& FileCommandProcessorAdapter::operator =(const FileCommandProcessorAdapter& other){
+  this->commandQueue = other.commandQueue;
+  return *this;
+}
 
 CommandProcessor::CommandProcessor(){
   this->commandQueue = new queue<Command*>();

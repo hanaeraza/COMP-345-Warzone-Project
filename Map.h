@@ -19,6 +19,8 @@ public:
 	~Territory() = default;
 
 	void Update(Player owner, int armyQuantity);
+	void Update(Player owner);
+	void SetOwner(const Player owner);
 	string GetTerritoryName();
 	string GetContinentName();
 	int GetArmyQuantity();

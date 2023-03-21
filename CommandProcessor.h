@@ -8,6 +8,7 @@
 #include <fstream>
 #include <vector>
 #include <queue>
+#include <list>
 
 using namespace std;
 
@@ -31,6 +32,8 @@ public:
     os << "\n" << *(input.effect);
     return os;
 	}
+
+  Command& operator =(const Command& other);
   
   string* functionName;
   vector<string>* parameters;
@@ -38,7 +41,7 @@ public:
   vector<string>* nextState;
   string* effect;
 };
-class CommandProcessor  : public ILoggable
+class CommandProcessor  : public ILoggable, public Subject
 {
 public:
   Command getCommand();
@@ -57,6 +60,8 @@ public:
   ~CommandProcessor() = default;
 
   const char* logFile = "CommandLog.txt";
+
+  CommandProcessor& operator =(const CommandProcessor& other);
 
   friend ostream& operator<<(ostream& os, const CommandProcessor& input){
     queue<Command*>* readingCommandQueue = new queue<Command*>();
@@ -87,6 +92,8 @@ class FileCommandProcessorAdapter : CommandProcessor
 {
 public:
   FileCommandProcessorAdapter(string file);
+
+  FileCommandProcessorAdapter& operator =(const FileCommandProcessorAdapter& other);
 
   friend ostream& operator<<(ostream& os, const FileCommandProcessorAdapter& input){
     queue<Command*>* readingCommandQueue = new queue<Command*>();

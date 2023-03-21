@@ -3,7 +3,7 @@
 #include <iostream>
 #include "Card.h"
 #include "Orders.h"
-#include "Player.h"
+
 using namespace std;
 
 //Copy Constructor
@@ -124,10 +124,12 @@ Deck& Deck::operator=(const Deck& d) {
     }
     return *this;
 }
-void Card::play(Hand* hand, Deck *deck,Player* player) {
+
+void Card::play(Hand* hand, Deck *deck) {
 	newOrder orderCreate;  //
     OrdersList order_list; //creates an order list
-    player->ordersList->addOrder(orderCreate.createOrder(this->type)); //creates an order and adds it to the order list
+    //player->
+    order_list.addOrder(orderCreate.createOrder(this->type)); //creates an order and adds it to the order list
 	
 	printOrders(order_list.getOrders());
 
@@ -169,4 +171,3 @@ ostream& operator<<(ostream& out, const Hand& h) {
 }
 
 #endif
-

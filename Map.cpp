@@ -158,6 +158,10 @@ void Territory::Update(Player owner, int armyQuantity) {
     *(this->armyQuantity) = armyQuantity;
 }
 
+void Territory::Update(Player owner){
+    *(this->owner) = owner;
+}
+
 /*
     Returns territoryName
 */
@@ -174,6 +178,10 @@ string Territory::GetContinentName(){
 
 Player Territory::GetOwner(){
     return *(this->owner);
+}
+
+void Territory::SetOwner(const Player owner){
+    *(this->owner) = owner;
 }
 
 int Territory::GetArmyQuantity(){

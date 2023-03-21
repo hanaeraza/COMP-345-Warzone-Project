@@ -5,35 +5,46 @@
 #include <string>
 #include <vector>
 
+#include "Orders.h"
+#include "Card.h"
+#include "Map.h"
 
 using namespace std;
 
 // Forward declaration
 class Territory;
-class Hand;
-class OrdersList;
-
-
+class MapLoader;
 //Player class
-class Player {
+class Player { 
 
     public:
-        Hand* cardsOwned; 
-        vector<Territory> *territoriesOwned; 
-        OrdersList *ordersList; 
+        string playername;
+        Hand *cardsOwned; 
+        vector<Territory> territoriesOwned; 
+        OrdersList ordersList; 
         vector<string> defenseList; 
         vector<string> attackList;
-        int reinforcmentPool;
+        int reinforcementPool; 
         
 
         Player() {}; //Default constructor
-        Player(Hand* cards, vector<Territory> *territories, OrdersList *orders, vector<string> defend, vector<string> attack, int reinforcments);
+        Player(string name) {
+            playername = name;
+        };
+        Player(Hand *cards, vector<Territory> territories, OrdersList orders, vector<string> defend, vector<string> attack, int reinforcements) {
+            cardsOwned = cards;
+            territoriesOwned = territories;
+            ordersList = orders;
+            defenseList = defend;
+            attackList = attack;
+            reinforcementPool = reinforcements;
+        };
 
 
-        //Function declarations
-        static vector<string> toDefend(Player player);
-        static vector<string> toAttack(Player player);
-        OrdersList issueOrder();
+        //Function declarations (make non static)
+        vector<string> toDefend();
+        vector<string> toAttack();
+        void issueOrder(MapLoader currentMap);
 
         // Stream insertion operators
         friend ostream& operator <<(ostream& os, const Player& other);
