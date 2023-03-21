@@ -16,7 +16,7 @@ public:
     void setState(State *state);
     void update();
     string getCurrentState();
-    
+    void startupPhase(GameEngine *game);
     void mainGameLoop(GameEngine *game);
 private:
     State* currentState;
