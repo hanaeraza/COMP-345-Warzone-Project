@@ -3,9 +3,10 @@
 #include <iostream>
 #include <string>
 #include "Player.h"
-#include "Map.h"
+
 #include <vector>
 using namespace std;
+
 class MapLoader;
 class Territory;
 
@@ -23,7 +24,7 @@ class Territory;
 
 // Create an order object and add it to the player's list of orders
 void Player::issueOrder(MapLoader currentMap) {
-    newOrder orderCreate;
+    
     OrdersList orders;
 
     //Map currentMap(10,3); //TODO : Change when we can get map from game engine
