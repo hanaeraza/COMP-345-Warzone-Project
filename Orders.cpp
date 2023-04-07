@@ -9,10 +9,11 @@
 #include "Map.h"
 
 std::ostream& operator<<(std::ostream& os, const Order& order){
-    os << "Order";
-    return os;
+    os << "Order: " << order.getType() << "\n";
+    return order.printOrder(os);
 }
 std::ostream& operator<<(std::ostream& os, const OrdersList& ordersList){
+    os << "Orders List: \n";
     for (int i = 0; i < ordersList.getOrders().size(); i++)
     {
         os << ordersList.getOrders()[i] << " " << i << "\n";
@@ -51,6 +52,9 @@ Order::Order(Player& currentPlayer) //parametized constructor
 {
     this->currentPlayer = &currentPlayer;
     attach(orderLogger);
+    std::stringstream stream;
+    stream << "Order created for player " << currentPlayer << "\n";
+    notify(stream.str());
 }
 Order::~Order() //destructor
 {
@@ -231,6 +235,10 @@ void OrdersList::addOrder(Order* o)
     {
         orders.push_back(o);
         notify(this);
+
+        std::stringstream stream;
+        stream << "Added To List: \n\t" << *o << "\n";
+        notify(stream.str());
     }
 }
 
@@ -433,6 +441,10 @@ void Deploy::execute()
         cout << "Executing Deploy...\n";
         target->SetArmyQuantity(*amount + target->GetArmyQuantity());
         cout << "Deploy Executed.\n" << endl;
+
+        std::stringstream stream;
+        stream << "Deploy Executed.\n";
+        notify(stream.str());
     }
 }
 
@@ -480,6 +492,10 @@ void Advance::execute()
 
         }
         cout << "Advance Executed.\n" << endl;
+
+        std::stringstream stream;
+        stream << "Advance Executed.\n";
+        notify(stream.str());
     }
 }
 
@@ -490,6 +506,10 @@ void Bomb::execute()
         cout << "Executing Bomb...\n";
         target->SetArmyQuantity(target->GetArmyQuantity() / 2);
         cout << "Bomb Executed.\n" << endl;
+
+        std::stringstream stream;
+        stream << "Bomb Executed.\n";
+        notify(stream.str());
 }
 
 void Blockade::execute()
@@ -501,6 +521,10 @@ void Blockade::execute()
         target->SetArmyQuantity(target->GetArmyQuantity() * 2);
         //Missing neutral player
         cout << "Blockade Executed.\n" << endl;
+
+        std::stringstream stream;
+        stream << "Blockade Executed.\n";
+        notify(stream.str());
     }
 }
 
@@ -556,6 +580,10 @@ void Airlift::execute()
         }
 
         cout << "Advance has finished executing!\n" << endl;
+
+        std::stringstream stream;
+        stream << "Advance has finished executing!\n";
+        notify(stream.str());
     }
 }
 
@@ -567,6 +595,10 @@ void Negotiate::execute()
         // currentPlayer->addFriendly(targetPlayer->getPlayerName());
         // targetPlayer->addFriendly(currentPlayer->getPlayerName());
         cout << "Negotiate has finished executing!" << endl;
+
+        std::stringstream stream;
+        stream << "Negotiate has finished executing!\n";
+        notify(stream.str());
     }
 }
 

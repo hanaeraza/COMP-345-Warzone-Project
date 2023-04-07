@@ -20,6 +20,7 @@ public:
 class Observer {
 public:
   virtual void update(ILoggable* message) = 0;
+  virtual void update(string message) = 0;
 
   Observer& operator =(const Observer& other);
 };
@@ -32,6 +33,7 @@ public:
   virtual void attach(Observer* observer);
   virtual void detach(Observer* observer);
   virtual void notify(ILoggable* message);
+  void notify(string message);
 
   Subject& operator =(const Subject& other);
 
@@ -44,6 +46,7 @@ public:
   LogObserver(string file);
   LogObserver(char* file);
   void update(ILoggable* message) override;
+  void update(string message) override;
 
   LogObserver& operator =(const LogObserver& other);
 

@@ -31,6 +31,11 @@ void Subject::notify(ILoggable* message){
     (*it)->update(message);
 }
 
+void Subject::notify(string message){
+  for (list<Observer*>::iterator it = observers->begin(); it != observers->end(); ++it)
+    (*it)->update(message);
+}
+
 void LogObserver::update(ILoggable* message){
   std::ofstream file(string(logFile), std::ios::app);
   if (file.is_open()) {
@@ -39,6 +44,16 @@ void LogObserver::update(ILoggable* message){
       file.close();
   }
   cout << message->stringToLog();
+}
+
+void LogObserver::update(string message){
+  std::ofstream file(string(logFile), std::ios::app);
+  if (file.is_open()) {
+      time_t now = time(nullptr);
+      file << "Message At: " << now << "\n\t" << message;
+      file.close();
+  }
+  cout << message;
 }
 
 ILoggable& ILoggable::operator =(const ILoggable& other){
