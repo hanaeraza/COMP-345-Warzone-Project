@@ -1,6 +1,7 @@
-
+#pragma once
 
 #include "Map.h"
+// #include "Player.h"
 #include "Player.h"
 
 #include <random>
@@ -157,6 +158,10 @@ void Territory::Update(Player owner, int armyQuantity) {
     *(this->armyQuantity) = armyQuantity;
 }
 
+void Territory::Update(Player owner){
+    *(this->owner) = owner;
+}
+
 /*
     Returns territoryName
 */
@@ -173,6 +178,17 @@ string Territory::GetContinentName(){
 
 Player Territory::GetOwner(){
     return *(this->owner);
+}
+
+void Territory::SetOwner(const Player owner){
+    *(this->owner) = owner;
+}
+
+int Territory::GetArmyQuantity(){
+    return *(this->armyQuantity);
+}
+void Territory::SetArmyQuantity(int input){
+    *(this->armyQuantity) = input;
 }
 
 /*
@@ -449,19 +465,20 @@ vector<Territory> Territory::GetTerritoriesOwnedBy(const Player &input, const ve
 /*
     Returns Continents owned by player
 */
-vector<string> Map::GetContinentsOwnedBy(const Player& input){
+vector<string> Map::GetContinentsOwnedBy(const Player& input) const {
     vector<string> output = vector<string>();
     vector<bool> hasContinent(continents->size(), false);
     for (int i = 0; i < continentIndices->size(); i++)
     {
         if ((*territories)[(*continentIndices)[i]]->GetOwner() == input)
         {
-            hasContinent[i] = false;
+            hasContinent[i] = true;
         }
     }
     for (int i = 0; i < hasContinent.size(); i++)
     {
-        output.push_back((*continents)[i]);
+        if (hasContinent[i])
+            output.push_back(string((*continents)[i]));
     }
     
     return output;
@@ -603,7 +620,7 @@ bool Map::MatrixIsTrue(vector<vector<bool>> input) {
 /*
     Returns connected territories to territory at node
 */
-vector<Territory> Map::GetConnections(Territory& input)
+vector<Territory> Map::GetConnections(Territory &input)
 {
     for (size_t i = 0; i < *(this->territoryQuantity); i++)
     {
