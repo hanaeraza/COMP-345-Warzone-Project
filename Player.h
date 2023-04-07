@@ -19,7 +19,7 @@ class Player {
 
     public:
         string playername;
-        Hand *cardsOwned; 
+        Hand *cardsOwned = new Hand(); 
         vector<Territory> territoriesOwned; 
         OrdersList ordersList; 
         vector<string> defenseList; 
@@ -27,9 +27,10 @@ class Player {
         int reinforcementPool; 
         
 
-        Player() {}; //Default constructor
+        Player() : reinforcementPool(0) {}; //Default constructor
         Player(string name) {
             playername = name;
+            reinforcementPool = 0;
         };
         Player(Hand *cards, vector<Territory> territories, OrdersList orders, vector<string> defend, vector<string> attack, int reinforcements) {
             cardsOwned = cards;
@@ -39,12 +40,12 @@ class Player {
             attackList = attack;
             reinforcementPool = reinforcements;
         };
-
+        ~Player() {}; //Destructor
 
         //Function declarations (make non static)
         vector<string> toDefend();
         vector<string> toAttack();
-        void issueOrder(MapLoader currentMap);
+        void issueOrder(MapLoader currentMap, Deck *deck);
 
         // Stream insertion operators
         friend ostream& operator <<(ostream& os, const Player& other);
