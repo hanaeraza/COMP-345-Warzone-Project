@@ -465,19 +465,20 @@ vector<Territory> Territory::GetTerritoriesOwnedBy(const Player &input, const ve
 /*
     Returns Continents owned by player
 */
-vector<string> Map::GetContinentsOwnedBy(const Player& input){
+vector<string> Map::GetContinentsOwnedBy(const Player& input) const {
     vector<string> output = vector<string>();
     vector<bool> hasContinent(continents->size(), false);
     for (int i = 0; i < continentIndices->size(); i++)
     {
         if ((*territories)[(*continentIndices)[i]]->GetOwner() == input)
         {
-            hasContinent[i] = false;
+            hasContinent[i] = true;
         }
     }
     for (int i = 0; i < hasContinent.size(); i++)
     {
-        output.push_back((*continents)[i]);
+        if (hasContinent[i])
+            output.push_back(string((*continents)[i]));
     }
     
     return output;

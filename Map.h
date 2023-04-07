@@ -55,7 +55,7 @@ public:
 	vector<Territory> GetConnections(Territory& input);
 	vector<Territory> GetConnections(int input);
 	vector<Territory> GetTerritoriesOwnedBy(const Player& input);
-	vector<string> GetContinentsOwnedBy(const Player& input);
+	vector<string> GetContinentsOwnedBy(const Player& input) const;
 	vector<Territory*> GetTerritories();
 	int GetContinentBonus(string continentInput);
 	bool Validate();

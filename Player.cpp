@@ -27,10 +27,12 @@ void Player::issueOrder(MapLoader currentMap) {
     
     OrdersList orders;
 
-    //Map currentMap(10,3); //TODO : Change when we can get map from game engine
+    
 
     vector<int> territoriesOwnedReinforcements;
+    cout << "Territories owned: \n";
     for(int i=0; i<this->territoriesOwned.size(); i++){
+        
         cout << this->territoriesOwned.at(i).GetTerritoryName() << "\n";
     }
     cout << "Choose a territory to defend:" << "\n";
@@ -118,7 +120,7 @@ ostream& operator<<(ostream& os, const Player& other) {
 }
 
 bool Player::operator==(const Player& other) {
-    return true;
+    return other.playername == this->playername;
 }
 
 #endif
