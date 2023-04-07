@@ -282,8 +282,8 @@ Command::Command(const string input){
 }
 
 void Command::saveEffect(string input){
-  notify(this);
   *effect += input + "\n";
+  notify(this);
 }
 
 FileCommandProcessorAdapter::FileCommandProcessorAdapter(string file) : CommandProcessor() {

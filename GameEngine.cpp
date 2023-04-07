@@ -110,7 +110,8 @@ void StartState::transition(GameEngine *game)
 
         if (command == "loadmap" && !filename.empty())
         {
-            nextCommand.saveEffect("Loading " + filename);
+            nextCommand.saveEffect("Loading " + filename + 
+            "\nmoving to MapLoadedState.");
             game->getCommandProcessor().saveCommand(nextCommand);
             game->getCommandProcessor().next();
 
@@ -154,7 +155,8 @@ void StartState::transition(GameEngine *game)
 
         if (command == "loadmap" && !filename.empty() && game->getCommandProcessor().validate(this))
         {
-            nextCommand.saveEffect("Loading " + filename);
+            nextCommand.saveEffect("Loading " + filename + 
+            "\nmoving to MapLoadedState.");
             game->getCommandProcessor().saveCommand(nextCommand);
             game->getCommandProcessor().next();
 
@@ -345,7 +347,8 @@ void MapValidatedState::transition(GameEngine *game)
 
         if (command == "addplayer" && !parameter.empty() && game->getCommandProcessor().validate(this))
         {
-            nextCommand.saveEffect("Adding " + parameter);
+            nextCommand.saveEffect("Adding " + parameter + 
+            "\nmoving to PlayersAddedState.");
             game->getCommandProcessor().saveCommand(nextCommand);
             game->getCommandProcessor().next();
 
@@ -387,7 +390,8 @@ void MapValidatedState::transition(GameEngine *game)
 
         if (command == "addplayer" && !parameter.empty() && game->getCommandProcessor().validate(this))
         {
-            nextCommand.saveEffect("Adding " + parameter);
+            nextCommand.saveEffect("Adding " + parameter + 
+            "\nmoving to PlayersAddedState.");
             game->getCommandProcessor().saveCommand(nextCommand);
             game->getCommandProcessor().next();
 
@@ -444,7 +448,8 @@ void PlayersAddedState::transition(GameEngine *game)
 
         if (command == "addplayer" && !parameter.empty() && game->getCommandProcessor().validate(this))
         {
-            nextCommand.saveEffect("Adding " + parameter);
+            nextCommand.saveEffect("Adding " + parameter + 
+            "\nmoving to PlayersAddedState.");
             game->getCommandProcessor().saveCommand(nextCommand);
             game->getCommandProcessor().next();
 
@@ -549,7 +554,8 @@ void PlayersAddedState::transition(GameEngine *game)
 
         if (command == "addplayer" && !parameter.empty() && game->getCommandProcessor().validate(this))
         {
-            nextCommand.saveEffect("Adding " + parameter);
+            nextCommand.saveEffect("Adding " + parameter + 
+            "\nmoving to PlayersAddedState.");
             game->getCommandProcessor().saveCommand(nextCommand);
             game->getCommandProcessor().next();
 
@@ -830,7 +836,7 @@ void WinState::transition(GameEngine *game)
 
         if (command == "replay" && game->getCommandProcessor().validate(this))
         {
-            nextCommand.saveEffect("Replaying");
+            nextCommand.saveEffect("Replaying\nmoving to StartState.");
             game->getCommandProcessor().saveCommand(nextCommand);
             game->getCommandProcessor().next();
 
@@ -846,7 +852,7 @@ void WinState::transition(GameEngine *game)
         }
         else if (command == "quit" && game->getCommandProcessor().validate(this))
         {
-            nextCommand.saveEffect("Quitting");
+            nextCommand.saveEffect("Quitting\nmoving to EndState.");
             game->getCommandProcessor().saveCommand(nextCommand);
             game->getCommandProcessor().next();
 
@@ -886,7 +892,7 @@ void WinState::transition(GameEngine *game)
 
         if (command == "replay" && game->getCommandProcessor().validate(this))
         {
-            nextCommand.saveEffect("Replaying");
+            nextCommand.saveEffect("Replaying\nmoving to StartState.");
             game->getCommandProcessor().saveCommand(nextCommand);
             game->getCommandProcessor().next();
 
@@ -902,7 +908,7 @@ void WinState::transition(GameEngine *game)
         }
         else if (command == "quit" && game->getCommandProcessor().validate(this))
         {
-            nextCommand.saveEffect("Quitting");
+            nextCommand.saveEffect("Quitting\nmoving to EndState.");
             game->getCommandProcessor().saveCommand(nextCommand);
             game->getCommandProcessor().next();
 

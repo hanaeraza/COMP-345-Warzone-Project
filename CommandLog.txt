@@ -899,3 +899,39 @@ Starting Game
 1680846521
  gamestart
 
+1680876546
+ loadmap cow.map
+Loading cow.map
+moving to MapLoadedState.
+
+Loading cow.map
+moving to MapLoadedState.
+1680876546
+ loadmap cow.map
+
+1680878071
+ loadmap cow.map
+Loading cow.map
+moving to MapLoadedState.
+
+Loading cow.map
+moving to MapLoadedState.
+1680878071
+ loadmap cow.map
+
+1680878082
+ validatemap
+Map Valid
+
+Map Valid
+1680878082
+ validatemap
+
+1680878100
+ addplayer mrCum
+Adding mrCum
+
+Adding mrCum
+1680878100
+ addplayer mrCum
+
