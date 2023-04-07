@@ -461,7 +461,7 @@ void PlayersAddedState::transition(GameEngine *game)
                 cout << e.what() << endl;
             }
         }
-        else if (command == "gamestart" && game->getCommandProcessor().validate(this))
+        else if (command == "gamestart" && parameter.empty() && game->getCommandProcessor().validate(this))
         {
             if (numPlayers > 6 || numPlayers < 2)
             {
@@ -566,7 +566,7 @@ void PlayersAddedState::transition(GameEngine *game)
                 cout << e.what() << endl;
             }
         }
-        else if (command == "gamestart" && !parameter.empty() && game->getCommandProcessor().validate(this))
+        else if (command == "gamestart" && parameter.empty() && game->getCommandProcessor().validate(this))
         {
             if (numPlayers > 6 || numPlayers < 2)
             {

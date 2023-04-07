@@ -497,3 +497,405 @@ Adding me
 1679411390
  addplayer me
 
+1679414284
+ loadmap cow.map
+Loading cow.map
+
+Loading cow.map
+1679414284
+ loadmap cow.map
+
+1679414294
+ validate
+Invalid
+
+Invalid
+1679414294
+ validate
+
+1679414300
+ validatemap
+Map Valid
+
+Map Valid
+1679414300
+ validatemap
+
+1679414315
+ addplayer sdfghj
+Adding sdfghj
+
+Adding sdfghj
+1679414315
+ addplayer sdfghj
+
+1679414330
+ addplayerghjk
+Invalid
+
+Invalid
+1679414330
+ addplayerghjk
+
+1679414335
+ addplayer adasas
+Adding adasas
+
+Adding adasas
+1679414335
+ addplayer adasas
+
+1679414340
+ gamestart
+Invalid
+
+Invalid
+1679414340
+ gamestart
+
+1679414491
+ loadmap cow.map
+Loading cow.map
+
+Loading cow.map
+1679414491
+ loadmap cow.map
+
+1679414492
+ validatemap
+Map Valid
+
+Map Valid
+1679414492
+ validatemap
+
+1679414492
+ addplayer oscar
+Adding oscar
+
+Adding oscar
+1679414492
+ addplayer oscar
+
+1679414492
+ addplayer ed
+Adding ed
+
+Adding ed
+1679414492
+ addplayer ed
+
+1679414492
+ addplayer you
+Adding you
+
+Adding you
+1679414492
+ addplayer you
+
+1679414492
+ addplayer me
+Adding me
+
+Adding me
+1679414492
+ addplayer me
+
+1679414624
+ dfghjk
+Invalid
+
+Invalid
+1679414624
+ dfghjk
+Command Invalid In start
+
+Command Invalid In start
+1679414948
+ loadmap cow.map
+Loading cow.map
+
+Loading cow.map
+1679414948
+ loadmap cow.map
+
+1679414948
+ validatemap
+Map Valid
+
+Map Valid
+1679414948
+ validatemap
+
+1679414948
+ addplayer oscar
+Adding oscar
+
+Adding oscar
+1679414948
+ addplayer oscar
+
+1679414948
+ addplayer ed
+Adding ed
+
+Adding ed
+1679414948
+ addplayer ed
+
+1679414948
+ addplayer you
+Adding you
+
+Adding you
+1679414948
+ addplayer you
+
+1679414948
+ addplayer me
+Adding me
+
+Adding me
+1679414948
+ addplayer me
+
+1679415625
+ loadmap europe.map
+Loading europe.map
+
+Loading europe.map
+1679415625
+ loadmap europe.map
+
+1679415667
+ validatemap
+Map Valid
+
+Map Valid
+1679415667
+ validatemap
+
+1679415709
+ addplayer drftyghuygftyghu
+Adding drftyghuygftyghu
+
+Adding drftyghuygftyghu
+1679415709
+ addplayer drftyghuygftyghu
+
+1679415735
+ gamestart
+Invalid
+
+Invalid
+1679415735
+ gamestart
+
+1679415763
+ dfghjfdrtyftyghuiiyguyg
+Invalid
+
+Invalid
+1679415763
+ dfghjfdrtyftyghuiiyguyg
+
+1680845965
+ loadmap europe.map
+Loading europe.map
+
+Loading europe.map
+1680845965
+ loadmap europe.map
+
+1680845970
+ validatemap
+Map Valid
+
+Map Valid
+1680845970
+ validatemap
+
+1680845989
+ addplayer
+Invalid
+
+Invalid
+1680845989
+ addplayer
+
+1680846001
+ addplayer a
+Adding a
+
+Adding a
+1680846001
+ addplayer a
+
+1680846004
+ addplayer b
+Adding b
+
+Adding b
+1680846004
+ addplayer b
+
+1680846008
+ addplayer c
+Adding c
+
+Adding c
+1680846008
+ addplayer c
+
+1680846013
+ addplayer d
+Adding d
+
+Adding d
+1680846013
+ addplayer d
+
+1680846018
+ addplayer e
+Adding e
+
+Adding e
+1680846018
+ addplayer e
+
+1680846021
+ addplayer f
+Adding f
+
+Adding f
+1680846021
+ addplayer f
+
+1680846031
+ gamestart
+Invalid
+
+Invalid
+1680846031
+ gamestart
+
+1680846148
+ gamestart
+Invalid
+
+Invalid
+1680846148
+ gamestart
+
+1680846190
+ loadmap europe.map
+Loading europe.map
+
+Loading europe.map
+1680846190
+ loadmap europe.map
+
+1680846196
+ validatemap
+Map Valid
+
+Map Valid
+1680846196
+ validatemap
+
+1680846203
+ addplayer a
+Adding a
+
+Adding a
+1680846203
+ addplayer a
+
+1680846207
+ addplayer b
+Adding b
+
+Adding b
+1680846207
+ addplayer b
+
+1680846210
+ gamestart
+Invalid
+
+Invalid
+1680846210
+ gamestart
+
+1680846294
+ loadmap cow.map
+Loading cow.map
+
+Loading cow.map
+1680846294
+ loadmap cow.map
+
+1680846328
+ validatemap
+Map Valid
+
+Map Valid
+1680846328
+ validatemap
+
+1680846336
+ addplayer a
+Adding a
+
+Adding a
+1680846336
+ addplayer a
+
+1680846343
+ addplayer b
+Adding b
+
+Adding b
+1680846343
+ addplayer b
+
+1680846428
+ loadmap cow.map
+Loading cow.map
+
+Loading cow.map
+1680846428
+ loadmap cow.map
+
+1680846437
+ validatemap
+Map Valid
+
+Map Valid
+1680846437
+ validatemap
+
+1680846479
+ addplayer a
+Adding a
+
+Adding a
+1680846479
+ addplayer a
+
+1680846483
+ addplayer b
+Adding b
+
+Adding b
+1680846483
+ addplayer b
+
+1680846521
+ gamestart
+Starting Game
+
+Starting Game
+1680846521
+ gamestart
+
