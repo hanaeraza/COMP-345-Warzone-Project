@@ -16,10 +16,11 @@ public:
     void setState(State *state);
     void update();
     string getCurrentState();
-    void startupPhase(GameEngine *game);
-    void mainGameLoop(GameEngine *game);
+   
+    
 private:
     State* currentState;
+    
 };
 
 // Abstract class
@@ -70,7 +71,7 @@ public:
     
     void update(GameEngine *game);
     string getName();
-    void reinforcementPhase(Player player);
+    void reinforcementPhase(Player &player);
 
 };
 
@@ -91,7 +92,8 @@ public:
     void update(GameEngine *game);
     string getName();
     void executeOrdersPhase(Player player);
-
+  
+    
 };
 
 
