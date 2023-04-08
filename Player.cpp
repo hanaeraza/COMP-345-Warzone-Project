@@ -26,8 +26,6 @@ vector<string> Player::toAttack()
 void Player::issueOrder(MapLoader currentMap, Deck *deck)
 {
 
-    
-
     vector<int> territoriesOwnedReinforcements;
     // Print out territories owned
     cout << "Territories owned: \n";
@@ -180,46 +178,56 @@ void Player::issueOrder(MapLoader currentMap, Deck *deck)
 
     cout << "You have " << this->cardsOwned->size << " cards in your hand."
          << "\n";
-    for (int i = 0; i < this->cardsOwned->size; i++)
+    if (this->cardsOwned->size == 0)
     {
-        cout << this->cardsOwned->cards[i]->type << ", ";
+        cout << "You have no cards to play."
+             << "\n";
     }
-    cout << "\n";
-    while (true)
+    else
     {
-        string cardToPlay;
-        cin >> cardToPlay;
-        bool cardFound = false;
+        cout << "Cards in hand: "
+             << "\n";
         for (int i = 0; i < this->cardsOwned->size; i++)
         {
-            if (cardToPlay == this->cardsOwned->cards[i]->type)
+            cout << this->cardsOwned->cards[i]->type << ", ";
+        }
+        cout << "\n";
+        while (true)
+        {
+            string cardToPlay;
+            cin >> cardToPlay;
+            bool cardFound = false;
+            for (int i = 0; i < this->cardsOwned->size; i++)
             {
-                cardFound=true;
-                this->cardsOwned->cards[i]->play(this->cardsOwned,deck,this);
+                if (cardToPlay == this->cardsOwned->cards[i]->type)
+                {
+                    cardFound = true;
+                    this->cardsOwned->cards[i]->play(this->cardsOwned, deck, this);
+                    break;
+                }
+            }
+            if (cardFound == false)
+            {
+                cout << "Card not found. Please try again."
+                     << "\n";
+            }
+            else
+            {
                 break;
             }
-            
-        } 
-        if(cardFound==false){
-            cout<<"Card not found. Please try again."
-                <<"\n";
-        }
-        else{
-            break;
         }
     }
-    
 }
 
-    // Stream operators
-    ostream &operator<<(ostream &os, const Player &other)
-    {
-        return os;
-    }
+// Stream operators
+ostream &operator<<(ostream &os, const Player &other)
+{
+    return os;
+}
 
-    bool Player::operator==(const Player &other)
-    {
-        return true;
-    }
+bool Player::operator==(const Player &other)
+{
+    return true;
+}
 
 #endif
