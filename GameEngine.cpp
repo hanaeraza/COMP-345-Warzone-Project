@@ -403,8 +403,35 @@ void ExecuteOrdersState::update(GameEngine *game)
     cout << "-----------------------------------" << endl;
     cout << "Execute orders state" << endl;
 
-    executeOrdersPhase(playerQueue.front());
+    for (int i = 0; i < playerQueue.size(); i++)
+    {
+        cout << "Execute Order phase for player: " << playerQueue.front().playername << endl;
 
+        executeOrdersPhase(playerQueue.front());
+        
+        // check if player has won
+        if (playerQueue.front().territoriesOwned.size() == map.GetMap().GetTerritories().size())
+        {
+            cout << "Player " << playerQueue.front().playername << " has won the game!" << endl;
+            // set the game state to win state
+            game->setState(new WinState());
+        }
+        Player p = playerQueue.front();
+        playerQueue.pop();
+        playerQueue.push(p);
+    }
+    //Checking if any player is eliminated
+    for(int i = 0; i < playerQueue.size(); i++){
+        if(playerQueue.front().territoriesOwned.size() == 0){
+            cout << "Player " << playerQueue.front().playername << " has been eliminated from the game!" << endl;
+            playerQueue.pop();
+        }
+        else{
+            Player p = playerQueue.front();
+            playerQueue.pop();
+            playerQueue.push(p);
+        }
+    }   
     string command;
     while (true)
     {
@@ -433,33 +460,18 @@ void ExecuteOrdersState::update(GameEngine *game)
 }
 void ExecuteOrdersState::executeOrdersPhase(Player player)
 {
-    cout << "Execute orders phase" << endl;
-    for (int i = 0; i < playerQueue.size(); i++)
-    {
-        cout << "Execute Order phase for player: " << playerQueue.front().playername << endl;
-        // so use the player's order list to execute the orders.
-        // use a for loop to go through the list and execute each order
-        // add an if statement for each type of order
-        // for each order, call the validate method
-        // if the order is valid, call the execute method
-        // make sue deploy orders are executed first
-
-        // if (playerQueue.front().territoriesOwned.size() == map.GetMap().GetTerritories().size())
-        // {
-        //     cout << "Player " << playerQueue.front().playername << " has won the game!" << endl;
-        //     // set the game state to win state
-        //     game->setState(new WinState());
-        // }
-        Player p = playerQueue.front();
-        playerQueue.pop();
-        playerQueue.push(p);
-    }
+   
+    // so use the player's order list to execute the orders.
+    // use a for loop to go through the list and execute each order
+    // add an if statement for each type of order
+    // for each order, call the validate method
+    // if the order is valid, call the execute method
+    // make sue deploy orders are executed first
 }
 string ExecuteOrdersState::getName()
 {
     return "ExecuteOrdersState";
 }
-
 
 // Win state
 void WinState::update(GameEngine *game)
