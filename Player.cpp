@@ -203,6 +203,34 @@ void Player::issueOrder(MapLoader currentMap, Deck *deck)
                 {
                     cardFound = true;
                     this->cardsOwned->cards[i]->play(this->cardsOwned, deck, this);
+                    if (this->cardsOwned->cards[i]->type == "Bomb")
+                    {
+                        string target;
+                        cout << "Enter the name of the country you want to bomb: ";
+                        cin >> target;
+                        for(int i = 0; i < currentMap.GetMap().GetTerritories().size(); i++){
+                            if(currentMap.GetMap().GetTerritories().at(i)->GetTerritoryName() == target){
+                                cout << "Bomb Card Played" << endl;
+                                this->ordersList.addOrder(new Bomb(currentMap.GetMap().GetTerritories().at(i),this));
+                                break;
+                            }
+                        }
+                    }
+                    else if (this->cardsOwned->cards[i]->type == "Blockade")
+                    {
+                        cout << "Blockade Card Played" << endl;
+                        this->ordersList.addOrder(new Blockade());
+                    }
+                    else if (this->cardsOwned->cards[i]->type == "Airlift")
+                    {
+                        cout << "Airlift Card Played" << endl;
+                        this->ordersList.addOrder(new Airlift());
+                    }
+                    else if (this->cardsOwned->cards[i]->type == "Diplomacy")
+                    {
+                        cout << "Diplomacy Card Played" << endl;
+                        this->ordersList.addOrder(new Negotiate());
+                    }
                     break;
                 }
             }
