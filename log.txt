@@ -1,0 +1,212 @@
+Message At: 1681071601
+	loadmap cow.map
+Loading cow.map
+moving to MapLoadedState.
+Message At: 1681071601
+	Current state: maploaded
+Message At: 1681071607
+	validatemap
+Map Valid
+Message At: 1681071607
+	Current state: mapvalidated
+Message At: 1681071613
+	addplayer p1
+Adding p1
+moving to PlayersAddedState.
+Message At: 1681071613
+	Current state: playersadded
+Message At: 1681071621
+	addplayer p2
+Adding p2
+moving to PlayersAddedState.
+Message At: 1681071621
+	Current state: playersadded
+Message At: 1681071627
+	gamestart
+Starting Game
+Message At: 1681071627
+	Current state: ReinforcementsState
+Message At: 1681072100
+	validatemap
+Invalid
+Message At: 1681072111
+	validatemap
+Invalid
+Message At: 1681072165
+	loadmap europe.map
+Loading europe.map
+moving to MapLoadedState.
+Message At: 1681072165
+	Current state: maploaded
+Message At: 1681072165
+	validatemap
+Map Valid
+Message At: 1681072165
+	Current state: mapvalidated
+Message At: 1681072165
+	addplayer me
+Adding me
+moving to PlayersAddedState.
+Message At: 1681072165
+	Current state: playersadded
+Message At: 1681072165
+	addplayer you
+Adding you
+moving to PlayersAddedState.
+Message At: 1681072165
+	Current state: playersadded
+Message At: 1681072165
+	addplayer oscar
+Adding oscar
+moving to PlayersAddedState.
+Message At: 1681072165
+	Current state: playersadded
+Message At: 1681072165
+	gamestart
+Starting Game
+Message At: 1681072390
+	loadmap europe.map
+Loading europe.map
+moving to MapLoadedState.
+Message At: 1681072390
+	Current state: maploaded
+Message At: 1681072390
+	validatemap
+Map Valid
+Message At: 1681072390
+	Current state: mapvalidated
+Message At: 1681072390
+	addplayer me
+Adding me
+moving to PlayersAddedState.
+Message At: 1681072390
+	Current state: playersadded
+Message At: 1681072390
+	addplayer you
+Adding you
+moving to PlayersAddedState.
+Message At: 1681072390
+	Current state: playersadded
+Message At: 1681072390
+	addplayer oscar
+Adding oscar
+moving to PlayersAddedState.
+Message At: 1681072390
+	Current state: playersadded
+Message At: 1681072390
+	gamestart
+Starting Game
+Message At: 1681072450
+	loadmap europe.map
+Loading europe.map
+moving to MapLoadedState.
+Message At: 1681072450
+	Current state: maploaded
+Message At: 1681072450
+	validatemap
+Map Valid
+Message At: 1681072450
+	Current state: mapvalidated
+Message At: 1681072450
+	addplayer me
+Adding me
+moving to PlayersAddedState.
+Message At: 1681072450
+	Current state: playersadded
+Message At: 1681072469
+	addplayer you
+Adding you
+moving to PlayersAddedState.
+Message At: 1681072480
+	Current state: playersadded
+Message At: 1681072493
+	addplayer oscar
+Adding oscar
+moving to PlayersAddedState.
+Message At: 1681072499
+	Current state: playersadded
+Message At: 1681072508
+	gamestart
+Starting Game
+Message At: 1681072617
+	loadmap europe.map
+Loading europe.map
+moving to MapLoadedState.
+Message At: 1681072617
+	Current state: maploaded
+Message At: 1681072617
+	validatemap
+Map Valid
+Message At: 1681072617
+	Current state: mapvalidated
+Message At: 1681072617
+	addplayer me
+Adding me
+moving to PlayersAddedState.
+Message At: 1681072617
+	Current state: playersadded
+Message At: 1681072620
+	addplayer you
+Adding you
+moving to PlayersAddedState.
+Message At: 1681072620
+	Current state: playersadded
+Message At: 1681072622
+	addplayer oscar
+Adding oscar
+moving to PlayersAddedState.
+Message At: 1681072622
+	Current state: playersadded
+Message At: 1681072622
+	gamestart
+Starting Game
+Message At: 1681072687
+	replay
+Invalid
+Message At: 1681072760
+	loadmap europe.map
+Invalid
+Message At: 1681072863
+	loadmap cow.map
+Loading cow.map
+moving to MapLoadedState.
+Message At: 1681072863
+	Current state: maploaded
+Message At: 1681072892
+	validatemap
+Map Valid
+Message At: 1681072892
+	Current state: mapvalidated
+Message At: 1681072899
+	addplayer p1
+Adding p1
+moving to PlayersAddedState.
+Message At: 1681072899
+	Current state: playersadded
+Message At: 1681072902
+	addplayer p2
+Adding p2
+moving to PlayersAddedState.
+Message At: 1681072902
+	Current state: playersadded
+Message At: 1681072946
+	gamestart
+Starting Game
+Message At: 1681073085
+	Current state: ReinforcementsState
+Message At: 1681073178
+	Current state: IssueOrdersState
+Message At: 1681073194
+	Orders List: 
+0x24e97bb3f90 0
+Message At: 1681073194
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681073220
+	Orders List: 
+0x24e97bbc370 0
+Message At: 1681073220
+	Added To List: 
+	Order: Deploy
+Deploy

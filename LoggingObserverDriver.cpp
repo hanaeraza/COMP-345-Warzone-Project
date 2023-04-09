@@ -24,7 +24,7 @@ int main(){
     game->setCommandProcessor(new FileCommandProcessorAdapter(input));
   }
   while (true){
-      game->transition();
+      game->update();
   }
   return 0;
 }

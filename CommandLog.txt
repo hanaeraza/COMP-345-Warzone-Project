@@ -935,3 +935,355 @@ Adding mrCum
 1680878100
  addplayer mrCum
 
+1681071601
+ loadmap cow.map
+Loading cow.map
+moving to MapLoadedState.
+
+Loading cow.map
+moving to MapLoadedState.
+1681071601
+ loadmap cow.map
+
+1681071607
+ validatemap
+Map Valid
+
+Map Valid
+1681071607
+ validatemap
+
+1681071613
+ addplayer p1
+Adding p1
+moving to PlayersAddedState.
+
+Adding p1
+moving to PlayersAddedState.
+1681071613
+ addplayer p1
+
+1681071621
+ addplayer p2
+Adding p2
+moving to PlayersAddedState.
+
+Adding p2
+moving to PlayersAddedState.
+1681071621
+ addplayer p2
+
+1681071627
+ gamestart
+Starting Game
+
+Starting Game
+1681071627
+ gamestart
+
+1681072100
+ validatemap
+Invalid
+
+Invalid
+1681072100
+ validatemap
+Command Invalid In start
+
+Command Invalid In start
+1681072111
+ validatemap
+Invalid
+
+Invalid
+1681072111
+ validatemap
+Command Invalid In start
+
+Command Invalid In start
+1681072165
+ loadmap europe.map
+Loading europe.map
+moving to MapLoadedState.
+
+Loading europe.map
+moving to MapLoadedState.
+1681072165
+ loadmap europe.map
+
+1681072165
+ validatemap
+Map Valid
+
+Map Valid
+1681072165
+ validatemap
+
+1681072165
+ addplayer me
+Adding me
+moving to PlayersAddedState.
+
+Adding me
+moving to PlayersAddedState.
+1681072165
+ addplayer me
+
+1681072165
+ addplayer you
+Adding you
+moving to PlayersAddedState.
+
+Adding you
+moving to PlayersAddedState.
+1681072165
+ addplayer you
+
+1681072165
+ addplayer oscar
+Adding oscar
+moving to PlayersAddedState.
+
+Adding oscar
+moving to PlayersAddedState.
+1681072165
+ addplayer oscar
+
+1681072165
+ gamestart
+Starting Game
+
+Starting Game
+1681072165
+ gamestart
+
+1681072390
+ loadmap europe.map
+Loading europe.map
+moving to MapLoadedState.
+
+Loading europe.map
+moving to MapLoadedState.
+1681072390
+ loadmap europe.map
+
+1681072390
+ validatemap
+Map Valid
+
+Map Valid
+1681072390
+ validatemap
+
+1681072390
+ addplayer me
+Adding me
+moving to PlayersAddedState.
+
+Adding me
+moving to PlayersAddedState.
+1681072390
+ addplayer me
+
+1681072390
+ addplayer you
+Adding you
+moving to PlayersAddedState.
+
+Adding you
+moving to PlayersAddedState.
+1681072390
+ addplayer you
+
+1681072390
+ addplayer oscar
+Adding oscar
+moving to PlayersAddedState.
+
+Adding oscar
+moving to PlayersAddedState.
+1681072390
+ addplayer oscar
+
+1681072390
+ gamestart
+Starting Game
+
+Starting Game
+1681072390
+ gamestart
+
+1681072450
+ loadmap europe.map
+Loading europe.map
+moving to MapLoadedState.
+
+Loading europe.map
+moving to MapLoadedState.
+1681072450
+ loadmap europe.map
+
+1681072450
+ validatemap
+Map Valid
+
+Map Valid
+1681072450
+ validatemap
+
+1681072450
+ addplayer me
+Adding me
+moving to PlayersAddedState.
+
+Adding me
+moving to PlayersAddedState.
+1681072450
+ addplayer me
+
+1681072470
+ addplayer you
+Adding you
+moving to PlayersAddedState.
+
+Adding you
+moving to PlayersAddedState.
+1681072471
+ addplayer you
+
+1681072493
+ addplayer oscar
+Adding oscar
+moving to PlayersAddedState.
+
+Adding oscar
+moving to PlayersAddedState.
+1681072494
+ addplayer oscar
+
+1681072509
+ gamestart
+Starting Game
+
+Starting Game
+1681072509
+ gamestart
+
+1681072617
+ loadmap europe.map
+Loading europe.map
+moving to MapLoadedState.
+
+Loading europe.map
+moving to MapLoadedState.
+1681072617
+ loadmap europe.map
+
+1681072617
+ validatemap
+Map Valid
+
+Map Valid
+1681072617
+ validatemap
+
+1681072617
+ addplayer me
+Adding me
+moving to PlayersAddedState.
+
+Adding me
+moving to PlayersAddedState.
+1681072617
+ addplayer me
+
+1681072620
+ addplayer you
+Adding you
+moving to PlayersAddedState.
+
+Adding you
+moving to PlayersAddedState.
+1681072620
+ addplayer you
+
+1681072622
+ addplayer oscar
+Adding oscar
+moving to PlayersAddedState.
+
+Adding oscar
+moving to PlayersAddedState.
+1681072622
+ addplayer oscar
+
+1681072622
+ gamestart
+Starting Game
+
+Starting Game
+1681072622
+ gamestart
+
+1681072688
+ replay
+Invalid
+
+Invalid
+1681072688
+ replay
+
+1681072762
+ loadmap europe.map
+Invalid
+
+Invalid
+1681072763
+ loadmap europe.map
+
+1681072863
+ loadmap cow.map
+Loading cow.map
+moving to MapLoadedState.
+
+Loading cow.map
+moving to MapLoadedState.
+1681072863
+ loadmap cow.map
+
+1681072892
+ validatemap
+Map Valid
+
+Map Valid
+1681072892
+ validatemap
+
+1681072899
+ addplayer p1
+Adding p1
+moving to PlayersAddedState.
+
+Adding p1
+moving to PlayersAddedState.
+1681072899
+ addplayer p1
+
+1681072902
+ addplayer p2
+Adding p2
+moving to PlayersAddedState.
+
+Adding p2
+moving to PlayersAddedState.
+1681072902
+ addplayer p2
+
+1681072946
+ gamestart
+Starting Game
+
+Starting Game
+1681072946
+ gamestart
+
