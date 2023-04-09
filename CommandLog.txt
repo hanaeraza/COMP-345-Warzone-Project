@@ -1287,3 +1287,219 @@ Starting Game
 1681072946
  gamestart
 
+1681073600
+ loadmap pair.map
+Loading pair.map
+moving to MapLoadedState.
+
+Loading pair.map
+moving to MapLoadedState.
+1681073600
+ loadmap pair.map
+
+1681073780
+ loadmap pair.map
+Loading pair.map
+moving to MapLoadedState.
+
+Loading pair.map
+moving to MapLoadedState.
+1681073780
+ loadmap pair.map
+
+1681073932
+ loadmap pair.map
+Loading pair.map
+moving to MapLoadedState.
+
+Loading pair.map
+moving to MapLoadedState.
+1681073932
+ loadmap pair.map
+
+1681074082
+ loadmap pair.map
+Loading pair.map
+moving to MapLoadedState.
+
+Loading pair.map
+moving to MapLoadedState.
+1681074082
+ loadmap pair.map
+
+1681074144
+ loadmap pair.ma
+Loading pair.ma
+moving to MapLoadedState.
+
+Loading pair.ma
+moving to MapLoadedState.
+1681074144
+ loadmap pair.ma
+
+1681074185
+ loadmap pair.map
+Loading pair.map
+moving to MapLoadedState.
+
+Loading pair.map
+moving to MapLoadedState.
+1681074185
+ loadmap pair.map
+
+1681074268
+ loadmap pair.map
+Loading pair.map
+moving to MapLoadedState.
+
+Loading pair.map
+moving to MapLoadedState.
+1681074268
+ loadmap pair.map
+
+1681074330
+ loadmap pair.map
+Loading pair.map
+moving to MapLoadedState.
+
+Loading pair.map
+moving to MapLoadedState.
+1681074330
+ loadmap pair.map
+
+1681074436
+ loadmap pair.map
+Loading pair.map
+moving to MapLoadedState.
+
+Loading pair.map
+moving to MapLoadedState.
+1681074436
+ loadmap pair.map
+
+1681074533
+ loadmap pair.map
+Loading pair.map
+moving to MapLoadedState.
+
+Loading pair.map
+moving to MapLoadedState.
+1681074533
+ loadmap pair.map
+
+1681074593
+ loadmap pair.map
+Loading pair.map
+moving to MapLoadedState.
+
+Loading pair.map
+moving to MapLoadedState.
+1681074593
+ loadmap pair.map
+
+1681074661
+ loadmap pair.map
+Loading pair.map
+moving to MapLoadedState.
+
+Loading pair.map
+moving to MapLoadedState.
+1681074661
+ loadmap pair.map
+
+1681074722
+ loadmap cow.map
+Loading cow.map
+moving to MapLoadedState.
+
+Loading cow.map
+moving to MapLoadedState.
+1681074722
+ loadmap cow.map
+
+1681074833
+ loadmap pair.map
+Loading pair.map
+moving to MapLoadedState.
+
+Loading pair.map
+moving to MapLoadedState.
+1681074833
+ loadmap pair.map
+
+1681074926
+ loadmap pair.map
+Loading pair.map
+moving to MapLoadedState.
+
+Loading pair.map
+moving to MapLoadedState.
+1681074926
+ loadmap pair.map
+
+1681075086
+ loadmap pair.map
+Loading pair.map
+moving to MapLoadedState.
+
+Loading pair.map
+moving to MapLoadedState.
+1681075086
+ loadmap pair.map
+
+1681075401
+ loadmap cow.map
+Loading cow.map
+moving to MapLoadedState.
+
+Loading cow.map
+moving to MapLoadedState.
+1681075401
+ loadmap cow.map
+
+1681075461
+ loadmap pair.map
+Loading pair.map
+moving to MapLoadedState.
+
+Loading pair.map
+moving to MapLoadedState.
+1681075461
+ loadmap pair.map
+
+1681075475
+ validatemap
+Map Valid
+
+Map Valid
+1681075475
+ validatemap
+
+1681075482
+ addplayer a
+Adding a
+moving to PlayersAddedState.
+
+Adding a
+moving to PlayersAddedState.
+1681075482
+ addplayer a
+
+1681075507
+ addplayer b
+Adding b
+moving to PlayersAddedState.
+
+Adding b
+moving to PlayersAddedState.
+1681075507
+ addplayer b
+
+1681075512
+ gamestart
+Starting Game
+
+Starting Game
+1681075512
+ gamestart
+

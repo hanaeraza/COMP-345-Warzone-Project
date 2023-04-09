@@ -210,3 +210,116 @@ Message At: 1681073220
 	Added To List: 
 	Order: Deploy
 Deploy
+Message At: 1681073600
+	loadmap pair.map
+Loading pair.map
+moving to MapLoadedState.
+Message At: 1681073780
+	loadmap pair.map
+Loading pair.map
+moving to MapLoadedState.
+Message At: 1681073932
+	loadmap pair.map
+Loading pair.map
+moving to MapLoadedState.
+Message At: 1681074082
+	loadmap pair.map
+Loading pair.map
+moving to MapLoadedState.
+Message At: 1681074144
+	loadmap pair.ma
+Loading pair.ma
+moving to MapLoadedState.
+Message At: 1681074185
+	loadmap pair.map
+Loading pair.map
+moving to MapLoadedState.
+Message At: 1681074268
+	loadmap pair.map
+Loading pair.map
+moving to MapLoadedState.
+Message At: 1681074330
+	loadmap pair.map
+Loading pair.map
+moving to MapLoadedState.
+Message At: 1681074436
+	loadmap pair.map
+Loading pair.map
+moving to MapLoadedState.
+Message At: 1681074533
+	loadmap pair.map
+Loading pair.map
+moving to MapLoadedState.
+Message At: 1681074593
+	loadmap pair.map
+Loading pair.map
+moving to MapLoadedState.
+Message At: 1681074661
+	loadmap pair.map
+Loading pair.map
+moving to MapLoadedState.
+Message At: 1681074722
+	loadmap cow.map
+Loading cow.map
+moving to MapLoadedState.
+Message At: 1681074833
+	loadmap pair.map
+Loading pair.map
+moving to MapLoadedState.
+Message At: 1681074926
+	loadmap pair.map
+Loading pair.map
+moving to MapLoadedState.
+Message At: 1681075086
+	loadmap pair.map
+Loading pair.map
+moving to MapLoadedState.
+Message At: 1681075401
+	loadmap cow.map
+Loading cow.map
+moving to MapLoadedState.
+Message At: 1681075461
+	loadmap pair.map
+Loading pair.map
+moving to MapLoadedState.
+Message At: 1681075468
+	Current state: maploaded
+Message At: 1681075475
+	validatemap
+Map Valid
+Message At: 1681075475
+	Current state: mapvalidated
+Message At: 1681075482
+	addplayer a
+Adding a
+moving to PlayersAddedState.
+Message At: 1681075493
+	Current state: playersadded
+Message At: 1681075507
+	addplayer b
+Adding b
+moving to PlayersAddedState.
+Message At: 1681075507
+	Current state: playersadded
+Message At: 1681075512
+	gamestart
+Starting Game
+Message At: 1681075518
+	Current state: ReinforcementsState
+Message At: 1681075540
+	Current state: IssueOrdersState
+Message At: 1681075549
+	Orders List: 
+0x202be34e7b0 0
+Message At: 1681075549
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681075562
+	Orders List: 
+0x202be34e7b0 0
+0x202be367220 1
+Message At: 1681075562
+	Added To List: 
+	Order: Advance
+Advance

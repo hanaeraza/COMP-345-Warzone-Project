@@ -9,6 +9,25 @@
 #include <fstream>
 #include <sstream>
 
+int bytesAllocated = 0;
+int bytesDeallocated = 0;
+int timesAllocated = 0;
+int timesDeallocated = 0;
+
+void * operator new(size_t size)
+{
+  timesAllocated++;
+  bytesAllocated += size;
+  return malloc(size);
+}
+
+void operator delete(void * ptr, size_t size)
+{
+  timesDeallocated++;
+  bytesDeallocated += size;
+  free(ptr);
+}
+
 int main(){
   GameEngine* game = new GameEngine();
   game->generateLogger("log.txt");
