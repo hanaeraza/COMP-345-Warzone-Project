@@ -125,33 +125,6 @@ Deck& Deck::operator=(const Deck& d) {
     return *this;
 }
 void Card::play(Hand* hand, Deck *deck, Player *player) {
-	// newOrder orderCreate;  //
-    // OrdersList order_list; //creates an order list
-
-	// order_list.addOrder(orderCreate.createOrder(this->type)); 
-	// printOrders(order_list.getOrders());
-
-    if(this->type == "Bomb") {
-        cout << "Bomb Card Played" << endl;
-        player->ordersList.addOrder(new Bomb());
-    }
-    else if(this->type == "Blockade") {
-        cout << "Blockade Card Played" << endl;
-        player->ordersList.addOrder(new Blockade());
-    }
-    else if(this->type == "Airlift") {
-        cout << "Airlift Card Played" << endl;
-        player->ordersList.addOrder(new Airlift());
-    }
-    else if(this->type == "Diplomacy") {
-        cout << "Diplomacy Card Played" << endl;
-       player->ordersList.addOrder(new Negotiate());
-    }
-    else {
-        cout << "Invalid Card Type" << endl;
-    }
-
-
 
     if (hand && deck) {
         // Remove the card from the hand.
