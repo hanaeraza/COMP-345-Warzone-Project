@@ -10,112 +10,218 @@ using namespace std;
 class MapLoader;
 class Territory;
 
- vector<string> Player::toDefend() {
+vector<string> Player::toDefend()
+{
 
     return this->defenseList;
-} 
+}
 
-
- vector<string> Player::toAttack() {
+vector<string> Player::toAttack()
+{
 
     return this->attackList;
-} 
-
+}
 
 // Create an order object and add it to the player's list of orders
-void Player::issueOrder(MapLoader currentMap) {
-    
-    OrdersList orders;
-
-    
+void Player::issueOrder(MapLoader currentMap, Deck *deck)
+{
 
     vector<int> territoriesOwnedReinforcements;
+    // Print out territories owned
     cout << "Territories owned: \n";
-    for(int i=0; i<this->territoriesOwned.size(); i++){
-        
-        cout << this->territoriesOwned.at(i).GetTerritoryName() << "\n";
+    for (int i = 0; i < this->territoriesOwned.size(); i++)
+    {
+        cout << this->territoriesOwned.at(i).GetTerritoryName() << " ";
     }
-    cout << "Choose a territory to defend:" << "\n";
-    while(true){
+    cout << "\n";
+
+    int numTroopsRemaining = this->reinforcementPool;
+
+    // Creating Deploy Orders
+    cout << "Choose a territory to defend:"
+         << "\n";
+    while (true)
+    {
         string territoryToDefend;
         cin >> territoryToDefend;
-        for(int i=0; i<this->territoriesOwned.size(); i++){
-            if(territoryToDefend == this->territoriesOwned.at(i).GetTerritoryName()){
-                this->defenseList.push_back(territoryToDefend);
+        for (int i = 0; i < this->territoriesOwned.size(); i++)
+        {
+            if (territoryToDefend == this->territoriesOwned.at(i).GetTerritoryName())
+            {
                 cout << "How many armies would you like to deploy in " + territoriesOwned.at(i).GetTerritoryName() << "\n";
+                cout << "You have " << this->reinforcementPool << " armies remaining to deploy."
+                     << "\n";
                 int numTroopsToDeploy;
                 cin >> numTroopsToDeploy;
-                territoriesOwnedReinforcements.push_back(numTroopsToDeploy);
+                if (numTroopsToDeploy < 1)
+                {
+                    cout << "You must deploy at least 1 troop. Please try again."
+                         << "\n";
+                }
+                else if (numTroopsToDeploy > this->reinforcementPool)
+                {
+                    cout << "You do not have enough troops to deploy that many. Please try again."
+                         << "\n";
+                }
+
+                else
+                {
+                    Order *deployOrder = new Deploy(this->territoriesOwned.at(i), this, numTroopsToDeploy);
+                    this->ordersList.addOrder(deployOrder);
+                    cout << "Added deploy order of " << numTroopsToDeploy << " armies on " << territoryToDefend << " to orders list."
+                         << "\n";
+                    this->defenseList.push_back(territoryToDefend);
+                    this->reinforcementPool = this->reinforcementPool - numTroopsToDeploy;
+                }
+            }
+        }
+        if (this->reinforcementPool == 0)
+        {
+            cout << "You have deployed all your troops."
+                 << "\n";
+            break;
+        }
+        else
+        {
+            cout << "Choose another territory to defend:"
+                 << "\n";
+        }
+    }
+
+    // Creating Advance Orders
+
+    cout << "ADVANCE PHASE: "
+         << "\n";
+    while (true)
+    {
+        cout << "Do you want to issue an Advance Order? (y/n)"
+             << "\n";
+        string answer;
+        cin >> answer;
+        if (answer == "n")
+        {
+            break;
+        }
+        else if (answer == "y")
+        {
+
+            Territory territoryToAdvanceFrom;
+            Territory territoryToAdvanceTo;
+            cout << "Choose a Territory to Advance From:"
+                 << "\n";
+            // Print out territories owned
+            for (int i = 0; i < this->territoriesOwned.size(); i++)
+            {
+                cout << this->territoriesOwned.at(i).GetTerritoryName() << " ";
+            }
+            cout << "\n";
+            string territoryToAdvanceFromName;
+            cin >> territoryToAdvanceFromName;
+            for (int i = 0; i < this->territoriesOwned.size(); i++)
+            {
+                if (territoryToAdvanceFromName == this->territoriesOwned.at(i).GetTerritoryName())
+                {
+                    territoryToAdvanceFrom = this->territoriesOwned.at(i);
+                    break;
+                }
+            }
+            cout << "Choose a Territory to Advance To:"
+                 << "\n";
+            // Print out all territories
+            for (int i = 0; i < currentMap.GetMap().GetTerritories().size(); i++)
+            {
+                cout << currentMap.GetMap().GetTerritories().at(i)->GetTerritoryName() << " ";
+            }
+            cout << "\n";
+            string territoryToAdvanceToName;
+            cin >> territoryToAdvanceToName;
+            for (int i = 0; i < currentMap.GetMap().GetTerritories().size(); i++)
+            {
+                if (territoryToAdvanceToName == currentMap.GetMap().GetTerritories().at(i)->GetTerritoryName())
+                {
+                    territoryToAdvanceTo = *currentMap.GetMap().GetTerritories().at(i);
+                    break;
+                }
+            }
+            bool attack = true;
+            // Check if territory is owned by player to determine if we need to add it to the attack or defense list
+            for (int i = 0; i < this->territoriesOwned.size(); i++)
+            {
+                if (territoryToAdvanceToName == this->territoriesOwned.at(i).GetTerritoryName())
+                {
+                    attack = false;
+                }
+            }
+            if (attack == true)
+            {
+                this->attackList.push_back(territoryToAdvanceToName);
+            }
+            else
+            {
+                this->defenseList.push_back(territoryToAdvanceToName);
+            }
+            cout << "How many armies would you like to advance?"
+                 << "\n";
+            int numTroopsToAdvance;
+            cin >> numTroopsToAdvance;
+            this->ordersList.addOrder(new Advance(territoryToAdvanceFrom, territoryToAdvanceTo, this, numTroopsToAdvance));
+            cout << "Added advance order of " << numTroopsToAdvance << " armies from " << territoryToAdvanceFrom.GetTerritoryName() << " to " << territoryToAdvanceTo.GetTerritoryName() << " to orders list."
+                 << "\n";
+        }
+    }
+
+    /*The player uses one of the cards in their hand to issue an order that corresponds to the card in question. */
+    // add choose option
+
+    cout << "Choose a card to play:"
+         << "\n";
+
+    cout << "You have " << this->cardsOwned->size << " cards in your hand."
+         << "\n";
+    if (this->cardsOwned->size == 0)
+    {
+        cout << "You have no cards to play."
+             << "\n";
+    }
+    else
+    {
+        cout << "Cards in hand: "
+             << "\n";
+        for (int i = 0; i < this->cardsOwned->size; i++)
+        {
+            cout << this->cardsOwned->cards[i]->type << ", ";
+        }
+        cout << "\n";
+        while (true)
+        {
+            string cardToPlay;
+            cin >> cardToPlay;
+            bool cardFound = false;
+            for (int i = 0; i < this->cardsOwned->size; i++)
+            {
+                if (cardToPlay == this->cardsOwned->cards[i]->type)
+                {
+                    cardFound = true;
+                    this->cardsOwned->cards[i]->play(this->cardsOwned, deck);
+                    break;
+                }
+            }
+            if (cardFound == false)
+            {
+                cout << "Card not found. Please try again."
+                     << "\n";
+            }
+            else
+            {
                 break;
             }
         }
-        cout << "Choose another territory to defend:" << "\n";
     }
-    cout << "Choose a territory to attack:" << "\n";
-    while(true){
-        for(int i=0; i<this->territoriesOwned.size(); i++){
-            //print connections of each territory
-            cout << this->territoriesOwned.at(i).GetTerritoryName() << "Connected to: \n";
-            vector<Territory> territoriesConnected = currentMap.GetMap().GetConnections(this->territoriesOwned.at(i));
-            for(int j=0; j<territoriesConnected.size(); j++){
-                cout << "\t" << territoriesConnected.at(j).GetTerritoryName() << "\n";
-            }
-            //cout << this->territoriesOwned->at(i).getConnections() << "\n";
-        }
-        string territoryToAttack;
-        cin >> territoryToAttack;
-        //verify that territoryToAttack is adjacent to owned territory
-        //if it is, add to attackList 
-        //if not, ask for another territory
-        //repeat until player is satisfied
-        attackList.push_back(territoryToAttack);
-                
-        cout << "Choose another territory to attack:" << "\n";
-    }
-    /*The player issues deploy orders on its own territories that are in the list returned by toDefend(). As long
-as the player has armies still to deploy (see startup phase and reinforcement phase), it will issue a deploy
-order and no other order. Once it has deployed all its available armies, it can proceed with other kinds of
-orders. */
-    //not sure if true
-    for(int i=0; i<this->defenseList.size(); i++){
-      //  orders.addOrder(Deploy(this,this.defenseList.at(i), territoriesOwnedReinforcements.at(i)));
-    }
-    /*The player issues advance orders to either (1) move armies from one of its own territory to the other in
-order to defend them (using toDefend() to make the decision), and/or (2) move armies from one of its
-territories to a neighboring enemy territory to attack them (using toAttack() to make the decision). */
-    
-    //Attacking
-    for(int i=0; i<this->attackList.size(); i++){
-      // orders.addOrder(orderCreate.createOrder(Advance(this,this.defenseList.at(i), this.defenseList.at(i), 1))); 
-    }
-    //de
-    /*The player uses one of the cards in their hand to issue an order that corresponds to the card in question. */
-    //add choose option
-
-    cout << "Choose a card to play:" << "\n";
-    int numberOfCards = sizeof(this->cardsOwned->cards) / sizeof(*(this->cardsOwned->cards));
-
-    // Card ** cards = this->cardsOwned->cards;
-
-    // for(int i=0; i < numberOfCards; i++){ // 
-    //    if(this->cardsOwned->cards[1][i].getType() == "Bomb"){
-    //          orders.addOrder(orderCreate.createOrder("Bomb"));
-    //      }
-    //      else if(this->cardsOwned->cards[1][i].getType() == "Blockade"){
-    //          orders.addOrder(orderCreate.createOrder("Blockade"));
-    //      }
-    //      else if(this->cardsOwned->cards[1][i].getType() == "Airlift"){
-    //          orders.addOrder(orderCreate.createOrder("Airlift"));
-    //      }
-    //     else if(this->cardsOwned->cards[1][i].getType() == "Diplomacy"){
-    //          orders.addOrder(orderCreate.createOrder("Diplomacy"));
-    //      } 
-    // }
-    
 }
 
 // Stream operators
-ostream& operator<<(ostream& os, const Player& other) {
+ostream &operator<<(ostream &os, const Player &other)
+{
     return os;
 }
 
