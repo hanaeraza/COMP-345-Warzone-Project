@@ -8,6 +8,7 @@
 #include "Orders.h"
 #include "Card.h"
 #include "Map.h"
+#include "PlayerStrategy.h"
 
 using namespace std;
 
@@ -18,6 +19,7 @@ class MapLoader;
 class Player { 
 
     public:
+        PlayerStrategy * ps; 
         string playername;
         Hand *cardsOwned = new Hand(); 
         vector<Territory> territoriesOwned; 
