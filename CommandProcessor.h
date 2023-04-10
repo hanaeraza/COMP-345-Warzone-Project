@@ -24,6 +24,7 @@ public:
   void saveEffect(string effect);
 
   string stringToLog() const override;
+  string asString() const;
 
   friend ostream& operator<<(ostream& os, const Command& input);
 

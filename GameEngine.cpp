@@ -221,6 +221,7 @@ void StartState::update(GameEngine *game)
             filename = (*(nextCommand.parameters))[0];
         }
 
+        cout << "Command: " << nextCommand.asString() << endl;
 
         if (command.find("tournament") == 0) {
             //takes the substring that's after "tournament"

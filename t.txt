@@ -1,1 +1,1 @@
-tournament -M -pair.map -P -p1 -p2 -G 10 -D 10
+tournament -M pair.map -P p1 p2 -G 10 -D 10

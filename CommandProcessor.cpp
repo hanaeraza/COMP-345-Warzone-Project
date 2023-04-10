@@ -44,6 +44,15 @@ ostream& operator<<(ostream& os, const Command& input){
   return os;
 }
 
+string Command::asString() const{
+  string output = *(this->functionName);
+  for (int i = 0; i < this->parameters->size(); i++)
+  {
+    output += " " + (*(this->parameters))[i];
+  }
+  return output;
+}
+
 ostream& operator<<(ostream& os, const CommandProcessor& input){
   queue<Command*>* readingCommandQueue = new queue<Command*>();
 
