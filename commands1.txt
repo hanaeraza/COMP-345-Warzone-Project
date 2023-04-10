@@ -1,0 +1,6 @@
+loadmap cow.map
+validatemap
+addplayer oscar
+addplayer ed
+addplayer you
+addplayer me

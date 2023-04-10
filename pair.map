@@ -1,0 +1,19 @@
+; map: pair.map
+; map made with the map maker
+; yura.net Risk 1.0.9.3
+
+[files]
+pic europe_pic.jpg
+map europe_map.gif
+crd europe.cards
+
+[continents]
+North_Europe 2 red
+
+[countries]
+1 England 1 164 126
+2 France 1 158 44
+
+[borders]
+1 2
+2 1
