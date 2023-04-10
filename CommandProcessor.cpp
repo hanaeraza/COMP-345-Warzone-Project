@@ -128,6 +128,13 @@ int CommandProcessor::size(){
   return commandQueue->size();
 }
 
+void CommandProcessor::clear(){
+  while (commandQueue->size() > 0)
+  {
+    commandQueue->pop();
+  }
+}
+
 bool CommandProcessor::hasCommand(){
   return commandQueue->size() > 0;
 }

@@ -48,6 +48,7 @@ public:
   bool hasCommand();
   void readCommand();
   int size();
+  void clear();
 
   string stringToLog() const override;
 

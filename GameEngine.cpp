@@ -87,6 +87,118 @@ string GameEngine::getCurrentState()
     return currentState->getName();
 }
 
+TournamentInfo::TournamentInfo(vector<string> maps, vector<string> players, unsigned int gamesPlayed, unsigned int maxTurns){
+    this->maps = new vector<string>(maps);
+    this->players = new vector<string>(players);
+    this->gamesPlayed = new unsigned int(gamesPlayed);
+    this->maxTurns = new unsigned int(maxTurns);
+    this->winningPlayers = new unordered_map<pair<string, unsigned int>, string>();
+}
+
+ostream& operator<<(ostream& os, const TournamentInfo& input){
+    os << "Tournament Info: " << endl;
+    os << "M: " << endl;
+    for (int i = 0; i < input.maps->size(); i++){
+        os << "\t" << (*(input.maps))[i] << endl;
+    }
+    os << "P: " << endl;
+    for (int i = 0; i < input.players->size(); i++){
+        os << "\t" << (*(input.players))[i] << endl;
+    }
+    os << "G: " << *input.gamesPlayed << endl;
+    os << "D: " << *input.maxTurns << endl;
+
+    os << "Results: " << endl;
+
+    os << "\t" << endl;
+
+    for (size_t i = 0; i < *input.gamesPlayed; i++)
+    {
+        os << "\t" << "Game " << i + 1 << ": " << endl;
+    }
+
+    for (size_t i = 0; i < input.maps->size(); i++)
+    {
+        os << "\t" << "Map " << i + 1 << ": " << endl;
+        for (size_t j = 0; j < *input.gamesPlayed; j++)
+        {
+            os << "\t" << (*(input.winningPlayers))[pair<string, unsigned int>((*(input.maps))[i], j)];
+        }
+    }
+
+    return os;
+}
+
+string TournamentInfo::stringToLog() const
+{
+    stringstream stream;
+    string output;
+    stream << *this;
+    output = stream.str();
+    return output;
+}
+
+void TournamentInfo::onGameWon(string player)
+{
+    (*(winningPlayers))[pair<string, unsigned int>(*currentMap, *currentGame)] = player;
+}
+
+void GameEngine::onGameWon(string player)
+{
+    tournamentInfo->onGameWon(player);
+}
+
+//Called when starting a tournament
+//Gives Command Processor a list of commands to execute for the tournament
+void GameEngine::onTournamentStart(TournamentInfo tournamentInfo)
+{
+    *inTournamentMode = true;
+    this->tournamentInfo = &tournamentInfo;
+
+    for (int i = 0; i < tournamentInfo.maps->size(); i++)
+    {
+        tournamentInfo.currentMap = &(*(tournamentInfo.maps))[i];
+
+        for (int j = 0; j < *(tournamentInfo.gamesPlayed); j++)
+        {
+            commandProcessor->clear();
+            commandProcessor->saveCommand(Command("loadmap " + (*(tournamentInfo.maps))[i]));
+            commandProcessor->saveCommand(Command("validatemap"));
+            for (int k = 0; k < min(6, (int)tournamentInfo.players->size()); k++)
+            {
+                commandProcessor->saveCommand(Command("addplayer " + (*(tournamentInfo.players))[k]));
+            }
+
+            tournamentInfo.currentGame = reinterpret_cast<unsigned int*>(&j);
+
+            setState(new StartState());
+            update();
+        }
+    }
+
+    *inTournamentMode = false;
+}
+
+void GameEngine::setTournamentInfo(TournamentInfo* input)
+{
+    tournamentInfo = input;
+}
+
+void GameEngine::setInTournamentMode(bool* input)
+{
+    inTournamentMode = input;
+}
+
+TournamentInfo GameEngine::getTournamentInfo()
+{
+    return *tournamentInfo;
+}
+
+bool GameEngine::isInTournamentMode()
+{
+    return *inTournamentMode;
+}
+
 // Start state
 void StartState::update(GameEngine *game)
 {
@@ -108,7 +220,52 @@ void StartState::update(GameEngine *game)
             filename = (*(nextCommand.parameters))[0];
         }
 
-        if (command == "loadmap" && !filename.empty())
+
+        if (command.find("tournament") == 0) {
+            //takes the substring that's after "tournament"
+            std::string argString = command.substr(10);
+            std::istringstream iss(argString);
+
+            //initialize variables
+            std::vector<std::string> maps;
+            std::vector<std::string> players;
+            unsigned int gamesPlayed = 0;
+            unsigned int maxTurns = 0;
+
+            // Parse the arguments using the input string stream
+            std::string arg;
+            while (iss >> arg) {
+                if (arg == "-M") {
+                    // Parse the map files
+                    while (iss >> arg && arg[0] != '-') {
+                        maps.push_back(arg);
+                    }
+                } 
+                else if (arg == "-P") {
+                    // Parse the player strategies
+                    while (iss >> arg && arg[0] != '-') {
+                    players.push_back(arg);
+                    }
+                }
+                else if (arg == "-G") {
+                // Parse the number of games
+                iss >> gamesPlayed;
+                }
+                else if (arg == "-D") {
+                // Parse the maximum number of turns
+                iss >> maxTurns;
+                }
+                else {
+                std::cout << "Invalid argument: " << arg << std::endl;
+                }
+            }
+
+            game->setTournamentInfo(new TournamentInfo(maps, players, gamesPlayed, maxTurns));
+
+            game->onTournamentStart(game->getTournamentInfo());
+        }
+
+        else if (command == "loadmap" && !filename.empty())
         {
             nextCommand.saveEffect("Loading " + filename + 
             "\nmoving to MapLoadedState.");
@@ -153,7 +310,50 @@ void StartState::update(GameEngine *game)
 
         bool valid = game->getCommandProcessor().validate(this);
 
-        if (command == "loadmap" && !filename.empty() && game->getCommandProcessor().validate(this))
+        if (command.find("tournament") == 0) {
+            //takes the substring that's after "tournament"
+            std::string argString = command.substr(10);
+            std::istringstream iss(argString);
+
+            //initialize variables
+            std::vector<std::string> maps;
+            std::vector<std::string> players;
+            unsigned int gamesPlayed = 0;
+            unsigned int maxTurns = 0;
+
+            // Parse the arguments using the input string stream
+            std::string arg;
+            while (iss >> arg) {
+                if (arg == "-M") {
+                    // Parse the map files
+                    while (iss >> arg && arg[0] != '-') {
+                        maps.push_back(arg);
+                    }
+                } 
+                else if (arg == "-P") {
+                    // Parse the player strategies
+                    while (iss >> arg && arg[0] != '-') {
+                    players.push_back(arg);
+                    }
+                }
+                else if (arg == "-G") {
+                // Parse the number of games
+                iss >> gamesPlayed;
+                }
+                else if (arg == "-D") {
+                // Parse the maximum number of turns
+                iss >> maxTurns;
+                }
+                else {
+                std::cout << "Invalid argument: " << arg << std::endl;
+                }
+            }
+
+            game->setTournamentInfo(new TournamentInfo(maps, players, gamesPlayed, maxTurns));
+
+            game->onTournamentStart(game->getTournamentInfo());
+        }
+        else if (command == "loadmap" && !filename.empty() && game->getCommandProcessor().validate(this))
         {
             nextCommand.saveEffect("Loading " + filename + 
             "\nmoving to MapLoadedState.");
@@ -858,7 +1058,17 @@ void ExecuteOrdersState::update(GameEngine *game)
         {
             cout << "Player " << playerQueue.front().playername << " has won the game!" << endl;
             // set the game state to win state
-            game->setState(new WinState());
+
+            Player p = playerQueue.front();
+
+            game->onGameWon(p.playername);
+
+            if (game->isInTournamentMode())
+            {
+                return;
+            }
+            else
+                game->setState(new WinState());
         }
         Player p = playerQueue.front();
         playerQueue.pop();
