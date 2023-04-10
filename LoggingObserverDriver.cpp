@@ -28,7 +28,7 @@ void operator delete(void * ptr, size_t size)
   free(ptr);
 }
 
-int main(){
+int main(){ // tournamentCommand.txt
   GameEngine* game = new GameEngine();
   game->generateLogger("log.txt");
   std::string input;

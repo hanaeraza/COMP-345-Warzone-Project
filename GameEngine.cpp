@@ -92,7 +92,7 @@ TournamentInfo::TournamentInfo(vector<string> maps, vector<string> players, unsi
     this->players = new vector<string>(players);
     this->gamesPlayed = new unsigned int(gamesPlayed);
     this->maxTurns = new unsigned int(maxTurns);
-    this->winningPlayers = new unordered_map<pair<string, unsigned int>, string>();
+    this->winningPlayers = new unordered_map<pair<string, unsigned int>, string, PairHasher>();
 }
 
 ostream& operator<<(ostream& os, const TournamentInfo& input){
@@ -176,6 +176,7 @@ void GameEngine::onTournamentStart(TournamentInfo tournamentInfo)
         }
     }
 
+    this->tournamentInfo->notify(this->tournamentInfo);
     *inTournamentMode = false;
 }
 

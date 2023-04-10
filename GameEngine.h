@@ -12,6 +12,24 @@ using namespace std;
 class CommandProcessor;
 class State;
 
+struct PairHasher {
+  size_t operator()(const pair<string, unsigned int>& p) const {
+    hash<string> str_hash;
+    hash<unsigned int> int_hash;
+    return str_hash(p.first) ^ int_hash(p.second);
+  }
+};
+
+struct MapHasher {
+  size_t operator()(const unordered_map<pair<string, unsigned int>, string>& m) const {
+    size_t hash_val = 0;
+    for (const auto& p : m) {
+      hash_val ^= PairHasher()(p.first) ^ hash<string>()(p.second);
+    }
+    return hash_val;
+  }
+};
+
 struct TournamentInfo : public Subject, public ILoggable
 {
     vector<string>* maps;
@@ -23,7 +41,7 @@ struct TournamentInfo : public Subject, public ILoggable
     unsigned int* currentGame;
 
     // map, game won, winning player
-    unordered_map<pair<string, unsigned int>, string>* winningPlayers;
+    unordered_map<pair<string, unsigned int>, string, PairHasher>* winningPlayers;
 
     string stringToLog() const override;
 
