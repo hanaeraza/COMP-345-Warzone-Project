@@ -8,6 +8,7 @@
 #include "Card.h"
 // #include "Map.cpp"
 #include "Map.h"
+#include "PlayerStrategy.h"
 using namespace std;
 
 static int numPlayers = 0;
@@ -129,6 +130,7 @@ void MapValidatedState::update(GameEngine *game)
     string input;
     string command;
     string playername;
+    string strategy;
     while (true)
     {
         cout << "Enter next command: ";
@@ -136,11 +138,17 @@ void MapValidatedState::update(GameEngine *game)
         stringstream ss(input);
         ss >> command;
         ss >> playername;
+        ss >> strategy;
 
-        if (command == "addplayer" && !playername.empty())
+        // string strats[] = {"human", "aggressive", "benevolent", "neutral", "cheater"};
+        // auto it = find(begin(strats), end(strats), strategy);
+
+        if (command == "addplayer" && !playername.empty() && (strategy == "human" || strategy == "aggressive" || strategy == "benevolent" || strategy == "neutral" || strategy == "cheater"))
         {
+
             numPlayers++;
-            players.push_back(Player(playername));
+            
+            players.push_back(Player(playername, strategy));
             cout << numPlayers << endl;
             game->setState(new PlayersAddedState());
             break;
@@ -166,6 +174,10 @@ void PlayersAddedState::update(GameEngine *game)
     string input;
     string command;
     string playername;
+    string strategy;
+
+
+
     while (true)
     {
         cout << "Enter next command: ";
@@ -173,12 +185,15 @@ void PlayersAddedState::update(GameEngine *game)
         stringstream ss(input);
         ss >> command;
         ss >> playername;
+        ss >> strategy;
 
-        if (command == "addplayer" && !playername.empty())
+        // string strats[] = {"human", "aggressive", "benevolent", "neutral", "cheater"};
+        // auto it = find(begin(strats), end(strats), strategy);
+
+        if (command == "addplayer" && !playername.empty() && (strategy == "human" || strategy == "aggressive" || strategy == "benevolent" || strategy == "neutral" || strategy == "cheater"))
         {
             numPlayers++;
-            players.push_back(Player(playername));
-
+            players.push_back(Player(playername, strategy));
             cout << numPlayers << endl;
             cout << "New player added!" << endl;
             break;
