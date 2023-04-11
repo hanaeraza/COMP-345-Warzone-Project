@@ -15,6 +15,7 @@
         "${fileDirname}/Player.cpp",
         "${fileDirname}/Card.cpp",
         "${fileDirname}/Orders.cpp",
+        "${fileDirname}/PlayerStrategy.cpp",
         "-o",
         "${fileDirname}\\${fileBasenameNoExtension}.exe"
       ],
