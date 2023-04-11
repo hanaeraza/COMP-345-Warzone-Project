@@ -12,21 +12,18 @@ class Territory;
 
 vector<string> Player::toDefend()
 {
-
-    return this->defenseList;
+    return this->strategy->toDefend();
 }
 
 vector<string> Player::toAttack()
 {
 
-    return this->attackList;
+    return this->strategy->toAttack();
 }
 
 // Create an order object and add it to the player's list of orders
 void Player::issueOrder(MapLoader currentMap, Deck *deck)
 {
-
-    vector<int> territoriesOwnedReinforcements;
     // Print out territories owned
     cout << "Territories owned: \n";
     for (int i = 0; i < this->territoriesOwned.size(); i++)
@@ -173,78 +170,89 @@ void Player::issueOrder(MapLoader currentMap, Deck *deck)
     /*The player uses one of the cards in their hand to issue an order that corresponds to the card in question. */
     // add choose option
 
-    cout << "Choose a card to play:"
+    cout << "Do you want to issue an order using a card? (y/n)"
          << "\n";
+    string answer;
+    cin >> answer;
+    if (answer == "y")
+    {
+        cout << "Choose a card to play:"
+             << "\n";
 
-    cout << "You have " << this->cardsOwned->size << " cards in your hand."
-         << "\n";
-    if (this->cardsOwned->size == 0)
-    {
-        cout << "You have no cards to play."
+        cout << "You have " << this->cardsOwned->size << " cards in your hand."
              << "\n";
-    }
-    else
-    {
-        cout << "Cards in hand: "
-             << "\n";
-        for (int i = 0; i < this->cardsOwned->size; i++)
+        if (this->cardsOwned->size == 0)
         {
-            cout << this->cardsOwned->cards[i]->type << ", ";
+            cout << "You have no cards to play."
+                 << "\n";
         }
-        cout << "\n";
-        while (true)
+        else
         {
-            string cardToPlay;
-            cin >> cardToPlay;
-            bool cardFound = false;
+            cout << "Cards in hand: "
+                 << "\n";
             for (int i = 0; i < this->cardsOwned->size; i++)
             {
-                if (cardToPlay == this->cardsOwned->cards[i]->type)
+                cout << this->cardsOwned->cards[i]->type << ", ";
+            }
+            cout << "\n";
+            while (true)
+            {
+                string cardToPlay;
+                cin >> cardToPlay;
+                bool cardFound = false;
+                for (int i = 0; i < this->cardsOwned->size; i++)
                 {
-                    cardFound = true;
-                    this->cardsOwned->cards[i]->play(this->cardsOwned, deck, this);
-                    if (this->cardsOwned->cards[i]->type == "Bomb")
+                    if (cardToPlay == this->cardsOwned->cards[i]->type)
                     {
-                        string target;
-                        cout << "Enter the name of the country you want to bomb: ";
-                        cin >> target;
-                        for(int i = 0; i < currentMap.GetMap().GetTerritories().size(); i++){
-                            if(currentMap.GetMap().GetTerritories().at(i)->GetTerritoryName() == target){
-                                cout << "Bomb Card Played" << endl;
-                                this->ordersList.addOrder(new Bomb(currentMap.GetMap().GetTerritories().at(i),this));
-                                break;
+                        cardFound = true;
+                        this->cardsOwned->cards[i]->play(this->cardsOwned, deck, this);
+
+                        if (cardToPlay == "Bomb")
+                        {
+                            string target;
+                            cout << "Enter the name of the country you want to bomb: ";
+                            cin >> target;
+                            for (int i = 0; i < currentMap.GetMap().GetTerritories().size(); i++)
+                            {
+                                if (currentMap.GetMap().GetTerritories().at(i)->GetTerritoryName() == target)
+                                {
+                                    cout << "Bomb Card Played" << endl;
+                                    // this->ordersList.addOrder(new Bomb(currentMap.GetMap().GetTerritories().at(i),this));
+                                    break;
+                                }
                             }
                         }
+                        else if (cardToPlay == "Blockade")
+                        {
+                            cout << "Blockade Card Played" << endl;
+                            this->ordersList.addOrder(new Blockade());
+                        }
+                        else if (cardToPlay == "Airlift")
+                        {
+                            cout << "Airlift Card Played" << endl;
+                            this->ordersList.addOrder(new Airlift());
+                        }
+                        else if (cardToPlay == "Diplomacy")
+                        {
+                            cout << "Diplomacy Card Played" << endl;
+                            this->ordersList.addOrder(new Negotiate());
+                        }
+                        break;
                     }
-                    else if (this->cardsOwned->cards[i]->type == "Blockade")
-                    {
-                        cout << "Blockade Card Played" << endl;
-                        this->ordersList.addOrder(new Blockade());
-                    }
-                    else if (this->cardsOwned->cards[i]->type == "Airlift")
-                    {
-                        cout << "Airlift Card Played" << endl;
-                        this->ordersList.addOrder(new Airlift());
-                    }
-                    else if (this->cardsOwned->cards[i]->type == "Diplomacy")
-                    {
-                        cout << "Diplomacy Card Played" << endl;
-                        this->ordersList.addOrder(new Negotiate());
-                    }
+                }
+                if (cardFound == false)
+                {
+                    cout << "Card not found. Please try again."
+                         << "\n";
+                }
+                else
+                {
                     break;
                 }
             }
-            if (cardFound == false)
-            {
-                cout << "Card not found. Please try again."
-                     << "\n";
-            }
-            else
-            {
-                break;
-            }
         }
     }
+    // this->strategy->issueOrder(currentMap, deck);
 }
 
 // Stream operators
