@@ -1053,7 +1053,35 @@ void ExecuteOrdersState::update(GameEngine *game)
     {
         cout << "Execute Order phase for player: " << playerQueue.front().playername << endl;
 
-        executeOrdersPhase(playerQueue.front());
+        for (int i = 0; i < playerQueue.size(); i++)
+        {
+            cout << "Execute Order phase for player: " << playerQueue.front().playername << endl;
+
+            executeOrdersPhase(playerQueue.front());
+
+            // check if player has won
+            if (playerQueue.front().territoriesOwned.size() == map.GetMap().GetTerritories().size())
+            {
+                cout << "Player " << playerQueue.front().playername << " has won the game!" << endl;
+                // set the game state to win state
+                game->setState(new WinState());
+            }
+            Player p = playerQueue.front();
+            playerQueue.pop();
+            playerQueue.push(p);
+        }
+        //Checking if any player is eliminated
+        for(int i = 0; i < playerQueue.size(); i++){
+            if(playerQueue.front().territoriesOwned.size() == 0){
+                cout << "Player " << playerQueue.front().playername << " has been eliminated from the game!" << endl;
+                playerQueue.pop();
+            }
+            else{
+                Player p = playerQueue.front();
+                playerQueue.pop();
+                playerQueue.push(p);
+            }
+        }
         
         // check if player has won
         if (playerQueue.front().territoriesOwned.size() == map.GetMap().GetTerritories().size())
