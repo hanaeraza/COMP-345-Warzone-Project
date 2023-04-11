@@ -43,18 +43,13 @@ Order* newOrder::createOrder(string orderType) const
 }
 
 //--------[Order]---------
-Order::Order() : Subject() //default constructor
+Order::Order() //default constructor
 {
     currentPlayer = nullptr;
-    attach(orderLogger);
 }
 Order::Order(Player& currentPlayer) //parametized constructor
 {
     this->currentPlayer = &currentPlayer;
-    attach(orderLogger);
-    std::stringstream stream;
-    stream << "Order created for player " << currentPlayer << "\n";
-    notify(stream.str());
 }
 Order::~Order() //destructor
 {
@@ -70,6 +65,7 @@ Deploy::Deploy() : Order() //default constructor
 Deploy::Deploy(Territory& target, Player* currentPlayer, int amount)//parametized constructor
 {
     this->target = &target;
+    this->currentPlayer = currentPlayer;
     int* copiedAmount = new int(amount);
     this->amount = copiedAmount;
 }
@@ -91,6 +87,7 @@ Advance::Advance(Territory& source, Territory& target, Player* currentPlayer, in
 {
     this->source = &source;
     this->target = &target;
+    this->currentPlayer = currentPlayer;
     int* copiedAmount = new int(amount);
     this->amount = copiedAmount;
 }
@@ -109,6 +106,7 @@ Bomb::Bomb() : Order() //default constructor
 Bomb::Bomb(Territory& target, Player* currentPlayer) //parametized constructor
 {
     this->target = &target;
+    this->currentPlayer = currentPlayer;
 }
 Bomb::~Bomb() //destructor
 {
@@ -123,6 +121,7 @@ Blockade::Blockade() : Order() //default constructor
 Blockade::Blockade(Territory& target, Player* currentPlayer)//parametized constructor
 {
     this->target = &target;
+    this->currentPlayer = currentPlayer;
 }
 Blockade::~Blockade() //destructor
 {
@@ -140,6 +139,7 @@ Airlift::Airlift(Territory& source, Territory& target, Player* currentPlayer, in
 {
     this->source = &source;
     this->target = &target;
+    this->currentPlayer = currentPlayer;
     int* copiedAmount = new int(amount);
     this->amount = copiedAmount;
 }
@@ -158,11 +158,13 @@ Negotiate::Negotiate() : Order() //default constructor
 Negotiate::Negotiate(Player* targetPlayer, Player* currentPlayer)//parametized constructor
 {
     this->targetPlayer = targetPlayer;
+    this->currentPlayer = currentPlayer;
 }
 Negotiate::~Negotiate() //destructor
 {
     targetPlayer = nullptr;
 }
+
 
 
 
@@ -289,79 +291,60 @@ void OrdersList::executeOrders()
 }
 
 //validate() methods
-bool Deploy::validate() const
-{
-    cout << "Validating Deploy...\n";
+bool Deploy::validate() const {
 
     //checks if territory is owned by player
-    if (target->GetOwner() == *currentPlayer)
-    {
-        cout << "Invalid Order: You do not own this territory.\n" << endl;
-        return false;
+    for (int i = 0; i < currentPlayer->territoriesOwned.size(); i++) {
+        if (currentPlayer->territoriesOwned.at(i).GetTerritoryName() == target->GetTerritoryName()) {
+            cout << currentPlayer->territoriesOwned.at(i).GetTerritoryName() << endl;
+            //checks if the amount to deploy is greater than the reinforcement pool
+            if (*amount > currentPlayer->reinforcementPool) {
+                cout << "Deploy order validated." << endl;
+                return true;
+            }
+            else {
+                cout << "Deploy not Validated: You do not own this territory." << endl;
+                return false;
+            }
+        }
     }
+    
+    cout << "Deploy not Validated: You do not own this territory." << endl;
+    return false;
 
-    //bound check
-    else if (*amount < 1)
-    {
-        cout << "Invalid Order: Please enter an amount greater than 0.\n" << endl;
-        return false;
-    }
-
-    //checks if the amount to deploy is greater than the reinforcement pool
-    else if (*amount > currentPlayer->reinforcementPool)
-    {
-        cout << "Invalid Order: You do not have enough troops to deploy.\n" << endl;
-        return false;
-    }
-
-    cout << "Deploy order validated.\n" << endl;
-    return true;
 }
 
 bool Advance::validate() const
 {
-    cout << "Validating Advance...\n";
 
-    //If the source territory does not belong to the player that issued the order, the order is invalid.
-    if (source->GetOwner() == *currentPlayer)
-    {
-        cout << "Invalid Order: The source territory is not yours.\n" << endl;
-        return false;
-    }
 
     //If the target territory is connected to the source territory, the order is invalid.
     // else if (!source->IsConnected(target))
     // {
-    //     cout << "Invalid Order: The target territory is not adjacent to the source territory.\n" << endl;
+    //     cout << "Advance not Validated: The target territory is not adjacent to the source territory.\n" << endl;
     //     return false;
     // }
 
     //checks if the amount is greater than the army in the territory
-    else if (*amount > source->GetArmyQuantity())
+    if (*amount > source->GetArmyQuantity())
     {
-        cout << "Invalid Order: You do not own this many armies in this territory.\n" << endl;
+        cout << "Advance not Validated: You do not own this many armies in this territory." << endl;
         return false;
     }
 
-    //bound check
-    else if (*amount < 1)
-    {
-        cout << "Invalid Order: Please enter a number greater than 0.\n" << endl;
-    }
-
-    cout << "Advance order validated.\n" << endl;
+    cout << "Advance order validated." << endl;
     return true;
 }
 
 bool Bomb::validate() const
 {
-    cout << "Validating Bomb...\n";
 
-    //If the target belongs to the player that issued the order, the order is invalid.
-    if(target->GetOwner() == *currentPlayer)
-    {
-        cout << "Invalid Order: This is your own territory.\n" << endl;
-        return false;
+    //checks if territory is owned by player
+    for (int i = 0; i < currentPlayer->territoriesOwned.size(); i++) {
+        if (currentPlayer->territoriesOwned.at(i).GetTerritoryName() == target->GetTerritoryName()) {
+            cout << "Bomb not Validated: You cannot Bomb yourself." << endl;
+            return false;
+        }
     }
 
     //If the target territory is not connected to one of the territory owned by the player issuing the order, then the order is invalid. 
@@ -371,66 +354,60 @@ bool Bomb::validate() const
     //     return false;
     // }
 
-    cout << "Bomb order validated.\n" << endl;
+    cout << "Bomb order validated." << endl;
     return true;
 }
 
 bool Blockade::validate() const
 {
-    cout << "Validating Blockade...\n";
 
     //If the target territory belongs to an enemy player, the order is declared invalid. 
-    if(!(target->GetOwner() == *currentPlayer))
-    {
-        cout << "Invalid Order: The territory does not belong to you.\n" << endl;
-        return false;
+    //checks if territory is owned by player
+    for (int i = 0; i < currentPlayer->territoriesOwned.size(); i++) {
+        if (currentPlayer->territoriesOwned.at(i).GetTerritoryName() == target->GetTerritoryName()) {
+            cout << "Blockade order validated." << endl;
+            return true;
+        }
     }
 
-    cout << "Blockade order validated.\n" << endl;
-    return true;
+    cout << "Blockade not Validated: Select your own territory to Blockade." << endl;
+    return false;
 }
 
 bool Airlift::validate() const
 {
-    cout << "Validating Airlift...\n";
-
-    //If the source or target does not belong to the player that issued the order, the order is invalid.
-    if (!(source->GetOwner() == *currentPlayer))
-    {
-        cout << "Invalid Order: You do not own this territory.\n" << endl;
-        return false;
+    //If the source does not belong to the player that issued the order, the order is invalid.
+    //checks if territory is owned by player
+    for (int i = 0; i < currentPlayer->territoriesOwned.size(); i++) {
+        if (currentPlayer->territoriesOwned.at(i).GetTerritoryName() == source->GetTerritoryName()) {
+            cout << "Blockade order validated." << endl;
+            return true;
+            if (*amount <= source->GetArmyQuantity()) {
+                cout << "Airlift order validated." << endl;
+                return true;
+            }
+            else {
+                cout << "Airlift not Validated: You do not own this many armies in this territory." << endl;
+                return false;
+            }
+        }
     }
+    cout << "Airlift not Validated: Source territory does not belong to player." << endl;
+    return false;
 
-    //check if requested amount is greater than number of a armies
-    else if (*amount > source->GetArmyQuantity())
-    {
-        cout << "Invalid Order: You do not own this many armies in this territory.\n" << endl;
-        return false;
-    }
-
-    //bound check
-    else if (*amount < 1)
-    {
-        cout << "Please enter a value that is at least 1 for this order\n" << endl;
-        return false;
-    }
-
-    cout << "Airlift order validated.\n" << endl;
-    return true;
 }
 
 bool Negotiate::validate() const
 {
-    cout << "Validating Negotiate...\n";
 
     //If the target is the player issuing the order, then the order is invalid. 
     if(targetPlayer == currentPlayer)
     {
-        cout << "Invalid Order: You cannot negotiate with yourself.\n" << endl;
+        cout << "Negotiate not Validated: You cannot negotiate with yourself." << endl;
         return false;
     }
 
-    cout << "Negotiate order validated.\n" << endl;
+    cout << "Negotiate order validated." << endl;
     return true;
 }
 
@@ -438,21 +415,15 @@ bool Negotiate::validate() const
 void Deploy::execute()
 {
     if (validate()) {
-        cout << "Executing Deploy...\n";
         target->SetArmyQuantity(*amount + target->GetArmyQuantity());
-        cout << "Deploy Executed.\n" << endl;
-
-        std::stringstream stream;
-        stream << "Deploy Executed.\n";
-        notify(stream.str());
+        cout << target->GetArmyQuantity() << endl;
+        cout << "Deploy Executed." << endl;
     }
 }
 
 void Advance::execute()
 {
     if (validate()) {
-        cout << "Executing Advance...\n";
-
         //if territory belongs to player then move armies
         if (source->GetOwner() == target->GetOwner())
         {
@@ -491,55 +462,30 @@ void Advance::execute()
             }
 
         }
-        cout << "Advance Executed.\n" << endl;
-
-        std::stringstream stream;
-        stream << "Advance Executed.\n";
-        notify(stream.str());
+        cout << "Advance Executed." << endl;
     }
 }
 
 void Bomb::execute()
 {
     if (validate())
-
-        cout << "Executing Bomb...\n";
         target->SetArmyQuantity(target->GetArmyQuantity() / 2);
-        cout << "Bomb Executed.\n" << endl;
-
-        std::stringstream stream;
-        stream << "Bomb Executed.\n";
-        notify(stream.str());
+        cout << "Bomb Executed." << endl;
 }
 
 void Blockade::execute()
 {
     if (validate())
     {
-        cout << "Executing Blockade...\n";
-
         target->SetArmyQuantity(target->GetArmyQuantity() * 2);
         //Missing neutral player
-        cout << "Blockade Executed.\n" << endl;
-
-        std::stringstream stream;
-        stream << "Blockade Executed.\n";
-        notify(stream.str());
+        cout << "Blockade Executed." << endl;
     }
 }
 
 void Airlift::execute()
 {
-    if (validate())
-    {
-        //if source and target territory is not owned by player
-        if (!(source->GetOwner() == *currentPlayer) || !(target->GetOwner() == *currentPlayer))
-        {
-            cout << "Invalid Order: You cannot Airlift this territory.\n" << endl;
-            return;
-        }
-
-        cout << "Airlift is being executed!\n";
+    if (validate()) {
 
         if (source->GetOwner() == target->GetOwner()) // Transferring army to another territory
         {
@@ -579,11 +525,7 @@ void Airlift::execute()
 
         }
 
-        cout << "Advance has finished executing!\n" << endl;
-
-        std::stringstream stream;
-        stream << "Advance has finished executing!\n";
-        notify(stream.str());
+        cout << "Airlift executed." << endl;
     }
 }
 
@@ -592,13 +534,9 @@ void Negotiate::execute()
     if (validate())
     {
         // cout << "Negotiate is being executed!\n";
-        // currentPlayer->addFriendly(targetPlayer->getPlayerName());
-        // targetPlayer->addFriendly(currentPlayer->getPlayerName());
-        cout << "Negotiate has finished executing!" << endl;
-
-        std::stringstream stream;
-        stream << "Negotiate has finished executing!\n";
-        notify(stream.str());
+        // currentPlayer->alliedTo(targetPlayer);
+        // targetPlayer->alliedTo(currentPlayer);
+        //cout << "Negotiate has finished executing!" << endl;
     }
 }
 
