@@ -1144,12 +1144,7 @@ void ExecuteOrdersState::update(GameEngine *game)
 }
 void ExecuteOrdersState::executeOrdersPhase(Player player)
 {
-    // so use the player's order list to execute the orders.
-    // use a for loop to go through the list and execute each order
-    // add an if statement for each type of order
-    // for each order, call the validate method
-    // if the order is valid, call the execute method
-    // make sue deploy orders are executed first
+    player.ordersList.executeOrders();
 }
 string ExecuteOrdersState::getName()
 {
