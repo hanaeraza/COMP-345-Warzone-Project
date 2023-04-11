@@ -19,7 +19,7 @@ class MapLoader;
 class Player { 
 
     public:
-        PlayerStrategy * ps; 
+        PlayerStrategy * strategy; 
         string playername;
         Hand *cardsOwned = new Hand(); 
         vector<Territory> territoriesOwned; 
@@ -33,6 +33,25 @@ class Player {
         Player(string name) {
             playername = name;
             reinforcementPool = 0;
+        };
+        Player(string name, string strat) {
+            playername = name;
+            reinforcementPool = 0;
+            if (strat == "human") {
+                strategy = new HumanPlayerStrategy(); 
+            }
+            else if (strat == "aggressive") {
+                strategy = new AggressivePlayerStrategy(); 
+            }
+            else if (strat == "benevolent") {
+                strategy = new BenevolentPlayerStrategy(); 
+            }
+            else if (strat == "neutral") {
+                strategy = new NeutralPlayerStrategy(); 
+            }
+            else if (strat == "cheater") {
+                strategy = new CheaterPlayerStrategy(); 
+            }
         };
         Player(Hand *cards, vector<Territory> territories, OrdersList orders, vector<string> defend, vector<string> attack, int reinforcements) {
             cardsOwned = cards;
