@@ -223,7 +223,9 @@ void StartState::update(GameEngine *game)
 
         cout << "Command: " << nextCommand.asString() << endl;
 
-        if (command.find("tournament") == 0) {
+        if (command == "tournament") {
+
+            string parameters = nextCommand.asString();
             //takes the substring that's after "tournament"
             std::string argString = command.substr(10);
             std::istringstream iss(argString);

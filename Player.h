@@ -19,6 +19,20 @@ class MapLoader;
 //Player class
 class Player { 
 private:
+    vector<string> splitStringByCharacter(const string& input, char delimiter) {
+        std::vector<std::string> output;
+        size_t startIndex = 0;
+        size_t endIndex = input.find(delimiter);
+
+        while (endIndex != string::npos) {
+            output.push_back(input.substr(startIndex, endIndex - startIndex));
+            startIndex = endIndex + 1;
+            endIndex = input.find(delimiter, startIndex);
+        }
+        
+        output.push_back(input.substr(startIndex));
+        return output;
+    }
     void initPlayer(string name, string strat){
         playername = name;
         reinforcementPool = 0;
@@ -52,17 +66,12 @@ public:
 
     Player() : reinforcementPool(0) {}; //Default constructor
     Player(string input) {
-        istringstream iss(input);
-        vector<string> splitBySpace;
-        string token;
-        while (iss >> token) {
-            splitBySpace.push_back(token);
-        }
+        vector<string> splitString = splitStringByCharacter(input, '|');
 
-        if (splitBySpace.size() > 1)
-            initPlayer(splitBySpace[0], splitBySpace[1]);
+        if (splitString.size() > 1)
+            initPlayer(splitString[0], splitString[1]);
         else
-            initPlayer(splitBySpace[0], "human");
+            initPlayer(splitString[0], "human");
     };
     Player(string name, string strat) {
         initPlayer(name, strat);
