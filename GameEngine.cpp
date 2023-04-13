@@ -422,10 +422,10 @@ void ExecuteOrdersState::update(GameEngine *game)
     for (int i = 0; i < numPlayers; i++)
     {
         cout << "Execute Order phase for player: " << players[i].playername << endl;
-        cout << "poop" << endl;
+        
         executeOrdersPhase(players[i]);
         
-        cout << "pee" << endl;
+        
         //check if player has won
         if (players[i].territoriesOwned.size() == map.GetMap().GetTerritories().size())
         {
@@ -441,7 +441,7 @@ void ExecuteOrdersState::update(GameEngine *game)
     for(int i = 0; i < numPlayers; i++){
         if(players[i].territoriesOwned.size() == 0){
             cout << "Player " << players[i].playername << " has been eliminated from the game!" << endl;
-            //playerQueue.pop();
+            players.erase(players.begin() + i);
         }
         else{
             // Player p = playerQueue.front();
@@ -449,7 +449,7 @@ void ExecuteOrdersState::update(GameEngine *game)
             // playerQueue.push(p);
         }
     }   
-    cout << "fart"  << endl;
+    
     string command;
     while (true)
     {

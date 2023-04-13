@@ -47,7 +47,7 @@ void Player::issueOrder(MapLoader currentMap, Deck *deck)
             if (territoryToDefend == this->territoriesOwned.at(i).GetTerritoryName())
             {
                 cout << "How many armies would you like to deploy in " + territoriesOwned.at(i).GetTerritoryName() << "\n";
-                cout << "You have " << this->reinforcementPool << " armies remaining to deploy."
+                cout << "You have " << numTroopsRemaining << " armies remaining to deploy."
                      << "\n";
                 int numTroopsToDeploy;
                 cin >> numTroopsToDeploy;
@@ -56,7 +56,7 @@ void Player::issueOrder(MapLoader currentMap, Deck *deck)
                     cout << "You must deploy at least 1 troop. Please try again."
                          << "\n";
                 }
-                else if (numTroopsToDeploy > this->reinforcementPool)
+                else if (numTroopsToDeploy > numTroopsRemaining)
                 {
                     cout << "You do not have enough troops to deploy that many. Please try again."
                          << "\n";
@@ -69,11 +69,11 @@ void Player::issueOrder(MapLoader currentMap, Deck *deck)
                     cout << "Added deploy order of " << numTroopsToDeploy << " armies on " << territoryToDefend << " to orders list."
                          << "\n";
                     this->defenseList.push_back(territoryToDefend);
-                    this->reinforcementPool = this->reinforcementPool - numTroopsToDeploy;
+                    numTroopsRemaining= this->reinforcementPool - numTroopsToDeploy;
                 }
             }
         }
-        if (this->reinforcementPool == 0)
+        if (numTroopsRemaining == 0)
         {
             cout << "You have deployed all your troops."
                  << "\n";

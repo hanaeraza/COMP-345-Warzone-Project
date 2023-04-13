@@ -300,15 +300,16 @@ bool Deploy::validate() const {
             //checks if the amount to deploy is greater than the reinforcement pool
             if (*amount > currentPlayer->reinforcementPool) {
                 cout << "Deploy order validated." << endl;
+                currentPlayer->reinforcementPool -= *amount;
                 return true;
             }
             else {
-                cout << "Deploy not Validated: You do not own this territory." << endl;
+                cout << "Deploy not Validated: Not Enough Troops" << endl;
                 return false;
             }
         }
     }
-    
+
     cout << "Deploy not Validated: You do not own this territory." << endl;
     return false;
 
