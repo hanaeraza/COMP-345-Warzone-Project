@@ -84,6 +84,36 @@ public:
         attackList = attack;
         reinforcementPool = reinforcements;
     };
+    Player(const Player& other) {
+        if (other.strategy != nullptr) {
+            if (dynamic_cast<HumanPlayerStrategy*>(other.strategy) != nullptr) {
+                strategy = new HumanPlayerStrategy();
+            }
+            else if (dynamic_cast<AggressivePlayerStrategy*>(other.strategy) != nullptr) {
+                strategy = new AggressivePlayerStrategy();
+            }
+            else if (dynamic_cast<BenevolentPlayerStrategy*>(other.strategy) != nullptr) {
+                strategy = new BenevolentPlayerStrategy();
+            }
+            else if (dynamic_cast<NeutralPlayerStrategy*>(other.strategy) != nullptr) {
+                strategy = new NeutralPlayerStrategy();
+            }
+            else if (dynamic_cast<CheaterPlayerStrategy*>(other.strategy) != nullptr) {
+                strategy = new CheaterPlayerStrategy();
+            }
+        }
+        else {
+            strategy = nullptr;
+        }
+
+        playername = other.playername;
+        cardsOwned = other.cardsOwned;
+        territoriesOwned = other.territoriesOwned;
+        ordersList = other.ordersList;
+        defenseList = other.defenseList;
+        attackList = other.attackList;
+        reinforcementPool = other.reinforcementPool;
+    }; //Copy constructor
     ~Player() {}; //Destructor
 
     //Function declarations (make non static)
