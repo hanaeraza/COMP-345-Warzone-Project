@@ -62,6 +62,15 @@ class Player {
             attackList = attack;
             reinforcementPool = reinforcements;
         };
+        Player(const Player& other) {
+            playername = other.playername;
+            cardsOwned = other.cardsOwned;
+            territoriesOwned = other.territoriesOwned;
+            ordersList = other.ordersList;
+            defenseList = other.defenseList;
+            attackList = other.attackList;
+            reinforcementPool = other.reinforcementPool;
+        }; //Copy constructor
         ~Player() {}; //Destructor
 
         //Function declarations (make non static)

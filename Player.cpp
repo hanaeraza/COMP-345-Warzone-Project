@@ -256,6 +256,7 @@ void Player::issueOrder(MapLoader currentMap, Deck *deck)
     //this->strategy->issueOrder(currentMap, deck);
 }
 
+
 // Stream operators
 ostream &operator<<(ostream &os, const Player &other)
 {
