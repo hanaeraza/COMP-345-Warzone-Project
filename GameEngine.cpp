@@ -18,7 +18,7 @@ vector<Player> players;
 Deck *deck = new Deck();
 MapLoader map;
 
-queue<Player> playerQueue;
+//queue<Player> playerQueue;
 
 // Start program in the start state
 GameEngine::GameEngine()  : Subject(), currentState(new StartState()) {
@@ -307,6 +307,7 @@ void StartState::update(GameEngine *game)
                     iss >> maxTurns;
                 }
                 else if (arg == "-A") {
+                    autoResolve = true;
                     while (iss >> arg && arg[0] != '-') {
                         weights.push_back(stod(arg));
                     }
@@ -403,6 +404,7 @@ void StartState::update(GameEngine *game)
                     iss >> maxTurns;
                 }
                 else if (arg == "-A") {
+                    autoResolve = true;
                     while (iss >> arg && arg[0] != '-') {
                         weights.push_back(stod(arg));
                     }
@@ -824,10 +826,10 @@ void PlayersAddedState::update(GameEngine *game)
                 }
                 cout << endl;
 
-                for (int i = 0; i < numPlayers; i++)
-                {
-                    playerQueue.push(players[i]);
-                }
+                // for (int i = 0; i < numPlayers; i++)
+                // {
+                //     playerQueue.push(players[i]);
+                // }
 
                 game->setState(new ReinforcementsState());
                 break;
@@ -972,10 +974,10 @@ void PlayersAddedState::update(GameEngine *game)
                 }
                 cout << endl;
 
-                for (int i = 0; i < numPlayers; i++)
-                {
-                    playerQueue.push(players[i]);
-                }
+                // for (int i = 0; i < numPlayers; i++)
+                // {
+                //     playerQueue.push(players[i]);
+                // }
 
                 game->setState(new ReinforcementsState());
                 break;
@@ -1023,7 +1025,11 @@ void ReinforcementsState::update(GameEngine *game)
     cout << "-----------------------------------" << endl;
     cout << "Assign reinforcements state" << endl;
 
-    reinforcementPhase(playerQueue.front());
+    for(int i = 0; i < numPlayers; i++)
+    {
+        reinforcementPhase(players[i]);
+    }
+
     string command;
     while (true)
     {
@@ -1044,43 +1050,40 @@ void ReinforcementsState::update(GameEngine *game)
 
 void ReinforcementsState::reinforcementPhase(Player player)
 {
-    for (int i = 0; i < playerQueue.size(); i++)
-    {
-        cout << "Reinforcement phase for player: " << playerQueue.front().playername << endl;
-        // Reinforcements
-        cout << "Player " << playerQueue.front().playername << " number of reinforcements: " << endl;
-        int numTerritoriesOwned = playerQueue.front().territoriesOwned.size();
-        int numReinforcementsFromTerritories = floor(numTerritoriesOwned / 3);
-        cout << "Number of Reinforcements from Territories: " << numReinforcementsFromTerritories << endl;
-        // check for continent control here
-        int numReinforcementsFromContinents = 0;
-        // vector<string> continentsOwned = map.GetMap().GetContinentsOwnedBy(playerQueue.front());
-        // if(continentsOwned.size() != 0){
-        //     for (int i = 0; i < continentsOwned.size(); i++)
-        //     {
-        //         numReinforcementsFromContinents += map.GetMap().GetContinentBonus(continentsOwned[i]);
-        //     }
-        // }
-        // else{
-        //     cout << "No continents owned" << endl;
-        //     numReinforcementsFromContinents = 0;
-        // }
+    cout << "Reinforcement phase for player: " << player.playername << endl;
+    // Reinforcements
+    cout << "Player " << player.playername << " number of reinforcements: " << endl;
+    int numTerritoriesOwned = player.territoriesOwned.size();
+    int numReinforcementsFromTerritories = floor(numTerritoriesOwned / 3);
+    cout << "Number of Reinforcements from Territories: " << numReinforcementsFromTerritories << endl;
+    // check for continent control here
+    int numReinforcementsFromContinents = 0;
+    // vector<string> continentsOwned = map.GetMap().GetContinentsOwnedBy(playerQueue.front());
+    // if(continentsOwned.size() != 0){
+    //     for (int i = 0; i < continentsOwned.size(); i++)
+    //     {
+    //         numReinforcementsFromContinents += map.GetMap().GetContinentBonus(continentsOwned[i]);
+    //     }
+    // }
+    // else{
+    //     cout << "No continents owned" << endl;
+    //     numReinforcementsFromContinents = 0;
+    // }
 
-        cout << "Number of Reinforcements from Continents: " << numReinforcementsFromContinents << endl;
-        int totalReinforcements = numReinforcementsFromTerritories + numReinforcementsFromContinents;
-        if (totalReinforcements < 3)
-        {
-            totalReinforcements = 3;
-        }
-        cout << "Total Reinforcements for player " << playerQueue.front().playername << ": " << totalReinforcements << " armies " << endl;
-        cout << playerQueue.front().reinforcementPool << endl;
-        playerQueue.front().reinforcementPool += totalReinforcements;
-        cout << playerQueue.front().reinforcementPool << endl;
-        // switch to next player
-        Player p = playerQueue.front();
-        playerQueue.pop();
-        playerQueue.push(p);
+    cout << "Number of Reinforcements from Continents: " << numReinforcementsFromContinents << endl;
+    int totalReinforcements = numReinforcementsFromTerritories + numReinforcementsFromContinents;
+    if (totalReinforcements < 3)
+    {
+        totalReinforcements = 3;
     }
+    cout << "Total Reinforcements for player " << player.playername << ": " << totalReinforcements << " armies " << endl;
+    cout << player.reinforcementPool << endl;
+    player.reinforcementPool += totalReinforcements;
+    cout << player.reinforcementPool << endl;
+    // switch to next player
+    // Player p = playerQueue.front();
+    // playerQueue.pop();
+    // playerQueue.push(p);
 }
 
 string ReinforcementsState::getName()
@@ -1096,7 +1099,11 @@ void IssueOrdersState::update(GameEngine *game)
     cout << "-----------------------------------" << endl;
     cout << "Issue orders state" << endl;
 
-    issueOrdersPhase(playerQueue.front());
+    for(int i = 0; i < numPlayers; i++)
+    {
+        issueOrdersPhase(players[i]);
+    }
+   
 
     string command;
     while (true)
@@ -1123,16 +1130,14 @@ void IssueOrdersState::update(GameEngine *game)
 void IssueOrdersState::issueOrdersPhase(Player player)
 {
     cout << "Issue orders phase" << endl;
-    for (int i = 0; i < playerQueue.size(); i++)
-    {
-        // issue orders
-        cout << "Issue Order phase for player: " << playerQueue.front().playername << endl;
-        playerQueue.front().issueOrder(map, deck);
-        // swictch player
-        Player p = playerQueue.front();
-        playerQueue.pop();
-        playerQueue.push(p);
-    }
+    
+    // issue orders
+    cout << "Issue Order phase for player: " << player.playername << endl;
+    player.issueOrder(map, deck);
+    // swictch player
+    // Player p = playerQueue.front();
+    // playerQueue.pop();
+    // playerQueue.push(p);
 }
 
 string IssueOrdersState::getName()
@@ -1148,48 +1153,17 @@ void ExecuteOrdersState::update(GameEngine *game)
     cout << "-----------------------------------" << endl;
     cout << "Execute orders state" << endl;
 
-    for (int i = 0; i < playerQueue.size(); i++)
+    for (int i = 0; i < numPlayers; i++)
     {
-        cout << "Execute Order phase for player: " << playerQueue.front().playername << endl;
+        cout << "Execute Order phase for player: " << players[i].playername << endl;
 
-        for (int i = 0; i < playerQueue.size(); i++)
-        {
-            cout << "Execute Order phase for player: " << playerQueue.front().playername << endl;
+        executeOrdersPhase( players[i]);
 
-            executeOrdersPhase(playerQueue.front());
-
-            // check if player has won
-            if (playerQueue.front().territoriesOwned.size() == map.GetMap().GetTerritories().size())
-            {
-                cout << "Player " << playerQueue.front().playername << " has won the game!" << endl;
-                // set the game state to win state
-                game->setState(new WinState());
-            }
-            Player p = playerQueue.front();
-            playerQueue.pop();
-            playerQueue.push(p);
-        }
-        //Checking if any player is eliminated
-        for(int i = 0; i < playerQueue.size(); i++){
-            if(playerQueue.front().territoriesOwned.size() == 0){
-                cout << "Player " << playerQueue.front().playername << " has been eliminated from the game!" << endl;
-                playerQueue.pop();
-            }
-            else{
-                Player p = playerQueue.front();
-                playerQueue.pop();
-                playerQueue.push(p);
-            }
-        }
-        
         // check if player has won
-        if (playerQueue.front().territoriesOwned.size() == map.GetMap().GetTerritories().size())
+        if (players[i].territoriesOwned.size() == map.GetMap().GetTerritories().size())
         {
-            cout << "Player " << playerQueue.front().playername << " has won the game!" << endl;
+            cout << "Player " << players[i].playername << " has won the game!" << endl;
             // set the game state to win state
-
-            Player p = playerQueue.front();
-
             if (game->isInTournamentMode())
             {
                 game->setState(new WinState());
@@ -1198,22 +1172,90 @@ void ExecuteOrdersState::update(GameEngine *game)
             else
                 game->setState(new WinState());
         }
-        Player p = playerQueue.front();
-        playerQueue.pop();
-        playerQueue.push(p);
+        // Player p = playerQueue.front();
+        // playerQueue.pop();
+        // playerQueue.push(p);
     }
+
     //Checking if any player is eliminated
-    for(int i = 0; i < playerQueue.size(); i++){
-        if(playerQueue.front().territoriesOwned.size() == 0){
-            cout << "Player " << playerQueue.front().playername << " has been eliminated from the game!" << endl;
-            playerQueue.pop();
+    for(int i = 0; i < numPlayers; i++){
+        if(players[i].territoriesOwned.size() == 0){
+            cout << "Player " << players[i].playername << " has been eliminated from the game!" << endl;
+            players.erase(players.begin() + i);
         }
-        else{
-            Player p = playerQueue.front();
-            playerQueue.pop();
-            playerQueue.push(p);
-        }
-    }   
+        // else{
+        //     Player p = playerQueue.front();
+        //     playerQueue.pop();
+        //     playerQueue.push(p);
+        // }
+    }
+
+    // for (int i = 0; i < numPlayers; i++)
+    // {
+    //     cout << "Execute Order phase for player: " << playerQueue.front().playername << endl;
+
+    //     for (int i = 0; i < numPlayers; i++)
+    //     {
+    //         cout << "Execute Order phase for player: " << playerQueue.front().playername << endl;
+
+    //         executeOrdersPhase(playerQueue.front());
+
+    //         // check if player has won
+    //         if (playerQueue.front().territoriesOwned.size() == map.GetMap().GetTerritories().size())
+    //         {
+    //             cout << "Player " << playerQueue.front().playername << " has won the game!" << endl;
+    //             // set the game state to win state
+    //             game->setState(new WinState());
+    //         }
+    //         Player p = playerQueue.front();
+    //         playerQueue.pop();
+    //         playerQueue.push(p);
+    //     }
+    //     //Checking if any player is eliminated
+    //     for(int i = 0; i < playerQueue.size(); i++){
+    //         if(playerQueue.front().territoriesOwned.size() == 0){
+    //             cout << "Player " << playerQueue.front().playername << " has been eliminated from the game!" << endl;
+    //             playerQueue.pop();
+    //         }
+    //         else{
+    //             Player p = playerQueue.front();
+    //             playerQueue.pop();
+    //             playerQueue.push(p);
+    //         }
+    //     }
+        
+    //     // check if player has won
+    //     if (playerQueue.front().territoriesOwned.size() == map.GetMap().GetTerritories().size())
+    //     {
+    //         cout << "Player " << playerQueue.front().playername << " has won the game!" << endl;
+    //         // set the game state to win state
+
+    //         Player p = playerQueue.front();
+
+    //         if (game->isInTournamentMode())
+    //         {
+    //             game->setState(new WinState());
+    //             return;
+    //         }
+    //         else
+    //             game->setState(new WinState());
+    //     }
+    //     Player p = playerQueue.front();
+    //     playerQueue.pop();
+    //     playerQueue.push(p);
+    // }
+    // // Checking if any player is eliminated
+    // for(int i = 0; i < playerQueue.size(); i++){
+    //     if(playerQueue.front().territoriesOwned.size() == 0){
+    //         cout << "Player " << playerQueue.front().playername << " has been eliminated from the game!" << endl;
+    //         playerQueue.pop();
+    //     }
+    //     else{
+    //         Player p = playerQueue.front();
+    //         playerQueue.pop();
+    //         playerQueue.push(p);
+    //     }
+    // }   
     string command;
     while (true)
     {
