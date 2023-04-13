@@ -196,6 +196,11 @@ void GameEngine::onTournamentStart(TournamentInfo tournamentInfo)
 
             if (tournamentInfo.autoResolve)
             {
+                string nextCommand = "autoresolve";
+                for (int k = 0; k < tournamentInfo.autoResolveWeights->size(); k++)
+                {
+                    nextCommand += " " + to_string((*(tournamentInfo.autoResolveWeights))[k]);
+                }
                 commandProcessor->saveCommand(Command("autoresolve"));
             }
 
@@ -228,6 +233,16 @@ TournamentInfo GameEngine::getTournamentInfo()
 bool GameEngine::isInTournamentMode()
 {
     return *inTournamentMode;
+}
+
+void GameEngine::setAutoResolve(bool input)
+{
+    autoResolve = &input;
+}
+
+void GameEngine::setAutoResolveWeights(vector<double> input)
+{
+    autoResolveWeights = &input;
 }
 
 // Start state
@@ -695,6 +710,17 @@ void PlayersAddedState::update(GameEngine *game)
         }
 
         if (command == "autoresolve" && game->getCommandProcessor().validate(this)){
+            bool ar = true;
+            game->setAutoResolve(ar);
+
+            vector<double> weights;
+
+            for (int i = 0; i < nextCommand.parameters->size(); i++) {
+                weights.push_back(stod((*(nextCommand.parameters))[i]));
+            }
+
+            game->setAutoResolveWeights(weights);
+
             nextCommand.saveEffect("Auto resolving game.\nMoving to WinState.");
             game->getCommandProcessor().saveCommand(nextCommand);
             game->getCommandProcessor().next();
@@ -832,6 +858,17 @@ void PlayersAddedState::update(GameEngine *game)
         }
 
         if (command == "autoresolve" && game->getCommandProcessor().validate(this)){
+            bool ar = true;
+            game->setAutoResolve(ar);
+
+            vector<double> weights;
+
+            for (int i = 0; i < nextCommand.parameters->size(); i++) {
+                weights.push_back(stod((*(nextCommand.parameters))[i]));
+            }
+
+            game->setAutoResolveWeights(weights);
+
             nextCommand.saveEffect("Auto resolving game.\nMoving to WinState.");
             game->getCommandProcessor().saveCommand(nextCommand);
             game->getCommandProcessor().next();

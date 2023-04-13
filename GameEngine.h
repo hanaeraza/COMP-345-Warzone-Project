@@ -91,6 +91,9 @@ public:
 
     TournamentInfo getTournamentInfo();
     bool isInTournamentMode();
+
+    void setAutoResolve(bool input);
+    void setAutoResolveWeights(vector<double> input);
     
 private:
     State* currentState;
@@ -99,6 +102,8 @@ private:
     MapLoader* mapLoader;
     bool* inTournamentMode;
     TournamentInfo* tournamentInfo;
+    bool* autoResolve;
+    vector<double>* autoResolveWeights;
 };
 
 // Abstract class
