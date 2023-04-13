@@ -32,6 +32,7 @@ struct MapHasher {
 
 struct TournamentInfo : public Subject, public ILoggable
 {
+    LogObserver* logger;
     vector<string>* maps;
     vector<string>* players;
     unsigned int* gamesPlayed;
@@ -41,6 +42,7 @@ struct TournamentInfo : public Subject, public ILoggable
 
     string* currentMap;
     unsigned int* currentGame;
+    bool* playingGame;
 
     // map, game won, winning player
     unordered_map<pair<string, unsigned int>, string, PairHasher>* winningPlayers;
@@ -50,7 +52,7 @@ struct TournamentInfo : public Subject, public ILoggable
     friend ostream& operator<<(ostream& os, const TournamentInfo& input);
 
     TournamentInfo(vector<string> maps, vector<string> players, unsigned int gamesPlayed, unsigned int maxTurns,
-                   bool autoResolve = false, vector<double> autoResolveWeights = vector<double>());
+                   LogObserver* loggerInput, bool autoResolve = false, vector<double> autoResolveWeights = vector<double>());
 
     string weightedChoosePlayer();
 

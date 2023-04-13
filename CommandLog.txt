@@ -1503,3 +1503,42 @@ Starting Game
 1681075512
  gamestart
 
+1681412773
+ loadmap pair.map
+
+1681412774
+ validatemap
+
+1681412778
+ addplayer p1
+
+1681412779
+ addplayer p2
+
+1681412795
+ autoresolve
+
+1681412982
+ loadmap pair.map
+
+1681412996
+ validatemap
+
+1681412996
+ addplayer p1
+
+1681412996
+ addplayer p2
+
+1681412996
+ autoresolve
+
+1681413123
+ loadmap pair.map
+
+1681413368
+ loadmap pair.map
+
+1681413387
+ validatemap
+

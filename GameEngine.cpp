@@ -22,6 +22,8 @@ MapLoader map;
 
 // Start program in the start state
 GameEngine::GameEngine()  : Subject(), currentState(new StartState()) {
+    bool tMode = false;
+    inTournamentMode = &tMode;
 }
 
 // Function to set next state
@@ -89,7 +91,7 @@ string GameEngine::getCurrentState()
 }
 
 TournamentInfo::TournamentInfo(vector<string> maps, vector<string> players, unsigned int gamesPlayed, unsigned int maxTurns,
-                               bool autoResolve, vector<double> autoResolveWeights){
+                               LogObserver* loggerInput, bool autoResolve, vector<double> autoResolveWeights){
     this->maps = new vector<string>(maps);
     this->players = new vector<string>(players);
     this->gamesPlayed = new unsigned int(gamesPlayed);
@@ -100,6 +102,8 @@ TournamentInfo::TournamentInfo(vector<string> maps, vector<string> players, unsi
         this->autoResolveWeights = new vector<double>(autoResolveWeights);
     else
         this->autoResolveWeights = new vector<double>(players.size(), 1.0 / players.size());
+
+    attach(loggerInput);
 }
 
 string TournamentInfo::weightedChoosePlayer(){
@@ -166,6 +170,8 @@ string TournamentInfo::stringToLog() const
 void TournamentInfo::onGameWon(string player)
 {
     (*(winningPlayers))[pair<string, unsigned int>(*currentMap, *currentGame)] = player;
+    bool playing = false;
+    playingGame = &playing;
 }
 
 void GameEngine::onGameWon(string player)
@@ -177,7 +183,8 @@ void GameEngine::onGameWon(string player)
 //Gives Command Processor a list of commands to execute for the tournament
 void GameEngine::onTournamentStart(TournamentInfo tournamentInfo)
 {
-    *inTournamentMode = true;
+    bool tMode = true;
+    *inTournamentMode = &tMode;
     this->tournamentInfo = &tournamentInfo;
 
     for (int i = 0; i < tournamentInfo.maps->size(); i++)
@@ -206,11 +213,16 @@ void GameEngine::onTournamentStart(TournamentInfo tournamentInfo)
 
             tournamentInfo.currentGame = reinterpret_cast<unsigned int*>(&j);
 
+            bool playing = true;
+            tournamentInfo.playingGame = &playing;
+
             setState(new StartState());
-            update();
+            while (*tournamentInfo.playingGame){
+                update();
+            }
         }
     }
-
+    commandProcessor->clear();
     this->tournamentInfo->notify(this->tournamentInfo);
     *inTournamentMode = false;
 }
@@ -270,9 +282,9 @@ void StartState::update(GameEngine *game)
 
         if (command == "tournament") {
 
-            string parameters = nextCommand.asString();
+            string cmdString = nextCommand.asString();
             //takes the substring that's after "tournament"
-            string argString = command.substr(10);
+            string argString = cmdString.substr(10);
             istringstream iss(argString);
 
             //initialize variables
@@ -292,21 +304,23 @@ void StartState::update(GameEngine *game)
                         maps.push_back(arg);
                     }
                 } 
-                else if (arg == "-P") {
+                if (arg == "-P") {
                     // Parse the player strategies
                     while (iss >> arg && arg[0] != '-') {
                         players.push_back(arg);
                     }
                 }
-                else if (arg == "-G") {
+                if (arg == "-G") {
                     // Parse the number of games
                     iss >> gamesPlayed;
+                    iss >> arg;
                 }
-                else if (arg == "-D") {
+                if (arg == "-D") {
                     // Parse the maximum number of turns
                     iss >> maxTurns;
+                    iss >> arg;
                 }
-                else if (arg == "-A") {
+                if (arg == "-A") {
                     autoResolve = true;
                     while (iss >> arg && arg[0] != '-') {
                         weights.push_back(stod(arg));
@@ -317,7 +331,8 @@ void StartState::update(GameEngine *game)
                 }
             }
 
-            game->setTournamentInfo(new TournamentInfo(maps, players, gamesPlayed, maxTurns, autoResolve, weights));
+            game->setTournamentInfo(new TournamentInfo(maps, players, gamesPlayed, maxTurns,
+            game->getInnerEngineLogger(), autoResolve, weights));
 
             game->onTournamentStart(game->getTournamentInfo());
         }
@@ -367,10 +382,12 @@ void StartState::update(GameEngine *game)
 
         bool valid = game->getCommandProcessor().validate(this);
 
-        if (command.find("tournament") == 0) {
+        if (command == "tournament") {
+
+            string cmdString = nextCommand.asString();
             //takes the substring that's after "tournament"
-            std::string argString = command.substr(10);
-            std::istringstream iss(argString);
+            string argString = cmdString.substr(10);
+            istringstream iss(argString);
 
             //initialize variables
             vector<string> maps;
@@ -389,21 +406,23 @@ void StartState::update(GameEngine *game)
                         maps.push_back(arg);
                     }
                 } 
-                else if (arg == "-P") {
+                if (arg == "-P") {
                     // Parse the player strategies
                     while (iss >> arg && arg[0] != '-') {
                         players.push_back(arg);
                     }
                 }
-                else if (arg == "-G") {
+                if (arg == "-G") {
                     // Parse the number of games
                     iss >> gamesPlayed;
+                    iss >> arg;
                 }
-                else if (arg == "-D") {
+                if (arg == "-D") {
                     // Parse the maximum number of turns
                     iss >> maxTurns;
+                    iss >> arg;
                 }
-                else if (arg == "-A") {
+                if (arg == "-A") {
                     autoResolve = true;
                     while (iss >> arg && arg[0] != '-') {
                         weights.push_back(stod(arg));
@@ -414,7 +433,8 @@ void StartState::update(GameEngine *game)
                 }
             }
 
-            game->setTournamentInfo(new TournamentInfo(maps, players, gamesPlayed, maxTurns, autoResolve, weights));
+            game->setTournamentInfo(new TournamentInfo(maps, players, gamesPlayed, maxTurns,
+            game->getInnerEngineLogger(), autoResolve, weights));
 
             game->onTournamentStart(game->getTournamentInfo());
         }

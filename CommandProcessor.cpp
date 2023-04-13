@@ -115,13 +115,14 @@ Command CommandProcessor::getCommand(){
 }
 
 void CommandProcessor::saveCommand(Command input){
-  notify(this);
+  (*commandQueue).push(new Command(input));
   std::ofstream file(logFile, std::ios::app);
-  if (file.is_open()) {
-      time_t now = time(nullptr);
-      file << now << "\n " << input << "\n" << *(input.effect);
-      file.close();
-  }
+  // if (file.is_open()) {
+  //     time_t now = time(nullptr);
+  //     file << now << "\n " << input << "\n" << *(input.effect);
+  //     file.close();
+  // }
+  notify(this);
 }
 
 void CommandProcessor::next(){
