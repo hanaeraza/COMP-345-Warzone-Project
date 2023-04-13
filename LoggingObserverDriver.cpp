@@ -42,6 +42,7 @@ int main(){ // tournamentCommand.txt
   {
     game->setCommandProcessor(new FileCommandProcessorAdapter(input));
   }
+
   while (true){
       game->update();
   }

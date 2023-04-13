@@ -36,6 +36,8 @@ struct TournamentInfo : public Subject, public ILoggable
     vector<string>* players;
     unsigned int* gamesPlayed;
     unsigned int* maxTurns;
+    bool* autoResolve;
+    vector<double>* autoResolveWeights;
 
     string* currentMap;
     unsigned int* currentGame;
@@ -47,7 +49,10 @@ struct TournamentInfo : public Subject, public ILoggable
 
     friend ostream& operator<<(ostream& os, const TournamentInfo& input);
 
-    TournamentInfo(vector<string> maps, vector<string> players, unsigned int gamesPlayed, unsigned int maxTurns);
+    TournamentInfo(vector<string> maps, vector<string> players, unsigned int gamesPlayed, unsigned int maxTurns,
+                   bool autoResolve = false, vector<double> autoResolveWeights = vector<double>());
+
+    string weightedChoosePlayer();
 
     void onGameWon(string player = "Draw");
 };
@@ -171,7 +176,13 @@ public:
 
 class WinState : public State
 {
-public:
+// private:
+//     Player winner;
+// public:
+//     WinState() = default;
+//     WinState(Player winner){
+//         this->winner = winner;
+//     }
     void update(GameEngine *game);
     string getName();
 };

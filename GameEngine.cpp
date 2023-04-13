@@ -21,7 +21,8 @@ MapLoader map;
 queue<Player> playerQueue;
 
 // Start program in the start state
-GameEngine::GameEngine()  : Subject(), currentState(new StartState()) {}
+GameEngine::GameEngine()  : Subject(), currentState(new StartState()) {
+}
 
 // Function to set next state
 void GameEngine::setState(State *state)
@@ -87,12 +88,36 @@ string GameEngine::getCurrentState()
     return currentState->getName();
 }
 
-TournamentInfo::TournamentInfo(vector<string> maps, vector<string> players, unsigned int gamesPlayed, unsigned int maxTurns){
+TournamentInfo::TournamentInfo(vector<string> maps, vector<string> players, unsigned int gamesPlayed, unsigned int maxTurns,
+                               bool autoResolve, vector<double> autoResolveWeights){
     this->maps = new vector<string>(maps);
     this->players = new vector<string>(players);
     this->gamesPlayed = new unsigned int(gamesPlayed);
     this->maxTurns = new unsigned int(maxTurns);
     this->winningPlayers = new unordered_map<pair<string, unsigned int>, string, PairHasher>();
+    this->autoResolve = new bool(autoResolve);
+    if (autoResolve)
+        this->autoResolveWeights = new vector<double>(autoResolveWeights);
+    else
+        this->autoResolveWeights = new vector<double>(players.size(), 1.0 / players.size());
+}
+
+string TournamentInfo::weightedChoosePlayer(){
+    vector<double> weights = *autoResolveWeights;
+    vector<string> players = *this->players;
+    vector<double> cumulativeWeights;
+    double total = 0;
+    for (int i = 0; i < weights.size(); i++){
+        total += weights[i];
+        cumulativeWeights.push_back(total);
+    }
+    double random = (double) rand() / RAND_MAX;
+    for (int i = 0; i < cumulativeWeights.size(); i++){
+        if (random < cumulativeWeights[i]){
+            return players[i];
+        }
+    }
+    return players[players.size() - 1];
 }
 
 ostream& operator<<(ostream& os, const TournamentInfo& input){
@@ -169,6 +194,11 @@ void GameEngine::onTournamentStart(TournamentInfo tournamentInfo)
                 commandProcessor->saveCommand(Command("addplayer " + (*(tournamentInfo.players))[k]));
             }
 
+            if (tournamentInfo.autoResolve)
+            {
+                commandProcessor->saveCommand(Command("autoresolve"));
+            }
+
             tournamentInfo.currentGame = reinterpret_cast<unsigned int*>(&j);
 
             setState(new StartState());
@@ -227,17 +257,19 @@ void StartState::update(GameEngine *game)
 
             string parameters = nextCommand.asString();
             //takes the substring that's after "tournament"
-            std::string argString = command.substr(10);
-            std::istringstream iss(argString);
+            string argString = command.substr(10);
+            istringstream iss(argString);
 
             //initialize variables
-            std::vector<std::string> maps;
-            std::vector<std::string> players;
+            vector<string> maps;
+            vector<string> players;
             unsigned int gamesPlayed = 0;
             unsigned int maxTurns = 0;
+            bool autoResolve = false;
+            vector<double> weights;
 
             // Parse the arguments using the input string stream
-            std::string arg;
+            string arg;
             while (iss >> arg) {
                 if (arg == "-M") {
                     // Parse the map files
@@ -248,23 +280,28 @@ void StartState::update(GameEngine *game)
                 else if (arg == "-P") {
                     // Parse the player strategies
                     while (iss >> arg && arg[0] != '-') {
-                    players.push_back(arg);
+                        players.push_back(arg);
                     }
                 }
                 else if (arg == "-G") {
-                // Parse the number of games
-                iss >> gamesPlayed;
+                    // Parse the number of games
+                    iss >> gamesPlayed;
                 }
                 else if (arg == "-D") {
-                // Parse the maximum number of turns
-                iss >> maxTurns;
+                    // Parse the maximum number of turns
+                    iss >> maxTurns;
+                }
+                else if (arg == "-A") {
+                    while (iss >> arg && arg[0] != '-') {
+                        weights.push_back(stod(arg));
+                    }
                 }
                 else {
                 std::cout << "Invalid argument: " << arg << std::endl;
                 }
             }
 
-            game->setTournamentInfo(new TournamentInfo(maps, players, gamesPlayed, maxTurns));
+            game->setTournamentInfo(new TournamentInfo(maps, players, gamesPlayed, maxTurns, autoResolve, weights));
 
             game->onTournamentStart(game->getTournamentInfo());
         }
@@ -320,13 +357,15 @@ void StartState::update(GameEngine *game)
             std::istringstream iss(argString);
 
             //initialize variables
-            std::vector<std::string> maps;
-            std::vector<std::string> players;
+            vector<string> maps;
+            vector<string> players;
             unsigned int gamesPlayed = 0;
             unsigned int maxTurns = 0;
+            bool autoResolve = false;
+            vector<double> weights;
 
             // Parse the arguments using the input string stream
-            std::string arg;
+            string arg;
             while (iss >> arg) {
                 if (arg == "-M") {
                     // Parse the map files
@@ -337,23 +376,28 @@ void StartState::update(GameEngine *game)
                 else if (arg == "-P") {
                     // Parse the player strategies
                     while (iss >> arg && arg[0] != '-') {
-                    players.push_back(arg);
+                        players.push_back(arg);
                     }
                 }
                 else if (arg == "-G") {
-                // Parse the number of games
-                iss >> gamesPlayed;
+                    // Parse the number of games
+                    iss >> gamesPlayed;
                 }
                 else if (arg == "-D") {
-                // Parse the maximum number of turns
-                iss >> maxTurns;
+                    // Parse the maximum number of turns
+                    iss >> maxTurns;
+                }
+                else if (arg == "-A") {
+                    while (iss >> arg && arg[0] != '-') {
+                        weights.push_back(stod(arg));
+                    }
                 }
                 else {
                 std::cout << "Invalid argument: " << arg << std::endl;
                 }
             }
 
-            game->setTournamentInfo(new TournamentInfo(maps, players, gamesPlayed, maxTurns));
+            game->setTournamentInfo(new TournamentInfo(maps, players, gamesPlayed, maxTurns, autoResolve, weights));
 
             game->onTournamentStart(game->getTournamentInfo());
         }
@@ -650,7 +694,15 @@ void PlayersAddedState::update(GameEngine *game)
             parameter = (*(nextCommand.parameters))[0];
         }
 
-        if (command == "addplayer" && !parameter.empty() && game->getCommandProcessor().validate(this))
+        if (command == "autoresolve" && game->getCommandProcessor().validate(this)){
+            nextCommand.saveEffect("Auto resolving game.\nMoving to WinState.");
+            game->getCommandProcessor().saveCommand(nextCommand);
+            game->getCommandProcessor().next();
+
+            game->setState(new WinState());
+            return;
+        }
+        else if (command == "addplayer" && !parameter.empty() && game->getCommandProcessor().validate(this))
         {
             nextCommand.saveEffect("Adding " + parameter + 
             "\nmoving to PlayersAddedState.");
@@ -779,7 +831,15 @@ void PlayersAddedState::update(GameEngine *game)
             parameter = (*(nextCommand.parameters))[0];
         }
 
-        if (command == "addplayer" && !parameter.empty() && game->getCommandProcessor().validate(this))
+        if (command == "autoresolve" && game->getCommandProcessor().validate(this)){
+            nextCommand.saveEffect("Auto resolving game.\nMoving to WinState.");
+            game->getCommandProcessor().saveCommand(nextCommand);
+            game->getCommandProcessor().next();
+
+            game->setState(new WinState());
+            return;
+        }
+        else if (command == "addplayer" && !parameter.empty() && game->getCommandProcessor().validate(this))
         {
             nextCommand.saveEffect("Adding " + parameter + 
             "\nmoving to PlayersAddedState.");
@@ -1093,10 +1153,9 @@ void ExecuteOrdersState::update(GameEngine *game)
 
             Player p = playerQueue.front();
 
-            game->onGameWon(p.playername);
-
             if (game->isInTournamentMode())
             {
+                game->setState(new WinState());
                 return;
             }
             else
@@ -1130,6 +1189,21 @@ void ExecuteOrdersState::update(GameEngine *game)
         }
         if (command == "win")
         {
+            // std::random_device rd;
+            // std::mt19937 gen(rd());
+            // std::uniform_int_distribution<> uniform(0, playerQueue.size() - 1);
+
+            // int randomPlayer = uniform(gen);
+
+            // for (int i = 0; i < randomPlayer; i++)
+            // {
+            //     Player p = playerQueue.front();
+            //     playerQueue.pop();
+            //     playerQueue.push(p);
+            // }
+
+            // cout << "Player " << playerQueue.front().playername << " has won the game!" << endl;
+
             game->setState(new WinState());
             break;
         }
@@ -1158,6 +1232,12 @@ void WinState::update(GameEngine *game)
 {
     cout << "-----------------------------------" << endl;
     cout << "Win state" << endl;
+
+    if (game->isInTournamentMode() && *(game->getTournamentInfo().autoResolve))
+    {
+        game->onGameWon(game->getTournamentInfo().weightedChoosePlayer());
+        return;
+    }
 
     string input;
     string command;

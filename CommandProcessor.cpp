@@ -295,6 +295,20 @@ Command::Command(const string input){
     validIn->push_back(v1);
     nextState->push_back(t1);
   }
+  else if (splitBySpace[0].compare("tournament") == 0)
+  {
+    string v1("start");
+    string t1("start");
+    validIn->push_back(v1);
+    nextState->push_back(t1);
+  }
+  else if (splitBySpace[0].compare("autoresolve") == 0)
+  {
+    string v1("playersadded");
+    string t1("win");
+    validIn->push_back(v1);
+    nextState->push_back(t1);
+  }
 }
 
 void Command::saveEffect(string input){
