@@ -29,6 +29,8 @@ public:
     //static LogObserver* orderLogger;
     //static void setOrderLogger(LogObserver* input);
 
+    bool hasSegmentationFault() const;
+
 private:
     virtual Order* clone() const = 0;
     friend ostream& operator<<(ostream& os, const Order& order);
@@ -63,6 +65,8 @@ public:
     string getType() const override;
     bool validate() const override;
     virtual void execute();
+
+    bool hasSegmentationFault() const;
 
 private:
     const static string type;
@@ -161,6 +165,8 @@ public:
     void move(int, int); //takes pos1 and pos2 and switches objects
     void executeOrders(); //validates order and executes them
     vector<Order*> getOrders() const { return orders; }
+
+    bool hasSegmentationFault() const;
 
    // string stringToLog() const override;
 

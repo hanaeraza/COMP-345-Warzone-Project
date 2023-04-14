@@ -27,8 +27,20 @@ void GameEngine::setState(State *state)
     currentState = state;
 }
 
+bool playerSegFaultTest(vector<Player> players){
+    for (int i = 0; i < players.size(); i++){
+        if (players[i].hasSegmentationFault()){
+            return true;
+        }
+    }
+    return false;
+}
+
 void GameEngine::update()
 {
+    if (playerSegFaultTest(players)){
+        cout << "A player has a segmentation fault. Please restart the game." << endl;
+    }
     currentState->update(this);
 }
 
