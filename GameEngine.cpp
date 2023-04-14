@@ -224,6 +224,7 @@ void PlayersAddedState::update(GameEngine *game)
                     for (int j = 0; j < terrPerPlayer; j++)
                     {
                         players[i].territoriesOwned.push_back(*(territories[j + (i * terrPerPlayer)]));
+                        (territories[j + (i * terrPerPlayer)])->SetOwner(players[i]);
                         cout << territories[j + (i * terrPerPlayer)]->GetTerritoryName() << ",";
                     }
                     cout << endl;
@@ -265,11 +266,6 @@ void PlayersAddedState::update(GameEngine *game)
                     cout << endl;
                 }
                 cout << endl;
-
-                // for (int i = 0; i < numPlayers; i++)
-                // {
-                //     playerQueue.push(players[i]);
-                // }
 
                 game->setState(new ReinforcementsState());
                 break;

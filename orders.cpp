@@ -298,7 +298,7 @@ bool Deploy::validate() const {
         if (currentPlayer->territoriesOwned.at(i).GetTerritoryName() == target->GetTerritoryName()) {
             cout << currentPlayer->territoriesOwned.at(i).GetTerritoryName() << endl;
             //checks if the amount to deploy is greater than the reinforcement pool
-            if (*amount > currentPlayer->reinforcementPool) {
+            if (*amount >= currentPlayer->reinforcementPool) {
                 cout << "Deploy order validated." << endl;
                 currentPlayer->reinforcementPool -= *amount;
                 return true;
@@ -418,7 +418,8 @@ void Deploy::execute()
     if (validate()) {
         target->SetArmyQuantity(*amount + target->GetArmyQuantity());
         cout << target->GetArmyQuantity() << endl;
-        cout << "Deploy Executed." << endl;
+        cout << "Deploy order of " << *amount << " armies on " << target->GetTerritoryName() << endl;
+        cout << target->GetTerritoryName() << " now has " << target->GetArmyQuantity() << " armies." << endl;
     }
 }
 
