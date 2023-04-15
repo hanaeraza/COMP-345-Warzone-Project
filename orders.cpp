@@ -43,6 +43,7 @@ Order* newOrder::createOrder(string orderType) const
 }
 
 //--------[Order]---------
+
 Order::Order() //default constructor
 {
     // currentPlayer = nullptr;
@@ -283,6 +284,7 @@ void OrdersList::executeOrders()
         //notify(this);
         for (int i = 0; i < orders.size(); i++)
         {
+          
             orders[i]->execute();
             delete orders[i];
         }
@@ -314,7 +316,26 @@ bool Deploy::validate() const {
     return false;
 
 }
+ bool Advance::hasSegmentationFault() const {
+        // iterate through all the pointers in the object
+        for (const Territory* ptr : {source, target}) {
+            // check if the pointer is null
+            if (ptr == nullptr) {
+                return true;
+            }
 
+            // check if the pointer points to invalid memory
+            try {
+                Territory val = *ptr; // dereference the pointer
+                (void)val; // suppress unused variable warning
+            } catch (...) {
+                return true;
+            }
+        }
+
+        // no segmentation faults detected
+        return false;
+    }
 bool Advance::validate() const
 {
 
@@ -327,6 +348,11 @@ bool Advance::validate() const
     // }
 
     //checks if the amount is greater than the army in the territory
+    // if (hasSegmentationFault()) {
+    //     cout << "Advance not Validated: Segmentation Fault" << endl;
+    //     return false;
+    // }
+    
     if (*amount > source->GetArmyQuantity())
     {
         cout << "Advance not Validated: You do not own this many armies in this territory." << endl;

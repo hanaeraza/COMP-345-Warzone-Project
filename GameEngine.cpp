@@ -393,14 +393,14 @@ void IssueOrdersState::update(GameEngine *game)
 void IssueOrdersState::issueOrdersPhase(Player &player)
 {
     cout << "Issue orders phase" << endl;
-    
+
+        for(int i = 0;i<map.GetMap().GetTerritories().size();i++){
+            cout << map.GetMap().GetTerritories()[i]->GetTerritoryName() << " " << map.GetMap().GetTerritories()[i]->GetOwner().playername << endl;
+        }
         // issue orders
         cout << "Issue Order phase for player: " << player.playername << endl;
+        
         player.issueOrder(map, deck);
-        // swictch player
-        // Player p = playerQueue.front();
-        // playerQueue.pop();
-        // playerQueue.push(p);
     
 }
 
@@ -474,7 +474,23 @@ void ExecuteOrdersState::update(GameEngine *game)
 }
 void ExecuteOrdersState::executeOrdersPhase(Player &player)
 {
+    //executes deploy orders
     player.ordersList.executeOrders();
+    
+
+    //execute advance orders here
+    // player.executeAdvanceOrders(map);
+
+    // //verify that advance orders work
+    // for(int i = 0;i<map.GetMap().GetTerritories().size();i++){
+    //     cout << map.GetMap().GetTerritories()[i]->GetTerritoryName() << " owned by "
+    //      << map.GetMap().GetTerritories()[i]->GetOwner().playername << map.GetMap().GetTerritories()[i]->GetArmyQuantity() << "troops"<< endl;
+    // }
+    //use new players vector to execute advance orders
+    //use validate conditions from orders class and then execute
+    //You need a source and target territory in this class somehow
+
+
     cout << "im in the execute orders phase" << endl; 
 }
 string ExecuteOrdersState::getName()

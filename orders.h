@@ -23,7 +23,7 @@ public:
     virtual string getType() const = 0;
     virtual ostream& printOrder(ostream&) const;
     Player *currentPlayer;
-
+    
     //string stringToLog() const override;
 
     //static LogObserver* orderLogger;
@@ -63,6 +63,7 @@ public:
     string getType() const override;
     bool validate() const override;
     virtual void execute();
+    bool hasSegmentationFault() const;
 
 private:
     const static string type;
