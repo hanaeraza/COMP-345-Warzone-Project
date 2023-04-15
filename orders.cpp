@@ -43,7 +43,6 @@ Order* newOrder::createOrder(string orderType) const
 }
 
 //--------[Order]---------
-
 Order::Order() //default constructor
 {
     // currentPlayer = nullptr;
@@ -86,17 +85,20 @@ Advance::Advance() : Order()
 }
 Advance::Advance(Territory& source, Territory& target, Player* currentPlayer, int amount) //parametized constructor
 {
+    //this->map = &map;
     this->source = &source;
     this->target = &target;
     this->currentPlayer = currentPlayer;
-    int* copiedAmount = new int(amount);
+    int* copiedAmount = nullptr;
+    copiedAmount = new int(amount);
     this->amount = copiedAmount;
 }
 Advance::~Advance() //destructor
 {
-    // source = nullptr;
-    // target = nullptr;
-    // delete amount;
+    source = nullptr;
+    target = nullptr;
+    currentPlayer = nullptr;
+    delete amount;
 }
 
 //--------[Bomb]---------
@@ -215,9 +217,9 @@ OrdersList::OrdersList()  {
 } //default constructor
 OrdersList::~OrdersList() //destructor
 {
-    for (auto order : orders) {
-        delete order;
-    }
+    // for (auto order : orders) {
+    //     delete order;
+    // }
 }
 OrdersList::OrdersList(const OrdersList& oldList) //copy constructor
 {
@@ -284,7 +286,6 @@ void OrdersList::executeOrders()
         //notify(this);
         for (int i = 0; i < orders.size(); i++)
         {
-          
             orders[i]->execute();
             delete orders[i];
         }
@@ -300,7 +301,7 @@ bool Deploy::validate() const {
         if (currentPlayer->territoriesOwned.at(i).GetTerritoryName() == target->GetTerritoryName()) {
             cout << currentPlayer->territoriesOwned.at(i).GetTerritoryName() << endl;
             //checks if the amount to deploy is greater than the reinforcement pool
-            if (*amount >= currentPlayer->reinforcementPool) {
+            if (*amount <= currentPlayer->reinforcementPool) {
                 cout << "Deploy order validated." << endl;
                 currentPlayer->reinforcementPool -= *amount;
                 return true;
@@ -316,50 +317,26 @@ bool Deploy::validate() const {
     return false;
 
 }
- bool Advance::hasSegmentationFault() const {
-        // iterate through all the pointers in the object
-        for (const Territory* ptr : {source, target}) {
-            // check if the pointer is null
-            if (ptr == nullptr) {
-                return true;
-            }
 
-            // check if the pointer points to invalid memory
-            try {
-                Territory val = *ptr; // dereference the pointer
-                (void)val; // suppress unused variable warning
-            } catch (...) {
-                return true;
-            }
-        }
-
-        // no segmentation faults detected
-        return false;
-    }
 bool Advance::validate() const
 {
-
-
-    //If the target territory is connected to the source territory, the order is invalid.
-    // else if (!source->IsConnected(target))
-    // {
-    //     cout << "Advance not Validated: The target territory is not adjacent to the source territory.\n" << endl;
-    //     return false;
-    // }
-
     //checks if the amount is greater than the army in the territory
-    // if (hasSegmentationFault()) {
-    //     cout << "Advance not Validated: Segmentation Fault" << endl;
-    //     return false;
-    // }
-    
     if (*amount > source->GetArmyQuantity())
     {
-        cout << "Advance not Validated: You do not own this many armies in this territory." << endl;
+        cout << "Advance not Validated: You do not own this many armies in " << source->GetTerritoryName() << endl;
         return false;
     }
 
-    cout << "Advance order validated." << endl;
+    // //If the target territory is connected to the source territory, the order is valid.
+    // vector<Territory> connectedTerritories = map.GetMap().GetConnections(source);
+    // for (Territory &t : connectedTerritories) {
+    //     if (&t == target) {
+    //         cout << "Advance order validated." << endl;
+    //         return true;
+    //     }
+    // }
+
+    cout << "Advance order not Validated: The territory is not adjacent to yours." << endl;
     return true;
 }
 
@@ -457,11 +434,15 @@ void Advance::execute()
         {
             source->SetArmyQuantity(source->GetArmyQuantity() - *amount);
             target->SetArmyQuantity(target->GetArmyQuantity() + *amount);
+
+            cout << source->GetArmyQuantity() << endl;
+            cout << target->GetArmyQuantity() << endl;
         }
 
         //if moving troops to enemy territory then its an attack
         else
         {
+            cout << "Attacking " << target->GetOwner().playername << "!" << endl;
             //Calculate the number of attacking units that will be killed
             int attackingKills = 0;
             for (int i = 0; i < source->GetArmyQuantity(); i++) {
@@ -485,12 +466,16 @@ void Advance::execute()
                 // attacker takes control of the territory
                 target->SetOwner(source->GetOwner());
                 source->SetArmyQuantity(source->GetArmyQuantity() - attackingKills);
+                cout << "Attack successful. " << source->GetOwner().playername << " is the new owner of " << target->GetTerritoryName() << endl;
             } else {
                 target->SetArmyQuantity(target->GetArmyQuantity() - defendingKills);
+                cout << "Attacked  " << target->GetTerritoryName() << ". " 
+                << "\n"
+                << target->GetOwner().playername << " has " << target->GetArmyQuantity() << "troops remaining." << endl;
             }
 
         }
-        cout << "Advance Executed." << endl;
+        cout << "Advance Executed. " << source->GetTerritoryName() << " has advanced " << *amount << " to " << target->GetTerritoryName() << endl;
     }
 }
 

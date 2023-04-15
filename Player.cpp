@@ -105,6 +105,8 @@ void Player::issueOrder(MapLoader currentMap, Deck *deck)
 
             Territory territoryToAdvanceFrom;
             Territory territoryToAdvanceTo;
+            int index1 = 0;
+            int index2 = 0;
             cout << "Choose a Territory to Advance From:"
                  << "\n";
             // Print out territories owned
@@ -119,22 +121,16 @@ void Player::issueOrder(MapLoader currentMap, Deck *deck)
             {
                 if (territoryToAdvanceFromName == this->territoriesOwned.at(i).GetTerritoryName())
                 {
-                    territoryToAdvanceFrom = this->territoriesOwned.at(i);
-<<<<<<< HEAD
+                    index1 = i;
+                    //territoryToAdvanceFrom = this->territoriesOwned.at(i);
                     // territoryToAdvanceFrom.SetOwner(*(this));
-                    for (int j = 0; j < currentMap.GetMap().GetTerritories().size(); j++)
-                    {
-                        if (currentMap.GetMap().GetTerritories().at(j)->GetTerritoryName() == territoryToAdvanceFromName)
-=======
-
-                    for(int j = 0; j < currentMap.GetMap().GetTerritories().size(); j++)
-                    {
-                        if(currentMap.GetMap().GetTerritories().at(j)->GetTerritoryName() == territoryToAdvanceFromName)
->>>>>>> 5af5d042207bb6d1a68cc312ea06e1fc18c7821f
-                        {
-                            territoryToAdvanceFrom = *currentMap.GetMap().GetTerritories().at(j);
-                        }
-                    }
+                    // for (int j = 0; j < currentMap.GetMap().GetTerritories().size(); j++)
+                    // {
+                    //     if (currentMap.GetMap().GetTerritories().at(j)->GetTerritoryName() == territoryToAdvanceFromName)
+                    //     {
+                    //         territoryToAdvanceFrom = *currentMap.GetMap().GetTerritories().at(j);
+                    //     }
+                    // }
                     break;
                 }
             }
@@ -152,7 +148,8 @@ void Player::issueOrder(MapLoader currentMap, Deck *deck)
             {
                 if (territoryToAdvanceToName == currentMap.GetMap().GetTerritories().at(i)->GetTerritoryName())
                 {
-                    territoryToAdvanceTo = *currentMap.GetMap().GetTerritories().at(i);
+                    index2 = i;
+                    //territoryToAdvanceTo = *currentMap.GetMap().GetTerritories().at(i);
                     break;
                 }
             }
@@ -177,9 +174,8 @@ void Player::issueOrder(MapLoader currentMap, Deck *deck)
                  << "\n";
             int numTroopsToAdvance;
             cin >> numTroopsToAdvance;
-            Order *advanceOrder = new Advance(territoryToAdvanceFrom, territoryToAdvanceTo, this, numTroopsToAdvance);
+            Order *advanceOrder = new Advance(this->territoriesOwned.at(index1), *currentMap.GetMap().GetTerritories().at(index2), this, numTroopsToAdvance);
             this->ordersList.addOrder(advanceOrder);
-
 
             // advanceOrders.push_back(new Advance(territoryToAdvanceFrom, territoryToAdvanceTo, this, numTroopsToAdvance));
             // Record advance order information here in a new list
@@ -288,11 +284,6 @@ ostream &operator<<(ostream &os, const Player &other)
 bool Player::operator==(const Player &other)
 {
     return true;
-}
-
-bool Player::hasSegmentationFault() const
-{
-    return ordersList.hasSegmentationFault();
 }
 
 #endif

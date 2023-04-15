@@ -23,7 +23,7 @@ public:
     virtual string getType() const = 0;
     virtual ostream& printOrder(ostream&) const;
     Player *currentPlayer;
-    
+
     //string stringToLog() const override;
 
     //static LogObserver* orderLogger;
@@ -65,7 +65,6 @@ public:
     string getType() const override;
     bool validate() const override;
     virtual void execute();
-    bool hasSegmentationFault() const;
 
     bool hasSegmentationFault() const;
 
@@ -73,6 +72,7 @@ private:
     const static string type;
     Order* clone() const override;
     ostream& printOrder(ostream&) const override;
+    MapLoader *map;
     Territory *source;
     Territory *target;
     int *amount;
