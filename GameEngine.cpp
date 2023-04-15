@@ -111,48 +111,52 @@ string TournamentInfo::weightedChoosePlayer(){
     vector<string> players = *this->players;
     vector<double> cumulativeWeights;
     double total = 0;
+
     for (int i = 0; i < weights.size(); i++){
         total += weights[i];
         cumulativeWeights.push_back(total);
     }
-    double random = (double) rand() / RAND_MAX;
+    double random = total * (double) rand()/ RAND_MAX;
     for (int i = 0; i < cumulativeWeights.size(); i++){
         if (random < cumulativeWeights[i]){
             return players[i];
         }
     }
+    
     return players[players.size() - 1];
 }
 
 ostream& operator<<(ostream& os, const TournamentInfo& input){
     os << "Tournament Info: " << endl;
-    os << "M: " << endl;
+    os << "Maps: " << endl;
     for (int i = 0; i < input.maps->size(); i++){
         os << "\t" << (*(input.maps))[i] << endl;
     }
-    os << "P: " << endl;
+    os << "Players: " << endl;
     for (int i = 0; i < input.players->size(); i++){
         os << "\t" << (*(input.players))[i] << endl;
     }
-    os << "G: " << *input.gamesPlayed << endl;
-    os << "D: " << *input.maxTurns << endl;
+    os << "Games Played: " << *input.gamesPlayed << endl;
+    os << "Turns to Draw: " << *input.maxTurns << endl;
 
-    os << "Results: " << endl;
-
-    os << "\t" << endl;
+    os << "Results: " << "\t" << endl;
 
     for (size_t i = 0; i < *input.gamesPlayed; i++)
     {
-        os << "\t" << "Game " << i + 1 << ": " << endl;
+        os << "\t" << "Game " << i + 1 << ":";
     }
+
+    os << endl;
 
     for (size_t i = 0; i < input.maps->size(); i++)
     {
-        os << "\t" << "Map " << i + 1 << ": " << endl;
+        os << "Map" << i + 1 << ":";
         for (size_t j = 0; j < *input.gamesPlayed; j++)
         {
-            os << "\t" << (*(input.winningPlayers))[pair<string, unsigned int>((*(input.maps))[i], j)];
+            string player = (*(input.winningPlayers))[pair<string, unsigned int>((*(input.maps))[i], j)];
+            os << "\t" << player;
         }
+        os << endl;
     }
 
     return os;

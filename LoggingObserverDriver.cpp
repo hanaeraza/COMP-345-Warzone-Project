@@ -29,6 +29,9 @@ void operator delete(void * ptr, size_t size)
 }
 
 int main(){ // tournamentCommand.txt
+
+  srand(time(nullptr));
+  
   GameEngine* game = new GameEngine();
   game->generateLogger("log.txt");
   std::string input;
