@@ -636,3 +636,59 @@ ostream& Order::printOrder(ostream& out) const
 //     delete orderLogger;
 //     orderLogger = input;
 // }
+
+bool Order::hasSegmentationFault() const
+{
+    // iterate through all the pointers in the object
+    for (const auto* ptr : {&currentPlayer}) {
+        // check if the pointer is null
+        if (ptr == nullptr) {
+            return true;
+        }
+
+        // check if the pointer points to invalid memory
+        try {
+            auto val = ptr; // dereference the pointer
+            (void)val; // suppress unused variable warning
+        } catch (...) {
+            return true;
+        }
+    }
+
+    // no segmentation faults detected
+    return false;
+}
+
+bool Advance::hasSegmentationFault() const
+{
+    // iterate through all the pointers in the object
+    for (const auto* ptr : {&source, &target}) {
+        // check if the pointer is null
+        if (ptr == nullptr) {
+            return true;
+        }
+
+        // check if the pointer points to invalid memory
+        try {
+            auto val = ptr; // dereference the pointer
+            (void)val; // suppress unused variable warning
+        } catch (...) {
+            return true;
+        }
+    }
+
+    // no segmentation faults detected
+    return Order::hasSegmentationFault();
+}
+
+bool OrdersList::hasSegmentationFault() const
+{
+    for (int i = 0; i < orders.size(); i++) {
+        if (orders[i]->hasSegmentationFault()) {
+            return true;
+        }
+    }
+
+    // no segmentation faults detected
+    return false;
+}

@@ -120,10 +120,17 @@ void Player::issueOrder(MapLoader currentMap, Deck *deck)
                 if (territoryToAdvanceFromName == this->territoriesOwned.at(i).GetTerritoryName())
                 {
                     territoryToAdvanceFrom = this->territoriesOwned.at(i);
+<<<<<<< HEAD
                     // territoryToAdvanceFrom.SetOwner(*(this));
                     for (int j = 0; j < currentMap.GetMap().GetTerritories().size(); j++)
                     {
                         if (currentMap.GetMap().GetTerritories().at(j)->GetTerritoryName() == territoryToAdvanceFromName)
+=======
+
+                    for(int j = 0; j < currentMap.GetMap().GetTerritories().size(); j++)
+                    {
+                        if(currentMap.GetMap().GetTerritories().at(j)->GetTerritoryName() == territoryToAdvanceFromName)
+>>>>>>> 5af5d042207bb6d1a68cc312ea06e1fc18c7821f
                         {
                             territoryToAdvanceFrom = *currentMap.GetMap().GetTerritories().at(j);
                         }
@@ -281,6 +288,11 @@ ostream &operator<<(ostream &os, const Player &other)
 bool Player::operator==(const Player &other)
 {
     return true;
+}
+
+bool Player::hasSegmentationFault() const
+{
+    return ordersList.hasSegmentationFault();
 }
 
 #endif
