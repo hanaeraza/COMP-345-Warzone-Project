@@ -143,18 +143,18 @@ ostream& operator<<(ostream& os, const TournamentInfo& input){
 
     for (size_t i = 0; i < *input.gamesPlayed; i++)
     {
-        os << "\t" << "Game " << i + 1 << ":";
+        os << "\t" << "Game " << setw(2) << i + 1 << ":";
     }
 
     os << endl;
 
     for (size_t i = 0; i < input.maps->size(); i++)
     {
-        os << "Map" << i + 1 << ":";
+        os << "Map" << setw(2) << i + 1 << ":";
         for (size_t j = 0; j < *input.gamesPlayed; j++)
         {
             string player = (*(input.winningPlayers))[pair<string, unsigned int>((*(input.maps))[i], j)];
-            os << "\t" << player;
+            os << setw(15) << player;
         }
         os << endl;
     }
@@ -229,6 +229,9 @@ void GameEngine::onTournamentStart(TournamentInfo tournamentInfo)
     commandProcessor->clear();
     this->tournamentInfo->notify(this->tournamentInfo);
     *inTournamentMode = false;
+
+    setState(new EndState());
+    update();
 }
 
 void GameEngine::setTournamentInfo(TournamentInfo* input)
@@ -339,6 +342,7 @@ void StartState::update(GameEngine *game)
             game->getInnerEngineLogger(), autoResolve, weights));
 
             game->onTournamentStart(game->getTournamentInfo());
+            return;
         }
 
         else if (command == "loadmap" && !filename.empty())
@@ -441,6 +445,7 @@ void StartState::update(GameEngine *game)
             game->getInnerEngineLogger(), autoResolve, weights));
 
             game->onTournamentStart(game->getTournamentInfo());
+            return;
         }
         else if (command == "loadmap" && !filename.empty() && game->getCommandProcessor().validate(this))
         {
@@ -1463,7 +1468,7 @@ string WinState::getName()
 // End state
 void EndState::update(GameEngine *game)
 {
-    // end
+    exit(0);
 }
 
 string EndState::getName()

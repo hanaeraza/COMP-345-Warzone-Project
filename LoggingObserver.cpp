@@ -48,6 +48,11 @@ void LogObserver::update(ILoggable* message){
 
 void LogObserver::update(string message){
   std::ofstream file(string(logFile), std::ios::app);
+  if (!file.is_open()) {
+      file.open(logFile, std::ios::out);
+      file.close();
+      file.open(logFile, std::ios::app);
+  }
   if (file.is_open()) {
       time_t now = time(nullptr);
       file << "Message At: " << now << "\n\t" << message;
