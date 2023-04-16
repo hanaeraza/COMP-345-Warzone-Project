@@ -1162,7 +1162,7 @@ void IssueOrdersState::issueOrdersPhase(Player player)
     
     // issue orders
     cout << "Issue Order phase for player: " << player.playername << endl;
-    player.issueOrder(map, deck);
+    player.issueOrder(map, deck, (map.GetMap().GetTerritories().size() / numPlayers));
     // swictch player
     // Player p = playerQueue.front();
     // playerQueue.pop();

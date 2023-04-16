@@ -3,7 +3,7 @@
 #include <iostream>
 #include "Card.h"
 #include "Orders.h"
-
+#include "Player.h"
 using namespace std;
 
 //Copy Constructor
@@ -24,7 +24,7 @@ Card& Card::operator=(const Card& c){
 
 //Constructor
 Hand::Hand() {
-	cards = new Card * [maxSize];
+    cards = new Card * [maxSize];
 }
 //Copy Constructor
 Hand::Hand(const Hand& h) {
@@ -124,17 +124,10 @@ Deck& Deck::operator=(const Deck& d) {
     }
     return *this;
 }
+void Card::play(Hand* hand, Deck *deck, Player *player) {
 
-void Card::play(Hand* hand, Deck *deck) {
-	newOrder orderCreate;  //
-    OrdersList order_list; //creates an order list
-    //player->
-    order_list.addOrder(orderCreate.createOrder(this->type)); //creates an order and adds it to the order list
+    
 	
-	printOrders(order_list.getOrders());
-
-
-
     if (hand && deck) {
         // Remove the card from the hand.
         for (int i = 0; i < hand->size; i++) {

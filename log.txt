@@ -1432,3 +1432,1437 @@ Results:
 	Game  1:	Game  2:	Game  3:	Game  4:	Game  5:	Game  6:	Game  7:	Game  8:	Game  9:	Game 10:
 Map 1:             p2             p2             p2             p1             p1             p2             p1             p2             p2             p1
 Map 2:             p2             p1             p2             p1             p2             p2             p2             p1             p2             p2
+Message At: 1681677726
+	Commands:
+	loadmap pair.map
+
+Message At: 1681677726
+	Commands:
+	loadmap pair.map
+
+	validatemap
+
+Message At: 1681677726
+	Commands:
+	loadmap pair.map
+
+	validatemap
+
+	addplayer p1
+
+Message At: 1681677726
+	Commands:
+	loadmap pair.map
+
+	validatemap
+
+	addplayer p1
+
+	addplayer p2
+
+Message At: 1681677726
+	Commands:
+	loadmap pair.map
+
+	validatemap
+
+	addplayer p1
+
+	addplayer p2
+
+	autoresolve
+
+Message At: 1681677726
+	loadmap pair.map
+Loading pair.map
+moving to MapLoadedState.
+Message At: 1681677726
+	Current state: maploaded
+Message At: 1681677726
+	validatemap
+Map Valid
+Message At: 1681677726
+	Current state: mapvalidated
+Message At: 1681677726
+	addplayer p1
+Adding p1
+moving to PlayersAddedState.
+Message At: 1681677726
+	Current state: playersadded
+Message At: 1681677726
+	addplayer p2
+Adding p2
+moving to PlayersAddedState.
+Message At: 1681677726
+	Current state: playersadded
+Message At: 1681677726
+	autoresolve
+Auto resolving game.
+Moving to WinState.
+Message At: 1681677726
+	Current state: win
+Message At: 1681677726
+	Current state: win
+Message At: 1681677726
+	Commands:
+	loadmap pair.map
+
+Message At: 1681677726
+	Commands:
+	loadmap pair.map
+
+	validatemap
+
+Message At: 1681677726
+	Commands:
+	loadmap pair.map
+
+	validatemap
+
+	addplayer p1
+
+Message At: 1681677726
+	Commands:
+	loadmap pair.map
+
+	validatemap
+
+	addplayer p1
+
+	addplayer p2
+
+Message At: 1681677726
+	Commands:
+	loadmap pair.map
+
+	validatemap
+
+	addplayer p1
+
+	addplayer p2
+
+	autoresolve
+
+Message At: 1681677726
+	loadmap pair.map
+Loading pair.map
+moving to MapLoadedState.
+Message At: 1681677727
+	Current state: maploaded
+Message At: 1681677727
+	validatemap
+Map Valid
+Message At: 1681677727
+	Current state: mapvalidated
+Message At: 1681677727
+	addplayer p1
+Adding p1
+moving to PlayersAddedState.
+Message At: 1681677727
+	Current state: playersadded
+Message At: 1681677727
+	addplayer p2
+Adding p2
+moving to PlayersAddedState.
+Message At: 1681677727
+	Current state: playersadded
+Message At: 1681677727
+	autoresolve
+Auto resolving game.
+Moving to WinState.
+Message At: 1681677727
+	Current state: win
+Message At: 1681677727
+	Current state: win
+Message At: 1681677727
+	Commands:
+	loadmap pair.map
+
+Message At: 1681677727
+	Commands:
+	loadmap pair.map
+
+	validatemap
+
+Message At: 1681677727
+	Commands:
+	loadmap pair.map
+
+	validatemap
+
+	addplayer p1
+
+Message At: 1681677727
+	Commands:
+	loadmap pair.map
+
+	validatemap
+
+	addplayer p1
+
+	addplayer p2
+
+Message At: 1681677727
+	Commands:
+	loadmap pair.map
+
+	validatemap
+
+	addplayer p1
+
+	addplayer p2
+
+	autoresolve
+
+Message At: 1681677727
+	loadmap pair.map
+Loading pair.map
+moving to MapLoadedState.
+Message At: 1681677727
+	Current state: maploaded
+Message At: 1681677727
+	validatemap
+Map Valid
+Message At: 1681677727
+	Current state: mapvalidated
+Message At: 1681677727
+	addplayer p1
+Adding p1
+moving to PlayersAddedState.
+Message At: 1681677727
+	Current state: playersadded
+Message At: 1681677727
+	addplayer p2
+Adding p2
+moving to PlayersAddedState.
+Message At: 1681677727
+	Current state: playersadded
+Message At: 1681677727
+	autoresolve
+Auto resolving game.
+Moving to WinState.
+Message At: 1681677727
+	Current state: win
+Message At: 1681677727
+	Current state: win
+Message At: 1681677727
+	Commands:
+	loadmap pair.map
+
+Message At: 1681677727
+	Commands:
+	loadmap pair.map
+
+	validatemap
+
+Message At: 1681677727
+	Commands:
+	loadmap pair.map
+
+	validatemap
+
+	addplayer p1
+
+Message At: 1681677727
+	Commands:
+	loadmap pair.map
+
+	validatemap
+
+	addplayer p1
+
+	addplayer p2
+
+Message At: 1681677727
+	Commands:
+	loadmap pair.map
+
+	validatemap
+
+	addplayer p1
+
+	addplayer p2
+
+	autoresolve
+
+Message At: 1681677727
+	loadmap pair.map
+Loading pair.map
+moving to MapLoadedState.
+Message At: 1681677727
+	Current state: maploaded
+Message At: 1681677727
+	validatemap
+Map Valid
+Message At: 1681677727
+	Current state: mapvalidated
+Message At: 1681677727
+	addplayer p1
+Adding p1
+moving to PlayersAddedState.
+Message At: 1681677727
+	Current state: playersadded
+Message At: 1681677727
+	addplayer p2
+Adding p2
+moving to PlayersAddedState.
+Message At: 1681677727
+	Current state: playersadded
+Message At: 1681677727
+	autoresolve
+Auto resolving game.
+Moving to WinState.
+Message At: 1681677727
+	Current state: win
+Message At: 1681677727
+	Current state: win
+Message At: 1681677727
+	Commands:
+	loadmap pair.map
+
+Message At: 1681677727
+	Commands:
+	loadmap pair.map
+
+	validatemap
+
+Message At: 1681677727
+	Commands:
+	loadmap pair.map
+
+	validatemap
+
+	addplayer p1
+
+Message At: 1681677727
+	Commands:
+	loadmap pair.map
+
+	validatemap
+
+	addplayer p1
+
+	addplayer p2
+
+Message At: 1681677727
+	Commands:
+	loadmap pair.map
+
+	validatemap
+
+	addplayer p1
+
+	addplayer p2
+
+	autoresolve
+
+Message At: 1681677727
+	loadmap pair.map
+Loading pair.map
+moving to MapLoadedState.
+Message At: 1681677727
+	Current state: maploaded
+Message At: 1681677727
+	validatemap
+Map Valid
+Message At: 1681677727
+	Current state: mapvalidated
+Message At: 1681677727
+	addplayer p1
+Adding p1
+moving to PlayersAddedState.
+Message At: 1681677727
+	Current state: playersadded
+Message At: 1681677727
+	addplayer p2
+Adding p2
+moving to PlayersAddedState.
+Message At: 1681677727
+	Current state: playersadded
+Message At: 1681677727
+	autoresolve
+Auto resolving game.
+Moving to WinState.
+Message At: 1681677727
+	Current state: win
+Message At: 1681677727
+	Current state: win
+Message At: 1681677727
+	Commands:
+	loadmap pair.map
+
+Message At: 1681677727
+	Commands:
+	loadmap pair.map
+
+	validatemap
+
+Message At: 1681677727
+	Commands:
+	loadmap pair.map
+
+	validatemap
+
+	addplayer p1
+
+Message At: 1681677727
+	Commands:
+	loadmap pair.map
+
+	validatemap
+
+	addplayer p1
+
+	addplayer p2
+
+Message At: 1681677727
+	Commands:
+	loadmap pair.map
+
+	validatemap
+
+	addplayer p1
+
+	addplayer p2
+
+	autoresolve
+
+Message At: 1681677727
+	loadmap pair.map
+Loading pair.map
+moving to MapLoadedState.
+Message At: 1681677727
+	Current state: maploaded
+Message At: 1681677727
+	validatemap
+Map Valid
+Message At: 1681677727
+	Current state: mapvalidated
+Message At: 1681677727
+	addplayer p1
+Adding p1
+moving to PlayersAddedState.
+Message At: 1681677727
+	Current state: playersadded
+Message At: 1681677727
+	addplayer p2
+Adding p2
+moving to PlayersAddedState.
+Message At: 1681677727
+	Current state: playersadded
+Message At: 1681677727
+	autoresolve
+Auto resolving game.
+Moving to WinState.
+Message At: 1681677727
+	Current state: win
+Message At: 1681677727
+	Current state: win
+Message At: 1681677727
+	Commands:
+	loadmap pair.map
+
+Message At: 1681677727
+	Commands:
+	loadmap pair.map
+
+	validatemap
+
+Message At: 1681677727
+	Commands:
+	loadmap pair.map
+
+	validatemap
+
+	addplayer p1
+
+Message At: 1681677727
+	Commands:
+	loadmap pair.map
+
+	validatemap
+
+	addplayer p1
+
+	addplayer p2
+
+Message At: 1681677727
+	Commands:
+	loadmap pair.map
+
+	validatemap
+
+	addplayer p1
+
+	addplayer p2
+
+	autoresolve
+
+Message At: 1681677727
+	loadmap pair.map
+Loading pair.map
+moving to MapLoadedState.
+Message At: 1681677727
+	Current state: maploaded
+Message At: 1681677727
+	validatemap
+Map Valid
+Message At: 1681677727
+	Current state: mapvalidated
+Message At: 1681677727
+	addplayer p1
+Adding p1
+moving to PlayersAddedState.
+Message At: 1681677727
+	Current state: playersadded
+Message At: 1681677727
+	addplayer p2
+Adding p2
+moving to PlayersAddedState.
+Message At: 1681677727
+	Current state: playersadded
+Message At: 1681677727
+	autoresolve
+Auto resolving game.
+Moving to WinState.
+Message At: 1681677727
+	Current state: win
+Message At: 1681677727
+	Current state: win
+Message At: 1681677727
+	Commands:
+	loadmap pair.map
+
+Message At: 1681677727
+	Commands:
+	loadmap pair.map
+
+	validatemap
+
+Message At: 1681677727
+	Commands:
+	loadmap pair.map
+
+	validatemap
+
+	addplayer p1
+
+Message At: 1681677727
+	Commands:
+	loadmap pair.map
+
+	validatemap
+
+	addplayer p1
+
+	addplayer p2
+
+Message At: 1681677727
+	Commands:
+	loadmap pair.map
+
+	validatemap
+
+	addplayer p1
+
+	addplayer p2
+
+	autoresolve
+
+Message At: 1681677727
+	loadmap pair.map
+Loading pair.map
+moving to MapLoadedState.
+Message At: 1681677727
+	Current state: maploaded
+Message At: 1681677727
+	validatemap
+Map Valid
+Message At: 1681677727
+	Current state: mapvalidated
+Message At: 1681677727
+	addplayer p1
+Adding p1
+moving to PlayersAddedState.
+Message At: 1681677727
+	Current state: playersadded
+Message At: 1681677727
+	addplayer p2
+Adding p2
+moving to PlayersAddedState.
+Message At: 1681677727
+	Current state: playersadded
+Message At: 1681677727
+	autoresolve
+Auto resolving game.
+Moving to WinState.
+Message At: 1681677727
+	Current state: win
+Message At: 1681677727
+	Current state: win
+Message At: 1681677727
+	Commands:
+	loadmap pair.map
+
+Message At: 1681677727
+	Commands:
+	loadmap pair.map
+
+	validatemap
+
+Message At: 1681677727
+	Commands:
+	loadmap pair.map
+
+	validatemap
+
+	addplayer p1
+
+Message At: 1681677727
+	Commands:
+	loadmap pair.map
+
+	validatemap
+
+	addplayer p1
+
+	addplayer p2
+
+Message At: 1681677727
+	Commands:
+	loadmap pair.map
+
+	validatemap
+
+	addplayer p1
+
+	addplayer p2
+
+	autoresolve
+
+Message At: 1681677727
+	loadmap pair.map
+Loading pair.map
+moving to MapLoadedState.
+Message At: 1681677727
+	Current state: maploaded
+Message At: 1681677727
+	validatemap
+Map Valid
+Message At: 1681677727
+	Current state: mapvalidated
+Message At: 1681677727
+	addplayer p1
+Adding p1
+moving to PlayersAddedState.
+Message At: 1681677727
+	Current state: playersadded
+Message At: 1681677727
+	addplayer p2
+Adding p2
+moving to PlayersAddedState.
+Message At: 1681677727
+	Current state: playersadded
+Message At: 1681677727
+	autoresolve
+Auto resolving game.
+Moving to WinState.
+Message At: 1681677727
+	Current state: win
+Message At: 1681677727
+	Current state: win
+Message At: 1681677727
+	Commands:
+	loadmap pair.map
+
+Message At: 1681677727
+	Commands:
+	loadmap pair.map
+
+	validatemap
+
+Message At: 1681677727
+	Commands:
+	loadmap pair.map
+
+	validatemap
+
+	addplayer p1
+
+Message At: 1681677727
+	Commands:
+	loadmap pair.map
+
+	validatemap
+
+	addplayer p1
+
+	addplayer p2
+
+Message At: 1681677727
+	Commands:
+	loadmap pair.map
+
+	validatemap
+
+	addplayer p1
+
+	addplayer p2
+
+	autoresolve
+
+Message At: 1681677727
+	loadmap pair.map
+Loading pair.map
+moving to MapLoadedState.
+Message At: 1681677727
+	Current state: maploaded
+Message At: 1681677727
+	validatemap
+Map Valid
+Message At: 1681677727
+	Current state: mapvalidated
+Message At: 1681677727
+	addplayer p1
+Adding p1
+moving to PlayersAddedState.
+Message At: 1681677727
+	Current state: playersadded
+Message At: 1681677727
+	addplayer p2
+Adding p2
+moving to PlayersAddedState.
+Message At: 1681677727
+	Current state: playersadded
+Message At: 1681677727
+	autoresolve
+Auto resolving game.
+Moving to WinState.
+Message At: 1681677727
+	Current state: win
+Message At: 1681677727
+	Current state: win
+Message At: 1681677727
+	Commands:
+	loadmap cow.map
+
+Message At: 1681677727
+	Commands:
+	loadmap cow.map
+
+	validatemap
+
+Message At: 1681677727
+	Commands:
+	loadmap cow.map
+
+	validatemap
+
+	addplayer p1
+
+Message At: 1681677727
+	Commands:
+	loadmap cow.map
+
+	validatemap
+
+	addplayer p1
+
+	addplayer p2
+
+Message At: 1681677727
+	Commands:
+	loadmap cow.map
+
+	validatemap
+
+	addplayer p1
+
+	addplayer p2
+
+	autoresolve
+
+Message At: 1681677727
+	loadmap cow.map
+Loading cow.map
+moving to MapLoadedState.
+Message At: 1681677727
+	Current state: maploaded
+Message At: 1681677727
+	validatemap
+Map Valid
+Message At: 1681677727
+	Current state: mapvalidated
+Message At: 1681677727
+	addplayer p1
+Adding p1
+moving to PlayersAddedState.
+Message At: 1681677727
+	Current state: playersadded
+Message At: 1681677727
+	addplayer p2
+Adding p2
+moving to PlayersAddedState.
+Message At: 1681677727
+	Current state: playersadded
+Message At: 1681677727
+	autoresolve
+Auto resolving game.
+Moving to WinState.
+Message At: 1681677727
+	Current state: win
+Message At: 1681677727
+	Current state: win
+Message At: 1681677727
+	Commands:
+	loadmap cow.map
+
+Message At: 1681677727
+	Commands:
+	loadmap cow.map
+
+	validatemap
+
+Message At: 1681677727
+	Commands:
+	loadmap cow.map
+
+	validatemap
+
+	addplayer p1
+
+Message At: 1681677727
+	Commands:
+	loadmap cow.map
+
+	validatemap
+
+	addplayer p1
+
+	addplayer p2
+
+Message At: 1681677727
+	Commands:
+	loadmap cow.map
+
+	validatemap
+
+	addplayer p1
+
+	addplayer p2
+
+	autoresolve
+
+Message At: 1681677727
+	loadmap cow.map
+Loading cow.map
+moving to MapLoadedState.
+Message At: 1681677727
+	Current state: maploaded
+Message At: 1681677727
+	validatemap
+Map Valid
+Message At: 1681677727
+	Current state: mapvalidated
+Message At: 1681677727
+	addplayer p1
+Adding p1
+moving to PlayersAddedState.
+Message At: 1681677727
+	Current state: playersadded
+Message At: 1681677728
+	addplayer p2
+Adding p2
+moving to PlayersAddedState.
+Message At: 1681677728
+	Current state: playersadded
+Message At: 1681677728
+	autoresolve
+Auto resolving game.
+Moving to WinState.
+Message At: 1681677728
+	Current state: win
+Message At: 1681677728
+	Current state: win
+Message At: 1681677728
+	Commands:
+	loadmap cow.map
+
+Message At: 1681677728
+	Commands:
+	loadmap cow.map
+
+	validatemap
+
+Message At: 1681677728
+	Commands:
+	loadmap cow.map
+
+	validatemap
+
+	addplayer p1
+
+Message At: 1681677728
+	Commands:
+	loadmap cow.map
+
+	validatemap
+
+	addplayer p1
+
+	addplayer p2
+
+Message At: 1681677728
+	Commands:
+	loadmap cow.map
+
+	validatemap
+
+	addplayer p1
+
+	addplayer p2
+
+	autoresolve
+
+Message At: 1681677728
+	loadmap cow.map
+Loading cow.map
+moving to MapLoadedState.
+Message At: 1681677728
+	Current state: maploaded
+Message At: 1681677728
+	validatemap
+Map Valid
+Message At: 1681677728
+	Current state: mapvalidated
+Message At: 1681677728
+	addplayer p1
+Adding p1
+moving to PlayersAddedState.
+Message At: 1681677728
+	Current state: playersadded
+Message At: 1681677728
+	addplayer p2
+Adding p2
+moving to PlayersAddedState.
+Message At: 1681677728
+	Current state: playersadded
+Message At: 1681677728
+	autoresolve
+Auto resolving game.
+Moving to WinState.
+Message At: 1681677728
+	Current state: win
+Message At: 1681677728
+	Current state: win
+Message At: 1681677728
+	Commands:
+	loadmap cow.map
+
+Message At: 1681677728
+	Commands:
+	loadmap cow.map
+
+	validatemap
+
+Message At: 1681677728
+	Commands:
+	loadmap cow.map
+
+	validatemap
+
+	addplayer p1
+
+Message At: 1681677728
+	Commands:
+	loadmap cow.map
+
+	validatemap
+
+	addplayer p1
+
+	addplayer p2
+
+Message At: 1681677728
+	Commands:
+	loadmap cow.map
+
+	validatemap
+
+	addplayer p1
+
+	addplayer p2
+
+	autoresolve
+
+Message At: 1681677728
+	loadmap cow.map
+Loading cow.map
+moving to MapLoadedState.
+Message At: 1681677728
+	Current state: maploaded
+Message At: 1681677728
+	validatemap
+Map Valid
+Message At: 1681677728
+	Current state: mapvalidated
+Message At: 1681677728
+	addplayer p1
+Adding p1
+moving to PlayersAddedState.
+Message At: 1681677728
+	Current state: playersadded
+Message At: 1681677728
+	addplayer p2
+Adding p2
+moving to PlayersAddedState.
+Message At: 1681677728
+	Current state: playersadded
+Message At: 1681677728
+	autoresolve
+Auto resolving game.
+Moving to WinState.
+Message At: 1681677728
+	Current state: win
+Message At: 1681677728
+	Current state: win
+Message At: 1681677728
+	Commands:
+	loadmap cow.map
+
+Message At: 1681677728
+	Commands:
+	loadmap cow.map
+
+	validatemap
+
+Message At: 1681677728
+	Commands:
+	loadmap cow.map
+
+	validatemap
+
+	addplayer p1
+
+Message At: 1681677728
+	Commands:
+	loadmap cow.map
+
+	validatemap
+
+	addplayer p1
+
+	addplayer p2
+
+Message At: 1681677728
+	Commands:
+	loadmap cow.map
+
+	validatemap
+
+	addplayer p1
+
+	addplayer p2
+
+	autoresolve
+
+Message At: 1681677728
+	loadmap cow.map
+Loading cow.map
+moving to MapLoadedState.
+Message At: 1681677728
+	Current state: maploaded
+Message At: 1681677728
+	validatemap
+Map Valid
+Message At: 1681677728
+	Current state: mapvalidated
+Message At: 1681677728
+	addplayer p1
+Adding p1
+moving to PlayersAddedState.
+Message At: 1681677728
+	Current state: playersadded
+Message At: 1681677728
+	addplayer p2
+Adding p2
+moving to PlayersAddedState.
+Message At: 1681677728
+	Current state: playersadded
+Message At: 1681677728
+	autoresolve
+Auto resolving game.
+Moving to WinState.
+Message At: 1681677728
+	Current state: win
+Message At: 1681677728
+	Current state: win
+Message At: 1681677728
+	Commands:
+	loadmap cow.map
+
+Message At: 1681677728
+	Commands:
+	loadmap cow.map
+
+	validatemap
+
+Message At: 1681677728
+	Commands:
+	loadmap cow.map
+
+	validatemap
+
+	addplayer p1
+
+Message At: 1681677728
+	Commands:
+	loadmap cow.map
+
+	validatemap
+
+	addplayer p1
+
+	addplayer p2
+
+Message At: 1681677728
+	Commands:
+	loadmap cow.map
+
+	validatemap
+
+	addplayer p1
+
+	addplayer p2
+
+	autoresolve
+
+Message At: 1681677728
+	loadmap cow.map
+Loading cow.map
+moving to MapLoadedState.
+Message At: 1681677728
+	Current state: maploaded
+Message At: 1681677728
+	validatemap
+Map Valid
+Message At: 1681677728
+	Current state: mapvalidated
+Message At: 1681677728
+	addplayer p1
+Adding p1
+moving to PlayersAddedState.
+Message At: 1681677728
+	Current state: playersadded
+Message At: 1681677728
+	addplayer p2
+Adding p2
+moving to PlayersAddedState.
+Message At: 1681677728
+	Current state: playersadded
+Message At: 1681677728
+	autoresolve
+Auto resolving game.
+Moving to WinState.
+Message At: 1681677728
+	Current state: win
+Message At: 1681677728
+	Current state: win
+Message At: 1681677728
+	Commands:
+	loadmap cow.map
+
+Message At: 1681677728
+	Commands:
+	loadmap cow.map
+
+	validatemap
+
+Message At: 1681677728
+	Commands:
+	loadmap cow.map
+
+	validatemap
+
+	addplayer p1
+
+Message At: 1681677728
+	Commands:
+	loadmap cow.map
+
+	validatemap
+
+	addplayer p1
+
+	addplayer p2
+
+Message At: 1681677728
+	Commands:
+	loadmap cow.map
+
+	validatemap
+
+	addplayer p1
+
+	addplayer p2
+
+	autoresolve
+
+Message At: 1681677728
+	loadmap cow.map
+Loading cow.map
+moving to MapLoadedState.
+Message At: 1681677728
+	Current state: maploaded
+Message At: 1681677728
+	validatemap
+Map Valid
+Message At: 1681677728
+	Current state: mapvalidated
+Message At: 1681677728
+	addplayer p1
+Adding p1
+moving to PlayersAddedState.
+Message At: 1681677728
+	Current state: playersadded
+Message At: 1681677728
+	addplayer p2
+Adding p2
+moving to PlayersAddedState.
+Message At: 1681677728
+	Current state: playersadded
+Message At: 1681677728
+	autoresolve
+Auto resolving game.
+Moving to WinState.
+Message At: 1681677728
+	Current state: win
+Message At: 1681677728
+	Current state: win
+Message At: 1681677728
+	Commands:
+	loadmap cow.map
+
+Message At: 1681677728
+	Commands:
+	loadmap cow.map
+
+	validatemap
+
+Message At: 1681677728
+	Commands:
+	loadmap cow.map
+
+	validatemap
+
+	addplayer p1
+
+Message At: 1681677728
+	Commands:
+	loadmap cow.map
+
+	validatemap
+
+	addplayer p1
+
+	addplayer p2
+
+Message At: 1681677728
+	Commands:
+	loadmap cow.map
+
+	validatemap
+
+	addplayer p1
+
+	addplayer p2
+
+	autoresolve
+
+Message At: 1681677728
+	loadmap cow.map
+Loading cow.map
+moving to MapLoadedState.
+Message At: 1681677728
+	Current state: maploaded
+Message At: 1681677728
+	validatemap
+Map Valid
+Message At: 1681677728
+	Current state: mapvalidated
+Message At: 1681677728
+	addplayer p1
+Adding p1
+moving to PlayersAddedState.
+Message At: 1681677728
+	Current state: playersadded
+Message At: 1681677728
+	addplayer p2
+Adding p2
+moving to PlayersAddedState.
+Message At: 1681677729
+	Current state: playersadded
+Message At: 1681677729
+	autoresolve
+Auto resolving game.
+Moving to WinState.
+Message At: 1681677729
+	Current state: win
+Message At: 1681677729
+	Current state: win
+Message At: 1681677729
+	Commands:
+	loadmap cow.map
+
+Message At: 1681677729
+	Commands:
+	loadmap cow.map
+
+	validatemap
+
+Message At: 1681677729
+	Commands:
+	loadmap cow.map
+
+	validatemap
+
+	addplayer p1
+
+Message At: 1681677729
+	Commands:
+	loadmap cow.map
+
+	validatemap
+
+	addplayer p1
+
+	addplayer p2
+
+Message At: 1681677729
+	Commands:
+	loadmap cow.map
+
+	validatemap
+
+	addplayer p1
+
+	addplayer p2
+
+	autoresolve
+
+Message At: 1681677729
+	loadmap cow.map
+Loading cow.map
+moving to MapLoadedState.
+Message At: 1681677729
+	Current state: maploaded
+Message At: 1681677729
+	validatemap
+Map Valid
+Message At: 1681677729
+	Current state: mapvalidated
+Message At: 1681677729
+	addplayer p1
+Adding p1
+moving to PlayersAddedState.
+Message At: 1681677729
+	Current state: playersadded
+Message At: 1681677729
+	addplayer p2
+Adding p2
+moving to PlayersAddedState.
+Message At: 1681677729
+	Current state: playersadded
+Message At: 1681677729
+	autoresolve
+Auto resolving game.
+Moving to WinState.
+Message At: 1681677729
+	Current state: win
+Message At: 1681677729
+	Current state: win
+Message At: 1681677729
+	Commands:
+	loadmap cow.map
+
+Message At: 1681677729
+	Commands:
+	loadmap cow.map
+
+	validatemap
+
+Message At: 1681677729
+	Commands:
+	loadmap cow.map
+
+	validatemap
+
+	addplayer p1
+
+Message At: 1681677729
+	Commands:
+	loadmap cow.map
+
+	validatemap
+
+	addplayer p1
+
+	addplayer p2
+
+Message At: 1681677729
+	Commands:
+	loadmap cow.map
+
+	validatemap
+
+	addplayer p1
+
+	addplayer p2
+
+	autoresolve
+
+Message At: 1681677729
+	loadmap cow.map
+Loading cow.map
+moving to MapLoadedState.
+Message At: 1681677729
+	Current state: maploaded
+Message At: 1681677729
+	validatemap
+Map Valid
+Message At: 1681677729
+	Current state: mapvalidated
+Message At: 1681677729
+	addplayer p1
+Adding p1
+moving to PlayersAddedState.
+Message At: 1681677729
+	Current state: playersadded
+Message At: 1681677729
+	addplayer p2
+Adding p2
+moving to PlayersAddedState.
+Message At: 1681677729
+	Current state: playersadded
+Message At: 1681677729
+	autoresolve
+Auto resolving game.
+Moving to WinState.
+Message At: 1681677729
+	Current state: win
+Message At: 1681677729
+	Current state: win
+Message At: 1681677729
+	Tournament Info: 
+Maps: 
+	pair.map
+	cow.map
+Players: 
+	p1
+	p2
+Games Played: 10
+Turns to Draw: 10
+Results: 	
+	Game  1:	Game  2:	Game  3:	Game  4:	Game  5:	Game  6:	Game  7:	Game  8:	Game  9:	Game 10:
+Map 1:             p2             p2             p2             p2             p2             p2             p2             p2             p1             p2
+Map 2:             p1             p2             p2             p2             p1             p2             p2             p1             p2             p2

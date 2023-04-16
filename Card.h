@@ -9,7 +9,7 @@ using namespace std;
 
 
 
-
+class Player;
 class Card;
 class Deck;
 class Hand;
@@ -27,9 +27,7 @@ public:
 
     Card& operator=(const Card& c);
     
-    void play(Hand* hand, Deck* deck);
-    // bool removeFromHand(Hand* hand, Deck* deck);
-
+    void play(Hand* hand, Deck* deck, Player *player);
 };
 
 class Deck {

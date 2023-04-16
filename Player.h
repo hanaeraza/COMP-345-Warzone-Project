@@ -119,11 +119,27 @@ public:
     //Function declarations (make non static)
     vector<string> toDefend();
     vector<string> toAttack();
-    void issueOrder(MapLoader currentMap, Deck *deck);
+    void issueOrder(MapLoader currentMap, Deck *deck, int numTerritoriesPerPlayer);
 
     // Stream insertion operators
     friend ostream& operator <<(ostream& os, const Player& other);
     bool operator ==(const Player &other);
+    Player &operator=(const Player &other)
+    {
+        if (this != &other)
+        {
+            strategy = other.strategy;
+            playername = other.playername;
+            delete cardsOwned;
+            cardsOwned = new Hand(*other.cardsOwned);
+            territoriesOwned = other.territoriesOwned;
+            ordersList = other.ordersList;
+            defenseList = other.defenseList;
+            attackList = other.attackList;
+            reinforcementPool = other.reinforcementPool;
+        }
+        return *this;
+    }
 };
 
 

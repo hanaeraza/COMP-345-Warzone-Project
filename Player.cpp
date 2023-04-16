@@ -12,26 +12,31 @@ class Territory;
 
 vector<string> Player::toDefend()
 {
-
     return this->defenseList;
+    // return this->strategy->toDefend();
 }
 
 vector<string> Player::toAttack()
 {
-
     return this->attackList;
+    // return this->strategy->toAttack();
 }
 
 // Create an order object and add it to the player's list of orders
-void Player::issueOrder(MapLoader currentMap, Deck *deck)
+void Player::issueOrder(MapLoader currentMap, Deck *deck, int numTerritoriesPerPlayer)
 {
-
-    vector<int> territoriesOwnedReinforcements;
     // Print out territories owned
     cout << "Territories owned: \n";
-    for (int i = 0; i < this->territoriesOwned.size(); i++)
+    // for (int i = 0; i < this->territoriesOwned.size(); i++)
+    // {
+    //     cout << this->territoriesOwned.at(i).GetTerritoryName() << " ";
+    // }
+    for (int i = 0; i < currentMap.GetMap().GetTerritories().size(); i++)
     {
-        cout << this->territoriesOwned.at(i).GetTerritoryName() << " ";
+        if (currentMap.GetMap().GetTerritories().at(i)->GetOwner() == this->playername)
+        {
+            cout << currentMap.GetMap().GetTerritories().at(i)->GetTerritoryName() << " ";
+        }
     }
     cout << "\n";
 
@@ -44,12 +49,12 @@ void Player::issueOrder(MapLoader currentMap, Deck *deck)
     {
         string territoryToDefend;
         cin >> territoryToDefend;
-        for (int i = 0; i < this->territoriesOwned.size(); i++)
+        for (int i = 0; i < currentMap.GetMap().GetTerritories().size(); i++)
         {
-            if (territoryToDefend == this->territoriesOwned.at(i).GetTerritoryName())
+            if (territoryToDefend == currentMap.GetMap().GetTerritories().at(i)->GetTerritoryName() && currentMap.GetMap().GetTerritories().at(i)->GetOwner() == this->playername)
             {
-                cout << "How many armies would you like to deploy in " + territoriesOwned.at(i).GetTerritoryName() << "\n";
-                cout << "You have " << this->reinforcementPool << " armies remaining to deploy."
+                cout << "How many armies would you like to deploy in " + currentMap.GetMap().GetTerritories().at(i)->GetTerritoryName() << "\n";
+                cout << "You have " << numTroopsRemaining << " armies remaining to deploy."
                      << "\n";
                 int numTroopsToDeploy;
                 cin >> numTroopsToDeploy;
@@ -58,7 +63,7 @@ void Player::issueOrder(MapLoader currentMap, Deck *deck)
                     cout << "You must deploy at least 1 troop. Please try again."
                          << "\n";
                 }
-                else if (numTroopsToDeploy > this->reinforcementPool)
+                else if (numTroopsToDeploy > numTroopsRemaining)
                 {
                     cout << "You do not have enough troops to deploy that many. Please try again."
                          << "\n";
@@ -66,16 +71,16 @@ void Player::issueOrder(MapLoader currentMap, Deck *deck)
 
                 else
                 {
-                    Order *deployOrder = new Deploy(this->territoriesOwned.at(i), this, numTroopsToDeploy);
+                    Order *deployOrder = new Deploy(*currentMap.GetMap().GetTerritories()[i], this, numTroopsToDeploy);
                     this->ordersList.addOrder(deployOrder);
                     cout << "Added deploy order of " << numTroopsToDeploy << " armies on " << territoryToDefend << " to orders list."
                          << "\n";
                     this->defenseList.push_back(territoryToDefend);
-                    this->reinforcementPool = this->reinforcementPool - numTroopsToDeploy;
+                    numTroopsRemaining -= numTroopsToDeploy;
                 }
             }
         }
-        if (this->reinforcementPool == 0)
+        if (numTroopsRemaining == 0)
         {
             cout << "You have deployed all your troops."
                  << "\n";
@@ -107,21 +112,26 @@ void Player::issueOrder(MapLoader currentMap, Deck *deck)
 
             Territory territoryToAdvanceFrom;
             Territory territoryToAdvanceTo;
+            int index1 = 0;
+            int index2 = 0;
             cout << "Choose a Territory to Advance From:"
                  << "\n";
             // Print out territories owned
-            for (int i = 0; i < this->territoriesOwned.size(); i++)
+            for (int i = 0; i < currentMap.GetMap().GetTerritories().size(); i++)
             {
-                cout << this->territoriesOwned.at(i).GetTerritoryName() << " ";
+                if (currentMap.GetMap().GetTerritories().at(i)->GetOwner() == this->playername)
+                {
+                    cout << currentMap.GetMap().GetTerritories().at(i)->GetTerritoryName() << " ";
+                }
             }
             cout << "\n";
             string territoryToAdvanceFromName;
             cin >> territoryToAdvanceFromName;
-            for (int i = 0; i < this->territoriesOwned.size(); i++)
+            for (int i = 0; i < currentMap.GetMap().GetTerritories().size(); i++)
             {
-                if (territoryToAdvanceFromName == this->territoriesOwned.at(i).GetTerritoryName())
+                if (territoryToAdvanceFromName == currentMap.GetMap().GetTerritories()[i]->GetTerritoryName())
                 {
-                    territoryToAdvanceFrom = this->territoriesOwned.at(i);
+                    index1 = i;
                     break;
                 }
             }
@@ -139,7 +149,8 @@ void Player::issueOrder(MapLoader currentMap, Deck *deck)
             {
                 if (territoryToAdvanceToName == currentMap.GetMap().GetTerritories().at(i)->GetTerritoryName())
                 {
-                    territoryToAdvanceTo = *currentMap.GetMap().GetTerritories().at(i);
+                    index2 = i;
+                    // territoryToAdvanceTo = *currentMap.GetMap().GetTerritories().at(i);
                     break;
                 }
             }
@@ -164,8 +175,13 @@ void Player::issueOrder(MapLoader currentMap, Deck *deck)
                  << "\n";
             int numTroopsToAdvance;
             cin >> numTroopsToAdvance;
-            this->ordersList.addOrder(new Advance(territoryToAdvanceFrom, territoryToAdvanceTo, this, numTroopsToAdvance));
-            cout << "Added advance order of " << numTroopsToAdvance << " armies from " << territoryToAdvanceFrom.GetTerritoryName() << " to " << territoryToAdvanceTo.GetTerritoryName() << " to orders list."
+
+            Order *advanceOrder = new Advance(*currentMap.GetMap().GetTerritories().at(index1), *currentMap.GetMap().GetTerritories().at(index2), this, numTroopsToAdvance);
+            this->ordersList.addOrder(advanceOrder);
+
+            // advanceOrders.push_back(new Advance(territoryToAdvanceFrom, territoryToAdvanceTo, this, numTroopsToAdvance));
+            // Record advance order information here in a new list
+            cout << "Added advance order of " << numTroopsToAdvance << " armies from " << currentMap.GetMap().GetTerritories().at(index1)->GetTerritoryName() << " to " << currentMap.GetMap().GetTerritories().at(index2)->GetTerritoryName() << " to orders list."
                  << "\n";
         }
     }
@@ -173,50 +189,89 @@ void Player::issueOrder(MapLoader currentMap, Deck *deck)
     /*The player uses one of the cards in their hand to issue an order that corresponds to the card in question. */
     // add choose option
 
-    cout << "Choose a card to play:"
+    cout << "Do you want to issue an order using a card? (y/n)"
          << "\n";
+    string answer;
+    cin >> answer;
+    if (answer == "y")
+    {
+        cout << "Choose a card to play:"
+             << "\n";
 
-    cout << "You have " << this->cardsOwned->size << " cards in your hand."
-         << "\n";
-    if (this->cardsOwned->size == 0)
-    {
-        cout << "You have no cards to play."
+        cout << "You have " << this->cardsOwned->size << " cards in your hand."
              << "\n";
-    }
-    else
-    {
-        cout << "Cards in hand: "
-             << "\n";
-        for (int i = 0; i < this->cardsOwned->size; i++)
+        if (this->cardsOwned->size == 0)
         {
-            cout << this->cardsOwned->cards[i]->type << ", ";
+            cout << "You have no cards to play."
+                 << "\n";
         }
-        cout << "\n";
-        while (true)
+        else
         {
-            string cardToPlay;
-            cin >> cardToPlay;
-            bool cardFound = false;
+            cout << "Cards in hand: "
+                 << "\n";
             for (int i = 0; i < this->cardsOwned->size; i++)
             {
-                if (cardToPlay == this->cardsOwned->cards[i]->type)
+                cout << this->cardsOwned->cards[i]->type << ", ";
+            }
+            cout << "\n";
+            while (true)
+            {
+                string cardToPlay;
+                cin >> cardToPlay;
+                bool cardFound = false;
+                for (int i = 0; i < this->cardsOwned->size; i++)
                 {
-                    cardFound = true;
-                    this->cardsOwned->cards[i]->play(this->cardsOwned, deck);
+                    if (cardToPlay == this->cardsOwned->cards[i]->type)
+                    {
+                        cardFound = true;
+                        this->cardsOwned->cards[i]->play(this->cardsOwned, deck, this);
+
+                        if (cardToPlay == "Bomb")
+                        {
+                            string target;
+                            cout << "Enter the name of the country you want to bomb: ";
+                            cin >> target;
+                            for (int i = 0; i < currentMap.GetMap().GetTerritories().size(); i++)
+                            {
+                                if (currentMap.GetMap().GetTerritories().at(i)->GetTerritoryName() == target)
+                                {
+                                    cout << "Bomb Card Played" << endl;
+                                    // this->ordersList.addOrder(new Bomb(currentMap.GetMap().GetTerritories().at(i),this));
+                                    break;
+                                }
+                            }
+                        }
+                        else if (cardToPlay == "Blockade")
+                        {
+                            cout << "Blockade Card Played" << endl;
+                            this->ordersList.addOrder(new Blockade());
+                        }
+                        else if (cardToPlay == "Airlift")
+                        {
+                            cout << "Airlift Card Played" << endl;
+                            this->ordersList.addOrder(new Airlift());
+                        }
+                        else if (cardToPlay == "Diplomacy")
+                        {
+                            cout << "Diplomacy Card Played" << endl;
+                            this->ordersList.addOrder(new Negotiate());
+                        }
+                        break;
+                    }
+                }
+                if (cardFound == false)
+                {
+                    cout << "Card not found. Please try again."
+                         << "\n";
+                }
+                else
+                {
                     break;
                 }
             }
-            if (cardFound == false)
-            {
-                cout << "Card not found. Please try again."
-                     << "\n";
-            }
-            else
-            {
-                break;
-            }
         }
     }
+    // this->strategy->issueOrder(currentMap, deck);
 }
 
 // Stream operators
@@ -225,8 +280,9 @@ ostream &operator<<(ostream &os, const Player &other)
     return os;
 }
 
-bool Player::operator==(const Player& other) {
-    return other.playername == this->playername;
+bool Player::operator==(const Player &other)
+{
+    return playername == other.playername;
 }
 
 #endif
