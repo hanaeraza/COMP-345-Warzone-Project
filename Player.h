@@ -42,7 +42,7 @@ public:
         reinforcementPool = 0;
         if (strat == "human")
         {
-            strategy = new HumanPlayerStrategy(this);
+            strategy = new HumanPlayerStrategy();
             cout << "human player strat created" << endl;
         }
         else if (strat == "aggressive")
@@ -74,6 +74,7 @@ public:
     };
     Player(const Player &other)
     {
+        strategy = other.strategy;
         playername = other.playername;
         cardsOwned = other.cardsOwned;
         territoriesOwned = other.territoriesOwned;
@@ -97,6 +98,7 @@ public:
     {
         if (this != &other)
         {
+            strategy = other.strategy;
             playername = other.playername;
             delete cardsOwned;
             cardsOwned = new Hand(*other.cardsOwned);

@@ -480,7 +480,7 @@ void ExecuteOrdersState::executeOrdersPhase(Player &player)
     for (int i = 0; i < map.GetMap().GetTerritories().size(); i++)
     {
         cout << map.GetMap().GetTerritories()[i]->GetTerritoryName() << " owned by "
-             << map.GetMap().GetTerritories()[i]->GetOwner().playername << "  " <<map.GetMap().GetTerritories()[i]->GetArmyQuantity() << "troops" << endl;
+             << map.GetMap().GetTerritories()[i]->GetOwner().playername << ": " <<map.GetMap().GetTerritories()[i]->GetArmyQuantity() << " troops" << endl;
     }
     // execute advance orders here
     //  player.executeAdvanceOrders(map);
