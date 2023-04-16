@@ -23,13 +23,20 @@ vector<string> Player::toAttack()
 }
 
 // Create an order object and add it to the player's list of orders
-void Player::issueOrder(MapLoader currentMap, Deck *deck)
+void Player::issueOrder(MapLoader currentMap, Deck *deck, int numTerritoriesPerPlayer)
 {
     // Print out territories owned
     cout << "Territories owned: \n";
-    for (int i = 0; i < this->territoriesOwned.size(); i++)
+    // for (int i = 0; i < this->territoriesOwned.size(); i++)
+    // {
+    //     cout << this->territoriesOwned.at(i).GetTerritoryName() << " ";
+    // }
+    for (int i = 0; i < currentMap.GetMap().GetTerritories().size(); i++)
     {
-        cout << this->territoriesOwned.at(i).GetTerritoryName() << " ";
+        if (currentMap.GetMap().GetTerritories().at(i)->GetOwner() == this->playername)
+        {
+            cout << currentMap.GetMap().GetTerritories().at(i)->GetTerritoryName() << " ";
+        }
     }
     cout << "\n";
 
@@ -44,7 +51,7 @@ void Player::issueOrder(MapLoader currentMap, Deck *deck)
         cin >> territoryToDefend;
         for (int i = 0; i < currentMap.GetMap().GetTerritories().size(); i++)
         {
-            if (territoryToDefend == currentMap.GetMap().GetTerritories().at(i)->GetTerritoryName())
+            if (territoryToDefend == currentMap.GetMap().GetTerritories().at(i)->GetTerritoryName() && currentMap.GetMap().GetTerritories().at(i)->GetOwner() == this->playername)
             {
                 cout << "How many armies would you like to deploy in " + currentMap.GetMap().GetTerritories().at(i)->GetTerritoryName() << "\n";
                 cout << "You have " << numTroopsRemaining << " armies remaining to deploy."
@@ -110,9 +117,12 @@ void Player::issueOrder(MapLoader currentMap, Deck *deck)
             cout << "Choose a Territory to Advance From:"
                  << "\n";
             // Print out territories owned
-            for (int i = 0; i < this->territoriesOwned.size(); i++)
+            for (int i = 0; i < currentMap.GetMap().GetTerritories().size(); i++)
             {
-                cout << this->territoriesOwned.at(i).GetTerritoryName() << " ";
+                if (currentMap.GetMap().GetTerritories().at(i)->GetOwner() == this->playername)
+                {
+                    cout << currentMap.GetMap().GetTerritories().at(i)->GetTerritoryName() << " ";
+                }
             }
             cout << "\n";
             string territoryToAdvanceFromName;
@@ -122,15 +132,6 @@ void Player::issueOrder(MapLoader currentMap, Deck *deck)
                 if (territoryToAdvanceFromName == currentMap.GetMap().GetTerritories()[i]->GetTerritoryName())
                 {
                     index1 = i;
-                    //territoryToAdvanceFrom = this->territoriesOwned.at(i);
-                    // territoryToAdvanceFrom.SetOwner(*(this));
-                    // for (int j = 0; j < currentMap.GetMap().GetTerritories().size(); j++)
-                    // {
-                    //     if (currentMap.GetMap().GetTerritories().at(j)->GetTerritoryName() == territoryToAdvanceFromName)
-                    //     {
-                    //         territoryToAdvanceFrom = *currentMap.GetMap().GetTerritories().at(j);
-                    //     }
-                    // }
                     break;
                 }
             }
@@ -149,7 +150,7 @@ void Player::issueOrder(MapLoader currentMap, Deck *deck)
                 if (territoryToAdvanceToName == currentMap.GetMap().GetTerritories().at(i)->GetTerritoryName())
                 {
                     index2 = i;
-                    //territoryToAdvanceTo = *currentMap.GetMap().GetTerritories().at(i);
+                    // territoryToAdvanceTo = *currentMap.GetMap().GetTerritories().at(i);
                     break;
                 }
             }
@@ -174,7 +175,7 @@ void Player::issueOrder(MapLoader currentMap, Deck *deck)
                  << "\n";
             int numTroopsToAdvance;
             cin >> numTroopsToAdvance;
-            
+
             Order *advanceOrder = new Advance(*currentMap.GetMap().GetTerritories().at(index1), *currentMap.GetMap().GetTerritories().at(index2), this, numTroopsToAdvance);
             this->ordersList.addOrder(advanceOrder);
 
@@ -272,9 +273,6 @@ void Player::issueOrder(MapLoader currentMap, Deck *deck)
     }
     // this->strategy->issueOrder(currentMap, deck);
 }
-
-
-
 
 // Stream operators
 ostream &operator<<(ostream &os, const Player &other)

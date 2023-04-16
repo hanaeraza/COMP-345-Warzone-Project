@@ -466,6 +466,8 @@ void Advance::execute()
                 // attacker takes control of the territory
                 target->SetOwner(source->GetOwner());//owner of target will be source
                 target->SetArmyQuantity(source->GetArmyQuantity() - attackingKills); //set conquered place with remaining alive attackers troops
+                // target->SetArmyQuantity(*amount - attackingKills);
+                // source->SetArmyQuantity(source->GetArmyQuantity()- *amount);
                 cout << "Attack successful. " << source->GetOwner().playername << " is the new owner of " << target->GetTerritoryName() << endl;
             //if draw
             } else {
@@ -533,9 +535,14 @@ void Airlift::execute()
             if (defendingKills >= target->GetArmyQuantity()) {
                 // attacker takes control of the territory
                 target->SetOwner(source->GetOwner());
+                // target->SetArmyQuantity(*amount - attackingKills);
+                // source->SetArmyQuantity(source->GetArmyQuantity()- *amount);
+
                 source->SetArmyQuantity(source->GetArmyQuantity() - attackingKills);
             } else {
                 target->SetArmyQuantity(target->GetArmyQuantity() - defendingKills);
+
+                
             }
 
         }

@@ -29,12 +29,12 @@ public:
     vector<string> attackList;
     int reinforcementPool;
 
-    Player() : reinforcementPool(0) {}; // Default constructor
+    Player() : reinforcementPool(0){}; // Default constructor
     Player(string name)
     {
         playername = name;
         reinforcementPool = 0;
-
+        
     };
     Player(string name, string strat)
     {
@@ -70,7 +70,7 @@ public:
         defenseList = defend;
         attackList = attack;
         reinforcementPool = reinforcements;
-     
+
     };
     Player(const Player &other)
     {
@@ -81,20 +81,19 @@ public:
         defenseList = other.defenseList;
         attackList = other.attackList;
         reinforcementPool = other.reinforcementPool;
-      
+
     };           // Copy constructor
     ~Player(){}; // Destructor
 
     // Function declarations (make non static)
     vector<string> toDefend();
     vector<string> toAttack();
-    void issueOrder(MapLoader currentMap, Deck *deck);
-    
+    void issueOrder(MapLoader currentMap, Deck *deck, int numTerritoriesPerPlayer);
 
     // Stream insertion operators
     friend ostream &operator<<(ostream &os, const Player &other);
     bool operator==(const Player &other);
-    Player& operator=(const Player &other)
+    Player &operator=(const Player &other)
     {
         if (this != &other)
         {
