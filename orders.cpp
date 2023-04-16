@@ -299,7 +299,6 @@ bool Deploy::validate() const {
     //checks if territory is owned by player
     for (int i = 0; i < currentPlayer->territoriesOwned.size(); i++) {
         if (currentPlayer->territoriesOwned.at(i).GetTerritoryName() == target->GetTerritoryName()) {
-            cout << currentPlayer->territoriesOwned.at(i).GetTerritoryName() << endl;
             //checks if the amount to deploy is greater than the reinforcement pool
             if (*amount <= currentPlayer->reinforcementPool) {
                 cout << "Deploy order validated." << endl;
@@ -420,7 +419,6 @@ void Deploy::execute()
 {
     if (validate()) {
         target->SetArmyQuantity(*amount + target->GetArmyQuantity());
-        cout << target->GetArmyQuantity() << endl;
         cout << "Deploy order of " << *amount << " armies on " << target->GetTerritoryName() << endl;
         cout << target->GetTerritoryName() << " now has " << target->GetArmyQuantity() << " armies." << endl;
     }
@@ -434,52 +432,54 @@ void Advance::execute()
         {
             source->SetArmyQuantity(source->GetArmyQuantity() - *amount);
             target->SetArmyQuantity(target->GetArmyQuantity() + *amount);
-
-            cout << source->GetArmyQuantity() << endl;
-            cout << target->GetArmyQuantity() << endl;
+            cout << "Advance Executed. " << source->GetTerritoryName() << " has advanced " << *amount << " to " << target->GetTerritoryName() << endl;
         }
 
         //if moving troops to enemy territory then its an attack
         else
         {
             cout << "Attacking " << target->GetOwner().playername << "!" << endl;
-            //Calculate the number of attacking units that will be killed
-            int attackingKills = 0;
-            for (int i = 0; i < source->GetArmyQuantity(); i++) {
+
+            //set attackers 
+            int attackers = *amount;
+            source->SetArmyQuantity(source->GetArmyQuantity() - *amount);
+            //set defenders
+            int defenders = target->GetArmyQuantity();
+
+            //Each attacking army unit involved has 60% chances of killing one defending army
+            int targetDeaths = 0;
+            for (int i = 0; i < attackers; i++) {
                 double roll = (double) rand() / RAND_MAX; // generate random number between 0 and 1
                 if (roll <= 0.6) {
-                attackingKills++;
+                targetDeaths++;
                 }
             }
 
-            //Calculate the number of defending units that will be killed
-            int defendingKills = 0;
-            for (int i = 0; i < target->GetArmyQuantity(); i++) {
+            //each defending army unit has 70% chances of killing one attacking army unit.
+            int sourceDeaths = 0;
+            for (int i = 0; i < defenders; i++) {
                 double roll = (double) rand() / RAND_MAX; // generate random number between 0 and 1
                 if (roll <= 0.7) {
-                    defendingKills++;
+                    sourceDeaths++;
                 }
             }
 
-            //Update the armies in the territory
-            if (defendingKills >= target->GetArmyQuantity()) {
+            //if all defenders are dead
+            if (targetDeaths >= defenders) {
                 // attacker takes control of the territory
                 target->SetOwner(source->GetOwner());//owner of target will be source
-                target->SetArmyQuantity(source->GetArmyQuantity() - attackingKills); //set conquered place with remaining alive attackers troops
-                // target->SetArmyQuantity(*amount - attackingKills);
-                // source->SetArmyQuantity(source->GetArmyQuantity()- *amount);
-                cout << "Attack successful. " << source->GetOwner().playername << " is the new owner of " << target->GetTerritoryName() << endl;
+                target->SetArmyQuantity(attackers - sourceDeaths); //set conquered place with remaining alive attackers troops
+                cout << "Attacking " << target->GetOwner().playername << "'s territory!" << endl;
+                cout << "Attack successful. " << source->GetOwner().playername << " is the new owner of " << target->GetTerritoryName() 
+                << "\n" << target->GetTerritoryName() << " has " << target->GetArmyQuantity() << " armies." << endl;
             //if draw
             } else {
-                source->SetArmyQuantity(source->GetArmyQuantity() - attackingKills); //remaining attacker troops left
-                target->SetArmyQuantity(target->GetArmyQuantity() - defendingKills); //remaining defender troops left
-                cout << "Attacked  " << target->GetTerritoryName() << ". " 
+                target->SetArmyQuantity(target->GetArmyQuantity() - targetDeaths); //remaining defender troops left
+                cout << "Attempted to attack  " << target->GetTerritoryName() << ". " 
                 << "\n"
-                << target->GetOwner().playername << " has " << target->GetArmyQuantity() << " troops remaining." << endl;
+                << target->GetOwner().playername << " has sucessfully defended their territory. They have " << target->GetArmyQuantity() << " armies remaining." << endl;
             }
-
         }
-        cout << "Advance Executed. " << source->GetTerritoryName() << " has advanced " << *amount << " to " << target->GetTerritoryName() << endl;
     }
 }
 
@@ -508,46 +508,54 @@ void Airlift::execute()
         {
             source->SetArmyQuantity(source->GetArmyQuantity() - *amount);
             target->SetArmyQuantity(target->GetArmyQuantity() + *amount);
+            cout << "Airlift Executed. " << source->GetTerritoryName() << " has airlifted " << *amount << " to " << target->GetTerritoryName() << endl;
         }
 
         //if its for an enemy territory then its an attack
         else
         {
-            //Calculate the number of attacking units that will be killed
-            int attackingKills = 0;
-            for (int i = 0; i < source->GetArmyQuantity(); i++) {
+            cout << "Attacking " << target->GetOwner().playername << "!" << endl;
+
+            //set attackers 
+            int attackers = *amount;
+            source->SetArmyQuantity(source->GetArmyQuantity() - *amount);
+            //set defenders
+            int defenders = target->GetArmyQuantity();
+
+            //Each attacking army unit involved has 60% chances of killing one defending army
+            int targetDeaths = 0;
+            for (int i = 0; i < attackers; i++) {
                 double roll = (double) rand() / RAND_MAX; // generate random number between 0 and 1
                 if (roll <= 0.6) {
-                attackingKills++;
+                targetDeaths++;
                 }
             }
 
-            //Calculate the number of defending units that will be killed
-            int defendingKills = 0;
-            for (int i = 0; i < target->GetArmyQuantity(); i++) {
+            //each defending army unit has 70% chances of killing one attacking army unit.
+            int sourceDeaths = 0;
+            for (int i = 0; i < defenders; i++) {
                 double roll = (double) rand() / RAND_MAX; // generate random number between 0 and 1
                 if (roll <= 0.7) {
-                    defendingKills++;
+                    sourceDeaths++;
                 }
             }
 
-            //Update the armies in the territory
-            if (defendingKills >= target->GetArmyQuantity()) {
+            //if all defenders are dead
+            if (targetDeaths >= defenders) {
                 // attacker takes control of the territory
-                target->SetOwner(source->GetOwner());
-                // target->SetArmyQuantity(*amount - attackingKills);
-                // source->SetArmyQuantity(source->GetArmyQuantity()- *amount);
-
-                source->SetArmyQuantity(source->GetArmyQuantity() - attackingKills);
+                target->SetOwner(source->GetOwner());//owner of target will be source
+                target->SetArmyQuantity(attackers - sourceDeaths); //set conquered place with remaining alive attackers troops
+                cout << "Attacking " << target->GetOwner().playername << "'s territory!" << endl;
+                cout << "Attack successful. " << source->GetOwner().playername << " is the new owner of " << target->GetTerritoryName() 
+                << "\n" << target->GetTerritoryName() << " has " << target->GetArmyQuantity() << " armies." << endl;
+            //if draw
             } else {
-                target->SetArmyQuantity(target->GetArmyQuantity() - defendingKills);
-
-                
+                target->SetArmyQuantity(target->GetArmyQuantity() - targetDeaths); //remaining defender troops left
+                cout << "Attempted to attack  " << target->GetTerritoryName() << ". " 
+                << "\n"
+                << target->GetOwner().playername << " has sucessfully defended their territory. They have " << target->GetArmyQuantity() << " armies remaining." << endl;
             }
-
         }
-
-        cout << "Airlift executed." << endl;
     }
 }
 
