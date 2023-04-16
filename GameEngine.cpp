@@ -27,20 +27,8 @@ void GameEngine::setState(State *state)
     currentState = state;
 }
 
-bool playerSegFaultTest(vector<Player> players){
-    for (int i = 0; i < players.size(); i++){
-        if (players[i].hasSegmentationFault()){
-            return true;
-        }
-    }
-    return false;
-}
-
 void GameEngine::update()
 {
-    if (playerSegFaultTest(players)){
-        cout << "A player has a segmentation fault. Please restart the game." << endl;
-    }
     currentState->update(this);
 }
 
@@ -488,7 +476,20 @@ void ExecuteOrdersState::executeOrdersPhase(Player &player)
 {
     //executes deploy orders
     player.ordersList.executeOrders();
-    
+
+    //this one is looping thru maps
+    for(int i = 0;i<map.GetMap().GetTerritories().size();i++){
+        cout << map.GetMap().GetTerritories()[i]->GetTerritoryName() << " owned by "
+         << map.GetMap().GetTerritories()[i]->GetOwner().playername << map.GetMap().GetTerritories()[i]->GetArmyQuantity() << "troops"<< endl;
+    }
+    //cout << endl;
+    //this one is looping thru the territories owned by player
+    // for( int i =0 ; i< players.size(); i++){
+    //     cout << players[i].playername << "owns : " << endl;
+    //     for( int j =0 ; j< players[i].territoriesOwned.size(); j++){
+    //         cout << players[i].territoriesOwned[j].GetTerritoryName() <<  players[i].territoriesOwned[j].GetArmyQuantity()<<endl;
+    //     }
+    // }
 
     //execute advance orders here
     // player.executeAdvanceOrders(map);

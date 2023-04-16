@@ -72,7 +72,6 @@ private:
     const static string type;
     Order* clone() const override;
     ostream& printOrder(ostream&) const override;
-    MapLoader *map;
     Territory *source;
     Territory *target;
     int *amount;

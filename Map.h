@@ -27,6 +27,8 @@ public:
 	void SetArmyQuantity(int input);
 	Player GetOwner();
 	static vector<Territory> GetTerritoriesOwnedBy(const Player& input, const vector<Territory>& inputList);
+	
+	void operator delete(void* ptr){}
 
 	friend ostream& operator<<(ostream& os, const Territory& territory){
 		os << " " << *(territory.territoryName)

@@ -327,8 +327,8 @@ bool Advance::validate() const
         return false;
     }
 
-    // //If the target territory is connected to the source territory, the order is valid.
-    // vector<Territory> connectedTerritories = map.GetMap().GetConnections(source);
+    //If the target territory is connected to the source territory, the order is valid.
+    // vector<Territory> connectedTerritories = currentMap.GetMap().GetConnections(source);
     // for (Territory &t : connectedTerritories) {
     //     if (&t == target) {
     //         cout << "Advance order validated." << endl;
@@ -336,7 +336,7 @@ bool Advance::validate() const
     //     }
     // }
 
-    cout << "Advance order not Validated: The territory is not adjacent to yours." << endl;
+    //cout << "Advance order not Validated: The territory is not adjacent to yours." << endl;
     return true;
 }
 
@@ -464,14 +464,16 @@ void Advance::execute()
             //Update the armies in the territory
             if (defendingKills >= target->GetArmyQuantity()) {
                 // attacker takes control of the territory
-                target->SetOwner(source->GetOwner());
-                source->SetArmyQuantity(source->GetArmyQuantity() - attackingKills);
+                target->SetOwner(source->GetOwner());//owner of target will be source
+                target->SetArmyQuantity(source->GetArmyQuantity() - attackingKills); //set conquered place with remaining alive attackers troops
                 cout << "Attack successful. " << source->GetOwner().playername << " is the new owner of " << target->GetTerritoryName() << endl;
+            //if draw
             } else {
-                target->SetArmyQuantity(target->GetArmyQuantity() - defendingKills);
+                source->SetArmyQuantity(source->GetArmyQuantity() - attackingKills); //remaining attacker troops left
+                target->SetArmyQuantity(target->GetArmyQuantity() - defendingKills); //remaining defender troops left
                 cout << "Attacked  " << target->GetTerritoryName() << ". " 
                 << "\n"
-                << target->GetOwner().playername << " has " << target->GetArmyQuantity() << "troops remaining." << endl;
+                << target->GetOwner().playername << " has " << target->GetArmyQuantity() << " troops remaining." << endl;
             }
 
         }
