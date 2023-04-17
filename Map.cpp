@@ -1,4 +1,5 @@
 
+
 #include "Map.h"
 // #include "Player.h"
 #include "Player.h"
@@ -643,7 +644,7 @@ vector<Territory> Map::GetConnections(int input)
     {
         if ((*this->adjacencyMatrix)[input][i])
         {
-            output.push_back(*(*(this->territories))[input]);
+            output.push_back(*(*(this->territories))[i]);
         }
     }
 

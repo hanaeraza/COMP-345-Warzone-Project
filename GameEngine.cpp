@@ -417,9 +417,15 @@ void ExecuteOrdersState::update(GameEngine *game)
         cout << "Execute Order phase for player: " << players[i].playername << endl;
 
         executeOrdersPhase(players[i]);
-
+        
+        int numTerritoriesOwned = 0;
+        for(int j = 0; j < map.GetMap().GetTerritories().size(); j++){
+            if(map.GetMap().GetTerritories()[j]->GetOwner().playername == players[i].playername){
+                numTerritoriesOwned++;
+            }
+        }
         // check if player has won
-        if (players[i].territoriesOwned.size() == map.GetMap().GetTerritories().size())
+        if (numTerritoriesOwned == map.GetMap().GetTerritories().size())
         {
             cout << "Player " << players[i].playername << " has won the game!" << endl;
             // set the game state to win state
@@ -432,16 +438,16 @@ void ExecuteOrdersState::update(GameEngine *game)
     // Checking if any player is eliminated
     for (int i = 0; i < numPlayers; i++)
     {
-        if (players[i].territoriesOwned.size() == 0)
+        int numTerritoriesOwned = 0;
+        for(int j = 0; j < map.GetMap().GetTerritories().size(); j++){
+            if(map.GetMap().GetTerritories()[j]->GetOwner().playername == players[i].playername){
+                numTerritoriesOwned++;
+            }
+        }
+        if (numTerritoriesOwned == 0)
         {
             cout << "Player " << players[i].playername << " has been eliminated from the game!" << endl;
             players.erase(players.begin() + i);
-        }
-        else
-        {
-            // Player p = playerQueue.front();
-            // playerQueue.pop();
-            // playerQueue.push(p);
         }
     }
 
@@ -482,18 +488,6 @@ void ExecuteOrdersState::executeOrdersPhase(Player &player)
         cout << map.GetMap().GetTerritories()[i]->GetTerritoryName() << " owned by "
              << map.GetMap().GetTerritories()[i]->GetOwner().playername << ": " <<map.GetMap().GetTerritories()[i]->GetArmyQuantity() << " troops" << endl;
     }
-    // execute advance orders here
-    //  player.executeAdvanceOrders(map);
-
-    // //verify that advance orders work
-    // for(int i = 0;i<map.GetMap().GetTerritories().size();i++){
-    //     cout << map.GetMap().GetTerritories()[i]->GetTerritoryName() << " owned by "
-    //      << map.GetMap().GetTerritories()[i]->GetOwner().playername << map.GetMap().GetTerritories()[i]->GetArmyQuantity() << "troops"<< endl;
-    // }
-    // use new players vector to execute advance orders
-    // use validate conditions from orders class and then execute
-    // You need a source and target territory in this class somehow
-
     cout << "im in the execute orders phase" << endl;
 }
 string ExecuteOrdersState::getName()
