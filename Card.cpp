@@ -28,6 +28,10 @@ Hand::Hand() {
 }
 //Copy Constructor
 Hand::Hand(const Hand& h) {
+    if (h.size > maxSize || h.size < 0){
+        size = 0;
+        cards = nullptr;
+    }
 	this->size = h.size;
 	this->cards = new Card * [maxSize];
 	for (int i = 0; i < size; i++) {
@@ -65,7 +69,7 @@ void Hand::printHand() {
 }
 //Method to add a card to a hand
 void Hand::addCard(Card* c) {
-	if (size < maxSize) {
+	if (size < maxSize && size >= 0) {
 		cards[size] = c;
 		size++;
 	}

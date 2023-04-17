@@ -17,6 +17,7 @@ static int numPlayers = 0;
 vector<Player> players;
 Deck *deck = new Deck();
 MapLoader map;
+bool autoplay = false;
 
 //queue<Player> playerQueue;
 
@@ -308,6 +309,19 @@ bool GameEngine::drawCondition()
     return *maxTurns != -1 && *maxTurns <= *turnCounter;
 }
 
+void GameEngine::resetTurnCounter()
+{
+    unsigned int counter = 0;
+    turnCounter = &counter;
+}
+
+void GameEngine::incrementTurnCounter()
+{
+    unsigned int counter = *turnCounter;
+    counter++;
+    turnCounter = &counter;
+}
+
 // Start state
 void StartState::update(GameEngine *game)
 {
@@ -315,6 +329,7 @@ void StartState::update(GameEngine *game)
     cout << "Start state." << endl;
 
     game->setMaxTurns(-1);
+    game->resetTurnCounter();
 
     string input;
     string command;
@@ -390,7 +405,14 @@ void StartState::update(GameEngine *game)
             game->onTournamentStart(game->getTournamentInfo());
             return;
         }
-
+        else if (command == "autoplay")
+        {
+            autoplay = true;
+            nextCommand.saveEffect("Beginning Autoplay");
+            game->getCommandProcessor().saveCommand(nextCommand);
+            game->getCommandProcessor().next();
+        }
+        
         else if (command == "loadmap" && !filename.empty())
         {
             nextCommand.saveEffect("Loading " + filename + 
@@ -492,6 +514,13 @@ void StartState::update(GameEngine *game)
 
             game->onTournamentStart(game->getTournamentInfo());
             return;
+        }
+        else if (command == "autoplay")
+        {
+            autoplay = true;
+            nextCommand.saveEffect("Beginning Autoplay");
+            game->getCommandProcessor().saveCommand(nextCommand);
+            game->getCommandProcessor().next();
         }
         else if (command == "loadmap" && !filename.empty() && game->getCommandProcessor().validate(this))
         {
@@ -859,6 +888,7 @@ void PlayersAddedState::update(GameEngine *game)
                     for (int j = 0; j < terrPerPlayer; j++)
                     {
                         players[i].territoriesOwned.push_back(*(territories[j + (i * terrPerPlayer)]));
+                        (territories[j + (i * terrPerPlayer)])->SetOwner(players[i]);
                         cout << territories[j + (i * terrPerPlayer)]->GetTerritoryName() << ",";
                     }
                     cout << endl;
@@ -895,6 +925,7 @@ void PlayersAddedState::update(GameEngine *game)
                     cout << players[i].playername << ": ";
                     for (int k = 0; k < 2; k++)
                     {
+                        if (players[i].cardsOwned->size >= 2)
                         cout << players[i].cardsOwned->cards[k]->type << ", ";
                     }
                     cout << endl;
@@ -1007,6 +1038,7 @@ void PlayersAddedState::update(GameEngine *game)
                     for (int j = 0; j < terrPerPlayer; j++)
                     {
                         players[i].territoriesOwned.push_back(*(territories[j + (i * terrPerPlayer)]));
+                        (territories[j + (i * terrPerPlayer)])->SetOwner(players[i]);
                         cout << territories[j + (i * terrPerPlayer)]->GetTerritoryName() << ",";
                     }
                     cout << endl;
@@ -1108,6 +1140,12 @@ void ReinforcementsState::update(GameEngine *game)
     string command;
     while (true)
     {
+        if (autoplay)
+        {
+            game->setState(new IssueOrdersState());
+            break;
+        }
+        
         cout << "Enter next command: ";
         cin >> command;
         if (command == "issueorder")
@@ -1183,6 +1221,12 @@ void IssueOrdersState::update(GameEngine *game)
     string command;
     while (true)
     {
+        if (autoplay)
+        {
+            game->setState(new ExecuteOrdersState());
+            break;
+        }
+
         cout << "Enter next command: ";
         cin >> command;
         if (command == "issueorder")
@@ -1202,17 +1246,18 @@ void IssueOrdersState::update(GameEngine *game)
     }
 }
 
-void IssueOrdersState::issueOrdersPhase(Player player)
+void IssueOrdersState::issueOrdersPhase(Player &player)
 {
     cout << "Issue orders phase" << endl;
-    
+
+    for (int i = 0; i < map.GetMap().GetTerritories().size(); i++)
+    {
+        cout << map.GetMap().GetTerritories()[i]->GetTerritoryName() << " " << map.GetMap().GetTerritories()[i]->GetOwner().playername << endl;
+    }
     // issue orders
     cout << "Issue Order phase for player: " << player.playername << endl;
+
     player.issueOrder(map, deck, (map.GetMap().GetTerritories().size() / numPlayers));
-    // swictch player
-    // Player p = playerQueue.front();
-    // playerQueue.pop();
-    // playerQueue.push(p);
 }
 
 string IssueOrdersState::getName()
@@ -1227,6 +1272,8 @@ void ExecuteOrdersState::update(GameEngine *game)
 {
     cout << "-----------------------------------" << endl;
     cout << "Execute orders state" << endl;
+
+    game->incrementTurnCounter();
 
     for (int i = 0; i < numPlayers; i++)
     {
@@ -1292,6 +1339,12 @@ void ExecuteOrdersState::update(GameEngine *game)
     string command;
     while (true)
     {
+        if (autoplay)
+        {
+            game->setState(new ReinforcementsState());
+            break;
+        }
+
         cout << "Enter next command: ";
         cin >> command;
         if (command == "execorder")
@@ -1316,9 +1369,18 @@ void ExecuteOrdersState::update(GameEngine *game)
         }
     }
 }
-void ExecuteOrdersState::executeOrdersPhase(Player player)
+void ExecuteOrdersState::executeOrdersPhase(Player &player)
 {
+    // executes deploy orders
     player.ordersList.executeOrders();
+
+    // this one is looping thru maps
+    for (int i = 0; i < map.GetMap().GetTerritories().size(); i++)
+    {
+        cout << map.GetMap().GetTerritories()[i]->GetTerritoryName() << " owned by "
+             << map.GetMap().GetTerritories()[i]->GetOwner().playername << ": " <<map.GetMap().GetTerritories()[i]->GetArmyQuantity() << " troops" << endl;
+    }
+    cout << "im in the execute orders phase" << endl;
 }
 string ExecuteOrdersState::getName()
 {

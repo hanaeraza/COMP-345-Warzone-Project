@@ -269,7 +269,7 @@ void AggressivePlayerStrategy::issueOrder(Player *player, MapLoader currentMap, 
     int indexOfStrongestTerritory = 0;
     for (int i = 0; i < currentMap.GetMap().GetTerritories().size(); i++)
     {
-        if (currentMap.GetMap().GetTerritories().at(i)->GetOwner() == player->playername)
+        if (currentMap.GetMap().GetTerritories().at(i)->GetOwner().playername == player->playername)
         {
             indexOfStrongestTerritory = i;
             break;
@@ -282,7 +282,7 @@ void AggressivePlayerStrategy::issueOrder(Player *player, MapLoader currentMap, 
     {
         // check if territory is owned by player
         vector<Territory> adjEnemyTerrTemp;
-        if (currentMap.GetMap().GetTerritories().at(i)->GetOwner() == player->playername)
+        if (currentMap.GetMap().GetTerritories().at(i)->GetOwner().playername == player->playername)
         {
             // check if the territory has more armies than current strongest territory
             if (currentMap.GetMap().GetTerritories().at(i)->GetArmyQuantity() >= currentMap.GetMap().GetTerritories().at(indexOfStrongestTerritory)->GetArmyQuantity())

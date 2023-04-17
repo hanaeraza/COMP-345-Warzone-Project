@@ -99,6 +99,9 @@ public:
 
     void setMaxTurns(unsigned int input);
     bool drawCondition();
+
+    void resetTurnCounter();
+    void incrementTurnCounter();
     
 private:
     State* currentState;
@@ -172,7 +175,7 @@ public:
     
     void update(GameEngine *game);
     string getName();
-    void issueOrdersPhase(Player player);
+    void issueOrdersPhase(Player &player);
 
 };
 
@@ -182,7 +185,7 @@ public:
     
     void update(GameEngine *game);
     string getName();
-    void executeOrdersPhase(Player player);
+    void executeOrdersPhase(Player &player);
 
 };
 
