@@ -1,2 +1,2 @@
 autoplay
-tournament -M europe.map -P p1|aggressive p2|aggressive -G 10 -D 10
+tournament -M koth.map -P p1|cheater p2|benevolent -G 10 -D 10

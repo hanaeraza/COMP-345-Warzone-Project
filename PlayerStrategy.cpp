@@ -22,7 +22,7 @@ void HumanPlayerStrategy::issueOrder(Player *player, MapLoader currentMap, Deck 
     // Print out territories owned
     for (int i = 0; i < currentMap.GetMap().GetTerritories().size(); i++)
     {
-        if (currentMap.GetMap().GetTerritories().at(i)->GetOwner() == player->playername)
+        if (currentMap.GetMap().GetTerritories().at(i)->GetOwner().playername == player->playername)
         {
             cout << currentMap.GetMap().GetTerritories().at(i)->GetTerritoryName() << " ";
         }
@@ -40,7 +40,7 @@ void HumanPlayerStrategy::issueOrder(Player *player, MapLoader currentMap, Deck 
         cin >> territoryToDefend;
         for (int i = 0; i < currentMap.GetMap().GetTerritories().size(); i++)
         {
-            if (territoryToDefend == currentMap.GetMap().GetTerritories().at(i)->GetTerritoryName() && currentMap.GetMap().GetTerritories().at(i)->GetOwner() == player->playername)
+            if (territoryToDefend == currentMap.GetMap().GetTerritories().at(i)->GetTerritoryName() && currentMap.GetMap().GetTerritories().at(i)->GetOwner().playername == player->playername)
             {
                 cout << "How many armies would you like to deploy in " + currentMap.GetMap().GetTerritories().at(i)->GetTerritoryName() << "\n";
                 cout << "You have " << numTroopsRemaining << " armies remaining to deploy."
@@ -108,7 +108,7 @@ void HumanPlayerStrategy::issueOrder(Player *player, MapLoader currentMap, Deck 
             // Print out territories owned
             for (int i = 0; i < currentMap.GetMap().GetTerritories().size(); i++)
             {
-                if (currentMap.GetMap().GetTerritories().at(i)->GetOwner() == player->playername)
+                if (currentMap.GetMap().GetTerritories().at(i)->GetOwner().playername == player->playername)
                 {
                     cout << currentMap.GetMap().GetTerritories().at(i)->GetTerritoryName() << " ";
                 }
@@ -294,7 +294,7 @@ void AggressivePlayerStrategy::issueOrder(Player *player, MapLoader currentMap, 
                 for (int j = 0; j < adjTerritories.size(); j++)
                 {
                     // check if the adjacent territory is not owned by player
-                    if (!(adjTerritories[j].GetOwner() == player->playername))
+                    if (!(adjTerritories[j].GetOwner().playername == player->playername))
                     {
                         adjEnemyTerrTemp.push_back(adjTerritories[j]);
                     }
@@ -333,7 +333,7 @@ void AggressivePlayerStrategy::issueOrder(Player *player, MapLoader currentMap, 
     cout << "Fortifying the strongest territory with all armies from all other territories" << endl;
     for (int i = 0; i < currentMap.GetMap().GetTerritories().size(); i++)
     {
-        if (currentMap.GetMap().GetTerritories().at(i)->GetOwner() == player->playername && i != indexOfStrongestTerritory)
+        if (currentMap.GetMap().GetTerritories().at(i)->GetOwner().playername == player->playername && i != indexOfStrongestTerritory)
         {
             if (currentMap.GetMap().GetTerritories().at(i)->GetArmyQuantity() > 0)
             {
@@ -344,8 +344,11 @@ void AggressivePlayerStrategy::issueOrder(Player *player, MapLoader currentMap, 
     }
     cout << "Fortification complete" << endl;
     // Find all adjacent territories to advance to
+    int numArmiesToAdvance = 1;
+    if(adjEnemyTerritories.size() > 0){
+          numArmiesToAdvance = (currentMap.GetMap().GetTerritories().at(indexOfStrongestTerritory)->GetArmyQuantity()) / adjEnemyTerritories.size();
+    }
 
-    int numArmiesToAdvance = (currentMap.GetMap().GetTerritories().at(indexOfStrongestTerritory)->GetArmyQuantity()) / adjEnemyTerritories.size();
     // Create advance orders from the strongest territory to all adjacent territories
     cout << "Issuing advance orders from the strongest territory to all adjacent territories" << endl;
     for (int i = 0; i < adjEnemyTerritories.size(); i++)
@@ -371,7 +374,7 @@ void BenevolentPlayerStrategy::issueOrder(Player *player, MapLoader currentMap, 
     for (int i = 0; i < currentMap.GetMap().GetTerritories().size(); i++)
     {
         // check if territory belongs to player
-        if (currentMap.GetMap().GetTerritories().at(i)->GetOwner() == player->playername)
+        if (currentMap.GetMap().GetTerritories().at(i)->GetOwner().playername == player->playername)
         {
             // check if territory has less armies than prev weakest territory
             if (currentMap.GetMap().GetTerritories().at(i)->GetArmyQuantity() < leastArmies)
@@ -388,7 +391,7 @@ void BenevolentPlayerStrategy::issueOrder(Player *player, MapLoader currentMap, 
     cout << "Territories with the least armies: " << endl;
     for (int i = 0; i < currentMap.GetMap().GetTerritories().size(); i++)
     {
-        if (currentMap.GetMap().GetTerritories().at(i)->GetOwner() == player->playername)
+        if (currentMap.GetMap().GetTerritories().at(i)->GetOwner().playername == player->playername)
         {
             if (currentMap.GetMap().GetTerritories().at(i)->GetArmyQuantity() == leastArmies)
             {
@@ -405,7 +408,7 @@ void BenevolentPlayerStrategy::issueOrder(Player *player, MapLoader currentMap, 
     // Deploy reinforcement pool to territories with the least armies
     for (int i = 0; i < currentMap.GetMap().GetTerritories().size(); i++)
     {
-        if (currentMap.GetMap().GetTerritories().at(i)->GetOwner() == player->playername)
+        if (currentMap.GetMap().GetTerritories().at(i)->GetOwner().playername == player->playername)
         {
             if (currentMap.GetMap().GetTerritories().at(i)->GetArmyQuantity() == leastArmies)
             {
@@ -431,7 +434,7 @@ void NeutralPlayerStrategy::issueOrder(Player *player, MapLoader currentMap, Dec
     int territoriesOwned = 0;
     for (int i = 0; i < currentMap.GetMap().GetTerritories().size(); i++)
     {
-        if (currentMap.GetMap().GetTerritories().at(i)->GetOwner() == player->playername)
+        if (currentMap.GetMap().GetTerritories().at(i)->GetOwner().playername == player->playername)
         {
             territoriesOwned++;
         }
@@ -449,7 +452,7 @@ void CheaterPlayerStrategy::issueOrder(Player *player, MapLoader currentMap, Dec
     vector<Territory> adjacentTerritories;
     for (int i = 0; i < currentMap.GetMap().GetTerritories().size(); i++)
     {
-        if (currentMap.GetMap().GetTerritories().at(i)->GetOwner() == player->playername)
+        if (currentMap.GetMap().GetTerritories().at(i)->GetOwner().playername == player->playername)
         {
             vector<Territory> newAdjTerritories = currentMap.GetMap().GetConnections(*currentMap.GetMap().GetTerritories().at(i));
             for (int j = 0; j < newAdjTerritories.size(); j++)
@@ -465,7 +468,7 @@ void CheaterPlayerStrategy::issueOrder(Player *player, MapLoader currentMap, Dec
     // remove duplicates
     for (int i = 0; i < currentMap.GetMap().GetTerritories().size(); i++)
     {
-        if (currentMap.GetMap().GetTerritories().at(i)->GetOwner() == player->playername)
+        if (currentMap.GetMap().GetTerritories().at(i)->GetOwner().playername == player->playername)
         {
             for (int j = 0; j < adjacentTerritories.size(); j++)
             {
@@ -486,7 +489,7 @@ void CheaterPlayerStrategy::issueOrder(Player *player, MapLoader currentMap, Dec
     {
         for (int j = 0; j < currentMap.GetMap().GetTerritories().size(); j++)
         {
-            if (adjacentTerritories.at(i).GetTerritoryName() == currentMap.GetMap().GetTerritories().at(j)->GetTerritoryName() && (!(currentMap.GetMap().GetTerritories().at(j)->GetOwner() == player->playername)))
+            if (adjacentTerritories.at(i).GetTerritoryName() == currentMap.GetMap().GetTerritories().at(j)->GetTerritoryName() && (!(currentMap.GetMap().GetTerritories().at(j)->GetOwner().playername == player->playername)))
             {
                 currentMap.GetMap().GetTerritories().at(j)->SetOwner(*player);
                 cout << "Setting " << currentMap.GetMap().GetTerritories().at(j)->GetTerritoryName() << " to " << player->playername << endl;

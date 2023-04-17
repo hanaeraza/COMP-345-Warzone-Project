@@ -632,3 +632,7203 @@ Results:
 	Game  1:	Game  2:	Game  3:	Game  4:	Game  5:	Game  6:	Game  7:	Game  8:	Game  9:	Game 10:
 Map 1:             p2             p2             p1             p2             p2             p1             p2             p1             p2             p2
 Map 2:             p1             p1             p2             p1             p2             p2             p2             p2             p2             p1
+Message At: 1681751705
+	autoplay
+Beginning Autoplay
+Message At: 1681751705
+	loadmap europe.map
+Loading europe.map
+moving to MapLoadedState.
+Message At: 1681751705
+	Current state: maploaded
+Message At: 1681751705
+	validatemap
+Map Valid
+Message At: 1681751705
+	Current state: mapvalidated
+Message At: 1681751705
+	addplayer p1|aggressive
+Adding p1|aggressive
+moving to PlayersAddedState.
+Message At: 1681751705
+	Current state: playersadded
+Message At: 1681751705
+	addplayer p2|aggressive
+Adding p2|aggressive
+moving to PlayersAddedState.
+Message At: 1681751705
+	Current state: playersadded
+Message At: 1681751705
+	gamestart
+Starting Game
+Message At: 1681751705
+	Current state: ReinforcementsState
+Message At: 1681751705
+	Current state: IssueOrdersState
+Message At: 1681751705
+	Orders List: 
+0x24c6434e280 0
+Message At: 1681751705
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681751705
+	Orders List: 
+0x24c6434e280 0
+0x24c643c4c00 1
+Message At: 1681751705
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751705
+	Orders List: 
+0x24c645a3be0 0
+Message At: 1681751705
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681751705
+	Orders List: 
+0x24c645a3be0 0
+0x24c64606810 1
+Message At: 1681751705
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751705
+	Orders List: 
+0x24c645a3be0 0
+0x24c64606810 1
+0x24c64636700 2
+Message At: 1681751705
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751705
+	Current state: ExecuteOrdersState
+Message At: 1681751705
+	Orders List: 
+0x24c6434e280 0
+0x24c643c4c00 1
+Message At: 1681751705
+	Orders List: 
+0x24c645a3be0 0
+0x24c64606810 1
+0x24c64636700 2
+Message At: 1681751705
+	Current state: ReinforcementsState
+Message At: 1681751705
+	Current state: IssueOrdersState
+Message At: 1681751705
+	Orders List: 
+0x24c64a9fd90 0
+Message At: 1681751705
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751705
+	Orders List: 
+0x24c64a9fd90 0
+0x24c64ade280 1
+Message At: 1681751705
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751705
+	Orders List: 
+0x24c64d68140 0
+Message At: 1681751705
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751845
+	autoplay
+Beginning Autoplay
+Message At: 1681751845
+	loadmap europe.map
+Loading europe.map
+moving to MapLoadedState.
+Message At: 1681751845
+	Current state: maploaded
+Message At: 1681751845
+	validatemap
+Map Valid
+Message At: 1681751845
+	Current state: mapvalidated
+Message At: 1681751845
+	addplayer p1|aggressive
+Adding p1|aggressive
+moving to PlayersAddedState.
+Message At: 1681751845
+	Current state: playersadded
+Message At: 1681751845
+	addplayer p2|aggressive
+Adding p2|aggressive
+moving to PlayersAddedState.
+Message At: 1681751845
+	Current state: playersadded
+Message At: 1681751845
+	gamestart
+Starting Game
+Message At: 1681751845
+	Current state: ReinforcementsState
+Message At: 1681751845
+	Current state: IssueOrdersState
+Message At: 1681751845
+	Orders List: 
+0x2b0f4a11280 0
+Message At: 1681751845
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681751845
+	Orders List: 
+0x2b0f4a11280 0
+0x2b0f4a8aa70 1
+Message At: 1681751845
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751845
+	Orders List: 
+0x2b0f4ca6dc0 0
+Message At: 1681751845
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681751845
+	Orders List: 
+0x2b0f4ca6dc0 0
+0x2b0f4d24b70 1
+Message At: 1681751845
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751845
+	Current state: ExecuteOrdersState
+Message At: 1681751845
+	Orders List: 
+0x2b0f4a11280 0
+0x2b0f4a8aa70 1
+Message At: 1681751845
+	Orders List: 
+0x2b0f4ca6dc0 0
+0x2b0f4d24b70 1
+Message At: 1681751846
+	Current state: ReinforcementsState
+Message At: 1681751846
+	Current state: IssueOrdersState
+Message At: 1681751846
+	Orders List: 
+0x2b0f51b1850 0
+Message At: 1681751846
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751846
+	Orders List: 
+0x2b0f51b1850 0
+0x2b0f51decc0 1
+Message At: 1681751846
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751846
+	Orders List: 
+0x2b0f5449450 0
+Message At: 1681751846
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751846
+	Orders List: 
+0x2b0f5449450 0
+0x2b0f5453ae0 1
+Message At: 1681751846
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751846
+	Orders List: 
+0x2b0f5449450 0
+0x2b0f5453ae0 1
+0x2b0f548ad40 2
+Message At: 1681751846
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751846
+	Orders List: 
+0x2b0f5449450 0
+0x2b0f5453ae0 1
+0x2b0f548ad40 2
+0x2b0f54c9380 3
+Message At: 1681751846
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751846
+	Current state: ExecuteOrdersState
+Message At: 1681751846
+	Orders List: 
+0x2b0f51b1850 0
+0x2b0f51decc0 1
+Message At: 1681751846
+	Orders List: 
+0x2b0f5449450 0
+0x2b0f5453ae0 1
+0x2b0f548ad40 2
+0x2b0f54c9380 3
+Message At: 1681751846
+	Current state: ReinforcementsState
+Message At: 1681751846
+	Current state: IssueOrdersState
+Message At: 1681751846
+	Orders List: 
+0x2b0f5943970 0
+Message At: 1681751846
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751846
+	Orders List: 
+0x2b0f5ba9590 0
+Message At: 1681751846
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751846
+	Orders List: 
+0x2b0f5ba9590 0
+0x2b0f5bb9380 1
+Message At: 1681751846
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751846
+	Current state: ExecuteOrdersState
+Message At: 1681751846
+	Orders List: 
+0x2b0f5943970 0
+Message At: 1681751846
+	Orders List: 
+0x2b0f5ba9590 0
+0x2b0f5bb9380 1
+Message At: 1681751846
+	Current state: ReinforcementsState
+Message At: 1681751846
+	Current state: IssueOrdersState
+Message At: 1681751846
+	Orders List: 
+0x2b0f5ff9600 0
+Message At: 1681751846
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751846
+	Orders List: 
+0x2b0f5ff9600 0
+0x2b0f602b1f0 1
+Message At: 1681751846
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751846
+	Orders List: 
+0x2b0f5ff9600 0
+0x2b0f602b1f0 1
+0x2b0f605cdd0 2
+Message At: 1681751846
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751846
+	Orders List: 
+0x2b0f6242b90 0
+Message At: 1681751846
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751846
+	Orders List: 
+0x2b0f6242b90 0
+0x2b0f6298650 1
+Message At: 1681751846
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751846
+	Current state: ExecuteOrdersState
+Message At: 1681751846
+	Orders List: 
+0x2b0f5ff9600 0
+0x2b0f602b1f0 1
+0x2b0f605cdd0 2
+Message At: 1681751846
+	Orders List: 
+0x2b0f6242b90 0
+0x2b0f6298650 1
+Message At: 1681751846
+	Current state: ReinforcementsState
+Message At: 1681751846
+	Current state: IssueOrdersState
+Message At: 1681751846
+	Orders List: 
+0x2b0f6641d20 0
+Message At: 1681751846
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751846
+	Orders List: 
+0x2b0f6641d20 0
+0x2b0f6651850 1
+Message At: 1681751846
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751846
+	Orders List: 
+0x2b0f6641d20 0
+0x2b0f6651850 1
+0x2b0f665a790 2
+Message At: 1681751846
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751846
+	Orders List: 
+0x2b0f6641d20 0
+0x2b0f6651850 1
+0x2b0f665a790 2
+0x2b0f6687480 3
+Message At: 1681751846
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751846
+	Orders List: 
+0x2b0f6641d20 0
+0x2b0f6651850 1
+0x2b0f665a790 2
+0x2b0f6687480 3
+0x2b0f66b9060 4
+Message At: 1681751846
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751846
+	Orders List: 
+0x2b0f6641d20 0
+0x2b0f6651850 1
+0x2b0f665a790 2
+0x2b0f6687480 3
+0x2b0f66b9060 4
+0x2b0f6704140 5
+Message At: 1681751846
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751846
+	Orders List: 
+0x2b0f6911410 0
+Message At: 1681751846
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751846
+	Orders List: 
+0x2b0f6911410 0
+0x2b0f6965fb0 1
+Message At: 1681751846
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751846
+	Current state: ExecuteOrdersState
+Message At: 1681751846
+	Orders List: 
+0x2b0f6641d20 0
+0x2b0f6651850 1
+0x2b0f665a790 2
+0x2b0f6687480 3
+0x2b0f66b9060 4
+0x2b0f6704140 5
+Message At: 1681751846
+	Orders List: 
+0x2b0f6911410 0
+0x2b0f6965fb0 1
+Message At: 1681751846
+	Current state: ReinforcementsState
+Message At: 1681751846
+	Current state: IssueOrdersState
+Message At: 1681751846
+	Orders List: 
+0x2b0f6cdc9d0 0
+Message At: 1681751846
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751846
+	Orders List: 
+0x2b0f6cdc9d0 0
+0x2b0f6ce5f90 1
+Message At: 1681751846
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751846
+	Orders List: 
+0x2b0f6cdc9d0 0
+0x2b0f6ce5f90 1
+0x2b0f6d1c3c0 2
+Message At: 1681751846
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751846
+	Orders List: 
+0x2b0f6cdc9d0 0
+0x2b0f6ce5f90 1
+0x2b0f6d1c3c0 2
+0x2b0f6d22a10 3
+Message At: 1681751846
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751846
+	Orders List: 
+0x2b0f6cdc9d0 0
+0x2b0f6ce5f90 1
+0x2b0f6d1c3c0 2
+0x2b0f6d22a10 3
+0x2b0f6d528e0 4
+Message At: 1681751846
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751847
+	Orders List: 
+0x2b0f6ed5700 0
+Message At: 1681751847
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751847
+	Orders List: 
+0x2b0f6ed5700 0
+0x2b0f6f07300 1
+Message At: 1681751847
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751847
+	Current state: ExecuteOrdersState
+Message At: 1681751847
+	Orders List: 
+0x2b0f6cdc9d0 0
+0x2b0f6ce5f90 1
+0x2b0f6d1c3c0 2
+0x2b0f6d22a10 3
+0x2b0f6d528e0 4
+Message At: 1681751847
+	Orders List: 
+0x2b0f6ed5700 0
+0x2b0f6f07300 1
+Message At: 1681751847
+	Current state: ReinforcementsState
+Message At: 1681751847
+	Current state: IssueOrdersState
+Message At: 1681751847
+	Orders List: 
+0x2b0f7244990 0
+Message At: 1681751847
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751847
+	Orders List: 
+0x2b0f7244990 0
+0x2b0f7276a70 1
+Message At: 1681751847
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751847
+	Orders List: 
+0x2b0f7244990 0
+0x2b0f7276a70 1
+0x2b0f72a6970 2
+Message At: 1681751847
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751847
+	Orders List: 
+0x2b0f7244990 0
+0x2b0f7276a70 1
+0x2b0f72a6970 2
+0x2b0f72d6850 3
+Message At: 1681751847
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751847
+	Orders List: 
+0x2b0f7244990 0
+0x2b0f7276a70 1
+0x2b0f72a6970 2
+0x2b0f72d6850 3
+0x2b0f7306750 4
+Message At: 1681751847
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751847
+	Orders List: 
+0x2b0f7244990 0
+0x2b0f7276a70 1
+0x2b0f72a6970 2
+0x2b0f72d6850 3
+0x2b0f7306750 4
+0x2b0f7336650 5
+Message At: 1681751847
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751847
+	Orders List: 
+0x2b0f7244990 0
+0x2b0f7276a70 1
+0x2b0f72a6970 2
+0x2b0f72d6850 3
+0x2b0f7306750 4
+0x2b0f7336650 5
+0x2b0f7366540 6
+Message At: 1681751847
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751847
+	Orders List: 
+0x2b0f7244990 0
+0x2b0f7276a70 1
+0x2b0f72a6970 2
+0x2b0f72d6850 3
+0x2b0f7306750 4
+0x2b0f7336650 5
+0x2b0f7366540 6
+0x2b0f73adc00 7
+Message At: 1681751847
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751847
+	Orders List: 
+0x2b0f748e970 0
+Message At: 1681751847
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751847
+	Orders List: 
+0x2b0f748e970 0
+0x2b0f74d9380 1
+Message At: 1681751847
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751847
+	Orders List: 
+0x2b0f748e970 0
+0x2b0f74d9380 1
+0x2b0f7513fe0 2
+Message At: 1681751847
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751847
+	Current state: ExecuteOrdersState
+Message At: 1681751847
+	Orders List: 
+0x2b0f7244990 0
+0x2b0f7276a70 1
+0x2b0f72a6970 2
+0x2b0f72d6850 3
+0x2b0f7306750 4
+0x2b0f7336650 5
+0x2b0f7366540 6
+0x2b0f73adc00 7
+Message At: 1681751847
+	Orders List: 
+0x2b0f748e970 0
+0x2b0f74d9380 1
+0x2b0f7513fe0 2
+Message At: 1681751847
+	Current state: ReinforcementsState
+Message At: 1681751847
+	Current state: IssueOrdersState
+Message At: 1681751847
+	Orders List: 
+0x2b0f780ba60 0
+Message At: 1681751847
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751847
+	Orders List: 
+0x2b0f780ba60 0
+0x2b0f7811840 1
+Message At: 1681751847
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751847
+	Orders List: 
+0x2b0f780ba60 0
+0x2b0f7811840 1
+0x2b0f7817610 2
+Message At: 1681751847
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751847
+	Orders List: 
+0x2b0f780ba60 0
+0x2b0f7811840 1
+0x2b0f7817610 2
+0x2b0f7820bc0 3
+Message At: 1681751847
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751847
+	Orders List: 
+0x2b0f780ba60 0
+0x2b0f7811840 1
+0x2b0f7817610 2
+0x2b0f7820bc0 3
+0x2b0f7851e00 4
+Message At: 1681751847
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751847
+	Orders List: 
+0x2b0f780ba60 0
+0x2b0f7811840 1
+0x2b0f7817610 2
+0x2b0f7820bc0 3
+0x2b0f7851e00 4
+0x2b0f7863c00 5
+Message At: 1681751847
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751847
+	Orders List: 
+0x2b0f780ba60 0
+0x2b0f7811840 1
+0x2b0f7817610 2
+0x2b0f7820bc0 3
+0x2b0f7851e00 4
+0x2b0f7863c00 5
+0x2b0f78991b0 6
+Message At: 1681751847
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751847
+	Orders List: 
+0x2b0f780ba60 0
+0x2b0f7811840 1
+0x2b0f7817610 2
+0x2b0f7820bc0 3
+0x2b0f7851e00 4
+0x2b0f7863c00 5
+0x2b0f78991b0 6
+0x2b0f78cad90 7
+Message At: 1681751847
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751847
+	Orders List: 
+0x2b0f79b0aa0 0
+Message At: 1681751847
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751847
+	Orders List: 
+0x2b0f79b0aa0 0
+0x2b0f79e2970 1
+Message At: 1681751847
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751847
+	Orders List: 
+0x2b0f79b0aa0 0
+0x2b0f79e2970 1
+0x2b0f7a14540 2
+Message At: 1681751847
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751847
+	Current state: ExecuteOrdersState
+Message At: 1681751847
+	Orders List: 
+0x2b0f780ba60 0
+0x2b0f7811840 1
+0x2b0f7817610 2
+0x2b0f7820bc0 3
+0x2b0f7851e00 4
+0x2b0f7863c00 5
+0x2b0f78991b0 6
+0x2b0f78cad90 7
+Message At: 1681751847
+	Orders List: 
+0x2b0f79b0aa0 0
+0x2b0f79e2970 1
+0x2b0f7a14540 2
+Message At: 1681751847
+	Current state: ReinforcementsState
+Message At: 1681751847
+	Current state: IssueOrdersState
+Message At: 1681751847
+	Orders List: 
+0x2b0f7d12bf0 0
+Message At: 1681751847
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751848
+	Orders List: 
+0x2b0f7d12bf0 0
+0x2b0f7d56140 1
+Message At: 1681751848
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751848
+	Orders List: 
+0x2b0f7d12bf0 0
+0x2b0f7d56140 1
+0x2b0f7d86020 2
+Message At: 1681751848
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751848
+	Orders List: 
+0x2b0f7d12bf0 0
+0x2b0f7d56140 1
+0x2b0f7d86020 2
+0x2b0f7dbd2c0 3
+Message At: 1681751848
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751848
+	Orders List: 
+0x2b0f7eb0fd0 0
+Message At: 1681751848
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751848
+	Orders List: 
+0x2b0f7eb0fd0 0
+0x2b0f7eef170 1
+Message At: 1681751848
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751848
+	Current state: ExecuteOrdersState
+Message At: 1681751848
+	Orders List: 
+0x2b0f7d12bf0 0
+0x2b0f7d56140 1
+0x2b0f7d86020 2
+0x2b0f7dbd2c0 3
+Message At: 1681751848
+	Orders List: 
+0x2b0f7eb0fd0 0
+0x2b0f7eef170 1
+Message At: 1681751848
+	Current state: ReinforcementsState
+Message At: 1681751848
+	Current state: IssueOrdersState
+Message At: 1681751848
+	Orders List: 
+0x2b0f81c36e0 0
+Message At: 1681751848
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751848
+	Orders List: 
+0x2b0f81c36e0 0
+0x2b0f8215480 1
+Message At: 1681751848
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751848
+	Orders List: 
+0x2b0f81c36e0 0
+0x2b0f8215480 1
+0x2b0f824c700 2
+Message At: 1681751848
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751848
+	Orders List: 
+0x2b0f83248c0 0
+Message At: 1681751848
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751848
+	Orders List: 
+0x2b0f83248c0 0
+0x2b0f8362a50 1
+Message At: 1681751848
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751848
+	Orders List: 
+0x2b0f83248c0 0
+0x2b0f8362a50 1
+0x2b0f8392920 2
+Message At: 1681751848
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751848
+	Current state: ExecuteOrdersState
+Message At: 1681751848
+	Orders List: 
+0x2b0f81c36e0 0
+0x2b0f8215480 1
+0x2b0f824c700 2
+Message At: 1681751848
+	Orders List: 
+0x2b0f83248c0 0
+0x2b0f8362a50 1
+0x2b0f8392920 2
+Message At: 1681751848
+	Current state: ReinforcementsState
+Message At: 1681751848
+	Current state: IssueOrdersState
+Message At: 1681751848
+	Orders List: 
+0x2b0f87bd0b0 0
+Message At: 1681751848
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751848
+	Orders List: 
+0x2b0f88dbb70 0
+Message At: 1681751848
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751848
+	Orders List: 
+0x2b0f88dbb70 0
+0x2b0f88f3790 1
+Message At: 1681751848
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751848
+	Orders List: 
+0x2b0f88dbb70 0
+0x2b0f88f3790 1
+0x2b0f892ad40 2
+Message At: 1681751848
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751848
+	Orders List: 
+0x2b0f88dbb70 0
+0x2b0f88f3790 1
+0x2b0f892ad40 2
+0x2b0f895ac40 3
+Message At: 1681751848
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751848
+	Orders List: 
+0x2b0f88dbb70 0
+0x2b0f88f3790 1
+0x2b0f892ad40 2
+0x2b0f895ac40 3
+0x2b0f898ab30 4
+Message At: 1681751848
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751848
+	Orders List: 
+0x2b0f88dbb70 0
+0x2b0f88f3790 1
+0x2b0f892ad40 2
+0x2b0f895ac40 3
+0x2b0f898ab30 4
+0x2b0f89baa20 5
+Message At: 1681751848
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751848
+	Orders List: 
+0x2b0f88dbb70 0
+0x2b0f88f3790 1
+0x2b0f892ad40 2
+0x2b0f895ac40 3
+0x2b0f898ab30 4
+0x2b0f89baa20 5
+0x2b0f8a020f0 6
+Message At: 1681751848
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751848
+	Current state: ExecuteOrdersState
+Message At: 1681751848
+	Orders List: 
+0x2b0f87bd0b0 0
+Message At: 1681751848
+	Orders List: 
+0x2b0f88dbb70 0
+0x2b0f88f3790 1
+0x2b0f892ad40 2
+0x2b0f895ac40 3
+0x2b0f898ab30 4
+0x2b0f89baa20 5
+0x2b0f8a020f0 6
+Message At: 1681751848
+	Current state: ReinforcementsState
+Message At: 1681751848
+	Current state: IssueOrdersState
+Message At: 1681751848
+	Orders List: 
+0x2b0f8e30d00 0
+Message At: 1681751848
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681751849
+	Orders List: 
+0x2b0f9108140 0
+Message At: 1681751849
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681752313
+	autoplay
+Beginning Autoplay
+Message At: 1681752313
+	loadmap europe.map
+Loading europe.map
+moving to MapLoadedState.
+Message At: 1681752313
+	Current state: maploaded
+Message At: 1681752313
+	validatemap
+Map Valid
+Message At: 1681752313
+	Current state: mapvalidated
+Message At: 1681752313
+	addplayer p1|cheater
+Adding p1|cheater
+moving to PlayersAddedState.
+Message At: 1681752313
+	Current state: playersadded
+Message At: 1681752313
+	addplayer p2|aggressive
+Adding p2|aggressive
+moving to PlayersAddedState.
+Message At: 1681752313
+	Current state: playersadded
+Message At: 1681752313
+	gamestart
+Starting Game
+Message At: 1681752313
+	Current state: ReinforcementsState
+Message At: 1681752313
+	Current state: IssueOrdersState
+Message At: 1681752313
+	Orders List: 
+0x27f883edd90 0
+Message At: 1681752313
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681752313
+	Orders List: 
+0x27f883edd90 0
+0x27f8844fdd0 1
+Message At: 1681752313
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681752313
+	Orders List: 
+0x27f883edd90 0
+0x27f8844fdd0 1
+0x27f884a0500 2
+Message At: 1681752313
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681752313
+	Current state: ExecuteOrdersState
+Message At: 1681752313
+	Orders List: 
+0x27f883edd90 0
+0x27f8844fdd0 1
+0x27f884a0500 2
+Message At: 1681752313
+	Current state: ReinforcementsState
+Message At: 1681752511
+	autoplay
+Beginning Autoplay
+Message At: 1681752511
+	loadmap europe.map
+Loading europe.map
+moving to MapLoadedState.
+Message At: 1681752511
+	Current state: maploaded
+Message At: 1681752511
+	validatemap
+Map Valid
+Message At: 1681752511
+	Current state: mapvalidated
+Message At: 1681752511
+	addplayer p1|cheater
+Adding p1|cheater
+moving to PlayersAddedState.
+Message At: 1681752511
+	Current state: playersadded
+Message At: 1681752511
+	addplayer p2|aggressive
+Adding p2|aggressive
+moving to PlayersAddedState.
+Message At: 1681752511
+	Current state: playersadded
+Message At: 1681752511
+	gamestart
+Starting Game
+Message At: 1681752511
+	Current state: ReinforcementsState
+Message At: 1681752511
+	Current state: IssueOrdersState
+Message At: 1681752511
+	Orders List: 
+0x2800c226bb0 0
+Message At: 1681752511
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681753024
+	autoplay
+Beginning Autoplay
+Message At: 1681753024
+	loadmap europe.map
+Loading europe.map
+moving to MapLoadedState.
+Message At: 1681753024
+	Current state: maploaded
+Message At: 1681753024
+	validatemap
+Map Valid
+Message At: 1681753024
+	Current state: mapvalidated
+Message At: 1681753024
+	addplayer p1|cheater
+Adding p1|cheater
+moving to PlayersAddedState.
+Message At: 1681753024
+	Current state: playersadded
+Message At: 1681753024
+	addplayer p2|aggressive
+Adding p2|aggressive
+moving to PlayersAddedState.
+Message At: 1681753024
+	Current state: playersadded
+Message At: 1681753024
+	gamestart
+Starting Game
+Message At: 1681753024
+	Current state: ReinforcementsState
+Message At: 1681753024
+	Current state: IssueOrdersState
+Message At: 1681753024
+	Orders List: 
+0x27766065940 0
+Message At: 1681753024
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681753024
+	Orders List: 
+0x27766065940 0
+0x277660d6440 1
+Message At: 1681753024
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681753024
+	Orders List: 
+0x27766065940 0
+0x277660d6440 1
+0x27766106340 2
+Message At: 1681753024
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681753024
+	Current state: ExecuteOrdersState
+Message At: 1681753024
+	Orders List: 
+0x27766065940 0
+0x277660d6440 1
+0x27766106340 2
+Message At: 1681753024
+	Current state: ReinforcementsState
+Message At: 1681753024
+	Current state: IssueOrdersState
+Message At: 1681753024
+	Orders List: 
+0x27767085540 0
+Message At: 1681753024
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681753024
+	Orders List: 
+0x27767085540 0
+0x277670c01b0 1
+Message At: 1681753024
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681753024
+	Orders List: 
+0x27767085540 0
+0x277670c01b0 1
+0x277670f7440 2
+Message At: 1681753024
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681753025
+	Current state: ExecuteOrdersState
+Message At: 1681753025
+	Orders List: 
+0x27767085540 0
+0x277670c01b0 1
+0x277670f7440 2
+Message At: 1681753025
+	Current state: win
+Message At: 1681753025
+	loadmap europe.map
+Loading europe.map
+moving to MapLoadedState.
+Message At: 1681753025
+	Current state: maploaded
+Message At: 1681753025
+	validatemap
+Map Valid
+Message At: 1681753025
+	Current state: mapvalidated
+Message At: 1681753025
+	addplayer p1|cheater
+Adding p1|cheater
+moving to PlayersAddedState.
+Message At: 1681753025
+	Current state: playersadded
+Message At: 1681753025
+	addplayer p2|aggressive
+Adding p2|aggressive
+moving to PlayersAddedState.
+Message At: 1681753025
+	Current state: playersadded
+Message At: 1681753025
+	gamestart
+Starting Game
+Message At: 1681753468
+	autoplay
+Beginning Autoplay
+Message At: 1681753468
+	loadmap europe.map
+Loading europe.map
+moving to MapLoadedState.
+Message At: 1681753468
+	Current state: maploaded
+Message At: 1681753468
+	validatemap
+Map Valid
+Message At: 1681753468
+	Current state: mapvalidated
+Message At: 1681753468
+	addplayer p1|cheater
+Adding p1|cheater
+moving to PlayersAddedState.
+Message At: 1681753468
+	Current state: playersadded
+Message At: 1681753468
+	addplayer p2|aggressive
+Adding p2|aggressive
+moving to PlayersAddedState.
+Message At: 1681753468
+	Current state: playersadded
+Message At: 1681753468
+	gamestart
+Starting Game
+Message At: 1681753468
+	Current state: ReinforcementsState
+Message At: 1681753468
+	Current state: IssueOrdersState
+Message At: 1681753468
+	Orders List: 
+0x2ac7af6d310 0
+Message At: 1681753468
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681753468
+	Orders List: 
+0x2ac7af6d310 0
+0x2ac7afe17e0 1
+Message At: 1681753468
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681753468
+	Orders List: 
+0x2ac7af6d310 0
+0x2ac7afe17e0 1
+0x2ac7b016170 2
+Message At: 1681753468
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681753468
+	Orders List: 
+0x2ac7af6d310 0
+0x2ac7afe17e0 1
+0x2ac7b016170 2
+0x2ac7b0460b0 3
+Message At: 1681753468
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681753469
+	Current state: ExecuteOrdersState
+Message At: 1681753469
+	Orders List: 
+0x2ac7af6d310 0
+0x2ac7afe17e0 1
+0x2ac7b016170 2
+0x2ac7b0460b0 3
+Message At: 1681753469
+	Current state: win
+Message At: 1681753469
+	loadmap europe.map
+Loading europe.map
+moving to MapLoadedState.
+Message At: 1681753469
+	Current state: maploaded
+Message At: 1681753469
+	validatemap
+Map Valid
+Message At: 1681753469
+	Current state: mapvalidated
+Message At: 1681753469
+	addplayer p1|cheater
+Adding p1|cheater
+moving to PlayersAddedState.
+Message At: 1681753469
+	Current state: playersadded
+Message At: 1681753469
+	addplayer p2|aggressive
+Adding p2|aggressive
+moving to PlayersAddedState.
+Message At: 1681753469
+	Current state: playersadded
+Message At: 1681753469
+	gamestart
+Starting Game
+Message At: 1681753659
+	autoplay
+Beginning Autoplay
+Message At: 1681753659
+	loadmap europe.map
+Loading europe.map
+moving to MapLoadedState.
+Message At: 1681753659
+	Current state: maploaded
+Message At: 1681753659
+	validatemap
+Map Valid
+Message At: 1681753659
+	Current state: mapvalidated
+Message At: 1681753659
+	addplayer p1|cheater
+Adding p1|cheater
+moving to PlayersAddedState.
+Message At: 1681753659
+	Current state: playersadded
+Message At: 1681753659
+	addplayer p2|aggressive
+Adding p2|aggressive
+moving to PlayersAddedState.
+Message At: 1681753659
+	Current state: playersadded
+Message At: 1681753659
+	gamestart
+Starting Game
+Message At: 1681753659
+	Current state: ReinforcementsState
+Message At: 1681753659
+	Current state: IssueOrdersState
+Message At: 1681753660
+	Orders List: 
+0x199bccc8280 0
+Message At: 1681753660
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681753857
+	autoplay
+Beginning Autoplay
+Message At: 1681753857
+	loadmap europe.map
+Loading europe.map
+moving to MapLoadedState.
+Message At: 1681753857
+	Current state: maploaded
+Message At: 1681753857
+	validatemap
+Map Valid
+Message At: 1681753857
+	Current state: mapvalidated
+Message At: 1681753857
+	addplayer p1|cheater
+Adding p1|cheater
+moving to PlayersAddedState.
+Message At: 1681753857
+	Current state: playersadded
+Message At: 1681753857
+	addplayer p2|aggressive
+Adding p2|aggressive
+moving to PlayersAddedState.
+Message At: 1681753857
+	Current state: playersadded
+Message At: 1681753857
+	gamestart
+Starting Game
+Message At: 1681753857
+	Current state: ReinforcementsState
+Message At: 1681753857
+	Current state: IssueOrdersState
+Message At: 1681753857
+	Orders List: 
+0x1f49a8fefe0 0
+Message At: 1681753857
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681753857
+	Orders List: 
+0x1f49a8fefe0 0
+0x1f49a97f280 1
+Message At: 1681753857
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681753858
+	Current state: ExecuteOrdersState
+Message At: 1681753858
+	Orders List: 
+0x1f49a8fefe0 0
+0x1f49a97f280 1
+Message At: 1681753858
+	Current state: win
+Message At: 1681753858
+	loadmap europe.map
+Loading europe.map
+moving to MapLoadedState.
+Message At: 1681753858
+	Current state: maploaded
+Message At: 1681753858
+	validatemap
+Map Valid
+Message At: 1681753858
+	Current state: mapvalidated
+Message At: 1681753858
+	addplayer p1|cheater
+Adding p1|cheater
+moving to PlayersAddedState.
+Message At: 1681753858
+	Current state: playersadded
+Message At: 1681753858
+	addplayer p2|aggressive
+Adding p2|aggressive
+moving to PlayersAddedState.
+Message At: 1681753858
+	Current state: playersadded
+Message At: 1681753858
+	gamestart
+Starting Game
+Message At: 1681753858
+	Current state: ReinforcementsState
+Message At: 1681753858
+	Current state: IssueOrdersState
+Message At: 1681753859
+	Orders List: 
+0x1f49eb28580 0
+Message At: 1681753859
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681753859
+	Orders List: 
+0x1f49ecea9f0 0
+Message At: 1681753859
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681753859
+	Current state: ExecuteOrdersState
+Message At: 1681753859
+	Current state: win
+Message At: 1681753859
+	loadmap europe.map
+Loading europe.map
+moving to MapLoadedState.
+Message At: 1681753859
+	Current state: maploaded
+Message At: 1681753859
+	validatemap
+Map Valid
+Message At: 1681753859
+	Current state: mapvalidated
+Message At: 1681753859
+	addplayer p1|cheater
+Adding p1|cheater
+moving to PlayersAddedState.
+Message At: 1681753859
+	Current state: playersadded
+Message At: 1681753859
+	addplayer p2|aggressive
+Adding p2|aggressive
+moving to PlayersAddedState.
+Message At: 1681753859
+	Current state: playersadded
+Message At: 1681753859
+	gamestart
+Starting Game
+Message At: 1681753859
+	Current state: ReinforcementsState
+Message At: 1681753859
+	Current state: IssueOrdersState
+Message At: 1681753860
+	Orders List: 
+0x1f49faceed0 0
+Message At: 1681753860
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681753860
+	Orders List: 
+0x1f49eb28580 0
+0x1f49fc5b2c0 1
+Message At: 1681753860
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681753860
+	Orders List: 
+0x1f49ecea9f0 0
+0x1f49fde76e0 1
+Message At: 1681753860
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681753861
+	Current state: ExecuteOrdersState
+Message At: 1681753861
+	Current state: win
+Message At: 1681753861
+	loadmap europe.map
+Loading europe.map
+moving to MapLoadedState.
+Message At: 1681753861
+	Current state: maploaded
+Message At: 1681753861
+	validatemap
+Map Valid
+Message At: 1681753861
+	Current state: mapvalidated
+Message At: 1681753861
+	addplayer p1|cheater
+Adding p1|cheater
+moving to PlayersAddedState.
+Message At: 1681753861
+	Current state: playersadded
+Message At: 1681753861
+	addplayer p2|aggressive
+Adding p2|aggressive
+moving to PlayersAddedState.
+Message At: 1681753861
+	Current state: playersadded
+Message At: 1681753861
+	gamestart
+You need between 2 and 6 players to start!
+Message At: 1681753894
+	addplayer p1|human\
+Adding p1|human\
+moving to PlayersAddedState.
+Message At: 1681753894
+	Current state: playersadded
+Message At: 1681753903
+	addplayer p2|human
+Adding p2|human
+moving to PlayersAddedState.
+Message At: 1681753903
+	Current state: playersadded
+Message At: 1681753908
+	gamestart
+You need between 2 and 6 players to start!
+Message At: 1681754087
+	autoplay
+Beginning Autoplay
+Message At: 1681754087
+	loadmap europe.map
+Loading europe.map
+moving to MapLoadedState.
+Message At: 1681754087
+	Current state: maploaded
+Message At: 1681754087
+	validatemap
+Map Valid
+Message At: 1681754087
+	Current state: mapvalidated
+Message At: 1681754087
+	addplayer p1|cheater
+Adding p1|cheater
+moving to PlayersAddedState.
+Message At: 1681754087
+	Current state: playersadded
+Message At: 1681754087
+	addplayer p2|aggressive
+Adding p2|aggressive
+moving to PlayersAddedState.
+Message At: 1681754087
+	Current state: playersadded
+Message At: 1681754087
+	gamestart
+Starting Game
+Message At: 1681754087
+	Current state: ReinforcementsState
+Message At: 1681754087
+	Current state: IssueOrdersState
+Message At: 1681754087
+	Orders List: 
+0x239233f2180 0
+Message At: 1681754087
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681754087
+	Orders List: 
+0x239233f2180 0
+0x2392345b8e0 1
+Message At: 1681754087
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681754087
+	Current state: ExecuteOrdersState
+Message At: 1681754087
+	Orders List: 
+0x239233f2180 0
+0x2392345b8e0 1
+Message At: 1681754087
+	Current state: ReinforcementsState
+Message At: 1681754087
+	Current state: IssueOrdersState
+Message At: 1681754087
+	Orders List: 
+0x23924239920 0
+Message At: 1681754087
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681754087
+	Orders List: 
+0x23924239920 0
+0x23924269810 1
+Message At: 1681754087
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681754087
+	Orders List: 
+0x23924239920 0
+0x23924269810 1
+0x2392429b400 2
+Message At: 1681754087
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681754087
+	Orders List: 
+0x23924239920 0
+0x23924269810 1
+0x2392429b400 2
+0x239242cb300 3
+Message At: 1681754087
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681754088
+	Current state: ExecuteOrdersState
+Message At: 1681754088
+	Orders List: 
+0x23924239920 0
+0x23924269810 1
+0x2392429b400 2
+0x239242cb300 3
+Message At: 1681754088
+	Current state: win
+Message At: 1681754088
+	loadmap europe.map
+Loading europe.map
+moving to MapLoadedState.
+Message At: 1681754088
+	Current state: maploaded
+Message At: 1681754088
+	validatemap
+Map Valid
+Message At: 1681754088
+	Current state: mapvalidated
+Message At: 1681754088
+	addplayer p1|cheater
+Adding p1|cheater
+moving to PlayersAddedState.
+Message At: 1681754088
+	Current state: playersadded
+Message At: 1681754088
+	addplayer p2|aggressive
+Adding p2|aggressive
+moving to PlayersAddedState.
+Message At: 1681754088
+	Current state: playersadded
+Message At: 1681754088
+	gamestart
+Starting Game
+Message At: 1681754088
+	Current state: ReinforcementsState
+Message At: 1681754088
+	Current state: IssueOrdersState
+Message At: 1681754088
+	Orders List: 
+0x239263ed300 0
+Message At: 1681754088
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681754088
+	Orders List: 
+0x239263ed300 0
+0x23926455b30 1
+Message At: 1681754088
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681754088
+	Orders List: 
+0x239293eccf0 0
+Message At: 1681754088
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681754088
+	Current state: ExecuteOrdersState
+Message At: 1681754088
+	Orders List: 
+0x239263ed300 0
+0x23926455b30 1
+Message At: 1681754088
+	Current state: win
+Message At: 1681754088
+	loadmap europe.map
+Loading europe.map
+moving to MapLoadedState.
+Message At: 1681754088
+	Current state: maploaded
+Message At: 1681754088
+	validatemap
+Map Valid
+Message At: 1681754088
+	Current state: mapvalidated
+Message At: 1681754088
+	addplayer p1|cheater
+Adding p1|cheater
+moving to PlayersAddedState.
+Message At: 1681754088
+	Current state: playersadded
+Message At: 1681754088
+	addplayer p2|aggressive
+Adding p2|aggressive
+moving to PlayersAddedState.
+Message At: 1681754088
+	Current state: playersadded
+Message At: 1681754088
+	gamestart
+Starting Game
+Message At: 1681754088
+	Current state: ReinforcementsState
+Message At: 1681754088
+	Current state: IssueOrdersState
+Message At: 1681754089
+	Orders List: 
+0x2392a5632d0 0
+Message At: 1681754089
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681754089
+	Orders List: 
+0x2392a5632d0 0
+0x2392a5ef8e0 1
+Message At: 1681754089
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681754089
+	Orders List: 
+0x2392a5632d0 0
+0x2392a5ef8e0 1
+0x2392a624e90 2
+Message At: 1681754089
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681754089
+	Orders List: 
+0x239293eccf0 0
+0x2392f2d7840 1
+Message At: 1681754089
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681754089
+	Orders List: 
+0x2392f499bf0 0
+Message At: 1681754089
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681754089
+	Current state: ExecuteOrdersState
+Message At: 1681754089
+	Current state: win
+Message At: 1681754089
+	loadmap europe.map
+Loading europe.map
+moving to MapLoadedState.
+Message At: 1681754089
+	Current state: maploaded
+Message At: 1681754089
+	validatemap
+Map Valid
+Message At: 1681754089
+	Current state: mapvalidated
+Message At: 1681754089
+	addplayer p1|cheater
+Adding p1|cheater
+moving to PlayersAddedState.
+Message At: 1681754089
+	Current state: playersadded
+Message At: 1681754089
+	addplayer p2|aggressive
+Adding p2|aggressive
+moving to PlayersAddedState.
+Message At: 1681754089
+	Current state: playersadded
+Message At: 1681754089
+	gamestart
+You need between 2 and 6 players to start!
+Message At: 1681754278
+	autoplay
+Beginning Autoplay
+Message At: 1681754278
+	loadmap europe.map
+Loading europe.map
+moving to MapLoadedState.
+Message At: 1681754278
+	Current state: maploaded
+Message At: 1681754278
+	validatemap
+Map Valid
+Message At: 1681754278
+	Current state: mapvalidated
+Message At: 1681754278
+	addplayer p1|cheater
+Adding p1|cheater
+moving to PlayersAddedState.
+Message At: 1681754278
+	Current state: playersadded
+Message At: 1681754278
+	addplayer p2|aggressive
+Adding p2|aggressive
+moving to PlayersAddedState.
+Message At: 1681754278
+	Current state: playersadded
+Message At: 1681754278
+	gamestart
+Starting Game
+Message At: 1681754278
+	Current state: ReinforcementsState
+Message At: 1681754278
+	Current state: IssueOrdersState
+Message At: 1681754278
+	Orders List: 
+0x1a6ff31bae0 0
+Message At: 1681754278
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681754278
+	Orders List: 
+0x1a6ff31bae0 0
+0x1a6ff377480 1
+Message At: 1681754278
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681754278
+	Orders List: 
+0x1a6ff31bae0 0
+0x1a6ff377480 1
+0x1a6ff3aad40 2
+Message At: 1681754278
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681754278
+	Current state: ExecuteOrdersState
+Message At: 1681754278
+	Orders List: 
+0x1a6ff31bae0 0
+0x1a6ff377480 1
+0x1a6ff3aad40 2
+Message At: 1681754278
+	Current state: ReinforcementsState
+Message At: 1681754278
+	Current state: IssueOrdersState
+Message At: 1681754278
+	Orders List: 
+0x1a6815ae170 0
+Message At: 1681754278
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681754278
+	Orders List: 
+0x1a6815ae170 0
+0x1a6815e1a70 1
+Message At: 1681754278
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681754278
+	Current state: ExecuteOrdersState
+Message At: 1681754279
+	Orders List: 
+0x1a6815ae170 0
+0x1a6815e1a70 1
+Message At: 1681754279
+	Current state: ReinforcementsState
+Message At: 1681754279
+	Current state: IssueOrdersState
+Message At: 1681754279
+	Orders List: 
+0x1a682f24060 0
+Message At: 1681754279
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681754279
+	Orders List: 
+0x1a682f24060 0
+0x1a682f57920 1
+Message At: 1681754279
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681754279
+	Current state: ExecuteOrdersState
+Message At: 1681754279
+	Orders List: 
+0x1a682f24060 0
+0x1a682f57920 1
+Message At: 1681754279
+	Current state: ReinforcementsState
+Message At: 1681754279
+	Current state: IssueOrdersState
+Message At: 1681754279
+	Current state: ExecuteOrdersState
+Message At: 1681754279
+	Current state: win
+Message At: 1681754279
+	loadmap europe.map
+Loading europe.map
+moving to MapLoadedState.
+Message At: 1681754279
+	Current state: maploaded
+Message At: 1681754279
+	validatemap
+Map Valid
+Message At: 1681754279
+	Current state: mapvalidated
+Message At: 1681754279
+	addplayer p1|cheater
+Adding p1|cheater
+moving to PlayersAddedState.
+Message At: 1681754279
+	Current state: playersadded
+Message At: 1681754279
+	addplayer p2|aggressive
+Adding p2|aggressive
+moving to PlayersAddedState.
+Message At: 1681754279
+	Current state: playersadded
+Message At: 1681754279
+	gamestart
+Starting Game
+Message At: 1681754279
+	Current state: ReinforcementsState
+Message At: 1681754279
+	Current state: IssueOrdersState
+Message At: 1681754280
+	Orders List: 
+0x1a68520f410 0
+Message At: 1681754280
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681754280
+	Orders List: 
+0x1a68520f410 0
+0x1a685298480 1
+Message At: 1681754280
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681754280
+	Orders List: 
+0x1a68520f410 0
+0x1a685298480 1
+0x1a6852c8380 2
+Message At: 1681754280
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681754280
+	Orders List: 
+0x1a68898a110 0
+Message At: 1681754280
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681754280
+	Current state: ExecuteOrdersState
+Message At: 1681754280
+	Orders List: 
+0x1a68520f410 0
+0x1a685298480 1
+0x1a6852c8380 2
+Message At: 1681754280
+	Current state: win
+Message At: 1681754280
+	loadmap europe.map
+Loading europe.map
+moving to MapLoadedState.
+Message At: 1681754280
+	Current state: maploaded
+Message At: 1681754280
+	validatemap
+Map Valid
+Message At: 1681754280
+	Current state: mapvalidated
+Message At: 1681754280
+	addplayer p1|cheater
+Adding p1|cheater
+moving to PlayersAddedState.
+Message At: 1681754280
+	Current state: playersadded
+Message At: 1681754280
+	addplayer p2|aggressive
+Adding p2|aggressive
+moving to PlayersAddedState.
+Message At: 1681754280
+	Current state: playersadded
+Message At: 1681754280
+	gamestart
+Starting Game
+Message At: 1681754280
+	Current state: ReinforcementsState
+Message At: 1681754280
+	Current state: IssueOrdersState
+Message At: 1681754281
+	Orders List: 
+0x1a68898a110 0
+0x1a6899ffbc0 1
+Message At: 1681754281
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681754281
+	Orders List: 
+0x1a689b55fd0 0
+Message At: 1681754281
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681754281
+	Orders List: 
+0x1a689cac4c0 0
+Message At: 1681754281
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681754281
+	Current state: ExecuteOrdersState
+Message At: 1681754281
+	Current state: win
+Message At: 1681754281
+	loadmap europe.map
+Loading europe.map
+moving to MapLoadedState.
+Message At: 1681754281
+	Current state: maploaded
+Message At: 1681754281
+	validatemap
+Map Valid
+Message At: 1681754281
+	Current state: mapvalidated
+Message At: 1681754281
+	addplayer p1|cheater
+Adding p1|cheater
+moving to PlayersAddedState.
+Message At: 1681754281
+	Current state: playersadded
+Message At: 1681754281
+	addplayer p2|aggressive
+Adding p2|aggressive
+moving to PlayersAddedState.
+Message At: 1681754281
+	Current state: playersadded
+Message At: 1681754281
+	gamestart
+You need between 2 and 6 players to start!
+Message At: 1681754308
+	autoplay
+Beginning Autoplay
+Message At: 1681754308
+	loadmap europe.map
+Loading europe.map
+moving to MapLoadedState.
+Message At: 1681754308
+	Current state: maploaded
+Message At: 1681754308
+	validatemap
+Map Valid
+Message At: 1681754308
+	Current state: mapvalidated
+Message At: 1681754308
+	addplayer p1|cheater
+Adding p1|cheater
+moving to PlayersAddedState.
+Message At: 1681754308
+	Current state: playersadded
+Message At: 1681754308
+	addplayer p2|aggressive
+Adding p2|aggressive
+moving to PlayersAddedState.
+Message At: 1681754308
+	Current state: playersadded
+Message At: 1681754308
+	gamestart
+Starting Game
+Message At: 1681754308
+	Current state: ReinforcementsState
+Message At: 1681754308
+	Current state: IssueOrdersState
+Message At: 1681754309
+	Orders List: 
+0x29c0c465bf0 0
+Message At: 1681754309
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681754309
+	Current state: ExecuteOrdersState
+Message At: 1681754309
+	Current state: win
+Message At: 1681754309
+	loadmap europe.map
+Loading europe.map
+moving to MapLoadedState.
+Message At: 1681754309
+	Current state: maploaded
+Message At: 1681754309
+	validatemap
+Map Valid
+Message At: 1681754309
+	Current state: mapvalidated
+Message At: 1681754309
+	addplayer p1|cheater
+Adding p1|cheater
+moving to PlayersAddedState.
+Message At: 1681754309
+	Current state: playersadded
+Message At: 1681754309
+	addplayer p2|aggressive
+Adding p2|aggressive
+moving to PlayersAddedState.
+Message At: 1681754309
+	Current state: playersadded
+Message At: 1681754309
+	gamestart
+Starting Game
+Message At: 1681754309
+	Current state: ReinforcementsState
+Message At: 1681754309
+	Current state: IssueOrdersState
+Message At: 1681754309
+	Orders List: 
+0x29c0c465bf0 0
+0x29c0c7fee20 1
+Message At: 1681754309
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681754309
+	Orders List: 
+0x29c0c465bf0 0
+0x29c0c7fee20 1
+0x29c0c88b810 2
+Message At: 1681754309
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681754309
+	Orders List: 
+0x29c0d35df60 0
+Message At: 1681754309
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681754309
+	Orders List: 
+0x29c0d35df60 0
+0x29c0d3cdda0 1
+Message At: 1681754309
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681754309
+	Orders List: 
+0x29c0d35df60 0
+0x29c0d3cdda0 1
+0x29c0d401650 2
+Message At: 1681754309
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681754309
+	Current state: ExecuteOrdersState
+Message At: 1681754309
+	Orders List: 
+0x29c0c465bf0 0
+0x29c0c7fee20 1
+0x29c0c88b810 2
+Message At: 1681754365
+	autoplay
+Beginning Autoplay
+Message At: 1681754365
+	loadmap europe.map
+Loading europe.map
+moving to MapLoadedState.
+Message At: 1681754365
+	Current state: maploaded
+Message At: 1681754365
+	validatemap
+Map Valid
+Message At: 1681754365
+	Current state: mapvalidated
+Message At: 1681754365
+	addplayer p1|cheater
+Adding p1|cheater
+moving to PlayersAddedState.
+Message At: 1681754365
+	Current state: playersadded
+Message At: 1681754365
+	addplayer p2|aggressive
+Adding p2|aggressive
+moving to PlayersAddedState.
+Message At: 1681754365
+	Current state: playersadded
+Message At: 1681754365
+	gamestart
+Starting Game
+Message At: 1681754365
+	Current state: ReinforcementsState
+Message At: 1681754365
+	Current state: IssueOrdersState
+Message At: 1681754365
+	Orders List: 
+0x2a7c112c8e0 0
+Message At: 1681754365
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681754365
+	Current state: ExecuteOrdersState
+Message At: 1681754365
+	Current state: win
+Message At: 1681754365
+	loadmap europe.map
+Loading europe.map
+moving to MapLoadedState.
+Message At: 1681754365
+	Current state: maploaded
+Message At: 1681754365
+	validatemap
+Map Valid
+Message At: 1681754365
+	Current state: mapvalidated
+Message At: 1681754365
+	addplayer p1|cheater
+Adding p1|cheater
+moving to PlayersAddedState.
+Message At: 1681754365
+	Current state: playersadded
+Message At: 1681754365
+	addplayer p2|aggressive
+Adding p2|aggressive
+moving to PlayersAddedState.
+Message At: 1681754365
+	Current state: playersadded
+Message At: 1681754365
+	gamestart
+Starting Game
+Message At: 1681754365
+	Current state: ReinforcementsState
+Message At: 1681754365
+	Current state: IssueOrdersState
+Message At: 1681754365
+	Orders List: 
+0x2a7c152a0f0 0
+Message At: 1681754365
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681754365
+	Orders List: 
+0x2a7c152a0f0 0
+0x2a7c15a3d90 1
+Message At: 1681754365
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681754366
+	Orders List: 
+0x2a7c112c8e0 0
+0x2a7c3c0f400 1
+Message At: 1681754366
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681754366
+	Current state: ExecuteOrdersState
+Message At: 1681754366
+	Orders List: 
+0x2a7c152a0f0 0
+0x2a7c15a3d90 1
+Message At: 1681754366
+	Current state: win
+Message At: 1681754366
+	loadmap europe.map
+Loading europe.map
+moving to MapLoadedState.
+Message At: 1681754366
+	Current state: maploaded
+Message At: 1681754366
+	validatemap
+Map Valid
+Message At: 1681754366
+	Current state: mapvalidated
+Message At: 1681754366
+	addplayer p1|cheater
+Adding p1|cheater
+moving to PlayersAddedState.
+Message At: 1681754366
+	Current state: playersadded
+Message At: 1681754366
+	addplayer p2|aggressive
+Adding p2|aggressive
+moving to PlayersAddedState.
+Message At: 1681754366
+	Current state: playersadded
+Message At: 1681754366
+	gamestart
+Starting Game
+Message At: 1681754366
+	Current state: ReinforcementsState
+Message At: 1681754366
+	Current state: IssueOrdersState
+Message At: 1681754366
+	Orders List: 
+0x2a7c112c8e0 0
+0x2a7c3c0f400 1
+0x2a7c6794970 2
+Message At: 1681754366
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681754366
+	Orders List: 
+0x2a7c112c8e0 0
+0x2a7c3c0f400 1
+0x2a7c6794970 2
+0x2a7c680ff20 3
+Message At: 1681754366
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681754366
+	Orders List: 
+0x2a7c6937ee0 0
+Message At: 1681754366
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681754366
+	Orders List: 
+0x2a7c6937ee0 0
+0x2a7c69b3500 1
+Message At: 1681754366
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681754366
+	Orders List: 
+0x2a7c6adb4c0 0
+Message At: 1681754366
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681754366
+	Orders List: 
+0x2a7c6adb4c0 0
+0x2a7c6b56b30 1
+Message At: 1681754366
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681754367
+	Current state: ExecuteOrdersState
+Message At: 1681754367
+	Current state: win
+Message At: 1681754367
+	loadmap europe.map
+Loading europe.map
+moving to MapLoadedState.
+Message At: 1681754367
+	Current state: maploaded
+Message At: 1681754367
+	validatemap
+Map Valid
+Message At: 1681754367
+	Current state: mapvalidated
+Message At: 1681754367
+	addplayer p1|cheater
+Adding p1|cheater
+moving to PlayersAddedState.
+Message At: 1681754367
+	Current state: playersadded
+Message At: 1681754367
+	addplayer p2|aggressive
+Adding p2|aggressive
+moving to PlayersAddedState.
+Message At: 1681754367
+	Current state: playersadded
+Message At: 1681754416
+	autoplay
+Beginning Autoplay
+Message At: 1681754416
+	loadmap europe.map
+Loading europe.map
+moving to MapLoadedState.
+Message At: 1681754416
+	Current state: maploaded
+Message At: 1681754416
+	validatemap
+Map Valid
+Message At: 1681754417
+	Current state: mapvalidated
+Message At: 1681754417
+	addplayer p1|cheater
+Adding p1|cheater
+moving to PlayersAddedState.
+Message At: 1681754417
+	Current state: playersadded
+Message At: 1681754417
+	addplayer p2|aggressive
+Adding p2|aggressive
+moving to PlayersAddedState.
+Message At: 1681754417
+	Current state: playersadded
+Message At: 1681754417
+	gamestart
+Starting Game
+Message At: 1681754417
+	Current state: ReinforcementsState
+Message At: 1681754417
+	Current state: IssueOrdersState
+Message At: 1681754417
+	Orders List: 
+0x15f2d8b0480 0
+Message At: 1681754417
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681754417
+	Orders List: 
+0x15f2d8b0480 0
+0x15f2d912810 1
+Message At: 1681754417
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681754417
+	Orders List: 
+0x15f2d8b0480 0
+0x15f2d912810 1
+0x15f2d951f20 2
+Message At: 1681754417
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681754417
+	Orders List: 
+0x15f2d8b0480 0
+0x15f2d912810 1
+0x15f2d951f20 2
+0x15f2d98cbb0 3
+Message At: 1681754417
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681754417
+	Current state: ExecuteOrdersState
+Message At: 1681754417
+	Orders List: 
+0x15f2d8b0480 0
+0x15f2d912810 1
+0x15f2d951f20 2
+0x15f2d98cbb0 3
+Message At: 1681754417
+	Current state: win
+Message At: 1681754417
+	loadmap europe.map
+Loading europe.map
+moving to MapLoadedState.
+Message At: 1681754417
+	Current state: maploaded
+Message At: 1681754417
+	validatemap
+Map Valid
+Message At: 1681754417
+	Current state: mapvalidated
+Message At: 1681754417
+	addplayer p1|cheater
+Adding p1|cheater
+moving to PlayersAddedState.
+Message At: 1681754417
+	Current state: playersadded
+Message At: 1681754417
+	addplayer p2|aggressive
+Adding p2|aggressive
+moving to PlayersAddedState.
+Message At: 1681754417
+	Current state: playersadded
+Message At: 1681754417
+	gamestart
+Starting Game
+Message At: 1681754417
+	Current state: ReinforcementsState
+Message At: 1681754417
+	Current state: IssueOrdersState
+Message At: 1681754417
+	Orders List: 
+0x15f2f3ea6a0 0
+Message At: 1681754417
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681754417
+	Orders List: 
+0x15f2f5b6b00 0
+Message At: 1681754417
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681754418
+	Current state: ExecuteOrdersState
+Message At: 1681754418
+	Current state: win
+Message At: 1681754418
+	loadmap europe.map
+Loading europe.map
+moving to MapLoadedState.
+Message At: 1681754418
+	Current state: maploaded
+Message At: 1681754418
+	validatemap
+Map Valid
+Message At: 1681754418
+	Current state: mapvalidated
+Message At: 1681754418
+	addplayer p1|cheater
+Adding p1|cheater
+moving to PlayersAddedState.
+Message At: 1681754418
+	Current state: playersadded
+Message At: 1681754418
+	addplayer p2|aggressive
+Adding p2|aggressive
+moving to PlayersAddedState.
+Message At: 1681754418
+	Current state: playersadded
+Message At: 1681754418
+	gamestart
+Starting Game
+Message At: 1681754418
+	Current state: ReinforcementsState
+Message At: 1681754418
+	Current state: IssueOrdersState
+Message At: 1681754418
+	Orders List: 
+0x15f2f3ea6a0 0
+0x15f36baffd0 1
+Message At: 1681754418
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681754418
+	Orders List: 
+0x15f36d3c340 0
+Message At: 1681754418
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681754419
+	Orders List: 
+0x15f2f5b6b00 0
+0x15f36ec8700 1
+Message At: 1681754419
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681754419
+	Current state: ExecuteOrdersState
+Message At: 1681754419
+	Current state: win
+Message At: 1681754419
+	loadmap europe.map
+Loading europe.map
+moving to MapLoadedState.
+Message At: 1681754419
+	Current state: maploaded
+Message At: 1681754419
+	validatemap
+Map Valid
+Message At: 1681754419
+	Current state: mapvalidated
+Message At: 1681754419
+	addplayer p1|cheater
+Adding p1|cheater
+moving to PlayersAddedState.
+Message At: 1681754419
+	Current state: playersadded
+Message At: 1681754419
+	addplayer p2|aggressive
+Adding p2|aggressive
+moving to PlayersAddedState.
+Message At: 1681754419
+	Current state: playersadded
+Message At: 1681754519
+	autoplay
+Beginning Autoplay
+Message At: 1681754519
+	loadmap europe.map
+Loading europe.map
+moving to MapLoadedState.
+Message At: 1681754519
+	Current state: maploaded
+Message At: 1681754519
+	validatemap
+Map Valid
+Message At: 1681754519
+	Current state: mapvalidated
+Message At: 1681754519
+	addplayer p1|cheater
+Adding p1|cheater
+moving to PlayersAddedState.
+Message At: 1681754519
+	Current state: playersadded
+Message At: 1681754519
+	addplayer p2|aggressive
+Adding p2|aggressive
+moving to PlayersAddedState.
+Message At: 1681754519
+	Current state: playersadded
+Message At: 1681754519
+	gamestart
+Starting Game
+Message At: 1681754519
+	Current state: ReinforcementsState
+Message At: 1681754519
+	Current state: IssueOrdersState
+Message At: 1681754519
+	Orders List: 
+0x22a754816c0 0
+Message At: 1681754519
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681754519
+	Current state: ExecuteOrdersState
+Message At: 1681754519
+	Current state: win
+Message At: 1681754519
+	loadmap europe.map
+Loading europe.map
+moving to MapLoadedState.
+Message At: 1681754519
+	Current state: maploaded
+Message At: 1681754519
+	validatemap
+Map Valid
+Message At: 1681754519
+	Current state: mapvalidated
+Message At: 1681754519
+	addplayer p1|cheater
+Adding p1|cheater
+moving to PlayersAddedState.
+Message At: 1681754519
+	Current state: playersadded
+Message At: 1681754519
+	addplayer p2|aggressive
+Adding p2|aggressive
+moving to PlayersAddedState.
+Message At: 1681754519
+	Current state: playersadded
+Message At: 1681754519
+	gamestart
+Starting Game
+Message At: 1681754520
+	Current state: ReinforcementsState
+Message At: 1681754520
+	Current state: IssueOrdersState
+Message At: 1681754520
+	Orders List: 
+0x22a7636b410 0
+Message At: 1681754520
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681754520
+	Orders List: 
+0x22a754816c0 0
+0x22a792a3820 1
+Message At: 1681754520
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681754520
+	Current state: ExecuteOrdersState
+Message At: 1681754520
+	Current state: win
+Message At: 1681754520
+	loadmap europe.map
+Loading europe.map
+moving to MapLoadedState.
+Message At: 1681754520
+	Current state: maploaded
+Message At: 1681754520
+	validatemap
+Map Valid
+Message At: 1681754520
+	Current state: mapvalidated
+Message At: 1681754520
+	addplayer p1|cheater
+Adding p1|cheater
+moving to PlayersAddedState.
+Message At: 1681754520
+	Current state: playersadded
+Message At: 1681754520
+	addplayer p2|aggressive
+Adding p2|aggressive
+moving to PlayersAddedState.
+Message At: 1681754520
+	Current state: playersadded
+Message At: 1681754520
+	gamestart
+Starting Game
+Message At: 1681754520
+	Current state: ReinforcementsState
+Message At: 1681754520
+	Current state: IssueOrdersState
+Message At: 1681754520
+	Orders List: 
+0x22a79782380 0
+Message At: 1681754520
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681754520
+	Orders List: 
+0x22a79782380 0
+0x22a7980c1f0 1
+Message At: 1681754520
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681754520
+	Orders List: 
+0x22a79782380 0
+0x22a7980c1f0 1
+0x22a7983ddd0 2
+Message At: 1681754520
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681754521
+	Orders List: 
+0x22a754816c0 0
+0x22a792a3820 1
+0x22a7a7fac00 2
+Message At: 1681754521
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681754521
+	Orders List: 
+0x22a7636b410 0
+0x22a016d5820 1
+Message At: 1681754521
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681754521
+	Current state: ExecuteOrdersState
+Message At: 1681754521
+	Orders List: 
+0x22a79782380 0
+0x22a7980c1f0 1
+0x22a7983ddd0 2
+Message At: 1681754522
+	Current state: win
+Message At: 1681754522
+	loadmap europe.map
+Loading europe.map
+moving to MapLoadedState.
+Message At: 1681754522
+	Current state: maploaded
+Message At: 1681754522
+	validatemap
+Map Valid
+Message At: 1681754522
+	Current state: mapvalidated
+Message At: 1681754522
+	addplayer p1|cheater
+Adding p1|cheater
+moving to PlayersAddedState.
+Message At: 1681754522
+	Current state: playersadded
+Message At: 1681754522
+	addplayer p2|aggressive
+Adding p2|aggressive
+moving to PlayersAddedState.
+Message At: 1681754522
+	Current state: playersadded
+Message At: 1681754708
+	autoplay
+Beginning Autoplay
+Message At: 1681754708
+	loadmap europe.map
+Loading europe.map
+moving to MapLoadedState.
+Message At: 1681754708
+	Current state: maploaded
+Message At: 1681754708
+	validatemap
+Map Valid
+Message At: 1681754708
+	Current state: mapvalidated
+Message At: 1681754708
+	addplayer p1|cheater
+Adding p1|cheater
+moving to PlayersAddedState.
+Message At: 1681754708
+	Current state: playersadded
+Message At: 1681754708
+	addplayer p2|aggressive
+Adding p2|aggressive
+moving to PlayersAddedState.
+Message At: 1681754708
+	Current state: playersadded
+Message At: 1681754708
+	gamestart
+Starting Game
+Message At: 1681754708
+	Current state: ReinforcementsState
+Message At: 1681754708
+	Current state: IssueOrdersState
+Message At: 1681754708
+	Orders List: 
+0x20e306a8140 0
+Message At: 1681754708
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681754708
+	Orders List: 
+0x20e306a8140 0
+0x20e30727340 1
+Message At: 1681754708
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681754708
+	Current state: ExecuteOrdersState
+Message At: 1681754708
+	Orders List: 
+0x20e306a8140 0
+0x20e30727340 1
+Message At: 1681754708
+	Current state: ReinforcementsState
+Message At: 1681754708
+	Current state: IssueOrdersState
+Message At: 1681754708
+	Orders List: 
+0x20e3146d280 0
+Message At: 1681754708
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681754708
+	Orders List: 
+0x20e3146d280 0
+0x20e314a0b30 1
+Message At: 1681754708
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681754709
+	Current state: ExecuteOrdersState
+Message At: 1681754709
+	Orders List: 
+0x20e3146d280 0
+0x20e314a0b30 1
+Message At: 1681754736
+	gamestart
+You need between 2 and 6 players to start!
+Message At: 1681754755
+	Current state: win
+Message At: 1681754755
+	loadmap europe.map
+Loading europe.map
+moving to MapLoadedState.
+Message At: 1681754755
+	Current state: maploaded
+Message At: 1681754755
+	validatemap
+Map Valid
+Message At: 1681754755
+	Current state: mapvalidated
+Message At: 1681754755
+	addplayer p1|cheater
+Adding p1|cheater
+moving to PlayersAddedState.
+Message At: 1681754755
+	Current state: playersadded
+Message At: 1681754755
+	addplayer p2|aggressive
+Adding p2|aggressive
+moving to PlayersAddedState.
+Message At: 1681754755
+	Current state: playersadded
+Message At: 1681754755
+	gamestart
+Starting Game
+Message At: 1681754755
+	Current state: ReinforcementsState
+Message At: 1681754755
+	Current state: IssueOrdersState
+Message At: 1681754755
+	Orders List: 
+0x20e3300b780 0
+Message At: 1681754755
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681754755
+	Orders List: 
+0x20e3300b780 0
+0x20e3307ed00 1
+Message At: 1681754755
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681754755
+	Orders List: 
+0x20e33df88d0 0
+Message At: 1681754755
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681754755
+	Orders List: 
+0x20e33df88d0 0
+0x20e33e680f0 1
+Message At: 1681754755
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681754755
+	Orders List: 
+0x20e33df88d0 0
+0x20e33e680f0 1
+0x20e33e97fe0 2
+Message At: 1681754755
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681754756
+	Current state: ExecuteOrdersState
+Message At: 1681754756
+	Orders List: 
+0x20e3300b780 0
+0x20e3307ed00 1
+Message At: 1681754762
+	Current state: win
+Message At: 1681754762
+	loadmap europe.map
+Loading europe.map
+moving to MapLoadedState.
+Message At: 1681754762
+	Current state: maploaded
+Message At: 1681754762
+	validatemap
+Map Valid
+Message At: 1681754762
+	Current state: mapvalidated
+Message At: 1681754762
+	addplayer p1|cheater
+Adding p1|cheater
+moving to PlayersAddedState.
+Message At: 1681754762
+	Current state: playersadded
+Message At: 1681754762
+	addplayer p2|aggressive
+Adding p2|aggressive
+moving to PlayersAddedState.
+Message At: 1681754762
+	Current state: playersadded
+Message At: 1681754762
+	gamestart
+Starting Game
+Message At: 1681754762
+	Current state: ReinforcementsState
+Message At: 1681754762
+	Current state: IssueOrdersState
+Message At: 1681754763
+	Orders List: 
+0x20e3745eda0 0
+Message At: 1681754763
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681754763
+	Orders List: 
+0x20e3745eda0 0
+0x20e374ffe90 1
+Message At: 1681754763
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681754763
+	Orders List: 
+0x20e37698aa0 0
+Message At: 1681754763
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681754763
+	Orders List: 
+0x20e37698aa0 0
+0x20e37739ab0 1
+Message At: 1681754763
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681754763
+	Orders List: 
+0x20e33df88d0 0
+0x20e33e680f0 1
+0x20e33e97fe0 2
+0x20e378d2700 3
+Message At: 1681754763
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681754763
+	Orders List: 
+0x20e33df88d0 0
+0x20e33e680f0 1
+0x20e33e97fe0 2
+0x20e378d2700 3
+0x20e37973850 4
+Message At: 1681754763
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681754763
+	Current state: ExecuteOrdersState
+Message At: 1681754766
+	Current state: win
+Message At: 1681754766
+	loadmap europe.map
+Loading europe.map
+moving to MapLoadedState.
+Message At: 1681754766
+	Current state: maploaded
+Message At: 1681754766
+	validatemap
+Map Valid
+Message At: 1681754766
+	Current state: mapvalidated
+Message At: 1681754766
+	addplayer p1|cheater
+Adding p1|cheater
+moving to PlayersAddedState.
+Message At: 1681754766
+	Current state: playersadded
+Message At: 1681754766
+	addplayer p2|aggressive
+Adding p2|aggressive
+moving to PlayersAddedState.
+Message At: 1681754766
+	Current state: playersadded
+Message At: 1681754943
+	autoplay
+Beginning Autoplay
+Message At: 1681754943
+	loadmap europe.map
+Loading europe.map
+moving to MapLoadedState.
+Message At: 1681754943
+	Current state: maploaded
+Message At: 1681754943
+	validatemap
+Map Valid
+Message At: 1681754943
+	Current state: mapvalidated
+Message At: 1681754943
+	addplayer p1|cheater
+Adding p1|cheater
+moving to PlayersAddedState.
+Message At: 1681754943
+	Current state: playersadded
+Message At: 1681754943
+	addplayer p2|aggressive
+Adding p2|aggressive
+moving to PlayersAddedState.
+Message At: 1681754943
+	Current state: playersadded
+Message At: 1681754943
+	gamestart
+Starting Game
+Message At: 1681754943
+	Current state: ReinforcementsState
+Message At: 1681754943
+	Current state: IssueOrdersState
+Message At: 1681754943
+	Orders List: 
+0x17a7675b680 0
+Message At: 1681754943
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681754943
+	Orders List: 
+0x17a7675b680 0
+0x17a767d1850 1
+Message At: 1681754943
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681754943
+	Current state: ExecuteOrdersState
+Message At: 1681754943
+	Orders List: 
+0x17a7675b680 0
+0x17a767d1850 1
+Message At: 1681754943
+	Current state: ReinforcementsState
+Message At: 1681754943
+	Current state: IssueOrdersState
+Message At: 1681754943
+	Orders List: 
+0x17a776b7c40 0
+Message At: 1681754943
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681754943
+	Orders List: 
+0x17a776b7c40 0
+0x17a776e9810 1
+Message At: 1681754943
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681754944
+	Current state: ExecuteOrdersState
+Message At: 1681754944
+	Orders List: 
+0x17a776b7c40 0
+0x17a776e9810 1
+Message At: 1681754974
+	Current state: win
+Message At: 1681755035
+	loadmap europe.map
+Loading europe.map
+moving to MapLoadedState.
+Message At: 1681755145
+	autoplay
+Beginning Autoplay
+Message At: 1681755145
+	loadmap europe.map
+Loading europe.map
+moving to MapLoadedState.
+Message At: 1681755145
+	Current state: maploaded
+Message At: 1681755145
+	validatemap
+Map Valid
+Message At: 1681755145
+	Current state: mapvalidated
+Message At: 1681755145
+	addplayer p1|cheater
+Adding p1|cheater
+moving to PlayersAddedState.
+Message At: 1681755145
+	Current state: playersadded
+Message At: 1681755145
+	addplayer p2|aggressive
+Adding p2|aggressive
+moving to PlayersAddedState.
+Message At: 1681755145
+	Current state: playersadded
+Message At: 1681755145
+	gamestart
+Starting Game
+Message At: 1681755145
+	Current state: ReinforcementsState
+Message At: 1681755145
+	Current state: IssueOrdersState
+Message At: 1681755145
+	Orders List: 
+0x200a02fd1f0 0
+Message At: 1681755145
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681755145
+	Orders List: 
+0x200a02fd1f0 0
+0x200a03640b0 1
+Message At: 1681755145
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755145
+	Orders List: 
+0x200a02fd1f0 0
+0x200a03640b0 1
+0x200a0393fb0 2
+Message At: 1681755145
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755145
+	Orders List: 
+0x200a02fd1f0 0
+0x200a03640b0 1
+0x200a0393fb0 2
+0x200a03c5bb0 3
+Message At: 1681755145
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755145
+	Orders List: 
+0x200a02fd1f0 0
+0x200a03640b0 1
+0x200a0393fb0 2
+0x200a03c5bb0 3
+0x200a03f5ab0 4
+Message At: 1681755145
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755145
+	Current state: ExecuteOrdersState
+Message At: 1681755145
+	Orders List: 
+0x200a02fd1f0 0
+0x200a03640b0 1
+0x200a0393fb0 2
+0x200a03c5bb0 3
+0x200a03f5ab0 4
+Message At: 1681755146
+	Current state: ReinforcementsState
+Message At: 1681755146
+	Current state: IssueOrdersState
+Message At: 1681755146
+	Orders List: 
+0x200a17f30f0 0
+Message At: 1681755146
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755146
+	Orders List: 
+0x200a17f30f0 0
+0x200a1822fe0 1
+Message At: 1681755146
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755146
+	Orders List: 
+0x200a17f30f0 0
+0x200a1822fe0 1
+0x200a1854bb0 2
+Message At: 1681755146
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755146
+	Orders List: 
+0x200a17f30f0 0
+0x200a1822fe0 1
+0x200a1854bb0 2
+0x200a1884ab0 3
+Message At: 1681755146
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755146
+	Current state: ExecuteOrdersState
+Message At: 1681755146
+	Orders List: 
+0x200a17f30f0 0
+0x200a1822fe0 1
+0x200a1854bb0 2
+0x200a1884ab0 3
+Message At: 1681755146
+	Current state: ReinforcementsState
+Message At: 1681755146
+	Current state: IssueOrdersState
+Message At: 1681755146
+	Orders List: 
+0x200a2d3efb0 0
+Message At: 1681755146
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755146
+	Orders List: 
+0x200a2d3efb0 0
+0x200a2d6eed0 1
+Message At: 1681755146
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755146
+	Orders List: 
+0x200a2d3efb0 0
+0x200a2d6eed0 1
+0x200a2da0ab0 2
+Message At: 1681755146
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755146
+	Orders List: 
+0x200a2d3efb0 0
+0x200a2d6eed0 1
+0x200a2da0ab0 2
+0x200a2dd09a0 3
+Message At: 1681755146
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755146
+	Current state: ExecuteOrdersState
+Message At: 1681755146
+	Orders List: 
+0x200a2d3efb0 0
+0x200a2d6eed0 1
+0x200a2da0ab0 2
+0x200a2dd09a0 3
+Message At: 1681755146
+	Current state: ReinforcementsState
+Message At: 1681755146
+	Current state: IssueOrdersState
+Message At: 1681755147
+	Orders List: 
+0x200a428afb0 0
+Message At: 1681755147
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755147
+	Orders List: 
+0x200a428afb0 0
+0x200a42baed0 1
+Message At: 1681755147
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755147
+	Orders List: 
+0x200a428afb0 0
+0x200a42baed0 1
+0x200a42ecab0 2
+Message At: 1681755147
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755147
+	Orders List: 
+0x200a428afb0 0
+0x200a42baed0 1
+0x200a42ecab0 2
+0x200a431c9a0 3
+Message At: 1681755147
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755147
+	Current state: ExecuteOrdersState
+Message At: 1681755147
+	Orders List: 
+0x200a428afb0 0
+0x200a42baed0 1
+0x200a42ecab0 2
+0x200a431c9a0 3
+Message At: 1681755147
+	Current state: ReinforcementsState
+Message At: 1681755147
+	Current state: IssueOrdersState
+Message At: 1681755147
+	Orders List: 
+0x200a57d7ab0 0
+Message At: 1681755147
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755147
+	Orders List: 
+0x200a57d7ab0 0
+0x200a58079a0 1
+Message At: 1681755147
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755147
+	Orders List: 
+0x200a57d7ab0 0
+0x200a58079a0 1
+0x200a5839580 2
+Message At: 1681755147
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755147
+	Orders List: 
+0x200a57d7ab0 0
+0x200a58079a0 1
+0x200a5839580 2
+0x200a5869480 3
+Message At: 1681755147
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755147
+	Current state: ExecuteOrdersState
+Message At: 1681755147
+	Orders List: 
+0x200a57d7ab0 0
+0x200a58079a0 1
+0x200a5839580 2
+0x200a5869480 3
+Message At: 1681755147
+	Current state: ReinforcementsState
+Message At: 1681755147
+	Current state: IssueOrdersState
+Message At: 1681755148
+	Orders List: 
+0x200a6d23580 0
+Message At: 1681755148
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755148
+	Orders List: 
+0x200a6d23580 0
+0x200a6d53480 1
+Message At: 1681755148
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755148
+	Orders List: 
+0x200a6d23580 0
+0x200a6d53480 1
+0x200a6d85060 2
+Message At: 1681755148
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755148
+	Orders List: 
+0x200a6d23580 0
+0x200a6d53480 1
+0x200a6d85060 2
+0x200a6db4f60 3
+Message At: 1681755148
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755148
+	Current state: ExecuteOrdersState
+Message At: 1681755148
+	Orders List: 
+0x200a6d23580 0
+0x200a6d53480 1
+0x200a6d85060 2
+0x200a6db4f60 3
+Message At: 1681755148
+	Current state: ReinforcementsState
+Message At: 1681755148
+	Current state: IssueOrdersState
+Message At: 1681755148
+	Orders List: 
+0x200a826f400 0
+Message At: 1681755148
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755148
+	Orders List: 
+0x200a826f400 0
+0x200a829f300 1
+Message At: 1681755148
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755148
+	Orders List: 
+0x200a826f400 0
+0x200a829f300 1
+0x200a82d0ed0 2
+Message At: 1681755148
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755148
+	Orders List: 
+0x200a826f400 0
+0x200a829f300 1
+0x200a82d0ed0 2
+0x200a8300dd0 3
+Message At: 1681755148
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755148
+	Current state: ExecuteOrdersState
+Message At: 1681755148
+	Orders List: 
+0x200a826f400 0
+0x200a829f300 1
+0x200a82d0ed0 2
+0x200a8300dd0 3
+Message At: 1681755148
+	Current state: ReinforcementsState
+Message At: 1681755148
+	Current state: IssueOrdersState
+Message At: 1681755149
+	Orders List: 
+0x200a97bc580 0
+Message At: 1681755149
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755149
+	Orders List: 
+0x200a97bc580 0
+0x200a97ec480 1
+Message At: 1681755149
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755149
+	Orders List: 
+0x200a97bc580 0
+0x200a97ec480 1
+0x200a981e060 2
+Message At: 1681755149
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755149
+	Orders List: 
+0x200a97bc580 0
+0x200a97ec480 1
+0x200a981e060 2
+0x200a984df60 3
+Message At: 1681755149
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755149
+	Current state: ExecuteOrdersState
+Message At: 1681755149
+	Orders List: 
+0x200a97bc580 0
+0x200a97ec480 1
+0x200a981e060 2
+0x200a984df60 3
+Message At: 1681755149
+	Current state: ReinforcementsState
+Message At: 1681755149
+	Current state: IssueOrdersState
+Message At: 1681755149
+	Orders List: 
+0x200aad08400 0
+Message At: 1681755149
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755149
+	Orders List: 
+0x200aad08400 0
+0x200aad38300 1
+Message At: 1681755149
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755149
+	Orders List: 
+0x200aad08400 0
+0x200aad38300 1
+0x200aad69ed0 2
+Message At: 1681755149
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755149
+	Orders List: 
+0x200aad08400 0
+0x200aad38300 1
+0x200aad69ed0 2
+0x200aad99dd0 3
+Message At: 1681755149
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755149
+	Current state: ExecuteOrdersState
+Message At: 1681755149
+	Orders List: 
+0x200aad08400 0
+0x200aad38300 1
+0x200aad69ed0 2
+0x200aad99dd0 3
+Message At: 1681755149
+	Current state: ReinforcementsState
+Message At: 1681755149
+	Current state: IssueOrdersState
+Message At: 1681755150
+	Orders List: 
+0x200ac254400 0
+Message At: 1681755150
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755150
+	Orders List: 
+0x200ac254400 0
+0x200ac284300 1
+Message At: 1681755150
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755150
+	Orders List: 
+0x200ac254400 0
+0x200ac284300 1
+0x200ac2b5ed0 2
+Message At: 1681755150
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755150
+	Orders List: 
+0x200ac254400 0
+0x200ac284300 1
+0x200ac2b5ed0 2
+0x200ac2e5dd0 3
+Message At: 1681755150
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755150
+	Current state: ExecuteOrdersState
+Message At: 1681755150
+	Orders List: 
+0x200ac254400 0
+0x200ac284300 1
+0x200ac2b5ed0 2
+0x200ac2e5dd0 3
+Message At: 1681755150
+	Current state: ReinforcementsState
+Message At: 1681755150
+	Current state: IssueOrdersState
+Message At: 1681755150
+	Orders List: 
+0x200ad7a1580 0
+Message At: 1681755150
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755150
+	Orders List: 
+0x200ad7a1580 0
+0x200ad7d1480 1
+Message At: 1681755150
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755150
+	Orders List: 
+0x200ad7a1580 0
+0x200ad7d1480 1
+0x200ad803060 2
+Message At: 1681755151
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755151
+	Orders List: 
+0x200ad7a1580 0
+0x200ad7d1480 1
+0x200ad803060 2
+0x200ad832f60 3
+Message At: 1681755151
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755151
+	Current state: ExecuteOrdersState
+Message At: 1681755151
+	Orders List: 
+0x200ad7a1580 0
+0x200ad7d1480 1
+0x200ad803060 2
+0x200ad832f60 3
+Message At: 1681755151
+	Current state: ReinforcementsState
+Message At: 1681755151
+	Current state: IssueOrdersState
+Message At: 1681755151
+	Orders List: 
+0x200aeced400 0
+Message At: 1681755151
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755151
+	Orders List: 
+0x200aeced400 0
+0x200aed1d300 1
+Message At: 1681755151
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755151
+	Orders List: 
+0x200aeced400 0
+0x200aed1d300 1
+0x200aed4eed0 2
+Message At: 1681755151
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755151
+	Orders List: 
+0x200aeced400 0
+0x200aed1d300 1
+0x200aed4eed0 2
+0x200aed7edd0 3
+Message At: 1681755151
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755151
+	Current state: ExecuteOrdersState
+Message At: 1681755151
+	Orders List: 
+0x200aeced400 0
+0x200aed1d300 1
+0x200aed4eed0 2
+0x200aed7edd0 3
+Message At: 1681755151
+	Current state: ReinforcementsState
+Message At: 1681755151
+	Current state: IssueOrdersState
+Message At: 1681755152
+	Orders List: 
+0x200b0239400 0
+Message At: 1681755152
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755152
+	Orders List: 
+0x200b0239400 0
+0x200b0269300 1
+Message At: 1681755152
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755152
+	Orders List: 
+0x200b0239400 0
+0x200b0269300 1
+0x200b029aed0 2
+Message At: 1681755152
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755152
+	Orders List: 
+0x200b0239400 0
+0x200b0269300 1
+0x200b029aed0 2
+0x200b02cadd0 3
+Message At: 1681755152
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755152
+	Current state: ExecuteOrdersState
+Message At: 1681755152
+	Orders List: 
+0x200b0239400 0
+0x200b0269300 1
+0x200b029aed0 2
+0x200b02cadd0 3
+Message At: 1681755152
+	Current state: ReinforcementsState
+Message At: 1681755152
+	Current state: IssueOrdersState
+Message At: 1681755152
+	Orders List: 
+0x200b1786580 0
+Message At: 1681755152
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755152
+	Orders List: 
+0x200b1786580 0
+0x200b17b6480 1
+Message At: 1681755152
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755152
+	Orders List: 
+0x200b1786580 0
+0x200b17b6480 1
+0x200b17e8060 2
+Message At: 1681755152
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755152
+	Orders List: 
+0x200b1786580 0
+0x200b17b6480 1
+0x200b17e8060 2
+0x200b1817f60 3
+Message At: 1681755152
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755152
+	Current state: ExecuteOrdersState
+Message At: 1681755152
+	Orders List: 
+0x200b1786580 0
+0x200b17b6480 1
+0x200b17e8060 2
+0x200b1817f60 3
+Message At: 1681755152
+	Current state: ReinforcementsState
+Message At: 1681755152
+	Current state: IssueOrdersState
+Message At: 1681755153
+	Orders List: 
+0x200b2cd2400 0
+Message At: 1681755153
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755153
+	Orders List: 
+0x200b2cd2400 0
+0x200b2d02300 1
+Message At: 1681755153
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755153
+	Orders List: 
+0x200b2cd2400 0
+0x200b2d02300 1
+0x200b2d33ed0 2
+Message At: 1681755153
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755153
+	Orders List: 
+0x200b2cd2400 0
+0x200b2d02300 1
+0x200b2d33ed0 2
+0x200b2d63dd0 3
+Message At: 1681755153
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755153
+	Current state: ExecuteOrdersState
+Message At: 1681755153
+	Orders List: 
+0x200b2cd2400 0
+0x200b2d02300 1
+0x200b2d33ed0 2
+0x200b2d63dd0 3
+Message At: 1681755153
+	Current state: ReinforcementsState
+Message At: 1681755153
+	Current state: IssueOrdersState
+Message At: 1681755153
+	Orders List: 
+0x200b421e400 0
+Message At: 1681755153
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755153
+	Orders List: 
+0x200b421e400 0
+0x200b424e300 1
+Message At: 1681755153
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755153
+	Orders List: 
+0x200b421e400 0
+0x200b424e300 1
+0x200b427fed0 2
+Message At: 1681755153
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755153
+	Orders List: 
+0x200b421e400 0
+0x200b424e300 1
+0x200b427fed0 2
+0x200b42afdd0 3
+Message At: 1681755153
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755153
+	Current state: ExecuteOrdersState
+Message At: 1681755153
+	Orders List: 
+0x200b421e400 0
+0x200b424e300 1
+0x200b427fed0 2
+0x200b42afdd0 3
+Message At: 1681755153
+	Current state: ReinforcementsState
+Message At: 1681755153
+	Current state: IssueOrdersState
+Message At: 1681755154
+	Orders List: 
+0x200b576b580 0
+Message At: 1681755154
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755154
+	Orders List: 
+0x200b576b580 0
+0x200b579b480 1
+Message At: 1681755154
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755154
+	Orders List: 
+0x200b576b580 0
+0x200b579b480 1
+0x200b57cd060 2
+Message At: 1681755154
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755154
+	Orders List: 
+0x200b576b580 0
+0x200b579b480 1
+0x200b57cd060 2
+0x200b57fcf60 3
+Message At: 1681755154
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755154
+	Current state: ExecuteOrdersState
+Message At: 1681755154
+	Orders List: 
+0x200b576b580 0
+0x200b579b480 1
+0x200b57cd060 2
+0x200b57fcf60 3
+Message At: 1681755154
+	Current state: ReinforcementsState
+Message At: 1681755154
+	Current state: IssueOrdersState
+Message At: 1681755154
+	Orders List: 
+0x200b6cb7400 0
+Message At: 1681755154
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755154
+	Orders List: 
+0x200b6cb7400 0
+0x200b6ce7300 1
+Message At: 1681755154
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755154
+	Orders List: 
+0x200b6cb7400 0
+0x200b6ce7300 1
+0x200b6d18ed0 2
+Message At: 1681755154
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755154
+	Orders List: 
+0x200b6cb7400 0
+0x200b6ce7300 1
+0x200b6d18ed0 2
+0x200b6d48dd0 3
+Message At: 1681755154
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755154
+	Current state: ExecuteOrdersState
+Message At: 1681755154
+	Orders List: 
+0x200b6cb7400 0
+0x200b6ce7300 1
+0x200b6d18ed0 2
+0x200b6d48dd0 3
+Message At: 1681755155
+	Current state: ReinforcementsState
+Message At: 1681755155
+	Current state: IssueOrdersState
+Message At: 1681755155
+	Orders List: 
+0x200b8203400 0
+Message At: 1681755155
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755155
+	Orders List: 
+0x200b8203400 0
+0x200b8233300 1
+Message At: 1681755155
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755155
+	Orders List: 
+0x200b8203400 0
+0x200b8233300 1
+0x200b8264ed0 2
+Message At: 1681755155
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755155
+	Orders List: 
+0x200b8203400 0
+0x200b8233300 1
+0x200b8264ed0 2
+0x200b8294dd0 3
+Message At: 1681755155
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755155
+	Current state: ExecuteOrdersState
+Message At: 1681755155
+	Orders List: 
+0x200b8203400 0
+0x200b8233300 1
+0x200b8264ed0 2
+0x200b8294dd0 3
+Message At: 1681755155
+	Current state: ReinforcementsState
+Message At: 1681755155
+	Current state: IssueOrdersState
+Message At: 1681755155
+	Orders List: 
+0x200b9750580 0
+Message At: 1681755155
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755155
+	Orders List: 
+0x200b9750580 0
+0x200b9780480 1
+Message At: 1681755155
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755155
+	Orders List: 
+0x200b9750580 0
+0x200b9780480 1
+0x200b97b2060 2
+Message At: 1681755155
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755155
+	Orders List: 
+0x200b9750580 0
+0x200b9780480 1
+0x200b97b2060 2
+0x200b97e1f60 3
+Message At: 1681755155
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755155
+	Current state: ExecuteOrdersState
+Message At: 1681755156
+	Orders List: 
+0x200b9750580 0
+0x200b9780480 1
+0x200b97b2060 2
+0x200b97e1f60 3
+Message At: 1681755156
+	Current state: ReinforcementsState
+Message At: 1681755156
+	Current state: IssueOrdersState
+Message At: 1681755156
+	Orders List: 
+0x200bac9c0f0 0
+Message At: 1681755156
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755156
+	Orders List: 
+0x200bac9c0f0 0
+0x200baccbfe0 1
+Message At: 1681755156
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755156
+	Orders List: 
+0x200bac9c0f0 0
+0x200baccbfe0 1
+0x200bacfdbb0 2
+Message At: 1681755156
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755156
+	Orders List: 
+0x200bac9c0f0 0
+0x200baccbfe0 1
+0x200bacfdbb0 2
+0x200bad2dab0 3
+Message At: 1681755156
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755156
+	Current state: ExecuteOrdersState
+Message At: 1681755156
+	Orders List: 
+0x200bac9c0f0 0
+0x200baccbfe0 1
+0x200bacfdbb0 2
+0x200bad2dab0 3
+Message At: 1681755156
+	Current state: ReinforcementsState
+Message At: 1681755156
+	Current state: IssueOrdersState
+Message At: 1681755156
+	Orders List: 
+0x200bc1e9060 0
+Message At: 1681755156
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755156
+	Orders List: 
+0x200bc1e9060 0
+0x200bc218f60 1
+Message At: 1681755156
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755157
+	Orders List: 
+0x200bc1e9060 0
+0x200bc218f60 1
+0x200bc24ab30 2
+Message At: 1681755157
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755157
+	Orders List: 
+0x200bc1e9060 0
+0x200bc218f60 1
+0x200bc24ab30 2
+0x200bc27aa20 3
+Message At: 1681755157
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755157
+	Current state: ExecuteOrdersState
+Message At: 1681755157
+	Orders List: 
+0x200bc1e9060 0
+0x200bc218f60 1
+0x200bc24ab30 2
+0x200bc27aa20 3
+Message At: 1681755157
+	Current state: ReinforcementsState
+Message At: 1681755157
+	Current state: IssueOrdersState
+Message At: 1681755157
+	Orders List: 
+0x200bd734fb0 0
+Message At: 1681755157
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755157
+	Orders List: 
+0x200bd734fb0 0
+0x200bd764ed0 1
+Message At: 1681755157
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755157
+	Orders List: 
+0x200bd734fb0 0
+0x200bd764ed0 1
+0x200bd796ab0 2
+Message At: 1681755157
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755157
+	Orders List: 
+0x200bd734fb0 0
+0x200bd764ed0 1
+0x200bd796ab0 2
+0x200bd7c69a0 3
+Message At: 1681755157
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755157
+	Current state: ExecuteOrdersState
+Message At: 1681755157
+	Orders List: 
+0x200bd734fb0 0
+0x200bd764ed0 1
+0x200bd796ab0 2
+0x200bd7c69a0 3
+Message At: 1681755157
+	Current state: ReinforcementsState
+Message At: 1681755157
+	Current state: IssueOrdersState
+Message At: 1681755157
+	Orders List: 
+0x200bec80a20 0
+Message At: 1681755157
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755157
+	Orders List: 
+0x200bec80a20 0
+0x200becb0920 1
+Message At: 1681755157
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755158
+	Orders List: 
+0x200bec80a20 0
+0x200becb0920 1
+0x200bece2500 2
+Message At: 1681755158
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755158
+	Orders List: 
+0x200bec80a20 0
+0x200becb0920 1
+0x200bece2500 2
+0x200bed12400 3
+Message At: 1681755158
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755158
+	Current state: ExecuteOrdersState
+Message At: 1681755158
+	Orders List: 
+0x200bec80a20 0
+0x200becb0920 1
+0x200bece2500 2
+0x200bed12400 3
+Message At: 1681755158
+	Current state: ReinforcementsState
+Message At: 1681755158
+	Current state: IssueOrdersState
+Message At: 1681755158
+	Orders List: 
+0x200c01cd580 0
+Message At: 1681755158
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755158
+	Orders List: 
+0x200c01cd580 0
+0x200c01fd480 1
+Message At: 1681755158
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755158
+	Orders List: 
+0x200c01cd580 0
+0x200c01fd480 1
+0x200c022f060 2
+Message At: 1681755158
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755158
+	Orders List: 
+0x200c01cd580 0
+0x200c01fd480 1
+0x200c022f060 2
+0x200c025ef60 3
+Message At: 1681755158
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755158
+	Current state: ExecuteOrdersState
+Message At: 1681755158
+	Orders List: 
+0x200c01cd580 0
+0x200c01fd480 1
+0x200c022f060 2
+0x200c025ef60 3
+Message At: 1681755158
+	Current state: ReinforcementsState
+Message At: 1681755158
+	Current state: IssueOrdersState
+Message At: 1681755158
+	Orders List: 
+0x200c1719400 0
+Message At: 1681755158
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755158
+	Orders List: 
+0x200c1719400 0
+0x200c1749300 1
+Message At: 1681755158
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755158
+	Orders List: 
+0x200c1719400 0
+0x200c1749300 1
+0x200c177aed0 2
+Message At: 1681755158
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755158
+	Orders List: 
+0x200c1719400 0
+0x200c1749300 1
+0x200c177aed0 2
+0x200c17aadd0 3
+Message At: 1681755158
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755158
+	Current state: ExecuteOrdersState
+Message At: 1681755159
+	Orders List: 
+0x200c1719400 0
+0x200c1749300 1
+0x200c177aed0 2
+0x200c17aadd0 3
+Message At: 1681755159
+	Current state: ReinforcementsState
+Message At: 1681755159
+	Current state: IssueOrdersState
+Message At: 1681755159
+	Orders List: 
+0x200c2c65400 0
+Message At: 1681755159
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755159
+	Orders List: 
+0x200c2c65400 0
+0x200c2c95300 1
+Message At: 1681755159
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755159
+	Orders List: 
+0x200c2c65400 0
+0x200c2c95300 1
+0x200c2cc6ed0 2
+Message At: 1681755159
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755159
+	Orders List: 
+0x200c2c65400 0
+0x200c2c95300 1
+0x200c2cc6ed0 2
+0x200c2cf6dd0 3
+Message At: 1681755159
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755159
+	Current state: ExecuteOrdersState
+Message At: 1681755159
+	Orders List: 
+0x200c2c65400 0
+0x200c2c95300 1
+0x200c2cc6ed0 2
+0x200c2cf6dd0 3
+Message At: 1681755159
+	Current state: ReinforcementsState
+Message At: 1681755159
+	Current state: IssueOrdersState
+Message At: 1681755160
+	Orders List: 
+0x200c41b2500 0
+Message At: 1681755160
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755160
+	Orders List: 
+0x200c41b2500 0
+0x200c41e2400 1
+Message At: 1681755160
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755160
+	Orders List: 
+0x200c41b2500 0
+0x200c41e2400 1
+0x200c4213fe0 2
+Message At: 1681755160
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755160
+	Orders List: 
+0x200c41b2500 0
+0x200c41e2400 1
+0x200c4213fe0 2
+0x200c4243ed0 3
+Message At: 1681755160
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755160
+	Current state: ExecuteOrdersState
+Message At: 1681755160
+	Orders List: 
+0x200c41b2500 0
+0x200c41e2400 1
+0x200c4213fe0 2
+0x200c4243ed0 3
+Message At: 1681755160
+	Current state: ReinforcementsState
+Message At: 1681755160
+	Current state: IssueOrdersState
+Message At: 1681755160
+	Orders List: 
+0x200c56fe400 0
+Message At: 1681755160
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755160
+	Orders List: 
+0x200c56fe400 0
+0x200c572e300 1
+Message At: 1681755160
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755160
+	Orders List: 
+0x200c56fe400 0
+0x200c572e300 1
+0x200c575fed0 2
+Message At: 1681755160
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755160
+	Orders List: 
+0x200c56fe400 0
+0x200c572e300 1
+0x200c575fed0 2
+0x200c578fdd0 3
+Message At: 1681755160
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755160
+	Current state: ExecuteOrdersState
+Message At: 1681755160
+	Orders List: 
+0x200c56fe400 0
+0x200c572e300 1
+0x200c575fed0 2
+0x200c578fdd0 3
+Message At: 1681755160
+	Current state: ReinforcementsState
+Message At: 1681755160
+	Current state: IssueOrdersState
+Message At: 1681755161
+	Orders List: 
+0x200c6c4a400 0
+Message At: 1681755161
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755161
+	Orders List: 
+0x200c6c4a400 0
+0x200c6c7a300 1
+Message At: 1681755161
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755161
+	Orders List: 
+0x200c6c4a400 0
+0x200c6c7a300 1
+0x200c6cabed0 2
+Message At: 1681755161
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755161
+	Orders List: 
+0x200c6c4a400 0
+0x200c6c7a300 1
+0x200c6cabed0 2
+0x200c6cdbdd0 3
+Message At: 1681755161
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755161
+	Current state: ExecuteOrdersState
+Message At: 1681755161
+	Orders List: 
+0x200c6c4a400 0
+0x200c6c7a300 1
+0x200c6cabed0 2
+0x200c6cdbdd0 3
+Message At: 1681755161
+	Current state: ReinforcementsState
+Message At: 1681755161
+	Current state: IssueOrdersState
+Message At: 1681755161
+	Orders List: 
+0x200c8197580 0
+Message At: 1681755161
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755161
+	Orders List: 
+0x200c8197580 0
+0x200c81c7480 1
+Message At: 1681755161
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755161
+	Orders List: 
+0x200c8197580 0
+0x200c81c7480 1
+0x200c81f9060 2
+Message At: 1681755161
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755161
+	Orders List: 
+0x200c8197580 0
+0x200c81c7480 1
+0x200c81f9060 2
+0x200c8228f60 3
+Message At: 1681755161
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755161
+	Current state: ExecuteOrdersState
+Message At: 1681755161
+	Orders List: 
+0x200c8197580 0
+0x200c81c7480 1
+0x200c81f9060 2
+0x200c8228f60 3
+Message At: 1681755161
+	Current state: ReinforcementsState
+Message At: 1681755161
+	Current state: IssueOrdersState
+Message At: 1681755162
+	Orders List: 
+0x200c96e3400 0
+Message At: 1681755162
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755162
+	Orders List: 
+0x200c96e3400 0
+0x200c9713300 1
+Message At: 1681755162
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755162
+	Orders List: 
+0x200c96e3400 0
+0x200c9713300 1
+0x200c9744ed0 2
+Message At: 1681755162
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755162
+	Orders List: 
+0x200c96e3400 0
+0x200c9713300 1
+0x200c9744ed0 2
+0x200c9774dd0 3
+Message At: 1681755162
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755162
+	Current state: ExecuteOrdersState
+Message At: 1681755162
+	Orders List: 
+0x200c96e3400 0
+0x200c9713300 1
+0x200c9744ed0 2
+0x200c9774dd0 3
+Message At: 1681755162
+	Current state: ReinforcementsState
+Message At: 1681755162
+	Current state: IssueOrdersState
+Message At: 1681755162
+	Orders List: 
+0x200cac2f400 0
+Message At: 1681755162
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755162
+	Orders List: 
+0x200cac2f400 0
+0x200cac5f300 1
+Message At: 1681755162
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755162
+	Orders List: 
+0x200cac2f400 0
+0x200cac5f300 1
+0x200cac90ed0 2
+Message At: 1681755162
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755162
+	Orders List: 
+0x200cac2f400 0
+0x200cac5f300 1
+0x200cac90ed0 2
+0x200cacc0dd0 3
+Message At: 1681755162
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755162
+	Current state: ExecuteOrdersState
+Message At: 1681755162
+	Orders List: 
+0x200cac2f400 0
+0x200cac5f300 1
+0x200cac90ed0 2
+0x200cacc0dd0 3
+Message At: 1681755162
+	Current state: ReinforcementsState
+Message At: 1681755162
+	Current state: IssueOrdersState
+Message At: 1681755163
+	Orders List: 
+0x200cc17c580 0
+Message At: 1681755163
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755163
+	Orders List: 
+0x200cc17c580 0
+0x200cc1ac480 1
+Message At: 1681755163
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755163
+	Orders List: 
+0x200cc17c580 0
+0x200cc1ac480 1
+0x200cc1de060 2
+Message At: 1681755163
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755163
+	Orders List: 
+0x200cc17c580 0
+0x200cc1ac480 1
+0x200cc1de060 2
+0x200cc20df60 3
+Message At: 1681755163
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755163
+	Current state: ExecuteOrdersState
+Message At: 1681755163
+	Orders List: 
+0x200cc17c580 0
+0x200cc1ac480 1
+0x200cc1de060 2
+0x200cc20df60 3
+Message At: 1681755163
+	Current state: ReinforcementsState
+Message At: 1681755163
+	Current state: IssueOrdersState
+Message At: 1681755163
+	Orders List: 
+0x200cd6c8400 0
+Message At: 1681755163
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755163
+	Orders List: 
+0x200cd6c8400 0
+0x200cd6f8300 1
+Message At: 1681755163
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755163
+	Orders List: 
+0x200cd6c8400 0
+0x200cd6f8300 1
+0x200cd729ed0 2
+Message At: 1681755163
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755163
+	Orders List: 
+0x200cd6c8400 0
+0x200cd6f8300 1
+0x200cd729ed0 2
+0x200cd759dd0 3
+Message At: 1681755163
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755163
+	Current state: ExecuteOrdersState
+Message At: 1681755163
+	Orders List: 
+0x200cd6c8400 0
+0x200cd6f8300 1
+0x200cd729ed0 2
+0x200cd759dd0 3
+Message At: 1681755163
+	Current state: ReinforcementsState
+Message At: 1681755163
+	Current state: IssueOrdersState
+Message At: 1681755164
+	Orders List: 
+0x200cec14400 0
+Message At: 1681755164
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755164
+	Orders List: 
+0x200cec14400 0
+0x200cec44300 1
+Message At: 1681755164
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755164
+	Orders List: 
+0x200cec14400 0
+0x200cec44300 1
+0x200cec75ed0 2
+Message At: 1681755164
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755164
+	Orders List: 
+0x200cec14400 0
+0x200cec44300 1
+0x200cec75ed0 2
+0x200ceca5dd0 3
+Message At: 1681755164
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755164
+	Current state: ExecuteOrdersState
+Message At: 1681755164
+	Orders List: 
+0x200cec14400 0
+0x200cec44300 1
+0x200cec75ed0 2
+0x200ceca5dd0 3
+Message At: 1681755164
+	Current state: ReinforcementsState
+Message At: 1681755164
+	Current state: IssueOrdersState
+Message At: 1681755164
+	Orders List: 
+0x200d0161580 0
+Message At: 1681755164
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755164
+	Orders List: 
+0x200d0161580 0
+0x200d0191480 1
+Message At: 1681755164
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755164
+	Orders List: 
+0x200d0161580 0
+0x200d0191480 1
+0x200d01c3060 2
+Message At: 1681755164
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755164
+	Orders List: 
+0x200d0161580 0
+0x200d0191480 1
+0x200d01c3060 2
+0x200d01f2f60 3
+Message At: 1681755164
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755164
+	Current state: ExecuteOrdersState
+Message At: 1681755164
+	Orders List: 
+0x200d0161580 0
+0x200d0191480 1
+0x200d01c3060 2
+0x200d01f2f60 3
+Message At: 1681755164
+	Current state: ReinforcementsState
+Message At: 1681755164
+	Current state: IssueOrdersState
+Message At: 1681755165
+	Orders List: 
+0x200d16ad400 0
+Message At: 1681755165
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755165
+	Orders List: 
+0x200d16ad400 0
+0x200d16dd300 1
+Message At: 1681755165
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755165
+	Orders List: 
+0x200d16ad400 0
+0x200d16dd300 1
+0x200d170eed0 2
+Message At: 1681755165
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755165
+	Orders List: 
+0x200d16ad400 0
+0x200d16dd300 1
+0x200d170eed0 2
+0x200d173edd0 3
+Message At: 1681755165
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755165
+	Current state: ExecuteOrdersState
+Message At: 1681755165
+	Orders List: 
+0x200d16ad400 0
+0x200d16dd300 1
+0x200d170eed0 2
+0x200d173edd0 3
+Message At: 1681755165
+	Current state: ReinforcementsState
+Message At: 1681755165
+	Current state: IssueOrdersState
+Message At: 1681755165
+	Orders List: 
+0x200d2bf9400 0
+Message At: 1681755165
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755165
+	Orders List: 
+0x200d2bf9400 0
+0x200d2c29300 1
+Message At: 1681755165
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755165
+	Orders List: 
+0x200d2bf9400 0
+0x200d2c29300 1
+0x200d2c5aed0 2
+Message At: 1681755165
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755165
+	Orders List: 
+0x200d2bf9400 0
+0x200d2c29300 1
+0x200d2c5aed0 2
+0x200d2c8add0 3
+Message At: 1681755165
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755165
+	Current state: ExecuteOrdersState
+Message At: 1681755165
+	Orders List: 
+0x200d2bf9400 0
+0x200d2c29300 1
+0x200d2c5aed0 2
+0x200d2c8add0 3
+Message At: 1681755165
+	Current state: ReinforcementsState
+Message At: 1681755166
+	Current state: IssueOrdersState
+Message At: 1681755166
+	Orders List: 
+0x200d4146580 0
+Message At: 1681755166
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755166
+	Orders List: 
+0x200d4146580 0
+0x200d4176480 1
+Message At: 1681755166
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755166
+	Orders List: 
+0x200d4146580 0
+0x200d4176480 1
+0x200d41a8060 2
+Message At: 1681755166
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755166
+	Orders List: 
+0x200d4146580 0
+0x200d4176480 1
+0x200d41a8060 2
+0x200d41d7f60 3
+Message At: 1681755166
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755166
+	Current state: ExecuteOrdersState
+Message At: 1681755166
+	Orders List: 
+0x200d4146580 0
+0x200d4176480 1
+0x200d41a8060 2
+0x200d41d7f60 3
+Message At: 1681755166
+	Current state: ReinforcementsState
+Message At: 1681755166
+	Current state: IssueOrdersState
+Message At: 1681755166
+	Orders List: 
+0x200d5692400 0
+Message At: 1681755166
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755166
+	Orders List: 
+0x200d5692400 0
+0x200d56c2300 1
+Message At: 1681755166
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755166
+	Orders List: 
+0x200d5692400 0
+0x200d56c2300 1
+0x200d56f3ed0 2
+Message At: 1681755166
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755166
+	Orders List: 
+0x200d5692400 0
+0x200d56c2300 1
+0x200d56f3ed0 2
+0x200d5723dd0 3
+Message At: 1681755166
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755166
+	Current state: ExecuteOrdersState
+Message At: 1681755167
+	Orders List: 
+0x200d5692400 0
+0x200d56c2300 1
+0x200d56f3ed0 2
+0x200d5723dd0 3
+Message At: 1681755167
+	Current state: ReinforcementsState
+Message At: 1681755167
+	Current state: IssueOrdersState
+Message At: 1681755167
+	Orders List: 
+0x200d6bde400 0
+Message At: 1681755167
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755167
+	Orders List: 
+0x200d6bde400 0
+0x200d6c0e300 1
+Message At: 1681755167
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755167
+	Orders List: 
+0x200d6bde400 0
+0x200d6c0e300 1
+0x200d6c3fed0 2
+Message At: 1681755167
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755167
+	Orders List: 
+0x200d6bde400 0
+0x200d6c0e300 1
+0x200d6c3fed0 2
+0x200d6c6fdd0 3
+Message At: 1681755167
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755167
+	Current state: ExecuteOrdersState
+Message At: 1681755167
+	Orders List: 
+0x200d6bde400 0
+0x200d6c0e300 1
+0x200d6c3fed0 2
+0x200d6c6fdd0 3
+Message At: 1681755167
+	Current state: ReinforcementsState
+Message At: 1681755167
+	Current state: IssueOrdersState
+Message At: 1681755167
+	Orders List: 
+0x200d812b580 0
+Message At: 1681755167
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755167
+	Orders List: 
+0x200d812b580 0
+0x200d815b480 1
+Message At: 1681755168
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755168
+	Orders List: 
+0x200d812b580 0
+0x200d815b480 1
+0x200d818d060 2
+Message At: 1681755168
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755168
+	Orders List: 
+0x200d812b580 0
+0x200d815b480 1
+0x200d818d060 2
+0x200d81bcf60 3
+Message At: 1681755168
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755168
+	Current state: ExecuteOrdersState
+Message At: 1681755168
+	Orders List: 
+0x200d812b580 0
+0x200d815b480 1
+0x200d818d060 2
+0x200d81bcf60 3
+Message At: 1681755168
+	Current state: ReinforcementsState
+Message At: 1681755168
+	Current state: IssueOrdersState
+Message At: 1681755168
+	Orders List: 
+0x200d9677400 0
+Message At: 1681755168
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755168
+	Orders List: 
+0x200d9677400 0
+0x200d96a7300 1
+Message At: 1681755168
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755168
+	Orders List: 
+0x200d9677400 0
+0x200d96a7300 1
+0x200d96d8ed0 2
+Message At: 1681755168
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755168
+	Orders List: 
+0x200d9677400 0
+0x200d96a7300 1
+0x200d96d8ed0 2
+0x200d9708dd0 3
+Message At: 1681755168
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755168
+	Current state: ExecuteOrdersState
+Message At: 1681755168
+	Orders List: 
+0x200d9677400 0
+0x200d96a7300 1
+0x200d96d8ed0 2
+0x200d9708dd0 3
+Message At: 1681755168
+	Current state: ReinforcementsState
+Message At: 1681755168
+	Current state: IssueOrdersState
+Message At: 1681755169
+	Orders List: 
+0x200dabc3400 0
+Message At: 1681755169
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755169
+	Orders List: 
+0x200dabc3400 0
+0x200dabf3300 1
+Message At: 1681755169
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755169
+	Orders List: 
+0x200dabc3400 0
+0x200dabf3300 1
+0x200dac25fb0 2
+Message At: 1681755169
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755169
+	Orders List: 
+0x200dabc3400 0
+0x200dabf3300 1
+0x200dac25fb0 2
+0x200dac55ed0 3
+Message At: 1681755169
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755169
+	Current state: ExecuteOrdersState
+Message At: 1681755169
+	Orders List: 
+0x200dabc3400 0
+0x200dabf3300 1
+0x200dac25fb0 2
+0x200dac55ed0 3
+Message At: 1681755169
+	Current state: ReinforcementsState
+Message At: 1681755169
+	Current state: IssueOrdersState
+Message At: 1681755169
+	Orders List: 
+0x200dc110580 0
+Message At: 1681755169
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755169
+	Orders List: 
+0x200dc110580 0
+0x200dc140480 1
+Message At: 1681755169
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755169
+	Orders List: 
+0x200dc110580 0
+0x200dc140480 1
+0x200dc172060 2
+Message At: 1681755169
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755169
+	Orders List: 
+0x200dc110580 0
+0x200dc140480 1
+0x200dc172060 2
+0x200dc1a1f60 3
+Message At: 1681755169
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755169
+	Current state: ExecuteOrdersState
+Message At: 1681755169
+	Orders List: 
+0x200dc110580 0
+0x200dc140480 1
+0x200dc172060 2
+0x200dc1a1f60 3
+Message At: 1681755169
+	Current state: ReinforcementsState
+Message At: 1681755169
+	Current state: IssueOrdersState
+Message At: 1681755170
+	Orders List: 
+0x200dd65c0f0 0
+Message At: 1681755170
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755170
+	Orders List: 
+0x200dd65c0f0 0
+0x200dd68bfe0 1
+Message At: 1681755170
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755170
+	Orders List: 
+0x200dd65c0f0 0
+0x200dd68bfe0 1
+0x200dd6bdbb0 2
+Message At: 1681755170
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755170
+	Orders List: 
+0x200dd65c0f0 0
+0x200dd68bfe0 1
+0x200dd6bdbb0 2
+0x200dd6edab0 3
+Message At: 1681755170
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755170
+	Current state: ExecuteOrdersState
+Message At: 1681755170
+	Orders List: 
+0x200dd65c0f0 0
+0x200dd68bfe0 1
+0x200dd6bdbb0 2
+0x200dd6edab0 3
+Message At: 1681755170
+	Current state: ReinforcementsState
+Message At: 1681755170
+	Current state: IssueOrdersState
+Message At: 1681755170
+	Orders List: 
+0x200deba8cc0 0
+Message At: 1681755170
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755170
+	Orders List: 
+0x200deba8cc0 0
+0x200debd8bb0 1
+Message At: 1681755170
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755170
+	Orders List: 
+0x200deba8cc0 0
+0x200debd8bb0 1
+0x200dec0a790 2
+Message At: 1681755170
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755170
+	Orders List: 
+0x200deba8cc0 0
+0x200debd8bb0 1
+0x200dec0a790 2
+0x200dec3a680 3
+Message At: 1681755170
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755170
+	Current state: ExecuteOrdersState
+Message At: 1681755170
+	Orders List: 
+0x200deba8cc0 0
+0x200debd8bb0 1
+0x200dec0a790 2
+0x200dec3a680 3
+Message At: 1681755171
+	Current state: ReinforcementsState
+Message At: 1681755171
+	Current state: IssueOrdersState
+Message At: 1681755171
+	Orders List: 
+0x200e00f46c0 0
+Message At: 1681755171
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755171
+	Orders List: 
+0x200e00f46c0 0
+0x200e01245c0 1
+Message At: 1681755171
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755171
+	Orders List: 
+0x200e00f46c0 0
+0x200e01245c0 1
+0x200e01561b0 2
+Message At: 1681755171
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755171
+	Orders List: 
+0x200e00f46c0 0
+0x200e01245c0 1
+0x200e01561b0 2
+0x200e01860b0 3
+Message At: 1681755171
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755171
+	Current state: ExecuteOrdersState
+Message At: 1681755171
+	Orders List: 
+0x200e00f46c0 0
+0x200e01245c0 1
+0x200e01561b0 2
+0x200e01860b0 3
+Message At: 1681755171
+	Current state: ReinforcementsState
+Message At: 1681755171
+	Current state: IssueOrdersState
+Message At: 1681755171
+	Orders List: 
+0x200e1640580 0
+Message At: 1681755171
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755171
+	Orders List: 
+0x200e1640580 0
+0x200e1670480 1
+Message At: 1681755171
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755171
+	Orders List: 
+0x200e1640580 0
+0x200e1670480 1
+0x200e16a2060 2
+Message At: 1681755171
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755171
+	Orders List: 
+0x200e1640580 0
+0x200e1670480 1
+0x200e16a2060 2
+0x200e16d1f60 3
+Message At: 1681755172
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755172
+	Current state: ExecuteOrdersState
+Message At: 1681755172
+	Orders List: 
+0x200e1640580 0
+0x200e1670480 1
+0x200e16a2060 2
+0x200e16d1f60 3
+Message At: 1681755172
+	Current state: ReinforcementsState
+Message At: 1681755172
+	Current state: IssueOrdersState
+Message At: 1681755172
+	Orders List: 
+0x200e2b8d400 0
+Message At: 1681755172
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755172
+	Orders List: 
+0x200e2b8d400 0
+0x200e2bbd300 1
+Message At: 1681755172
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755172
+	Orders List: 
+0x200e2b8d400 0
+0x200e2bbd300 1
+0x200e2beeed0 2
+Message At: 1681755172
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755172
+	Orders List: 
+0x200e2b8d400 0
+0x200e2bbd300 1
+0x200e2beeed0 2
+0x200e2c1edd0 3
+Message At: 1681755172
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755172
+	Current state: ExecuteOrdersState
+Message At: 1681755172
+	Orders List: 
+0x200e2b8d400 0
+0x200e2bbd300 1
+0x200e2beeed0 2
+0x200e2c1edd0 3
+Message At: 1681755172
+	Current state: ReinforcementsState
+Message At: 1681755172
+	Current state: IssueOrdersState
+Message At: 1681755173
+	Orders List: 
+0x200e40d9400 0
+Message At: 1681755173
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755173
+	Orders List: 
+0x200e40d9400 0
+0x200e4109300 1
+Message At: 1681755173
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755173
+	Orders List: 
+0x200e40d9400 0
+0x200e4109300 1
+0x200e413aed0 2
+Message At: 1681755173
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755173
+	Orders List: 
+0x200e40d9400 0
+0x200e4109300 1
+0x200e413aed0 2
+0x200e416add0 3
+Message At: 1681755173
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755173
+	Current state: ExecuteOrdersState
+Message At: 1681755173
+	Orders List: 
+0x200e40d9400 0
+0x200e4109300 1
+0x200e413aed0 2
+0x200e416add0 3
+Message At: 1681755173
+	Current state: ReinforcementsState
+Message At: 1681755173
+	Current state: IssueOrdersState
+Message At: 1681755173
+	Orders List: 
+0x200e5625400 0
+Message At: 1681755173
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755173
+	Orders List: 
+0x200e5625400 0
+0x200e5655300 1
+Message At: 1681755173
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755173
+	Orders List: 
+0x200e5625400 0
+0x200e5655300 1
+0x200e5686ed0 2
+Message At: 1681755173
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755173
+	Orders List: 
+0x200e5625400 0
+0x200e5655300 1
+0x200e5686ed0 2
+0x200e56b6dd0 3
+Message At: 1681755173
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755173
+	Current state: ExecuteOrdersState
+Message At: 1681755173
+	Orders List: 
+0x200e5625400 0
+0x200e5655300 1
+0x200e5686ed0 2
+0x200e56b6dd0 3
+Message At: 1681755173
+	Current state: ReinforcementsState
+Message At: 1681755173
+	Current state: IssueOrdersState
+Message At: 1681755174
+	Orders List: 
+0x200e6b72580 0
+Message At: 1681755174
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755174
+	Orders List: 
+0x200e6b72580 0
+0x200e6ba2480 1
+Message At: 1681755174
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755174
+	Orders List: 
+0x200e6b72580 0
+0x200e6ba2480 1
+0x200e6bd4060 2
+Message At: 1681755174
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755174
+	Orders List: 
+0x200e6b72580 0
+0x200e6ba2480 1
+0x200e6bd4060 2
+0x200e6c03f60 3
+Message At: 1681755174
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755174
+	Current state: ExecuteOrdersState
+Message At: 1681755174
+	Orders List: 
+0x200e6b72580 0
+0x200e6ba2480 1
+0x200e6bd4060 2
+0x200e6c03f60 3
+Message At: 1681755174
+	Current state: ReinforcementsState
+Message At: 1681755174
+	Current state: IssueOrdersState
+Message At: 1681755174
+	Orders List: 
+0x200e80be400 0
+Message At: 1681755174
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755174
+	Orders List: 
+0x200e80be400 0
+0x200e80ee300 1
+Message At: 1681755174
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755174
+	Orders List: 
+0x200e80be400 0
+0x200e80ee300 1
+0x200e811fed0 2
+Message At: 1681755174
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755174
+	Orders List: 
+0x200e80be400 0
+0x200e80ee300 1
+0x200e811fed0 2
+0x200e814fdd0 3
+Message At: 1681755174
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755174
+	Current state: ExecuteOrdersState
+Message At: 1681755174
+	Orders List: 
+0x200e80be400 0
+0x200e80ee300 1
+0x200e811fed0 2
+0x200e814fdd0 3
+Message At: 1681755174
+	Current state: ReinforcementsState
+Message At: 1681755174
+	Current state: IssueOrdersState
+Message At: 1681755175
+	Orders List: 
+0x200e960a400 0
+Message At: 1681755175
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755175
+	Orders List: 
+0x200e960a400 0
+0x200e963a300 1
+Message At: 1681755175
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755175
+	Orders List: 
+0x200e960a400 0
+0x200e963a300 1
+0x200e966bed0 2
+Message At: 1681755175
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755175
+	Orders List: 
+0x200e960a400 0
+0x200e963a300 1
+0x200e966bed0 2
+0x200e969bdd0 3
+Message At: 1681755175
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755175
+	Current state: ExecuteOrdersState
+Message At: 1681755175
+	Orders List: 
+0x200e960a400 0
+0x200e963a300 1
+0x200e966bed0 2
+0x200e969bdd0 3
+Message At: 1681755175
+	Current state: ReinforcementsState
+Message At: 1681755175
+	Current state: IssueOrdersState
+Message At: 1681755175
+	Orders List: 
+0x200eab57580 0
+Message At: 1681755175
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755175
+	Orders List: 
+0x200eab57580 0
+0x200eab87480 1
+Message At: 1681755175
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755175
+	Orders List: 
+0x200eab57580 0
+0x200eab87480 1
+0x200eabb9060 2
+Message At: 1681755175
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755175
+	Orders List: 
+0x200eab57580 0
+0x200eab87480 1
+0x200eabb9060 2
+0x200eabe8f60 3
+Message At: 1681755175
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755175
+	Current state: ExecuteOrdersState
+Message At: 1681755176
+	Orders List: 
+0x200eab57580 0
+0x200eab87480 1
+0x200eabb9060 2
+0x200eabe8f60 3
+Message At: 1681755176
+	Current state: ReinforcementsState
+Message At: 1681755176
+	Current state: IssueOrdersState
+Message At: 1681755176
+	Orders List: 
+0x200ec0a3400 0
+Message At: 1681755176
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755176
+	Orders List: 
+0x200ec0a3400 0
+0x200ec0d3300 1
+Message At: 1681755176
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755176
+	Orders List: 
+0x200ec0a3400 0
+0x200ec0d3300 1
+0x200ec104ed0 2
+Message At: 1681755176
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755176
+	Orders List: 
+0x200ec0a3400 0
+0x200ec0d3300 1
+0x200ec104ed0 2
+0x200ec134dd0 3
+Message At: 1681755176
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755176
+	Current state: ExecuteOrdersState
+Message At: 1681755176
+	Orders List: 
+0x200ec0a3400 0
+0x200ec0d3300 1
+0x200ec104ed0 2
+0x200ec134dd0 3
+Message At: 1681755176
+	Current state: ReinforcementsState
+Message At: 1681755176
+	Current state: IssueOrdersState
+Message At: 1681755176
+	Orders List: 
+0x200ed5ef400 0
+Message At: 1681755176
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755177
+	Orders List: 
+0x200ed5ef400 0
+0x200ed61f300 1
+Message At: 1681755177
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755177
+	Orders List: 
+0x200ed5ef400 0
+0x200ed61f300 1
+0x200ed650ed0 2
+Message At: 1681755177
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755177
+	Orders List: 
+0x200ed5ef400 0
+0x200ed61f300 1
+0x200ed650ed0 2
+0x200ed680dd0 3
+Message At: 1681755177
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755177
+	Current state: ExecuteOrdersState
+Message At: 1681755177
+	Orders List: 
+0x200ed5ef400 0
+0x200ed61f300 1
+0x200ed650ed0 2
+0x200ed680dd0 3
+Message At: 1681755177
+	Current state: ReinforcementsState
+Message At: 1681755177
+	Current state: IssueOrdersState
+Message At: 1681755177
+	Orders List: 
+0x200eeb3c580 0
+Message At: 1681755177
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755177
+	Orders List: 
+0x200eeb3c580 0
+0x200eeb6c480 1
+Message At: 1681755177
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755177
+	Orders List: 
+0x200eeb3c580 0
+0x200eeb6c480 1
+0x200eeb9e060 2
+Message At: 1681755177
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755177
+	Orders List: 
+0x200eeb3c580 0
+0x200eeb6c480 1
+0x200eeb9e060 2
+0x200eebcdf60 3
+Message At: 1681755177
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755177
+	Current state: ExecuteOrdersState
+Message At: 1681755177
+	Orders List: 
+0x200eeb3c580 0
+0x200eeb6c480 1
+0x200eeb9e060 2
+0x200eebcdf60 3
+Message At: 1681755177
+	Current state: ReinforcementsState
+Message At: 1681755177
+	Current state: IssueOrdersState
+Message At: 1681755178
+	Orders List: 
+0x200f0088400 0
+Message At: 1681755178
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755178
+	Orders List: 
+0x200f0088400 0
+0x200f00b8300 1
+Message At: 1681755178
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755178
+	Orders List: 
+0x200f0088400 0
+0x200f00b8300 1
+0x200f00e9ed0 2
+Message At: 1681755178
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755178
+	Orders List: 
+0x200f0088400 0
+0x200f00b8300 1
+0x200f00e9ed0 2
+0x200f0119dd0 3
+Message At: 1681755178
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755178
+	Current state: ExecuteOrdersState
+Message At: 1681755178
+	Orders List: 
+0x200f0088400 0
+0x200f00b8300 1
+0x200f00e9ed0 2
+0x200f0119dd0 3
+Message At: 1681755178
+	Current state: ReinforcementsState
+Message At: 1681755178
+	Current state: IssueOrdersState
+Message At: 1681755178
+	Orders List: 
+0x200f15d4400 0
+Message At: 1681755178
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755178
+	Orders List: 
+0x200f15d4400 0
+0x200f1604300 1
+Message At: 1681755178
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755178
+	Orders List: 
+0x200f15d4400 0
+0x200f1604300 1
+0x200f1635ed0 2
+Message At: 1681755178
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755178
+	Orders List: 
+0x200f15d4400 0
+0x200f1604300 1
+0x200f1635ed0 2
+0x200f1665dd0 3
+Message At: 1681755178
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755178
+	Current state: ExecuteOrdersState
+Message At: 1681755178
+	Orders List: 
+0x200f15d4400 0
+0x200f1604300 1
+0x200f1635ed0 2
+0x200f1665dd0 3
+Message At: 1681755178
+	Current state: ReinforcementsState
+Message At: 1681755178
+	Current state: IssueOrdersState
+Message At: 1681755179
+	Orders List: 
+0x200f2b21580 0
+Message At: 1681755179
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755179
+	Orders List: 
+0x200f2b21580 0
+0x200f2b51480 1
+Message At: 1681755179
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755179
+	Orders List: 
+0x200f2b21580 0
+0x200f2b51480 1
+0x200f2b83060 2
+Message At: 1681755179
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755179
+	Orders List: 
+0x200f2b21580 0
+0x200f2b51480 1
+0x200f2b83060 2
+0x200f2bb2f60 3
+Message At: 1681755179
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755179
+	Current state: ExecuteOrdersState
+Message At: 1681755179
+	Orders List: 
+0x200f2b21580 0
+0x200f2b51480 1
+0x200f2b83060 2
+0x200f2bb2f60 3
+Message At: 1681755179
+	Current state: ReinforcementsState
+Message At: 1681755179
+	Current state: IssueOrdersState
+Message At: 1681755179
+	Orders List: 
+0x200f406d400 0
+Message At: 1681755179
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755179
+	Orders List: 
+0x200f406d400 0
+0x200f409d300 1
+Message At: 1681755179
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755179
+	Orders List: 
+0x200f406d400 0
+0x200f409d300 1
+0x200f40ceed0 2
+Message At: 1681755179
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755179
+	Orders List: 
+0x200f406d400 0
+0x200f409d300 1
+0x200f40ceed0 2
+0x200f40fedd0 3
+Message At: 1681755179
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755179
+	Current state: ExecuteOrdersState
+Message At: 1681755179
+	Orders List: 
+0x200f406d400 0
+0x200f409d300 1
+0x200f40ceed0 2
+0x200f40fedd0 3
+Message At: 1681755180
+	Current state: ReinforcementsState
+Message At: 1681755180
+	Current state: IssueOrdersState
+Message At: 1681755180
+	Orders List: 
+0x200f55b9400 0
+Message At: 1681755180
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755180
+	Orders List: 
+0x200f55b9400 0
+0x200f55e9300 1
+Message At: 1681755180
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755180
+	Orders List: 
+0x200f55b9400 0
+0x200f55e9300 1
+0x200f561aed0 2
+Message At: 1681755180
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755180
+	Orders List: 
+0x200f55b9400 0
+0x200f55e9300 1
+0x200f561aed0 2
+0x200f564add0 3
+Message At: 1681755180
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755180
+	Current state: ExecuteOrdersState
+Message At: 1681755180
+	Orders List: 
+0x200f55b9400 0
+0x200f55e9300 1
+0x200f561aed0 2
+0x200f564add0 3
+Message At: 1681755180
+	Current state: ReinforcementsState
+Message At: 1681755180
+	Current state: IssueOrdersState
+Message At: 1681755181
+	Orders List: 
+0x200f6b06580 0
+Message At: 1681755181
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755181
+	Orders List: 
+0x200f6b06580 0
+0x200f6b36480 1
+Message At: 1681755181
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755181
+	Orders List: 
+0x200f6b06580 0
+0x200f6b36480 1
+0x200f6b68060 2
+Message At: 1681755181
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755181
+	Orders List: 
+0x200f6b06580 0
+0x200f6b36480 1
+0x200f6b68060 2
+0x200f6b97f60 3
+Message At: 1681755181
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755181
+	Current state: ExecuteOrdersState
+Message At: 1681755181
+	Orders List: 
+0x200f6b06580 0
+0x200f6b36480 1
+0x200f6b68060 2
+0x200f6b97f60 3
+Message At: 1681755181
+	Current state: ReinforcementsState
+Message At: 1681755181
+	Current state: IssueOrdersState
+Message At: 1681755181
+	Orders List: 
+0x200f8052400 0
+Message At: 1681755181
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755181
+	Orders List: 
+0x200f8052400 0
+0x200f8082300 1
+Message At: 1681755181
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755181
+	Orders List: 
+0x200f8052400 0
+0x200f8082300 1
+0x200f80b3ed0 2
+Message At: 1681755181
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755181
+	Orders List: 
+0x200f8052400 0
+0x200f8082300 1
+0x200f80b3ed0 2
+0x200f80e3dd0 3
+Message At: 1681755181
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755181
+	Current state: ExecuteOrdersState
+Message At: 1681755182
+	Orders List: 
+0x200f8052400 0
+0x200f8082300 1
+0x200f80b3ed0 2
+0x200f80e3dd0 3
+Message At: 1681755182
+	Current state: ReinforcementsState
+Message At: 1681755182
+	Current state: IssueOrdersState
+Message At: 1681755182
+	Orders List: 
+0x200f959e400 0
+Message At: 1681755182
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755182
+	Orders List: 
+0x200f959e400 0
+0x200f95ce300 1
+Message At: 1681755182
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755182
+	Orders List: 
+0x200f959e400 0
+0x200f95ce300 1
+0x200f95ffed0 2
+Message At: 1681755182
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755182
+	Orders List: 
+0x200f959e400 0
+0x200f95ce300 1
+0x200f95ffed0 2
+0x200f962fdd0 3
+Message At: 1681755182
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755182
+	Current state: ExecuteOrdersState
+Message At: 1681755182
+	Orders List: 
+0x200f959e400 0
+0x200f95ce300 1
+0x200f95ffed0 2
+0x200f962fdd0 3
+Message At: 1681755182
+	Current state: ReinforcementsState
+Message At: 1681755182
+	Current state: IssueOrdersState
+Message At: 1681755183
+	Orders List: 
+0x200faaeb580 0
+Message At: 1681755183
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755183
+	Orders List: 
+0x200faaeb580 0
+0x200fab1b480 1
+Message At: 1681755183
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755183
+	Orders List: 
+0x200faaeb580 0
+0x200fab1b480 1
+0x200fab4d060 2
+Message At: 1681755183
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755183
+	Orders List: 
+0x200faaeb580 0
+0x200fab1b480 1
+0x200fab4d060 2
+0x200fab7cf60 3
+Message At: 1681755183
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755183
+	Current state: ExecuteOrdersState
+Message At: 1681755183
+	Orders List: 
+0x200faaeb580 0
+0x200fab1b480 1
+0x200fab4d060 2
+0x200fab7cf60 3
+Message At: 1681755183
+	Current state: ReinforcementsState
+Message At: 1681755183
+	Current state: IssueOrdersState
+Message At: 1681755183
+	Orders List: 
+0x200fc037400 0
+Message At: 1681755183
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755183
+	Orders List: 
+0x200fc037400 0
+0x200fc067300 1
+Message At: 1681755183
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755183
+	Orders List: 
+0x200fc037400 0
+0x200fc067300 1
+0x200fc098ed0 2
+Message At: 1681755183
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755183
+	Orders List: 
+0x200fc037400 0
+0x200fc067300 1
+0x200fc098ed0 2
+0x200fc0c8dd0 3
+Message At: 1681755183
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755183
+	Current state: ExecuteOrdersState
+Message At: 1681755183
+	Orders List: 
+0x200fc037400 0
+0x200fc067300 1
+0x200fc098ed0 2
+0x200fc0c8dd0 3
+Message At: 1681755183
+	Current state: ReinforcementsState
+Message At: 1681755183
+	Current state: IssueOrdersState
+Message At: 1681755184
+	Orders List: 
+0x200fd5844c0 0
+Message At: 1681755184
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755184
+	Orders List: 
+0x200fd5844c0 0
+0x200fd5b43c0 1
+Message At: 1681755184
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755184
+	Orders List: 
+0x200fd5844c0 0
+0x200fd5b43c0 1
+0x200fd5e5fb0 2
+Message At: 1681755184
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755184
+	Orders List: 
+0x200fd5844c0 0
+0x200fd5b43c0 1
+0x200fd5e5fb0 2
+0x200fd615ed0 3
+Message At: 1681755184
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755184
+	Current state: ExecuteOrdersState
+Message At: 1681755184
+	Orders List: 
+0x200fd5844c0 0
+0x200fd5b43c0 1
+0x200fd5e5fb0 2
+0x200fd615ed0 3
+Message At: 1681755184
+	Current state: ReinforcementsState
+Message At: 1681755184
+	Current state: IssueOrdersState
+Message At: 1681755184
+	Orders List: 
+0x200fead0400 0
+Message At: 1681755184
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755184
+	Orders List: 
+0x200fead0400 0
+0x200feb00300 1
+Message At: 1681755184
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755184
+	Orders List: 
+0x200fead0400 0
+0x200feb00300 1
+0x200feb31ed0 2
+Message At: 1681755184
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755184
+	Orders List: 
+0x200fead0400 0
+0x200feb00300 1
+0x200feb31ed0 2
+0x200feb61dd0 3
+Message At: 1681755184
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755184
+	Current state: ExecuteOrdersState
+Message At: 1681755184
+	Orders List: 
+0x200fead0400 0
+0x200feb00300 1
+0x200feb31ed0 2
+0x200feb61dd0 3
+Message At: 1681755184
+	Current state: ReinforcementsState
+Message At: 1681755185
+	Current state: IssueOrdersState
+Message At: 1681755185
+	Orders List: 
+0x20080afc400 0
+Message At: 1681755185
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755185
+	Orders List: 
+0x20080afc400 0
+0x20080b2c300 1
+Message At: 1681755185
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755185
+	Orders List: 
+0x20080afc400 0
+0x20080b2c300 1
+0x20080b5ded0 2
+Message At: 1681755185
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755185
+	Orders List: 
+0x20080afc400 0
+0x20080b2c300 1
+0x20080b5ded0 2
+0x20080b8ddd0 3
+Message At: 1681755185
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755185
+	Current state: ExecuteOrdersState
+Message At: 1681755185
+	Orders List: 
+0x20080afc400 0
+0x20080b2c300 1
+0x20080b5ded0 2
+0x20080b8ddd0 3
+Message At: 1681755185
+	Current state: ReinforcementsState
+Message At: 1681755185
+	Current state: IssueOrdersState
+Message At: 1681755186
+	Orders List: 
+0x20082049400 0
+Message At: 1681755186
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755186
+	Orders List: 
+0x20082049400 0
+0x20082079300 1
+Message At: 1681755186
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755186
+	Orders List: 
+0x20082049400 0
+0x20082079300 1
+0x200820aaed0 2
+Message At: 1681755186
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755186
+	Orders List: 
+0x20082049400 0
+0x20082079300 1
+0x200820aaed0 2
+0x200820dadd0 3
+Message At: 1681755186
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755186
+	Current state: ExecuteOrdersState
+Message At: 1681755186
+	Orders List: 
+0x20082049400 0
+0x20082079300 1
+0x200820aaed0 2
+0x200820dadd0 3
+Message At: 1681755186
+	Current state: ReinforcementsState
+Message At: 1681755186
+	Current state: IssueOrdersState
+Message At: 1681755186
+	Orders List: 
+0x20083595400 0
+Message At: 1681755186
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755186
+	Orders List: 
+0x20083595400 0
+0x200835c5300 1
+Message At: 1681755186
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755186
+	Orders List: 
+0x20083595400 0
+0x200835c5300 1
+0x200835f6ed0 2
+Message At: 1681755186
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755186
+	Orders List: 
+0x20083595400 0
+0x200835c5300 1
+0x200835f6ed0 2
+0x20083626dd0 3
+Message At: 1681755186
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755186
+	Current state: ExecuteOrdersState
+Message At: 1681755186
+	Orders List: 
+0x20083595400 0
+0x200835c5300 1
+0x200835f6ed0 2
+0x20083626dd0 3
+Message At: 1681755186
+	Current state: ReinforcementsState
+Message At: 1681755186
+	Current state: IssueOrdersState
+Message At: 1681755187
+	Orders List: 
+0x20084ae1400 0
+Message At: 1681755187
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755187
+	Orders List: 
+0x20084ae1400 0
+0x20084b11300 1
+Message At: 1681755187
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755187
+	Orders List: 
+0x20084ae1400 0
+0x20084b11300 1
+0x20084b42ed0 2
+Message At: 1681755187
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755187
+	Orders List: 
+0x20084ae1400 0
+0x20084b11300 1
+0x20084b42ed0 2
+0x20084b72dd0 3
+Message At: 1681755187
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755187
+	Current state: ExecuteOrdersState
+Message At: 1681755187
+	Orders List: 
+0x20084ae1400 0
+0x20084b11300 1
+0x20084b42ed0 2
+0x20084b72dd0 3
+Message At: 1681755187
+	Current state: ReinforcementsState
+Message At: 1681755187
+	Current state: IssueOrdersState
+Message At: 1681755187
+	Orders List: 
+0x2008602e500 0
+Message At: 1681755187
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755187
+	Orders List: 
+0x2008602e500 0
+0x2008605e400 1
+Message At: 1681755187
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755187
+	Orders List: 
+0x2008602e500 0
+0x2008605e400 1
+0x2008608ffe0 2
+Message At: 1681755187
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755187
+	Orders List: 
+0x2008602e500 0
+0x2008605e400 1
+0x2008608ffe0 2
+0x200860bfed0 3
+Message At: 1681755187
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755187
+	Current state: ExecuteOrdersState
+Message At: 1681755188
+	Orders List: 
+0x2008602e500 0
+0x2008605e400 1
+0x2008608ffe0 2
+0x200860bfed0 3
+Message At: 1681755188
+	Current state: ReinforcementsState
+Message At: 1681755188
+	Current state: IssueOrdersState
+Message At: 1681755188
+	Orders List: 
+0x2008757a400 0
+Message At: 1681755188
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755188
+	Orders List: 
+0x2008757a400 0
+0x200875aa300 1
+Message At: 1681755188
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755188
+	Orders List: 
+0x2008757a400 0
+0x200875aa300 1
+0x200875dbed0 2
+Message At: 1681755188
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755188
+	Orders List: 
+0x2008757a400 0
+0x200875aa300 1
+0x200875dbed0 2
+0x2008760bdd0 3
+Message At: 1681755188
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755188
+	Current state: ExecuteOrdersState
+Message At: 1681755188
+	Orders List: 
+0x2008757a400 0
+0x200875aa300 1
+0x200875dbed0 2
+0x2008760bdd0 3
+Message At: 1681755188
+	Current state: ReinforcementsState
+Message At: 1681755188
+	Current state: IssueOrdersState
+Message At: 1681755188
+	Orders List: 
+0x20088ac6400 0
+Message At: 1681755188
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755188
+	Orders List: 
+0x20088ac6400 0
+0x20088af6300 1
+Message At: 1681755188
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755188
+	Orders List: 
+0x20088ac6400 0
+0x20088af6300 1
+0x20088b27ed0 2
+Message At: 1681755188
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755188
+	Orders List: 
+0x20088ac6400 0
+0x20088af6300 1
+0x20088b27ed0 2
+0x20088b57dd0 3
+Message At: 1681755188
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755188
+	Current state: ExecuteOrdersState
+Message At: 1681755188
+	Orders List: 
+0x20088ac6400 0
+0x20088af6300 1
+0x20088b27ed0 2
+0x20088b57dd0 3
+Message At: 1681755188
+	Current state: ReinforcementsState
+Message At: 1681755188
+	Current state: IssueOrdersState
+Message At: 1681755189
+	Orders List: 
+0x2008a013580 0
+Message At: 1681755189
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755189
+	Orders List: 
+0x2008a013580 0
+0x2008a043480 1
+Message At: 1681755189
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755189
+	Orders List: 
+0x2008a013580 0
+0x2008a043480 1
+0x2008a075060 2
+Message At: 1681755189
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755189
+	Orders List: 
+0x2008a013580 0
+0x2008a043480 1
+0x2008a075060 2
+0x2008a0a4f60 3
+Message At: 1681755189
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755189
+	Current state: ExecuteOrdersState
+Message At: 1681755189
+	Orders List: 
+0x2008a013580 0
+0x2008a043480 1
+0x2008a075060 2
+0x2008a0a4f60 3
+Message At: 1681755189
+	Current state: ReinforcementsState
+Message At: 1681755189
+	Current state: IssueOrdersState
+Message At: 1681755189
+	Orders List: 
+0x2008b55f400 0
+Message At: 1681755189
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755189
+	Orders List: 
+0x2008b55f400 0
+0x2008b58f300 1
+Message At: 1681755189
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755190
+	Orders List: 
+0x2008b55f400 0
+0x2008b58f300 1
+0x2008b5c0ed0 2
+Message At: 1681755190
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755190
+	Orders List: 
+0x2008b55f400 0
+0x2008b58f300 1
+0x2008b5c0ed0 2
+0x2008b5f0dd0 3
+Message At: 1681755190
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755190
+	Current state: ExecuteOrdersState
+Message At: 1681755190
+	Orders List: 
+0x2008b55f400 0
+0x2008b58f300 1
+0x2008b5c0ed0 2
+0x2008b5f0dd0 3
+Message At: 1681755190
+	Current state: ReinforcementsState
+Message At: 1681755190
+	Current state: IssueOrdersState
+Message At: 1681755190
+	Orders List: 
+0x2008caab400 0
+Message At: 1681755190
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755190
+	Orders List: 
+0x2008caab400 0
+0x2008cadb300 1
+Message At: 1681755190
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755190
+	Orders List: 
+0x2008caab400 0
+0x2008cadb300 1
+0x2008cb0ced0 2
+Message At: 1681755190
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755190
+	Orders List: 
+0x2008caab400 0
+0x2008cadb300 1
+0x2008cb0ced0 2
+0x2008cb3cdd0 3
+Message At: 1681755190
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755190
+	Current state: ExecuteOrdersState
+Message At: 1681755190
+	Orders List: 
+0x2008caab400 0
+0x2008cadb300 1
+0x2008cb0ced0 2
+0x2008cb3cdd0 3
+Message At: 1681755190
+	Current state: ReinforcementsState
+Message At: 1681755190
+	Current state: IssueOrdersState
+Message At: 1681755190
+	Orders List: 
+0x2008dff8580 0
+Message At: 1681755190
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755190
+	Orders List: 
+0x2008dff8580 0
+0x2008e028480 1
+Message At: 1681755190
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755190
+	Orders List: 
+0x2008dff8580 0
+0x2008e028480 1
+0x2008e05a060 2
+Message At: 1681755190
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755190
+	Orders List: 
+0x2008dff8580 0
+0x2008e028480 1
+0x2008e05a060 2
+0x2008e089f60 3
+Message At: 1681755190
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755190
+	Current state: ExecuteOrdersState
+Message At: 1681755191
+	Orders List: 
+0x2008dff8580 0
+0x2008e028480 1
+0x2008e05a060 2
+0x2008e089f60 3
+Message At: 1681755191
+	Current state: ReinforcementsState
+Message At: 1681755191
+	Current state: IssueOrdersState
+Message At: 1681755191
+	Orders List: 
+0x2008f544400 0
+Message At: 1681755191
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755191
+	Orders List: 
+0x2008f544400 0
+0x2008f574300 1
+Message At: 1681755191
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755191
+	Orders List: 
+0x2008f544400 0
+0x2008f574300 1
+0x2008f5a5ed0 2
+Message At: 1681755191
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755191
+	Orders List: 
+0x2008f544400 0
+0x2008f574300 1
+0x2008f5a5ed0 2
+0x2008f5d5dd0 3
+Message At: 1681755191
+	Added To List: 
+	Order: Advance
+Advance
+Message At: 1681755191
+	Current state: ExecuteOrdersState
+Message At: 1681755191
+	Orders List: 
+0x2008f544400 0
+0x2008f574300 1
+0x2008f5a5ed0 2
+0x2008f5d5dd0 3
+Message At: 1681755191
+	Current state: ReinforcementsState
+Message At: 1681755191
+	Current state: IssueOrdersState
+Message At: 1681755269
+	autoplay
+Beginning Autoplay
+Message At: 1681755269
+	loadmap koth.map
+Loading koth.map
+moving to MapLoadedState.
+Message At: 1681755269
+	Current state: maploaded
+Message At: 1681755269
+	validatemap
+Map Valid
+Message At: 1681755269
+	Current state: mapvalidated
+Message At: 1681755269
+	addplayer p1|cheater
+Adding p1|cheater
+moving to PlayersAddedState.
+Message At: 1681755269
+	Current state: playersadded
+Message At: 1681755269
+	addplayer p2|benevolent
+Adding p2|benevolent
+moving to PlayersAddedState.
+Message At: 1681755269
+	Current state: playersadded
+Message At: 1681755269
+	gamestart
+Starting Game
+Message At: 1681755269
+	Current state: ReinforcementsState
+Message At: 1681755269
+	Current state: IssueOrdersState
+Message At: 1681755269
+	Orders List: 
+0x14348b4e180 0
+Message At: 1681755269
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681755269
+	Orders List: 
+0x14348b4e180 0
+0x14348b55060 1
+Message At: 1681755269
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681755269
+	Orders List: 
+0x14348b4e180 0
+0x14348b55060 1
+0x14348b58250 2
+Message At: 1681755269
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681755269
+	Orders List: 
+0x14348b4e180 0
+0x14348b55060 1
+0x14348b58250 2
+0x14348b60280 3
+Message At: 1681755269
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681755269
+	Orders List: 
+0x14348b4e180 0
+0x14348b55060 1
+0x14348b58250 2
+0x14348b60280 3
+0x14348b631d0 4
+Message At: 1681755269
+	Added To List: 
+	Order: Deploy
+Deploy
+Message At: 1681755269
+	Current state: ExecuteOrdersState
+Message At: 1681755269
+	Orders List: 
+0x14348b4e180 0
+0x14348b55060 1
+0x14348b58250 2
+0x14348b60280 3
+0x14348b631d0 4

@@ -914,22 +914,22 @@ void PlayersAddedState::update(GameEngine *game)
                     cout << players[i].playername << ": " << players[i].reinforcementPool << endl;
                 }
 
-                cout << "Players cards: " << endl;
-                for (int i = 0; i < numPlayers; i++)
-                {
-                    for (int j = 0; j < 2; j++)
-                    {
-                        players[i].cardsOwned->addCard(deck->draw());
-                    }
+                // cout << "Players cards: " << endl;
+                // for (int i = 0; i < numPlayers; i++)
+                // {
+                //     for (int j = 0; j < 2; j++)
+                //     {
+                //         players[i].cardsOwned->addCard(deck->draw());
+                //     }
 
-                    cout << players[i].playername << ": ";
-                    for (int k = 0; k < 2; k++)
-                    {
-                        if (players[i].cardsOwned->size >= 2)
-                        cout << players[i].cardsOwned->cards[k]->type << ", ";
-                    }
-                    cout << endl;
-                }
+                //     cout << players[i].playername << ": ";
+                //     for (int k = 0; k < 2; k++)
+                //     {
+                //         if (players[i].cardsOwned->size >= 2)
+                //         cout << players[i].cardsOwned->cards[k]->type << ", ";
+                //     }
+                //     cout << endl;
+                // }
                 cout << endl;
 
                 // for (int i = 0; i < numPlayers; i++)
@@ -1289,18 +1289,23 @@ void ExecuteOrdersState::update(GameEngine *game)
         }
 
         // check if player has won
-        if (players[i].territoriesOwned.size() == map.GetMap().GetTerritories().size())
+        if (numTerritoriesOwned == map.GetMap().GetTerritories().size())
         {
             cout << "Player " << players[i].playername << " has won the game!" << endl;
             // set the game state to win state
             if (game->isInTournamentMode())
             {
+                
                 game->setState(new WinState());
                 game->onGameWon(players[i].playername);
+                game->update();
                 return;
             }
-            else
+            else{
+                
                 game->setState(new WinState());
+
+            }
         }
 
         else if (game->drawCondition())
@@ -1308,12 +1313,15 @@ void ExecuteOrdersState::update(GameEngine *game)
             cout << "Draw condition met" << endl;
             if (game->isInTournamentMode())
             {
+               
                 game->setState(new WinState());
                 game->onGameWon();
+                game->update();
                 return;
             }
-            else
+            else{
                 game->setState(new WinState());
+            }
         }
         
         // Player p = playerQueue.front();
@@ -1398,7 +1406,8 @@ void WinState::update(GameEngine *game)
         game->onGameWon(game->getTournamentInfo().weightedChoosePlayer());
         return;
     }
-
+    numPlayers= 0;
+    players.clear();
     string input;
     string command;
     string parameter;

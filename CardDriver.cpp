@@ -20,7 +20,7 @@ int main() {
 	}
 	cout << count << " cards left in the Deck" << endl;
 	count = 0;
-	hand->cards[2]->play(hand,deck);
+	//hand->cards[2]->play(hand,deck);
 	cout << "Cards in Hand: " << endl;
 	hand->printHand();
 
