@@ -227,7 +227,7 @@ void GameEngine::onTournamentStart(TournamentInfo tournamentInfo)
                 commandProcessor->saveCommand(Command("addplayer " + (*(tournamentInfo.players))[k]));
             }
 
-            if (tournamentInfo.autoResolve)
+            if (*tournamentInfo.autoResolve)
             {
                 string nextCommand = "autoresolve";
                 for (int k = 0; k < tournamentInfo.autoResolveWeights->size(); k++)
@@ -375,9 +375,9 @@ void StartState::update(GameEngine *game)
                         weights.push_back(stod(arg));
                     }
                 }
-                else {
-                std::cout << "Invalid argument: " << arg << std::endl;
-                }
+                // else {
+                // std::cout << "Invalid argument: " << arg << std::endl;
+                // }
             }
 
             game->setTournamentInfo(new TournamentInfo(maps, players, gamesPlayed, maxTurns,
@@ -478,9 +478,9 @@ void StartState::update(GameEngine *game)
                         weights.push_back(stod(arg));
                     }
                 }
-                else {
-                std::cout << "Invalid argument: " << arg << std::endl;
-                }
+                // else {
+                // std::cout << "Invalid argument: " << arg << std::endl;
+                // }
             }
 
             game->setTournamentInfo(new TournamentInfo(maps, players, gamesPlayed, maxTurns,

@@ -115,7 +115,7 @@ Command CommandProcessor::getCommand(){
 }
 
 void CommandProcessor::saveCommand(Command input){
-  (*commandQueue).push(new Command(input));
+  //(*commandQueue).push(new Command(input));
   std::ofstream file(logFile, std::ios::app);
   // if (file.is_open()) {
   //     time_t now = time(nullptr);
