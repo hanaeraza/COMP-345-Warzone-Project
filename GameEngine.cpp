@@ -32,17 +32,20 @@ void GameEngine::setState(State *state)
     currentState = state;
 }
 
+// Called to update the game engine
 void GameEngine::update()
 {
     currentState->update(this);
     notify(this);
 }
 
+// stream operator which prints the current state
 ostream& operator<<(ostream& os, const GameEngine& input){
     os << "Current state: " << input.currentState->getName() << endl;
     return os;
 }
 
+// Returns a string using the << operator
 string GameEngine::stringToLog() const
 {
     stringstream stream;
@@ -52,44 +55,54 @@ string GameEngine::stringToLog() const
     return output;
 }
 
+// Set the command processor
 void GameEngine::setCommandProcessor(CommandProcessor *commandProcessor)
 {
     this->commandProcessor = commandProcessor;
     commandProcessor->attach(innerEngineLogger);
 }
 
+// Set the auto command processor
 void GameEngine::setAutoCommandProcessor(string file)
 {
     commandProcessor = new FileCommandProcessorAdapter(file);
     commandProcessor->attach(innerEngineLogger);
 }
 
+// Get the command processor
 CommandProcessor GameEngine::getCommandProcessor()
 {
     return *commandProcessor;
 }
 
+// Get the logger
 LogObserver* GameEngine::getInnerEngineLogger(){
     return innerEngineLogger;
 }
 
+// Set the map loader
 void GameEngine::setMapLoader(MapLoader *input){
     map = *input;
 }
+
+// Return the map loader
 MapLoader GameEngine::getMapLoader(){
     return map;
 }
 
+// Creates a logger and attaches it to the GameEngine
 void GameEngine::generateLogger(string file){
     innerEngineLogger = new LogObserver(file);
     attach(innerEngineLogger);
 }
 
+// Return the current state
 string GameEngine::getCurrentState()
 {
     return currentState->getName();
 }
 
+// TournamentInfo class parametrized constructor
 TournamentInfo::TournamentInfo(vector<string> maps, vector<string> players, unsigned int gamesPlayed, unsigned int maxTurns,
                                LogObserver* loggerInput, bool autoResolve, vector<double> autoResolveWeights){
     this->maps = new vector<string>(maps);
@@ -106,6 +119,7 @@ TournamentInfo::TournamentInfo(vector<string> maps, vector<string> players, unsi
     attach(loggerInput);
 }
 
+// Choose a random player from the list of players
 string TournamentInfo::weightedChoosePlayer(){
     vector<double> weights = *autoResolveWeights;
     vector<string> players = *this->players;
@@ -126,6 +140,7 @@ string TournamentInfo::weightedChoosePlayer(){
     return players[players.size() - 1];
 }
 
+// stream insertion operator for TournamentInfo
 ostream& operator<<(ostream& os, const TournamentInfo& input){
     os << "Tournament Info: " << endl;
     os << "Maps: " << endl;
@@ -162,6 +177,7 @@ ostream& operator<<(ostream& os, const TournamentInfo& input){
     return os;
 }
 
+//Converts the tournament info to a string by calling the << operator
 string TournamentInfo::stringToLog() const
 {
     stringstream stream;
@@ -171,6 +187,7 @@ string TournamentInfo::stringToLog() const
     return output;
 }
 
+//Called when a game is won
 void TournamentInfo::onGameWon(string player)
 {
     (*(winningPlayers))[pair<string, unsigned int>(*currentMap, *currentGame)] = player;
@@ -178,6 +195,7 @@ void TournamentInfo::onGameWon(string player)
     playingGame = &playing;
 }
 
+//Used to call the onGameWon function of TournamentInfo
 void GameEngine::onGameWon(string player)
 {
     tournamentInfo->onGameWon(player);
@@ -238,41 +256,49 @@ void GameEngine::onTournamentStart(TournamentInfo tournamentInfo)
     update();
 }
 
+// Sets the tournament info
 void GameEngine::setTournamentInfo(TournamentInfo* input)
 {
     tournamentInfo = input;
 }
 
+// Sets if the game is in tournament mode
 void GameEngine::setInTournamentMode(bool* input)
 {
     inTournamentMode = input;
 }
 
+// Gets the tournament info
 TournamentInfo GameEngine::getTournamentInfo()
 {
     return *tournamentInfo;
 }
 
+// Gets if the game is in tournament mode
 bool GameEngine::isInTournamentMode()
 {
     return *inTournamentMode;
 }
 
+// Sets the auto resolve
 void GameEngine::setAutoResolve(bool input)
 {
     autoResolve = &input;
 }
 
+// Sets the auto resolve weights
 void GameEngine::setAutoResolveWeights(vector<double> input)
 {
     autoResolveWeights = &input;
 }
 
+// Sets the max turns
 void GameEngine::setMaxTurns(unsigned int input)
 {
     maxTurns = &input;
 }
 
+// Returns true if we should draw the game
 bool GameEngine::drawCondition()
 {
     return *maxTurns != -1 && *maxTurns <= *turnCounter;
