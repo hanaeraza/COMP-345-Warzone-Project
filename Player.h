@@ -15,9 +15,9 @@ using namespace std;
 // Forward declaration
 class Territory;
 class MapLoader;
-
-//Player class
-class Player { 
+// Player class
+class Player
+{
 private:
     vector<string> splitStringByCharacter(const string& input, char delimiter) {
         std::vector<std::string> output;
@@ -38,6 +38,7 @@ private:
         reinforcementPool = 0;
         if (strat == "human") {
             strategy = new HumanPlayerStrategy(); 
+            cout << "human player strat created" << endl;
         }
         else if (strat == "aggressive") {
             strategy = new AggressivePlayerStrategy(); 
@@ -54,17 +55,16 @@ private:
     }
 
 public:
-    PlayerStrategy * strategy; 
+    PlayerStrategy *strategy;
     string playername;
-    Hand *cardsOwned = new Hand(); 
-    vector<Territory> territoriesOwned; 
-    OrdersList ordersList; 
-    vector<string> defenseList; 
+    Hand *cardsOwned = new Hand();
+    vector<Territory> territoriesOwned;
+    OrdersList ordersList;
+    vector<string> defenseList;
     vector<string> attackList;
-    int reinforcementPool; 
-    
+    int reinforcementPool;
 
-    Player() : reinforcementPool(0) {}; //Default constructor
+    Player() : reinforcementPool(0){}; // Default constructor
     Player(string input) {
         vector<string> splitString = splitStringByCharacter(input, '|');
 
@@ -76,36 +76,19 @@ public:
     Player(string name, string strat) {
         initPlayer(name, strat);
     };
-    Player(Hand *cards, vector<Territory> territories, OrdersList orders, vector<string> defend, vector<string> attack, int reinforcements) {
+    Player(Hand *cards, vector<Territory> territories, OrdersList orders, vector<string> defend, vector<string> attack, int reinforcements)
+    {
         cardsOwned = cards;
         territoriesOwned = territories;
         ordersList = orders;
         defenseList = defend;
         attackList = attack;
         reinforcementPool = reinforcements;
-    };
-    Player(const Player& other) {
-        if (other.strategy != nullptr) {
-            if (dynamic_cast<HumanPlayerStrategy*>(other.strategy) != nullptr) {
-                strategy = new HumanPlayerStrategy();
-            }
-            else if (dynamic_cast<AggressivePlayerStrategy*>(other.strategy) != nullptr) {
-                strategy = new AggressivePlayerStrategy();
-            }
-            else if (dynamic_cast<BenevolentPlayerStrategy*>(other.strategy) != nullptr) {
-                strategy = new BenevolentPlayerStrategy();
-            }
-            else if (dynamic_cast<NeutralPlayerStrategy*>(other.strategy) != nullptr) {
-                strategy = new NeutralPlayerStrategy();
-            }
-            else if (dynamic_cast<CheaterPlayerStrategy*>(other.strategy) != nullptr) {
-                strategy = new CheaterPlayerStrategy();
-            }
-        }
-        else {
-            strategy = nullptr;
-        }
 
+    };
+    Player(const Player &other)
+    {
+        strategy = other.strategy;
         playername = other.playername;
         cardsOwned = other.cardsOwned;
         territoriesOwned = other.territoriesOwned;
@@ -113,17 +96,18 @@ public:
         defenseList = other.defenseList;
         attackList = other.attackList;
         reinforcementPool = other.reinforcementPool;
-    }; //Copy constructor
-    ~Player() {}; //Destructor
 
-    //Function declarations (make non static)
+    };           // Copy constructor
+    ~Player(){}; // Destructor
+
+    // Function declarations (make non static)
     vector<string> toDefend();
     vector<string> toAttack();
     void issueOrder(MapLoader currentMap, Deck *deck, int numTerritoriesPerPlayer);
 
     // Stream insertion operators
-    friend ostream& operator <<(ostream& os, const Player& other);
-    bool operator ==(const Player &other);
+    friend ostream &operator<<(ostream &os, const Player &other);
+    bool operator==(const Player &other);
     Player &operator=(const Player &other)
     {
         if (this != &other)
@@ -141,8 +125,5 @@ public:
         return *this;
     }
 };
-
-
-
 
 #endif
