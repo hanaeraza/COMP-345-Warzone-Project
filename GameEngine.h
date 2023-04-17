@@ -96,6 +96,9 @@ public:
 
     void setAutoResolve(bool input);
     void setAutoResolveWeights(vector<double> input);
+
+    void setMaxTurns(unsigned int input);
+    bool drawCondition();
     
 private:
     State* currentState;
@@ -106,6 +109,9 @@ private:
     TournamentInfo* tournamentInfo;
     bool* autoResolve;
     vector<double>* autoResolveWeights;
+
+    unsigned int* turnCounter;
+    unsigned int* maxTurns;
 };
 
 // Abstract class

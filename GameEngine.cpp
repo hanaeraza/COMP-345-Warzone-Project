@@ -191,12 +191,16 @@ void GameEngine::onTournamentStart(TournamentInfo tournamentInfo)
     *inTournamentMode = &tMode;
     this->tournamentInfo = &tournamentInfo;
 
+    maxTurns = tournamentInfo.maxTurns;
+
     for (int i = 0; i < tournamentInfo.maps->size(); i++)
     {
         tournamentInfo.currentMap = &(*(tournamentInfo.maps))[i];
 
         for (int j = 0; j < *(tournamentInfo.gamesPlayed); j++)
         {
+            turnCounter = 0;
+
             commandProcessor->clear();
             commandProcessor->saveCommand(Command("loadmap " + (*(tournamentInfo.maps))[i]));
             commandProcessor->saveCommand(Command("validatemap"));
@@ -264,11 +268,23 @@ void GameEngine::setAutoResolveWeights(vector<double> input)
     autoResolveWeights = &input;
 }
 
+void GameEngine::setMaxTurns(unsigned int input)
+{
+    maxTurns = &input;
+}
+
+bool GameEngine::drawCondition()
+{
+    return *maxTurns != -1 && *maxTurns <= *turnCounter;
+}
+
 // Start state
 void StartState::update(GameEngine *game)
 {
     cout << "-----------------------------------" << endl;
     cout << "Start state." << endl;
+
+    game->setMaxTurns(-1);
 
     string input;
     string command;
@@ -1203,11 +1219,26 @@ void ExecuteOrdersState::update(GameEngine *game)
             if (game->isInTournamentMode())
             {
                 game->setState(new WinState());
+                game->onGameWon(players[i].playername);
                 return;
             }
             else
                 game->setState(new WinState());
         }
+
+        else if (game->drawCondition())
+        {
+            cout << "Draw condition met" << endl;
+            if (game->isInTournamentMode())
+            {
+                game->setState(new WinState());
+                game->onGameWon();
+                return;
+            }
+            else
+                game->setState(new WinState());
+        }
+        
         // Player p = playerQueue.front();
         // playerQueue.pop();
         // playerQueue.push(p);
@@ -1241,6 +1272,7 @@ void ExecuteOrdersState::update(GameEngine *game)
         if (command == "win")
         {
             game->setState(new WinState());
+            game->onGameWon();
             break;
         }
         if (command == "endexecorders")
