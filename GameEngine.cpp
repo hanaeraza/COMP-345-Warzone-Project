@@ -1188,6 +1188,13 @@ void ExecuteOrdersState::update(GameEngine *game)
 
         executeOrdersPhase( players[i]);
 
+        int numTerritoriesOwned = 0;
+        for(int j = 0; j < map.GetMap().GetTerritories().size(); j++){
+            if(map.GetMap().GetTerritories()[j]->GetOwner().playername == players[i].playername){
+                numTerritoriesOwned++;
+            }
+        }
+
         // check if player has won
         if (players[i].territoriesOwned.size() == map.GetMap().GetTerritories().size())
         {
@@ -1208,83 +1215,19 @@ void ExecuteOrdersState::update(GameEngine *game)
 
     //Checking if any player is eliminated
     for(int i = 0; i < numPlayers; i++){
-        if(players[i].territoriesOwned.size() == 0){
+        int numTerritoriesOwned = 0;
+        for(int j = 0; j < map.GetMap().GetTerritories().size(); j++){
+            if(map.GetMap().GetTerritories()[j]->GetOwner().playername == players[i].playername){
+                numTerritoriesOwned++;
+            }
+        }
+        if (numTerritoriesOwned == 0)
+        {
             cout << "Player " << players[i].playername << " has been eliminated from the game!" << endl;
             players.erase(players.begin() + i);
         }
-        // else{
-        //     Player p = playerQueue.front();
-        //     playerQueue.pop();
-        //     playerQueue.push(p);
-        // }
     }
 
-    // for (int i = 0; i < numPlayers; i++)
-    // {
-    //     cout << "Execute Order phase for player: " << playerQueue.front().playername << endl;
-
-    //     for (int i = 0; i < numPlayers; i++)
-    //     {
-    //         cout << "Execute Order phase for player: " << playerQueue.front().playername << endl;
-
-    //         executeOrdersPhase(playerQueue.front());
-
-    //         // check if player has won
-    //         if (playerQueue.front().territoriesOwned.size() == map.GetMap().GetTerritories().size())
-    //         {
-    //             cout << "Player " << playerQueue.front().playername << " has won the game!" << endl;
-    //             // set the game state to win state
-    //             game->setState(new WinState());
-    //         }
-    //         Player p = playerQueue.front();
-    //         playerQueue.pop();
-    //         playerQueue.push(p);
-    //     }
-    //     //Checking if any player is eliminated
-    //     for(int i = 0; i < playerQueue.size(); i++){
-    //         if(playerQueue.front().territoriesOwned.size() == 0){
-    //             cout << "Player " << playerQueue.front().playername << " has been eliminated from the game!" << endl;
-    //             playerQueue.pop();
-    //         }
-    //         else{
-    //             Player p = playerQueue.front();
-    //             playerQueue.pop();
-    //             playerQueue.push(p);
-    //         }
-    //     }
-        
-    //     // check if player has won
-    //     if (playerQueue.front().territoriesOwned.size() == map.GetMap().GetTerritories().size())
-    //     {
-    //         cout << "Player " << playerQueue.front().playername << " has won the game!" << endl;
-    //         // set the game state to win state
-
-    //         Player p = playerQueue.front();
-
-    //         if (game->isInTournamentMode())
-    //         {
-    //             game->setState(new WinState());
-    //             return;
-    //         }
-    //         else
-    //             game->setState(new WinState());
-    //     }
-    //     Player p = playerQueue.front();
-    //     playerQueue.pop();
-    //     playerQueue.push(p);
-    // }
-    // // Checking if any player is eliminated
-    // for(int i = 0; i < playerQueue.size(); i++){
-    //     if(playerQueue.front().territoriesOwned.size() == 0){
-    //         cout << "Player " << playerQueue.front().playername << " has been eliminated from the game!" << endl;
-    //         playerQueue.pop();
-    //     }
-    //     else{
-    //         Player p = playerQueue.front();
-    //         playerQueue.pop();
-    //         playerQueue.push(p);
-    //     }
-    // }   
     string command;
     while (true)
     {
@@ -1297,21 +1240,6 @@ void ExecuteOrdersState::update(GameEngine *game)
         }
         if (command == "win")
         {
-            // std::random_device rd;
-            // std::mt19937 gen(rd());
-            // std::uniform_int_distribution<> uniform(0, playerQueue.size() - 1);
-
-            // int randomPlayer = uniform(gen);
-
-            // for (int i = 0; i < randomPlayer; i++)
-            // {
-            //     Player p = playerQueue.front();
-            //     playerQueue.pop();
-            //     playerQueue.push(p);
-            // }
-
-            // cout << "Player " << playerQueue.front().playername << " has won the game!" << endl;
-
             game->setState(new WinState());
             break;
         }
