@@ -116,7 +116,7 @@ Command CommandProcessor::getCommand(){
 
 void CommandProcessor::saveCommand(Command input){
   //(*commandQueue).push(new Command(input));
-  std::ofstream file(logFile, std::ios::app);
+  //std::ofstream file(logFile, std::ios::app);
   // if (file.is_open()) {
   //     time_t now = time(nullptr);
   //     file << now << "\n " << input << "\n" << *(input.effect);
@@ -200,6 +200,16 @@ void CommandProcessor::readCommand(){
   Command* newCommand = new Command(input);
 
   commandQueue->push(newCommand);
+}
+
+void CommandProcessor::readCommand(string input){
+  Command* newCommand = new Command(input);
+
+  commandQueue->push(newCommand);
+}
+
+void CommandProcessor::readCommand(Command input){
+  commandQueue->push(new Command(input));
 }
 
 string CommandProcessor::stringToLog() const {

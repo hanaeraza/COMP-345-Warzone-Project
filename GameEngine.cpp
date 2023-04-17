@@ -220,11 +220,11 @@ void GameEngine::onTournamentStart(TournamentInfo tournamentInfo)
             turnCounter = 0;
 
             commandProcessor->clear();
-            commandProcessor->saveCommand(Command("loadmap " + (*(tournamentInfo.maps))[i]));
-            commandProcessor->saveCommand(Command("validatemap"));
+            commandProcessor->readCommand(Command("loadmap " + (*(tournamentInfo.maps))[i]));
+            commandProcessor->readCommand(Command("validatemap"));
             for (int k = 0; k < min(6, (int)tournamentInfo.players->size()); k++)
             {
-                commandProcessor->saveCommand(Command("addplayer " + (*(tournamentInfo.players))[k]));
+                commandProcessor->readCommand(Command("addplayer " + (*(tournamentInfo.players))[k]));
             }
 
             if (*tournamentInfo.autoResolve)
@@ -234,7 +234,11 @@ void GameEngine::onTournamentStart(TournamentInfo tournamentInfo)
                 {
                     nextCommand += " " + to_string((*(tournamentInfo.autoResolveWeights))[k]);
                 }
-                commandProcessor->saveCommand(Command("autoresolve"));
+                commandProcessor->readCommand(Command("autoresolve"));
+            }
+            else
+            {
+                commandProcessor->readCommand(Command("gamestart"));
             }
 
             tournamentInfo.currentGame = reinterpret_cast<unsigned int*>(&j);
@@ -903,7 +907,7 @@ void PlayersAddedState::update(GameEngine *game)
                 // }
 
                 game->setState(new ReinforcementsState());
-                break;
+                return;
             }
         }
         

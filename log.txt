@@ -75377,3 +75377,185 @@ Message At: 1681703500
 Loading europe.map
 moving to MapLoadedState.
 Invalid
+Message At: 1681704713
+	Commands:
+	loadmap europe.map
+
+Message At: 1681704713
+	Commands:
+	loadmap europe.map
+
+	validatemap
+
+Message At: 1681704713
+	Commands:
+	loadmap europe.map
+
+	validatemap
+
+	addplayer p1|aggressive
+
+Message At: 1681704713
+	Commands:
+	loadmap europe.map
+
+	validatemap
+
+	addplayer p1|aggressive
+
+	addplayer p2|aggressive
+
+Message At: 1681704835
+	Commands:
+	loadmap europe.map
+
+Message At: 1681704837
+	Commands:
+	loadmap europe.map
+
+	validatemap
+
+Message At: 1681704838
+	Commands:
+	loadmap europe.map
+
+	validatemap
+
+	addplayer p1|aggressive
+
+Message At: 1681704842
+	Commands:
+	loadmap europe.map
+
+	validatemap
+
+	addplayer p1|aggressive
+
+	addplayer p2|aggressive
+
+Message At: 1681704951
+	loadmap europe.map
+Loading europe.map
+moving to MapLoadedState.
+Message At: 1681705234
+	loadmap europe.map
+Loading europe.map
+moving to MapLoadedState.
+Message At: 1681705243
+	Current state: maploaded
+Message At: 1681705245
+	validatemap
+Map Valid
+Message At: 1681705259
+	Current state: mapvalidated
+Message At: 1681705260
+	addplayer p1|aggressive
+Adding p1|aggressive
+moving to PlayersAddedState.
+Message At: 1681705260
+	Current state: playersadded
+Message At: 1681705262
+	addplayer p2|aggressive
+Adding p2|aggressive
+moving to PlayersAddedState.
+Message At: 1681705262
+	Current state: playersadded
+Message At: 1681705271
+	gff
+Invalid
+Message At: 1681705278
+	gamstart
+Invalid
+Message At: 1681705282
+	gamestart
+Starting Game
+Message At: 1681705282
+	Current state: ReinforcementsState
+Message At: 1681705360
+	loadmap europe.map
+Loading europe.map
+moving to MapLoadedState.
+Message At: 1681705360
+	Current state: maploaded
+Message At: 1681705360
+	validatemap
+Map Valid
+Message At: 1681705360
+	Current state: mapvalidated
+Message At: 1681705361
+	addplayer p1|aggressive
+Adding p1|aggressive
+moving to PlayersAddedState.
+Message At: 1681705361
+	Current state: playersadded
+Message At: 1681705362
+	addplayer p2|aggressive
+Adding p2|aggressive
+moving to PlayersAddedState.
+Message At: 1681705362
+	Current state: playersadded
+Message At: 1681705362
+	gamestart
+Starting Game
+Message At: 1681705369
+	issueorder
+Invalid
+Message At: 1681705378
+	endissueorders
+Invalid
+Message At: 1681705449
+	loadmap europe.map
+Loading europe.map
+moving to MapLoadedState.
+Message At: 1681705449
+	Current state: maploaded
+Message At: 1681705450
+	validatemap
+Map Valid
+Message At: 1681705450
+	Current state: mapvalidated
+Message At: 1681705451
+	addplayer p1|aggressive
+Adding p1|aggressive
+moving to PlayersAddedState.
+Message At: 1681705451
+	Current state: playersadded
+Message At: 1681705451
+	addplayer p2|aggressive
+Adding p2|aggressive
+moving to PlayersAddedState.
+Message At: 1681705451
+	Current state: playersadded
+Message At: 1681705451
+	gamestart
+Starting Game
+Message At: 1681705533
+	loadmap europe.map
+Loading europe.map
+moving to MapLoadedState.
+Message At: 1681705533
+	Current state: maploaded
+Message At: 1681705534
+	validatemap
+Map Valid
+Message At: 1681705534
+	Current state: mapvalidated
+Message At: 1681705535
+	addplayer p1|aggressive
+Adding p1|aggressive
+moving to PlayersAddedState.
+Message At: 1681705535
+	Current state: playersadded
+Message At: 1681705536
+	addplayer p2|aggressive
+Adding p2|aggressive
+moving to PlayersAddedState.
+Message At: 1681705536
+	Current state: playersadded
+Message At: 1681705536
+	gamestart
+Starting Game
+Message At: 1681705545
+	Current state: ReinforcementsState
+Message At: 1681705579
+	Current state: IssueOrdersState

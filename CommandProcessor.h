@@ -48,6 +48,8 @@ public:
   bool validate(string currentState);
   bool hasCommand();
   void readCommand();
+  void readCommand(Command input);
+  void readCommand(string input);
   int size();
   void clear();
 
