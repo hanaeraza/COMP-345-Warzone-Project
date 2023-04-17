@@ -9,19 +9,23 @@ class Territory;
 
 class PlayerStrategy {
     public: 
-        virtual void issueOrder(MapLoader currentMap, Deck *deck) = 0; 
-        virtual vector<string> toAttack() = 0; 
-        virtual vector<string> toDefend() = 0; 
+        PlayerStrategy(){
+        }
+        
+        virtual void issueOrder(Player* p, MapLoader currentMap, Deck *deck, int numTerritoriesPerPlayer) = 0; 
+        virtual vector<string> toAttack(Player* p) = 0; 
+        virtual vector<string> toDefend(Player* p) = 0; 
         ~PlayerStrategy() {};
 };
 
 //  requires user interactions to make decisions.
 class HumanPlayerStrategy : public PlayerStrategy {
   public: 
-    void issueOrder(MapLoader currentMap, Deck *deck);
-    vector<string> toAttack();
-    vector<string> toDefend();
+    void issueOrder(Player* p, MapLoader currentMap, Deck *deck, int numTerritoriesPerPlayer);
+    vector<string> toAttack(Player* p);
+    vector<string> toDefend(Player* p);
     ~HumanPlayerStrategy() {};
+    HumanPlayerStrategy() {};
 
 };
 
@@ -29,9 +33,9 @@ class HumanPlayerStrategy : public PlayerStrategy {
 // then always advances to enemy territories until it cannot do so anymore).
 class AggressivePlayerStrategy : public PlayerStrategy {
   public: 
-    void issueOrder(MapLoader currentMap, Deck *deck);
-    vector<string> toAttack();
-    vector<string> toDefend();
+    void issueOrder(Player* p, MapLoader currentMap, Deck *deck, int numTerritoriesPerPlayer);
+    vector<string> toAttack(Player* p);
+    vector<string> toDefend(Player* p);
     ~AggressivePlayerStrategy() {};
 
 };
@@ -41,9 +45,9 @@ class AggressivePlayerStrategy : public PlayerStrategy {
 
 class BenevolentPlayerStrategy : public PlayerStrategy {
   public: 
-    void issueOrder(MapLoader currentMap, Deck *deck);
-    vector<string> toAttack();
-    vector<string> toDefend();
+    void issueOrder(Player* p, MapLoader currentMap, Deck *deck, int numTerritoriesPerPlayer);
+    vector<string> toAttack(Player* p);
+    vector<string> toDefend(Player* p);
     ~BenevolentPlayerStrategy() {};
 
 };
@@ -52,9 +56,9 @@ class BenevolentPlayerStrategy : public PlayerStrategy {
 // computer player that never issues any order. If a Neutral player is attacked, it becomes an Aggressive player.
 class NeutralPlayerStrategy : public PlayerStrategy {
   public: 
-    void issueOrder(MapLoader currentMap, Deck *deck);
-    vector<string> toAttack();
-    vector<string> toDefend();
+    void issueOrder(Player* p, MapLoader currentMap, Deck *deck, int numTerritoriesPerPlayer);
+    vector<string> toAttack(Player* p);
+    vector<string> toDefend(Player* p);
     ~NeutralPlayerStrategy() {};
 
 };
@@ -63,9 +67,9 @@ class NeutralPlayerStrategy : public PlayerStrategy {
 
 class CheaterPlayerStrategy : public PlayerStrategy {
   public: 
-    void issueOrder(MapLoader currentMap, Deck *deck);
-    vector<string> toAttack();
-    vector<string> toDefend();
+    void issueOrder(Player* p, MapLoader currentMap, Deck *deck, int numTerritoriesPerPlayer);
+    vector<string> toAttack(Player* p);
+    vector<string> toDefend(Player* p);
     ~CheaterPlayerStrategy() {};
 
 };
