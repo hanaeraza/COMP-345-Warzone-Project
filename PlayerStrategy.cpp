@@ -126,10 +126,9 @@ void HumanPlayerStrategy::issueOrder(Player *player, MapLoader currentMap, Deck 
             }
             cout << "Choose a Territory to Advance To:"
                  << "\n";
-            // Print out all territories
-            for (int i = 0; i < currentMap.GetMap().GetTerritories().size(); i++)
-            {
-                cout << currentMap.GetMap().GetTerritories().at(i)->GetTerritoryName() << " ";
+            vector<Territory> connectedTerritories = currentMap.GetMap().GetConnections(*currentMap.GetMap().GetTerritories()[index1]);
+            for (int i = 0; i < connectedTerritories.size(); i++) {
+                cout << connectedTerritories.at(i).GetTerritoryName() << " ";
             }
             cout << "\n";
             string territoryToAdvanceToName;
