@@ -14,437 +14,488 @@ using namespace std;
 // issue order
 void HumanPlayerStrategy::issueOrder(Player *player, MapLoader currentMap, Deck *deck, int numTerritoriesPerPlayer)
 {
-    // // Print out territories owned
-    cout << "Order Strategy: Human" << endl;
-    cout << "Territories owned: \n";
-    cout << player->playername << " owns: ";
-    int numTerritories = 0; 
-    // Print out territories owned
+    int numTerritories = 0;
     for (int i = 0; i < currentMap.GetMap().GetTerritories().size(); i++)
     {
         if (currentMap.GetMap().GetTerritories().at(i)->GetOwner() == player->playername)
         {
-            numTerritories++; 
+            numTerritories++;
         }
     }
-        cout << numTerritories << " territories. \n";
-
-    for (int i = 0; i < currentMap.GetMap().GetTerritories().size(); i++)
+    cout << "Order Strategy: Benevolent" << endl;
+    int leastArmies = 1000;
+    if (numTerritories > 0)
     {
-        if (currentMap.GetMap().GetTerritories().at(i)->GetOwner() == player->playername)
-        {
-            cout << currentMap.GetMap().GetTerritories().at(i)->GetTerritoryName() << " ";
-        }
-    }
-    cout << "\n";
-
-    int numTroopsRemaining = player->reinforcementPool;
-
-    // Creating Deploy Orders
-    cout << "Choose a territory to defend:"
-         << "\n";
-    while (true)
-    {
-        string territoryToDefend;
-        cin >> territoryToDefend;
+        // // Print out territories owned
+        cout << "Order Strategy: Human" << endl;
+        cout << "Territories owned: \n";
+        cout << player->playername << " owns: ";
+        int numTerritories = 0;
+        // Print out territories owned
         for (int i = 0; i < currentMap.GetMap().GetTerritories().size(); i++)
         {
-            if (territoryToDefend == currentMap.GetMap().GetTerritories().at(i)->GetTerritoryName() && currentMap.GetMap().GetTerritories().at(i)->GetOwner() == player->playername)
+            if (currentMap.GetMap().GetTerritories().at(i)->GetOwner() == player->playername)
             {
-                cout << "How many armies would you like to deploy in " + currentMap.GetMap().GetTerritories().at(i)->GetTerritoryName() << "\n";
-                cout << "You have " << numTroopsRemaining << " armies remaining to deploy."
-                     << "\n";
-                int numTroopsToDeploy;
-                cin >> numTroopsToDeploy;
-                if (numTroopsToDeploy < 1)
-                {
-                    cout << "You must deploy at least 1 troop. Please try again."
-                         << "\n";
-                }
-                else if (numTroopsToDeploy > numTroopsRemaining)
-                {
-                    cout << "You do not have enough troops to deploy that many. Please try again."
-                         << "\n";
-                }
-
-                else
-                {
-                    Order *deployOrder = new Deploy(*currentMap.GetMap().GetTerritories()[i], player, numTroopsToDeploy);
-                    player->ordersList.addOrder(deployOrder);
-                    cout << "Added deploy order of " << numTroopsToDeploy << " armies on " << territoryToDefend << " to orders list."
-                         << "\n";
-                    player->defenseList.push_back(territoryToDefend);
-                    numTroopsRemaining -= numTroopsToDeploy;
-                }
+                numTerritories++;
             }
         }
-        if (numTroopsRemaining == 0)
-        {
-            cout << "You have deployed all your troops."
-                 << "\n";
-            break;
-        }
-        else
-        {
-            cout << "Choose another territory to defend:"
-                 << "\n";
-        }
-    }
+        cout << numTerritories << " territories. \n";
 
-    // Creating Advance Orders
+        for (int i = 0; i < currentMap.GetMap().GetTerritories().size(); i++)
+        {
+            if (currentMap.GetMap().GetTerritories().at(i)->GetOwner() == player->playername)
+            {
+                cout << currentMap.GetMap().GetTerritories().at(i)->GetTerritoryName() << " ";
+            }
+        }
+        cout << "\n";
 
-    cout << "ADVANCE PHASE: "
-         << "\n";
-    while (true)
-    {
-        cout << "Do you want to issue an Advance Order? (y/n)"
+        int numTroopsRemaining = player->reinforcementPool;
+
+        // Creating Deploy Orders
+        cout << "Choose a territory to defend:"
              << "\n";
-        string answer;
-        cin >> answer;
-        if (answer == "n")
+        while (true)
         {
-            break;
-        }
-        else if (answer == "y")
-        {
+            string territoryToDefend;
+            cin >> territoryToDefend;
+            for (int i = 0; i < currentMap.GetMap().GetTerritories().size(); i++)
+            {
+                if (territoryToDefend == currentMap.GetMap().GetTerritories().at(i)->GetTerritoryName() && currentMap.GetMap().GetTerritories().at(i)->GetOwner() == player->playername)
+                {
+                    cout << "How many armies would you like to deploy in " + currentMap.GetMap().GetTerritories().at(i)->GetTerritoryName() << "\n";
+                    cout << "You have " << numTroopsRemaining << " armies remaining to deploy."
+                         << "\n";
+                    int numTroopsToDeploy;
+                    cin >> numTroopsToDeploy;
+                    if (numTroopsToDeploy < 1)
+                    {
+                        cout << "You must deploy at least 1 troop. Please try again."
+                             << "\n";
+                    }
+                    else if (numTroopsToDeploy > numTroopsRemaining)
+                    {
+                        cout << "You do not have enough troops to deploy that many. Please try again."
+                             << "\n";
+                    }
 
-            Territory territoryToAdvanceFrom;
-            Territory territoryToAdvanceTo;
-            int index1 = 0;
-            int index2 = 0;
-            cout << "Choose a Territory to Advance From:"
-                 << "\n";
-            // Print out territories owned
-            for (int i = 0; i < currentMap.GetMap().GetTerritories().size(); i++)
-            {
-                if (currentMap.GetMap().GetTerritories().at(i)->GetOwner() == player->playername)
-                {
-                    cout << currentMap.GetMap().GetTerritories().at(i)->GetTerritoryName() << " ";
+                    else
+                    {
+                        Order *deployOrder = new Deploy(*currentMap.GetMap().GetTerritories()[i], player, numTroopsToDeploy);
+                        player->ordersList.addOrder(deployOrder);
+                        cout << "Added deploy order of " << numTroopsToDeploy << " armies on " << territoryToDefend << " to orders list."
+                             << "\n";
+                        player->defenseList.push_back(territoryToDefend);
+                        numTroopsRemaining -= numTroopsToDeploy;
+                    }
                 }
             }
-            cout << "\n";
-            string territoryToAdvanceFromName;
-            cin >> territoryToAdvanceFromName;
-            for (int i = 0; i < currentMap.GetMap().GetTerritories().size(); i++)
+            if (numTroopsRemaining == 0)
             {
-                if (territoryToAdvanceFromName == currentMap.GetMap().GetTerritories()[i]->GetTerritoryName())
-                {
-                    index1 = i;
-                    break;
-                }
-            }
-            cout << "Choose a Territory to Advance To:"
-                 << "\n";
-            vector<Territory> connectedTerritories = currentMap.GetMap().GetConnections(*currentMap.GetMap().GetTerritories()[index1]);
-            for (int i = 0; i < connectedTerritories.size(); i++) {
-                cout << connectedTerritories.at(i).GetTerritoryName() << " ";
-            }
-            cout << "\n";
-            string territoryToAdvanceToName;
-            cin >> territoryToAdvanceToName;
-            for (int i = 0; i < currentMap.GetMap().GetTerritories().size(); i++)
-            {
-                if (territoryToAdvanceToName == currentMap.GetMap().GetTerritories().at(i)->GetTerritoryName())
-                {
-                    index2 = i;
-                    // territoryToAdvanceTo = *currentMap.GetMap().GetTerritories().at(i);
-                    break;
-                }
-            }
-            bool attack = true;
-            // Check if territory is owned by player to determine if we need to add it to the attack or defense list
-            for (int i = 0; i < player->territoriesOwned.size(); i++)
-            {
-                if (territoryToAdvanceToName == player->territoriesOwned.at(i).GetTerritoryName())
-                {
-                    attack = false;
-                }
-            }
-            if (attack == true)
-            {
-                player->attackList.push_back(territoryToAdvanceToName);
+                cout << "You have deployed all your troops."
+                     << "\n";
+                break;
             }
             else
             {
-                player->defenseList.push_back(territoryToAdvanceToName);
+                cout << "Choose another territory to defend:"
+                     << "\n";
             }
-            cout << "How many armies would you like to advance?"
-                 << "\n";
-            int numTroopsToAdvance;
-            cin >> numTroopsToAdvance;
-
-            Order *advanceOrder = new Advance(*currentMap.GetMap().GetTerritories().at(index1), *currentMap.GetMap().GetTerritories().at(index2), player, numTroopsToAdvance);
-            player->ordersList.addOrder(advanceOrder);
-
-            // advanceOrders.push_back(new Advance(territoryToAdvanceFrom, territoryToAdvanceTo, this, numTroopsToAdvance));
-            // Record advance order information here in a new list
-            cout << "Added advance order of " << numTroopsToAdvance << " armies from " << currentMap.GetMap().GetTerritories().at(index1)->GetTerritoryName() << " to " << currentMap.GetMap().GetTerritories().at(index2)->GetTerritoryName() << " to orders list."
-                 << "\n";
         }
-    }
 
-    /*The player uses one of the cards in their hand to issue an order that corresponds to the card in question. */
-    // add choose option
+        // Creating Advance Orders
 
-    cout << "Do you want to issue an order using a card? (y/n)"
-         << "\n";
-    string answer;
-    cin >> answer;
-    if (answer == "y")
-    {
-        cout << "Choose a card to play:"
+        cout << "ADVANCE PHASE: "
              << "\n";
-
-        cout << "You have " << player->cardsOwned->size << " cards in your hand."
-             << "\n";
-        if (player->cardsOwned->size == 0)
+        while (true)
         {
-            cout << "You have no cards to play."
+            cout << "Do you want to issue an Advance Order? (y/n)"
                  << "\n";
-        }
-        else
-        {
-            cout << "Cards in hand: "
-                 << "\n";
-            for (int i = 0; i < player->cardsOwned->size; i++)
+            string answer;
+            cin >> answer;
+            if (answer == "n")
             {
-                cout << player->cardsOwned->cards[i]->type << ", ";
+                break;
             }
-            cout << "\n";
-            while (true)
+            else if (answer == "y")
             {
-                string cardToPlay;
-                cin >> cardToPlay;
-                bool cardFound = false;
-                for (int i = 0; i < player->cardsOwned->size; i++)
+
+                Territory territoryToAdvanceFrom;
+                Territory territoryToAdvanceTo;
+                int index1 = 0;
+                int index2 = 0;
+                cout << "Choose a Territory to Advance From:"
+                     << "\n";
+                // Print out territories owned
+                for (int i = 0; i < currentMap.GetMap().GetTerritories().size(); i++)
                 {
-                    if (cardToPlay == player->cardsOwned->cards[i]->type)
+                    if (currentMap.GetMap().GetTerritories().at(i)->GetOwner() == player->playername)
                     {
-                        cardFound = true;
-                        player->cardsOwned->cards[i]->play(player->cardsOwned, deck, player);
-
-                        if (cardToPlay == "Bomb")
-                        {
-                            string target;
-                            cout << "Enter the name of the country you want to bomb: ";
-                            cin >> target;
-                            for (int i = 0; i < currentMap.GetMap().GetTerritories().size(); i++)
-                            {
-                                if (currentMap.GetMap().GetTerritories().at(i)->GetTerritoryName() == target)
-                                {
-                                    cout << "Bomb Card Played" << endl;
-                                    // this->ordersList.addOrder(new Bomb(currentMap.GetMap().GetTerritories().at(i),this));
-                                    break;
-                                }
-                            }
-                        }
-                        else if (cardToPlay == "Blockade")
-                        {
-                            cout << "Blockade Card Played" << endl;
-                            player->ordersList.addOrder(new Blockade());
-                        }
-                        else if (cardToPlay == "Airlift")
-                        {
-                            cout << "Airlift Card Played" << endl;
-                            player->ordersList.addOrder(new Airlift());
-                        }
-                        else if (cardToPlay == "Diplomacy")
-                        {
-                            cout << "Diplomacy Card Played" << endl;
-                            player->ordersList.addOrder(new Negotiate());
-                        }
+                        cout << currentMap.GetMap().GetTerritories().at(i)->GetTerritoryName() << " ";
+                    }
+                }
+                cout << "\n";
+                string territoryToAdvanceFromName;
+                cin >> territoryToAdvanceFromName;
+                for (int i = 0; i < currentMap.GetMap().GetTerritories().size(); i++)
+                {
+                    if (territoryToAdvanceFromName == currentMap.GetMap().GetTerritories()[i]->GetTerritoryName())
+                    {
+                        index1 = i;
                         break;
                     }
                 }
-                if (cardFound == false)
+                cout << "Choose a Territory to Advance To:"
+                     << "\n";
+                vector<Territory> connectedTerritories = currentMap.GetMap().GetConnections(*currentMap.GetMap().GetTerritories()[index1]);
+                for (int i = 0; i < connectedTerritories.size(); i++)
                 {
-                    cout << "Card not found. Please try again."
-                         << "\n";
+                    cout << connectedTerritories.at(i).GetTerritoryName() << " ";
+                }
+                cout << "\n";
+                string territoryToAdvanceToName;
+                cin >> territoryToAdvanceToName;
+                for (int i = 0; i < currentMap.GetMap().GetTerritories().size(); i++)
+                {
+                    if (territoryToAdvanceToName == currentMap.GetMap().GetTerritories().at(i)->GetTerritoryName())
+                    {
+                        index2 = i;
+                        // territoryToAdvanceTo = *currentMap.GetMap().GetTerritories().at(i);
+                        break;
+                    }
+                }
+                bool attack = true;
+                // Check if territory is owned by player to determine if we need to add it to the attack or defense list
+                for (int i = 0; i < player->territoriesOwned.size(); i++)
+                {
+                    if (territoryToAdvanceToName == player->territoriesOwned.at(i).GetTerritoryName())
+                    {
+                        attack = false;
+                    }
+                }
+                if (attack == true)
+                {
+                    player->attackList.push_back(territoryToAdvanceToName);
                 }
                 else
                 {
-                    break;
+                    player->defenseList.push_back(territoryToAdvanceToName);
+                }
+                cout << "How many armies would you like to advance?"
+                     << "\n";
+                int numTroopsToAdvance;
+                cin >> numTroopsToAdvance;
+
+                Order *advanceOrder = new Advance(*currentMap.GetMap().GetTerritories().at(index1), *currentMap.GetMap().GetTerritories().at(index2), player, numTroopsToAdvance);
+                player->ordersList.addOrder(advanceOrder);
+
+                // advanceOrders.push_back(new Advance(territoryToAdvanceFrom, territoryToAdvanceTo, this, numTroopsToAdvance));
+                // Record advance order information here in a new list
+                cout << "Added advance order of " << numTroopsToAdvance << " armies from " << currentMap.GetMap().GetTerritories().at(index1)->GetTerritoryName() << " to " << currentMap.GetMap().GetTerritories().at(index2)->GetTerritoryName() << " to orders list."
+                     << "\n";
+            }
+        }
+
+        /*The player uses one of the cards in their hand to issue an order that corresponds to the card in question. */
+        // add choose option
+
+        cout << "Do you want to issue an order using a card? (y/n)"
+             << "\n";
+        string answer;
+        cin >> answer;
+        if (answer == "y")
+        {
+            cout << "Choose a card to play:"
+                 << "\n";
+
+            cout << "You have " << player->cardsOwned->size << " cards in your hand."
+                 << "\n";
+            if (player->cardsOwned->size == 0)
+            {
+                cout << "You have no cards to play."
+                     << "\n";
+            }
+            else
+            {
+                cout << "Cards in hand: "
+                     << "\n";
+                for (int i = 0; i < player->cardsOwned->size; i++)
+                {
+                    cout << player->cardsOwned->cards[i]->type << ", ";
+                }
+                cout << "\n";
+                while (true)
+                {
+                    string cardToPlay;
+                    cin >> cardToPlay;
+                    bool cardFound = false;
+                    for (int i = 0; i < player->cardsOwned->size; i++)
+                    {
+                        if (cardToPlay == player->cardsOwned->cards[i]->type)
+                        {
+                            cardFound = true;
+                            player->cardsOwned->cards[i]->play(player->cardsOwned, deck, player);
+
+                            if (cardToPlay == "Bomb")
+                            {
+                                string target;
+                                cout << "Enter the name of the country you want to bomb: ";
+                                cin >> target;
+                                for (int i = 0; i < currentMap.GetMap().GetTerritories().size(); i++)
+                                {
+                                    if (currentMap.GetMap().GetTerritories().at(i)->GetTerritoryName() == target)
+                                    {
+                                        cout << "Bomb Card Played" << endl;
+                                        // this->ordersList.addOrder(new Bomb(currentMap.GetMap().GetTerritories().at(i),this));
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (cardToPlay == "Blockade")
+                            {
+                                cout << "Blockade Card Played" << endl;
+                                player->ordersList.addOrder(new Blockade());
+                            }
+                            else if (cardToPlay == "Airlift")
+                            {
+                                cout << "Airlift Card Played" << endl;
+                                player->ordersList.addOrder(new Airlift());
+                            }
+                            else if (cardToPlay == "Diplomacy")
+                            {
+                                cout << "Diplomacy Card Played" << endl;
+                                player->ordersList.addOrder(new Negotiate());
+                            }
+                            break;
+                        }
+                    }
+                    if (cardFound == false)
+                    {
+                        cout << "Card not found. Please try again."
+                             << "\n";
+                    }
+                    else
+                    {
+                        break;
+                    }
                 }
             }
         }
+        cout << endl;
     }
-    cout << endl; 
+    else
+    {
+        cout << "The cheater player has taken all of player " << player->playername << "'s territories." << endl;
+        cout << "Player " << player->playername << " is out of the game" << endl;
+    }
 }
 
 void AggressivePlayerStrategy::issueOrder(Player *player, MapLoader currentMap, Deck *deck, int numTerritoriesPerPlayer)
 {
     cout << "Order Strategy: Aggressive" << endl;
 
-    // find first territory that belongs to the player
-    int indexOfStrongestTerritory = 0;
+    int numTerritories = 0;
     for (int i = 0; i < currentMap.GetMap().GetTerritories().size(); i++)
     {
         if (currentMap.GetMap().GetTerritories().at(i)->GetOwner() == player->playername)
         {
-            indexOfStrongestTerritory = i;
-            break;
+            numTerritories++;
         }
     }
-
-    // Find the strongest territory that is owned by the player and that is not landlocked
-    vector<Territory> adjEnemyTerritories;
-    for (int i = 0; i < currentMap.GetMap().GetTerritories().size(); i++)
+    cout << "Order Strategy: Benevolent" << endl;
+    int leastArmies = 1000;
+    if (numTerritories > 0)
     {
-        // check if territory is owned by player
-        vector<Territory> adjEnemyTerrTemp;
-        if (currentMap.GetMap().GetTerritories().at(i)->GetOwner() == player->playername)
+        // find first territory that belongs to the player
+        int indexOfStrongestTerritory = 0;
+        for (int i = 0; i < currentMap.GetMap().GetTerritories().size(); i++)
         {
-            // check if the territory has more armies than current strongest territory
-            if (currentMap.GetMap().GetTerritories().at(i)->GetArmyQuantity() >= currentMap.GetMap().GetTerritories().at(indexOfStrongestTerritory)->GetArmyQuantity())
+            if (currentMap.GetMap().GetTerritories().at(i)->GetOwner() == player->playername)
             {
-                cout << "Checking " << currentMap.GetMap().GetTerritories().at(i)->GetTerritoryName() << endl; 
-                // get all adjacent territories
-                vector<Territory> adjTerritories = currentMap.GetMap().GetConnections(*currentMap.GetMap().GetTerritories().at(i));
-                cout << "Adjacent territories: ";
-                for (int j = 0; j < adjTerritories.size(); j++)
-                {
-                    cout << adjTerritories[j].GetTerritoryName() << "(" << adjTerritories[j].GetOwner().playername << "), "; 
-                    // check if the adjacent territory is not owned by player
-                    if (!(adjTerritories[j].GetOwner().playername == player->playername))
-                    {
-                        adjEnemyTerrTemp.push_back(adjTerritories[j]);
-                    }
-                }
-                cout << endl; 
+                indexOfStrongestTerritory = i;
+                break;
+            }
+        }
 
-                // check if the territory has enemy adjacent territories (landlocked)
-                if (adjEnemyTerrTemp.size() > 0)
+        // Find the strongest territory that is owned by the player and that is not landlocked
+        vector<Territory> adjEnemyTerritories;
+        for (int i = 0; i < currentMap.GetMap().GetTerritories().size(); i++)
+        {
+            // check if territory is owned by player
+            vector<Territory> adjEnemyTerrTemp;
+            if (currentMap.GetMap().GetTerritories().at(i)->GetOwner() == player->playername)
+            {
+                // check if the territory has more armies than current strongest territory
+                if (currentMap.GetMap().GetTerritories().at(i)->GetArmyQuantity() >= currentMap.GetMap().GetTerritories().at(indexOfStrongestTerritory)->GetArmyQuantity())
                 {
-                    cout << "Adj enemy territories: ";
-                    for (int k = 0; k < adjEnemyTerrTemp.size(); k++)
+                    cout << "Checking " << currentMap.GetMap().GetTerritories().at(i)->GetTerritoryName() << endl;
+                    // get all adjacent territories
+                    vector<Territory> adjTerritories = currentMap.GetMap().GetConnections(*currentMap.GetMap().GetTerritories().at(i));
+                    cout << "Adjacent territories: ";
+                    for (int j = 0; j < adjTerritories.size(); j++)
                     {
-                        cout << adjEnemyTerrTemp[k].GetTerritoryName() << ", ";
+                        cout << adjTerritories[j].GetTerritoryName() << "(" << adjTerritories[j].GetOwner().playername << "), ";
+                        // check if the adjacent territory is not owned by player
+                        if (!(adjTerritories[j].GetOwner().playername == player->playername))
+                        {
+                            adjEnemyTerrTemp.push_back(adjTerritories[j]);
+                        }
                     }
                     cout << endl;
 
-                    indexOfStrongestTerritory = i;
-                    adjEnemyTerritories = adjEnemyTerrTemp;
+                    // check if the territory has enemy adjacent territories (landlocked)
+                    if (adjEnemyTerrTemp.size() > 0)
+                    {
+                        cout << "Adj enemy territories: ";
+                        for (int k = 0; k < adjEnemyTerrTemp.size(); k++)
+                        {
+                            cout << adjEnemyTerrTemp[k].GetTerritoryName() << ", ";
+                        }
+                        cout << endl;
 
-                    cout << endl << currentMap.GetMap().GetTerritories().at(i)->GetTerritoryName() << " is now the strongest territory with " << currentMap.GetMap().GetTerritories().at(i)->GetArmyQuantity() << " armies." << endl;
-                } else {
-                    cout << "Territory has no adjacent enemy territories. Discarded." << endl; 
+                        indexOfStrongestTerritory = i;
+                        adjEnemyTerritories = adjEnemyTerrTemp;
+                        cout << currentMap.GetMap().GetTerritories().at(i)->GetTerritoryName() << " is now the strongest territory with " << currentMap.GetMap().GetTerritories().at(i)->GetArmyQuantity() << " armies." << endl;
+                        cout << endl;
+                    }
+                    else
+                    {
+                        cout << "Territory has no adjacent enemy territories. Discarded." << endl;
+                    }
                 }
-                
             }
         }
-    }
 
-    cout << "The strongest territory is " << currentMap.GetMap().GetTerritories().at(indexOfStrongestTerritory)->GetTerritoryName() << endl;
+        cout << "The strongest territory is " << currentMap.GetMap().GetTerritories().at(indexOfStrongestTerritory)->GetTerritoryName() << endl;
 
-    int numArmiesToAdvance = 0; 
-    // Deploy all armies in the Player's reinforcement pool to the strongest territory
-    cout << "Deploying all armies in the Player's reinforcement pool to the strongest territory" << endl;
-    if (player->reinforcementPool > 0)
-    {
-        Deploy *deployOrder = new Deploy(*currentMap.GetMap().GetTerritories().at(indexOfStrongestTerritory), player, player->reinforcementPool);
-        player->ordersList.addOrder(deployOrder);
-        numArmiesToAdvance += player->reinforcementPool; 
-    }
-
-    
-
-    // Fortify the strongest territory with all armies from all other territories
-    cout << "Fortifying the strongest territory with all armies from all other territories" << endl;
-    for (int i = 0; i < currentMap.GetMap().GetTerritories().size(); i++)
-    {
-        if (currentMap.GetMap().GetTerritories().at(i)->GetOwner() == player->playername && i != indexOfStrongestTerritory)
+        int numArmiesToAdvance = 0;
+        // Deploy all armies in the Player's reinforcement pool to the strongest territory
+        cout << "Deploying all armies in the Player's reinforcement pool to the strongest territory" << endl;
+        if (player->reinforcementPool > 0)
         {
-            if (currentMap.GetMap().GetTerritories().at(i)->GetArmyQuantity() > 0)
-            {
-                Advance *fortifyOrder = new Advance(*currentMap.GetMap().GetTerritories().at(i), *currentMap.GetMap().GetTerritories().at(indexOfStrongestTerritory), player, currentMap.GetMap().GetTerritories().at(i)->GetArmyQuantity());
-                player->ordersList.addOrder(fortifyOrder);
-                numArmiesToAdvance += currentMap.GetMap().GetTerritories().at(i)->GetArmyQuantity(); 
-            }
+            Deploy *deployOrder = new Deploy(*currentMap.GetMap().GetTerritories().at(indexOfStrongestTerritory), player, player->reinforcementPool);
+            player->ordersList.addOrder(deployOrder);
+            numArmiesToAdvance += player->reinforcementPool;
         }
-    }
-    cout << "Fortification complete" << endl;
-    // Find all adjacent territories to advance to
-    numArmiesToAdvance = numArmiesToAdvance / adjEnemyTerritories.size(); 
-    
-    // Create advance orders from the strongest territory to all adjacent territories
-    cout << "Issuing advance orders from the strongest territory to all adjacent territories" << endl;
-    for (int i = 0; i < adjEnemyTerritories.size(); i++)
-    {
-        // if(adjacentTerritories.at(i).GetOwner() == player->playername){
-        cout << "Adding advance order on " << adjEnemyTerritories.at(i).GetTerritoryName() << " to orders list" << endl;
-        for (int j = 0; j < currentMap.GetMap().GetTerritories().size(); j++)
+
+        // Fortify the strongest territory with all armies from all other territories
+        cout << "Fortifying the strongest territory with all armies from all other territories" << endl;
+        for (int i = 0; i < currentMap.GetMap().GetTerritories().size(); i++)
         {
-            if (currentMap.GetMap().GetTerritories().at(j)->GetTerritoryName() == adjEnemyTerritories.at(i).GetTerritoryName())
+            if (currentMap.GetMap().GetTerritories().at(i)->GetOwner() == player->playername && i != indexOfStrongestTerritory)
             {
-                player->ordersList.addOrder(new Advance(*currentMap.GetMap().GetTerritories().at(indexOfStrongestTerritory), *currentMap.GetMap().GetTerritories().at(j), player, numArmiesToAdvance));
+                if (currentMap.GetMap().GetTerritories().at(i)->GetArmyQuantity() > 0)
+                {
+                    Advance *fortifyOrder = new Advance(*currentMap.GetMap().GetTerritories().at(i), *currentMap.GetMap().GetTerritories().at(indexOfStrongestTerritory), player, currentMap.GetMap().GetTerritories().at(i)->GetArmyQuantity());
+                    player->ordersList.addOrder(fortifyOrder);
+                    numArmiesToAdvance += currentMap.GetMap().GetTerritories().at(i)->GetArmyQuantity();
+                }
             }
         }
+        cout << "Fortification complete" << endl;
+        // Find all adjacent territories to advance to
+        numArmiesToAdvance = numArmiesToAdvance / adjEnemyTerritories.size();
+
+        // Create advance orders from the strongest territory to all adjacent territories
+        cout << "Issuing advance orders from the strongest territory to all adjacent territories" << endl;
+        for (int i = 0; i < adjEnemyTerritories.size(); i++)
+        {
+            // if(adjacentTerritories.at(i).GetOwner() == player->playername){
+            cout << "Adding advance order on " << adjEnemyTerritories.at(i).GetTerritoryName() << " to orders list" << endl;
+            for (int j = 0; j < currentMap.GetMap().GetTerritories().size(); j++)
+            {
+                if (currentMap.GetMap().GetTerritories().at(j)->GetTerritoryName() == adjEnemyTerritories.at(i).GetTerritoryName())
+                {
+                    player->ordersList.addOrder(new Advance(*currentMap.GetMap().GetTerritories().at(indexOfStrongestTerritory), *currentMap.GetMap().GetTerritories().at(j), player, numArmiesToAdvance));
+                }
+            }
+        }
+        cout << endl;
     }
-    cout << endl; 
+    else
+    {
+        cout << "The cheater player has taken all of player " << player->playername << "'s territories." << endl;
+        cout << "Player " << player->playername << " is out of the game" << endl;
+    }
 }
 
 void BenevolentPlayerStrategy::issueOrder(Player *player, MapLoader currentMap, Deck *deck, int numTerritoriesPerPlayer)
 {
+    int numTerritories = 0;
+    for (int i = 0; i < currentMap.GetMap().GetTerritories().size(); i++)
+    {
+        if (currentMap.GetMap().GetTerritories().at(i)->GetOwner() == player->playername)
+        {
+            numTerritories++;
+        }
+    }
     cout << "Order Strategy: Benevolent" << endl;
     int leastArmies = 1000;
-
-    // Find the territory with the least armies
-    for (int i = 0; i < currentMap.GetMap().GetTerritories().size(); i++)
+    if (numTerritories > 0)
     {
-        // check if territory belongs to player
-        if (currentMap.GetMap().GetTerritories().at(i)->GetOwner() == player->playername)
+        // Find the territory with the least armies
+        for (int i = 0; i < currentMap.GetMap().GetTerritories().size(); i++)
         {
-            // check if territory has less armies than prev weakest territory
-            if (currentMap.GetMap().GetTerritories().at(i)->GetArmyQuantity() < leastArmies)
+            // check if territory belongs to player
+            if (currentMap.GetMap().GetTerritories().at(i)->GetOwner() == player->playername)
             {
-                leastArmies = currentMap.GetMap().GetTerritories().at(i)->GetArmyQuantity();
-            }
-        }
-    }
-    cout << "Least armies: " << leastArmies << endl;
-    int numWithLeastArmies = 0;
-    vector<Territory> territoriesWithLeastArmies;
-
-    // Make a vector of the territories with the least armies
-    cout << "Territories with the least armies: " << endl;
-    for (int i = 0; i < currentMap.GetMap().GetTerritories().size(); i++)
-    {
-        if (currentMap.GetMap().GetTerritories().at(i)->GetOwner() == player->playername)
-        {
-            if (currentMap.GetMap().GetTerritories().at(i)->GetArmyQuantity() == leastArmies)
-            {
-                numWithLeastArmies++;
-                cout << currentMap.GetMap().GetTerritories().at(i)->GetTerritoryName() << " ";
-            }
-        }
-    }
-    cout << endl;
-    int armiesToDeploy = player->reinforcementPool;
-    cout << "Armies to deploy: " << armiesToDeploy << endl;
-    int armiesPerTerritory = floor(armiesToDeploy / numWithLeastArmies);
-    int armiesLeftOver = armiesToDeploy % numWithLeastArmies;
-    // Deploy reinforcement pool to territories with the least armies
-    for (int i = 0; i < currentMap.GetMap().GetTerritories().size(); i++)
-    {
-        if (currentMap.GetMap().GetTerritories().at(i)->GetOwner() == player->playername)
-        {
-            if (currentMap.GetMap().GetTerritories().at(i)->GetArmyQuantity() == leastArmies)
-            {
-                // territoriesWithLeastArmies.push_back(*currentMap.GetMap().GetTerritories().at(i));
-                Deploy *deployOrder = new Deploy(*currentMap.GetMap().GetTerritories().at(i), player, armiesPerTerritory);
-                player->ordersList.addOrder(deployOrder);
-                cout << "Deploying " << armiesPerTerritory << " armies to " << currentMap.GetMap().GetTerritories().at(i)->GetTerritoryName() << endl;
-                if (armiesLeftOver > 0)
+                // check if territory has less armies than prev weakest territory
+                if (currentMap.GetMap().GetTerritories().at(i)->GetArmyQuantity() < leastArmies)
                 {
-                    Deploy *deployOrder = new Deploy(*currentMap.GetMap().GetTerritories().at(i), player, 1);
-                    player->ordersList.addOrder(deployOrder);
-                    armiesLeftOver--;
-                    cout << "Deploying 1 army to " << currentMap.GetMap().GetTerritories().at(i)->GetTerritoryName() << endl;
+                    leastArmies = currentMap.GetMap().GetTerritories().at(i)->GetArmyQuantity();
                 }
             }
         }
+        cout << "Least armies: " << leastArmies << endl;
+        int numWithLeastArmies = 0;
+        vector<Territory> territoriesWithLeastArmies;
+
+        // Make a vector of the territories with the least armies
+        cout << "Territories with the least armies: " << endl;
+        for (int i = 0; i < currentMap.GetMap().GetTerritories().size(); i++)
+        {
+            if (currentMap.GetMap().GetTerritories().at(i)->GetOwner() == player->playername)
+            {
+                if (currentMap.GetMap().GetTerritories().at(i)->GetArmyQuantity() == leastArmies)
+                {
+                    numWithLeastArmies++;
+                    cout << currentMap.GetMap().GetTerritories().at(i)->GetTerritoryName() << " ";
+                }
+            }
+        }
+        cout << endl;
+        int armiesToDeploy = player->reinforcementPool;
+        cout << "Armies to deploy: " << armiesToDeploy << endl;
+        int armiesPerTerritory = floor(armiesToDeploy / numWithLeastArmies);
+        int armiesLeftOver = armiesToDeploy % numWithLeastArmies;
+        // Deploy reinforcement pool to territories with the least armies
+        for (int i = 0; i < currentMap.GetMap().GetTerritories().size(); i++)
+        {
+            if (currentMap.GetMap().GetTerritories().at(i)->GetOwner() == player->playername)
+            {
+                if (currentMap.GetMap().GetTerritories().at(i)->GetArmyQuantity() == leastArmies)
+                {
+                    // territoriesWithLeastArmies.push_back(*currentMap.GetMap().GetTerritories().at(i));
+                    Deploy *deployOrder = new Deploy(*currentMap.GetMap().GetTerritories().at(i), player, armiesPerTerritory);
+                    player->ordersList.addOrder(deployOrder);
+                    cout << "Deploying " << armiesPerTerritory << " armies to " << currentMap.GetMap().GetTerritories().at(i)->GetTerritoryName() << endl;
+                    if (armiesLeftOver > 0)
+                    {
+                        Deploy *deployOrder = new Deploy(*currentMap.GetMap().GetTerritories().at(i), player, 1);
+                        player->ordersList.addOrder(deployOrder);
+                        armiesLeftOver--;
+                        cout << "Deploying 1 army to " << currentMap.GetMap().GetTerritories().at(i)->GetTerritoryName() << endl;
+                    }
+                }
+            }
+        }
+        cout << endl;
     }
-    cout << endl; 
+    else
+    {
+        cout << "The cheater player has taken all of player " << player->playername << "'s territories." << endl;
+        cout << "Player " << player->playername << " is out of the game" << endl;
+    }
 }
 void NeutralPlayerStrategy::issueOrder(Player *player, MapLoader currentMap, Deck *deck, int numTerritoriesPerPlayer)
 {
@@ -458,19 +509,25 @@ void NeutralPlayerStrategy::issueOrder(Player *player, MapLoader currentMap, Dec
             territoriesOwned++;
         }
     }
-    if (numTerritoriesPerPlayer > territoriesOwned)
+    if (territoriesOwned > 0)
     {
-        cout << "Player " << player->playername << " is now an Aggressive Player" << endl;
-        player->strategy = new AggressivePlayerStrategy(); // change strategy to aggressive
+        if (numTerritoriesPerPlayer > territoriesOwned)
+        {
+            cout << "Player " << player->playername << " is now an Aggressive Player" << endl;
+            player->strategy = new AggressivePlayerStrategy(); // change strategy to aggressive
+        }
+        else
+        {
+            cout << "Player has not been attacked. No actions will be taken." << endl;
+        }
+        cout << endl;
     }
-    else {
-        cout << "Player has not been attacked. No actions will be taken." << endl; 
+    else
+    {
+        cout << "The cheater player has taken all of player " << player->playername << "'s territories." << endl;
+        cout << "Player " << player->playername << " is out of the game" << endl;
     }
-    cout << endl; 
 }
-
-
-
 
 void CheaterPlayerStrategy::issueOrder(Player *player, MapLoader currentMap, Deck *deck, int numTerritoriesPerPlayer)
 {
@@ -523,7 +580,7 @@ void CheaterPlayerStrategy::issueOrder(Player *player, MapLoader currentMap, Dec
             }
         }
     }
-    cout << endl; 
+    cout << endl;
 }
 
 // attack methods
