@@ -10,6 +10,7 @@ using namespace std;
 
 class Player;
 class Territory;
+class MapLoader; 
 
 //abstract order class, can be overritten by subclasses
 class Order //: public ILoggable, public Subject
@@ -18,8 +19,8 @@ public:
     Order();
     explicit Order(Player &);
     virtual ~Order() = 0;
-    virtual bool validate() const = 0;
-    virtual void execute() = 0; //pure virtual method
+    virtual bool validate(MapLoader map) const = 0;
+    virtual void execute(MapLoader map) = 0; //pure virtual method
     virtual string getType() const = 0;
     virtual ostream& printOrder(ostream&) const;
     Player *currentPlayer;
@@ -44,8 +45,8 @@ public:
     Deploy(Territory &, Player *, int); // Target territory, current player, amount
     ~Deploy(); //destructor
     string getType() const override; //returns order type
-    bool validate() const override; //returns true if valid
-    virtual void execute(); //executes if valid
+    bool validate(MapLoader map) const override; //returns true if valid
+    virtual void execute(MapLoader map); //executes if valid
 
 private:
     const static string type;
@@ -63,8 +64,8 @@ public:
     Advance(Territory &, Territory &, Player *, int); // Src, dest, current player, amount
     ~Advance();
     string getType() const override;
-    bool validate() const override;
-    virtual void execute();
+    bool validate(MapLoader map) const override;
+    virtual void execute(MapLoader map);
 
     bool hasSegmentationFault() const;
 
@@ -84,8 +85,8 @@ public:
     Bomb(Territory &, Player *); // Target territory to bomb, current player
     ~Bomb();
     string getType() const override;
-    bool validate() const override;
-    virtual void execute();
+    bool validate(MapLoader map) const override;
+    virtual void execute(MapLoader map);
 
 private:
     const static string type;
@@ -101,8 +102,8 @@ public:
     Blockade(Territory &, Player *); // Target, current player
     ~Blockade();
     string getType() const override;
-    bool validate() const override;
-    virtual void execute();
+    bool validate(MapLoader map) const override;
+    virtual void execute(MapLoader map);
 
 private:
     const static string type;
@@ -118,8 +119,8 @@ public:
     Airlift(Territory &, Territory &, Player *, int); // Source, target, current player, amount
     ~Airlift();
     string getType() const override;
-    bool validate() const override;
-    virtual void execute();
+    bool validate(MapLoader map) const override;
+    virtual void execute(MapLoader map);
 
 private:
     const static string type;
@@ -137,8 +138,8 @@ public:
     Negotiate(Player *, Player *);
     ~Negotiate();
     string getType() const override;
-    bool validate() const override;
-    virtual void execute();
+    bool validate(MapLoader map) const override;
+    virtual void execute(MapLoader map);
 
 private:
     const static string type;
@@ -163,7 +164,7 @@ public:
     void addOrder(Order* o); 
     void remove(int); //removes Object based on pos
     void move(int, int); //takes pos1 and pos2 and switches objects
-    void executeOrders(); //validates order and executes them
+    void executeOrders(MapLoader map); //validates order and executes them
     vector<Order*> getOrders() const { return orders; }
 
     bool hasSegmentationFault() const;

@@ -5,7 +5,7 @@
 #include <string>
 #include <vector>
 
-#include "Orders.h"
+#include "orders.h"
 #include "Card.h"
 #include "Map.h"
 #include "PlayerStrategy.h"
@@ -15,6 +15,7 @@ using namespace std;
 // Forward declaration
 class Territory;
 class MapLoader;
+//class OrdersList; 
 // Player class
 class Player
 {

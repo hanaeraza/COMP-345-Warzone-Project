@@ -15,11 +15,20 @@ using namespace std;
 void HumanPlayerStrategy::issueOrder(Player *player, MapLoader currentMap, Deck *deck, int numTerritoriesPerPlayer)
 {
     // // Print out territories owned
-    cout << "You are in the human issue order method" << endl;
+    cout << "Order Strategy: Human" << endl;
     cout << "Territories owned: \n";
     cout << player->playername << " owns: ";
-    cout << player->territoriesOwned.size() << " territories. \n";
+    int numTerritories = 0; 
     // Print out territories owned
+    for (int i = 0; i < currentMap.GetMap().GetTerritories().size(); i++)
+    {
+        if (currentMap.GetMap().GetTerritories().at(i)->GetOwner() == player->playername)
+        {
+            numTerritories++; 
+        }
+    }
+        cout << numTerritories << " territories. \n";
+
     for (int i = 0; i < currentMap.GetMap().GetTerritories().size(); i++)
     {
         if (currentMap.GetMap().GetTerritories().at(i)->GetOwner() == player->playername)
@@ -259,11 +268,12 @@ void HumanPlayerStrategy::issueOrder(Player *player, MapLoader currentMap, Deck 
             }
         }
     }
+    cout << endl; 
 }
 
 void AggressivePlayerStrategy::issueOrder(Player *player, MapLoader currentMap, Deck *deck, int numTerritoriesPerPlayer)
 {
-    cout << "Aggressive Player Turn: " << endl;
+    cout << "Order Strategy: Aggressive" << endl;
 
     // find first territory that belongs to the player
     int indexOfStrongestTerritory = 0;
@@ -287,23 +297,25 @@ void AggressivePlayerStrategy::issueOrder(Player *player, MapLoader currentMap, 
             // check if the territory has more armies than current strongest territory
             if (currentMap.GetMap().GetTerritories().at(i)->GetArmyQuantity() >= currentMap.GetMap().GetTerritories().at(indexOfStrongestTerritory)->GetArmyQuantity())
             {
-
+                cout << "Checking " << currentMap.GetMap().GetTerritories().at(i)->GetTerritoryName() << endl; 
                 // get all adjacent territories
-                vector<Territory> adjTerritories = currentMap.GetMap().GetConnections(*currentMap.GetMap().GetTerritories().at(indexOfStrongestTerritory));
-
+                vector<Territory> adjTerritories = currentMap.GetMap().GetConnections(*currentMap.GetMap().GetTerritories().at(i));
+                cout << "Adjacent territories: ";
                 for (int j = 0; j < adjTerritories.size(); j++)
                 {
+                    cout << adjTerritories[j].GetTerritoryName() << "(" << adjTerritories[j].GetOwner().playername << "), "; 
                     // check if the adjacent territory is not owned by player
-                    if (!(adjTerritories[j].GetOwner() == player->playername))
+                    if (!(adjTerritories[j].GetOwner().playername == player->playername))
                     {
                         adjEnemyTerrTemp.push_back(adjTerritories[j]);
                     }
                 }
+                cout << endl; 
 
                 // check if the territory has enemy adjacent territories (landlocked)
                 if (adjEnemyTerrTemp.size() > 0)
                 {
-                    cout << "Enemy territories: ";
+                    cout << "Adj enemy territories: ";
                     for (int k = 0; k < adjEnemyTerrTemp.size(); k++)
                     {
                         cout << adjEnemyTerrTemp[k].GetTerritoryName() << ", ";
@@ -313,21 +325,28 @@ void AggressivePlayerStrategy::issueOrder(Player *player, MapLoader currentMap, 
                     indexOfStrongestTerritory = i;
                     adjEnemyTerritories = adjEnemyTerrTemp;
 
-                    cout << currentMap.GetMap().GetTerritories().at(i)->GetTerritoryName() << " is the strongest territory with " << currentMap.GetMap().GetTerritories().at(i)->GetArmyQuantity() << " armies." << endl;
+                    cout << endl << currentMap.GetMap().GetTerritories().at(i)->GetTerritoryName() << " is now the strongest territory with " << currentMap.GetMap().GetTerritories().at(i)->GetArmyQuantity() << " armies." << endl;
+                } else {
+                    cout << "Territory has no adjacent enemy territories. Discarded." << endl; 
                 }
+                
             }
         }
     }
 
     cout << "The strongest territory is " << currentMap.GetMap().GetTerritories().at(indexOfStrongestTerritory)->GetTerritoryName() << endl;
 
+    int numArmiesToAdvance = 0; 
     // Deploy all armies in the Player's reinforcement pool to the strongest territory
     cout << "Deploying all armies in the Player's reinforcement pool to the strongest territory" << endl;
     if (player->reinforcementPool > 0)
     {
         Deploy *deployOrder = new Deploy(*currentMap.GetMap().GetTerritories().at(indexOfStrongestTerritory), player, player->reinforcementPool);
         player->ordersList.addOrder(deployOrder);
+        numArmiesToAdvance += player->reinforcementPool; 
     }
+
+    
 
     // Fortify the strongest territory with all armies from all other territories
     cout << "Fortifying the strongest territory with all armies from all other territories" << endl;
@@ -339,13 +358,14 @@ void AggressivePlayerStrategy::issueOrder(Player *player, MapLoader currentMap, 
             {
                 Advance *fortifyOrder = new Advance(*currentMap.GetMap().GetTerritories().at(i), *currentMap.GetMap().GetTerritories().at(indexOfStrongestTerritory), player, currentMap.GetMap().GetTerritories().at(i)->GetArmyQuantity());
                 player->ordersList.addOrder(fortifyOrder);
+                numArmiesToAdvance += currentMap.GetMap().GetTerritories().at(i)->GetArmyQuantity(); 
             }
         }
     }
     cout << "Fortification complete" << endl;
     // Find all adjacent territories to advance to
-
-    int numArmiesToAdvance = (currentMap.GetMap().GetTerritories().at(indexOfStrongestTerritory)->GetArmyQuantity()) / adjEnemyTerritories.size();
+    numArmiesToAdvance = numArmiesToAdvance / adjEnemyTerritories.size(); 
+    
     // Create advance orders from the strongest territory to all adjacent territories
     cout << "Issuing advance orders from the strongest territory to all adjacent territories" << endl;
     for (int i = 0; i < adjEnemyTerritories.size(); i++)
@@ -360,11 +380,12 @@ void AggressivePlayerStrategy::issueOrder(Player *player, MapLoader currentMap, 
             }
         }
     }
+    cout << endl; 
 }
 
 void BenevolentPlayerStrategy::issueOrder(Player *player, MapLoader currentMap, Deck *deck, int numTerritoriesPerPlayer)
 {
-    cout << "you are in the benevolent issue order method" << endl;
+    cout << "Order Strategy: Benevolent" << endl;
     int leastArmies = 1000;
 
     // Find the territory with the least armies
@@ -423,10 +444,11 @@ void BenevolentPlayerStrategy::issueOrder(Player *player, MapLoader currentMap, 
             }
         }
     }
+    cout << endl; 
 }
 void NeutralPlayerStrategy::issueOrder(Player *player, MapLoader currentMap, Deck *deck, int numTerritoriesPerPlayer)
 {
-    cout << "you are in the neutral issue order method" << endl;
+    cout << "Order Strategy: Neutral" << endl;
 
     int territoriesOwned = 0;
     for (int i = 0; i < currentMap.GetMap().GetTerritories().size(); i++)
@@ -441,10 +463,18 @@ void NeutralPlayerStrategy::issueOrder(Player *player, MapLoader currentMap, Dec
         cout << "Player " << player->playername << " is now an Aggressive Player" << endl;
         player->strategy = new AggressivePlayerStrategy(); // change strategy to aggressive
     }
+    else {
+        cout << "Player has not been attacked. No actions will be taken." << endl; 
+    }
+    cout << endl; 
 }
+
+
+
+
 void CheaterPlayerStrategy::issueOrder(Player *player, MapLoader currentMap, Deck *deck, int numTerritoriesPerPlayer)
 {
-    // Right idea but a lot of errors rn
+    cout << "Order Strategy: Cheater" << endl;
 
     vector<Territory> adjacentTerritories;
     for (int i = 0; i < currentMap.GetMap().GetTerritories().size(); i++)
@@ -493,13 +523,7 @@ void CheaterPlayerStrategy::issueOrder(Player *player, MapLoader currentMap, Dec
             }
         }
     }
-
-    // set<Territory> adjacentTerritoriesSet(adjacentTerritories.begin(), adjacentTerritories.end());
-
-    // for(Territory t: adjacentTerritoriesSet){
-    //     t.SetOwner(*player);
-    // }
-    cout << "you are in the cheater issue order method" << endl;
+    cout << endl; 
 }
 
 // attack methods

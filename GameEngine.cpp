@@ -321,32 +321,18 @@ void ReinforcementsState::reinforcementPhase(Player &player)
     cout << "Number of Reinforcements from Territories: " << numReinforcementsFromTerritories << endl;
     // check for continent control here
     int numReinforcementsFromContinents = 0;
-    // vector<string> continentsOwned = map.GetMap().GetContinentsOwnedBy(playerQueue.front());
-    // if(continentsOwned.size() != 0){
-    //     for (int i = 0; i < continentsOwned.size(); i++)
-    //     {
-    //         numReinforcementsFromContinents += map.GetMap().GetContinentBonus(continentsOwned[i]);
-    //     }
-    // }
-    // else{
-    //     cout << "No continents owned" << endl;
-    //     numReinforcementsFromContinents = 0;
-    // }
 
     cout << "Number of Reinforcements from Continents: " << numReinforcementsFromContinents << endl;
     int totalReinforcements = numReinforcementsFromTerritories + numReinforcementsFromContinents;
     if (totalReinforcements < 3)
     {
         totalReinforcements = 3;
-    }
-    cout << "Total Reinforcements for player " << player.playername << ": " << totalReinforcements << " armies " << endl;
-    cout << player.reinforcementPool << endl;
+    }    
     player.reinforcementPool += totalReinforcements;
-    cout << player.reinforcementPool << endl;
-    // switch to next player
-    // Player p = playerQueue.front();
-    // playerQueue.pop();
-    // playerQueue.push(p);
+
+    cout << "Total Reinforcements for player " << player.playername << ": " << player.reinforcementPool << " armies " << endl;
+    cout << endl; 
+
 }
 
 string ReinforcementsState::getName()
@@ -391,10 +377,10 @@ void IssueOrdersState::issueOrdersPhase(Player &player)
 {
     cout << "Issue orders phase" << endl;
 
-    for (int i = 0; i < map.GetMap().GetTerritories().size(); i++)
-    {
-        cout << map.GetMap().GetTerritories()[i]->GetTerritoryName() << " " << map.GetMap().GetTerritories()[i]->GetOwner().playername << endl;
-    }
+    // for (int i = 0; i < map.GetMap().GetTerritories().size(); i++)
+    // {
+    //     cout << map.GetMap().GetTerritories()[i]->GetTerritoryName() << " " << map.GetMap().GetTerritories()[i]->GetOwner().playername << endl;
+    // }
     // issue orders
     cout << "Issue Order phase for player: " << player.playername << endl;
 
@@ -417,6 +403,7 @@ void ExecuteOrdersState::update(GameEngine *game)
         cout << "Execute Order phase for player: " << players[i].playername << endl;
 
         executeOrdersPhase(players[i]);
+        cout << endl; 
         
         int numTerritoriesOwned = 0;
         for(int j = 0; j < map.GetMap().GetTerritories().size(); j++){
@@ -435,6 +422,13 @@ void ExecuteOrdersState::update(GameEngine *game)
         // playerQueue.pop();
         // playerQueue.push(p);
     }
+
+    for (int i = 0; i < map.GetMap().GetTerritories().size(); i++)
+    {
+        cout << map.GetMap().GetTerritories()[i]->GetTerritoryName() << " owned by "
+             << map.GetMap().GetTerritories()[i]->GetOwner().playername << ": " <<map.GetMap().GetTerritories()[i]->GetArmyQuantity() << " troops" << endl;
+    }
+
     // Checking if any player is eliminated
     for (int i = 0; i < numPlayers; i++)
     {
@@ -480,14 +474,10 @@ void ExecuteOrdersState::update(GameEngine *game)
 void ExecuteOrdersState::executeOrdersPhase(Player &player)
 {
     // executes deploy orders
-    player.ordersList.executeOrders();
+    player.ordersList.executeOrders(map);
 
     // this one is looping thru maps
-    for (int i = 0; i < map.GetMap().GetTerritories().size(); i++)
-    {
-        cout << map.GetMap().GetTerritories()[i]->GetTerritoryName() << " owned by "
-             << map.GetMap().GetTerritories()[i]->GetOwner().playername << ": " <<map.GetMap().GetTerritories()[i]->GetArmyQuantity() << " troops" << endl;
-    }
+    
     cout << "im in the execute orders phase" << endl;
 }
 string ExecuteOrdersState::getName()

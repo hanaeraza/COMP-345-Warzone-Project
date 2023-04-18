@@ -277,7 +277,7 @@ void OrdersList::move(int pos1, int pos2)
 }
 
 //goes through the order list and validates them, if validated then executes them
-void OrdersList::executeOrders()
+void OrdersList::executeOrders(MapLoader currentMap)
 {
     if (orders.size() == 0)
         cout << "No orders to execute." << endl;
@@ -286,7 +286,7 @@ void OrdersList::executeOrders()
         //notify(this);
         for (int i = 0; i < orders.size(); i++)
         {
-            orders[i]->execute();
+            orders[i]->execute(currentMap);
             delete orders[i];
         }
         orders.clear();
@@ -294,12 +294,28 @@ void OrdersList::executeOrders()
 }
 
 //validate() methods
-bool Deploy::validate() const {
+bool Deploy::validate(MapLoader currentMap) const {
 
     //checks if territory is owned by player
-    for (int i = 0; i < currentPlayer->territoriesOwned.size(); i++) {
-        if (currentPlayer->territoriesOwned.at(i).GetTerritoryName() == target->GetTerritoryName()) {
-            //checks if the amount to deploy is greater than the reinforcement pool
+    // for (int i = 0; i < currentPlayer->territoriesOwned.size(); i++) {
+    //     if (currentPlayer->territoriesOwned.at(i).GetTerritoryName() == target->GetTerritoryName()) {
+    //         //checks if the amount to deploy is greater than the reinforcement pool
+    //         if (*amount <= currentPlayer->reinforcementPool) {
+    //             cout << "Deploy order validated." << endl;
+    //             currentPlayer->reinforcementPool -= *amount;
+    //             return true;
+    //         }
+    //         else {
+    //             cout << "Deploy not Validated: Not Enough Troops" << endl;
+    //             return false;
+    //         }
+    //     }
+    // }
+
+        for (int i = 0; i < currentMap.GetMap().GetTerritories().size(); i++)
+    {
+        if (currentMap.GetMap().GetTerritories().at(i)->GetOwner() == currentPlayer->playername && currentMap.GetMap().GetTerritories().at(i)->GetTerritoryName() == target->GetTerritoryName())
+        {
             if (*amount <= currentPlayer->reinforcementPool) {
                 cout << "Deploy order validated." << endl;
                 currentPlayer->reinforcementPool -= *amount;
@@ -317,7 +333,7 @@ bool Deploy::validate() const {
 
 }
 
-bool Advance::validate() const
+bool Advance::validate(MapLoader currentMap) const
 {
     //checks if the amount is greater than the army in the territory
     if (*amount > source->GetArmyQuantity())
@@ -326,20 +342,10 @@ bool Advance::validate() const
         return false;
     }
 
-    //If the target territory is connected to the source territory, the order is valid.
-    // vector<Territory> connectedTerritories = currentMap.GetMap().GetConnections(source);
-    // for (Territory &t : connectedTerritories) {
-    //     if (&t == target) {
-    //         cout << "Advance order validated." << endl;
-    //         return true;
-    //     }
-    // }
-
-    //cout << "Advance order not Validated: The territory is not adjacent to yours." << endl;
     return true;
 }
 
-bool Bomb::validate() const
+bool Bomb::validate(MapLoader currentMap) const
 {
 
     //checks if territory is owned by player
@@ -361,7 +367,7 @@ bool Bomb::validate() const
     return true;
 }
 
-bool Blockade::validate() const
+bool Blockade::validate(MapLoader currentMap) const
 {
 
     //If the target territory belongs to an enemy player, the order is declared invalid. 
@@ -377,7 +383,7 @@ bool Blockade::validate() const
     return false;
 }
 
-bool Airlift::validate() const
+bool Airlift::validate(MapLoader currentMap) const
 {
     //If the source does not belong to the player that issued the order, the order is invalid.
     //checks if territory is owned by player
@@ -400,7 +406,7 @@ bool Airlift::validate() const
 
 }
 
-bool Negotiate::validate() const
+bool Negotiate::validate(MapLoader currentMap) const
 {
 
     //If the target is the player issuing the order, then the order is invalid. 
@@ -415,18 +421,18 @@ bool Negotiate::validate() const
 }
 
 //if orders is valid then order is executed
-void Deploy::execute()
+void Deploy::execute(MapLoader currentMap)
 {
-    if (validate()) {
+    if (validate(currentMap)) {
         target->SetArmyQuantity(*amount + target->GetArmyQuantity());
         cout << "Deploy order of " << *amount << " armies on " << target->GetTerritoryName() << endl;
         cout << target->GetTerritoryName() << " now has " << target->GetArmyQuantity() << " armies." << endl;
     }
 }
 
-void Advance::execute()
+void Advance::execute(MapLoader currentMap)
 {
-    if (validate()) {
+    if (validate(currentMap)) {
         //if territory belongs to player then move armies
         if (source->GetOwner() == target->GetOwner())
         {
@@ -438,7 +444,7 @@ void Advance::execute()
         //if moving troops to enemy territory then its an attack
         else
         {
-            cout << "Attacking " << target->GetOwner().playername << "!" << endl;
+            cout << source->GetTerritoryName() << " is now attacking " << target->GetTerritoryName() << "(" << target->GetOwner().playername << ")!" << endl;
 
             //set attackers 
             int attackers = *amount;
@@ -469,8 +475,8 @@ void Advance::execute()
                 // attacker takes control of the territory
                 target->SetOwner(source->GetOwner());//owner of target will be source
                 target->SetArmyQuantity(attackers - sourceDeaths); //set conquered place with remaining alive attackers troops
-                cout << "Attacking " << target->GetOwner().playername << "'s territory!" << endl;
-                cout << "Attack successful. " << source->GetOwner().playername << " is the new owner of " << target->GetTerritoryName() 
+                //cout << "Attacking " << target->GetOwner().playername << "'s territory!" << endl;
+                cout << "Attack successful. " << target->GetOwner().playername << " is the new owner of " << target->GetTerritoryName() 
                 << "\n" << target->GetTerritoryName() << " has " << target->GetArmyQuantity() << " armies." << endl;
             //if draw
             } else {
@@ -483,16 +489,16 @@ void Advance::execute()
     }
 }
 
-void Bomb::execute()
+void Bomb::execute(MapLoader currentMap)
 {
-    if (validate())
+    if (validate(currentMap))
         target->SetArmyQuantity(target->GetArmyQuantity() / 2);
         cout << "Bomb Executed." << endl;
 }
 
-void Blockade::execute()
+void Blockade::execute(MapLoader currentMap)
 {
-    if (validate())
+    if (validate(currentMap))
     {
         target->SetArmyQuantity(target->GetArmyQuantity() * 2);
         //Missing neutral player
@@ -500,9 +506,9 @@ void Blockade::execute()
     }
 }
 
-void Airlift::execute()
+void Airlift::execute(MapLoader currentMap)
 {
-    if (validate()) {
+    if (validate(currentMap)) {
 
         if (source->GetOwner() == target->GetOwner()) // Transferring army to another territory
         {
@@ -559,9 +565,9 @@ void Airlift::execute()
     }
 }
 
-void Negotiate::execute()
+void Negotiate::execute(MapLoader currentMap)
 {
-    if (validate())
+    if (validate(currentMap))
     {
         // cout << "Negotiate is being executed!\n";
         // currentPlayer->alliedTo(targetPlayer);
